@@ -1,0 +1,3 @@
+name: A11y CI
+on: {push:{branches:[main]}}
+jobs:{a11y:{runs-on:ubuntu-latest,steps:[{uses:actions/checkout@v4},{uses:actions/setup-node@v4,with:{node-version:'20'}},{run:'npm ci'},{run:'npx http-server -p 8080 . &'},{run:'npx wait-on http://localhost:8080'},{run:'npx pa11y-ci --sitemap sitemap.txt'}]}}
