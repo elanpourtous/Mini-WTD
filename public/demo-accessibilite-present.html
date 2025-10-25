@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Mini-WTD · Démo Accessibilité (Mode Présentation)</title>
+  <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
+  <style>
+    :root{
+      --bg:#0b0f14; --fg:#f2f5f7; --muted:#b7c0c8; --accent:#2dd4bf; --warn:#f59e0b; --err:#ef4444;
+    }
+    body{margin:0;background:var(--bg);color:var(--fg);font:20px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,sans-serif}
+    .wrap{max-width:1200px;margin:auto;padding:2rem}
+    header h1{font-size:2.2rem;margin:0 0 .25rem}
+    header p{color:var(--muted);margin:.25rem 0 1rem}
+    nav .back{color:var(--fg);opacity:.85;text-decoration:none;border-bottom:2px solid transparent}
+    nav .back:focus,nav .back:hover{outline:3px solid #94c5ff;outline-offset:3px;border-color:#94c5ff}
+    .grid{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:1.25rem}
+    .tile{background:#0f1621;border:1px solid #263244;border-radius:1rem;padding:1.5rem;min-height:180px;display:flex;flex-direction:column;justify-content:space-between}
+    .tile h2{margin:.25rem 0 .5rem;font-size:1.6rem}
+    .tile p{color:var(--muted);margin:0 0 1rem}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-weight:700;
+         text-decoration:none;border-radius:.9rem;border:2px solid transparent;padding:1rem 1.2rem;min-height:64px}
+    .btn:focus{outline:4px solid #94c5ff;outline-offset:4px}
+    .btn--accent{background:var(--accent);color:#0b0f14}
+    .btn--ghost{border-color:#334155;color:#e2e8f0;background:transparent}
+    .btn--warn{background:var(--warn);color:#0b0f14}
+    .btn--err{background:var(--err);color:#0b0f14}
+    .live{margin-top:1rem;border:1px dashed #334155;border-radius:.8rem;padding:1rem;background:#0e141d}
+    .live[role="status"]{min-height:60px}
+    .kbd{font-family:ui-monospace,Menlo,Consolas,monospace;background:#0e1824;border:1px solid #223044;border-radius:.4rem;padding:.1rem .4rem}
+    .foot{margin-top:1.5rem;color:#94a3b8}
+    /* Taille très visible */
+    .btn, .tile h2 { font-size:1.25rem }
+    @media (min-width:1024px){
+      .btn{font-size:1.35rem}
+      .tile h2{font-size:1.7rem}
+    }
+  </style>
+</head>
+<body>
+  <a class="skiplink" href="#main">Aller au contenu</a>
+  <div class="wrap">
+    <header role="banner">
+      <nav><a class="back" href="index.php" aria-label="Retour à l’accueil">← Retour</a></nav>
+      <h1>🎤 Démo Accessibilité — Mode Présentation</h1>
+      <p>Grandes cibles, contraste élevé, retours immédiats. Idéal pour projection et public.</p>
+    </header>
+
+    <main id="main" tabindex="-1" aria-labelledby="demo-title">
+      <h2 id="demo-title" class="visually-hidden">Composants de démonstration</h2>
+
+      <!-- LIGNE 1 : Actions directes -->
+      <section class="grid" aria-label="Actions">
+        <article class="tile">
+          <div>
+            <h2>Action réussie</h2>
+            <p>Annonce live polite. Montre un retour accessible.</p>
+          </div>
+          <button class="btn btn--accent" id="okBtn" type="button">✅ Valider</button>
+        </article>
+
+        <article class="tile">
+          <div>
+            <h2>Avertissement</h2>
+            <p>Utilise une alerte non bloquante et visible.</p>
+          </div>
+          <button class="btn btn--warn" id="warnBtn" type="button">⚠️ Avertir</button>
+        </article>
+
+        <article class="tile">
+          <div>
+            <h2>Erreur</h2>
+            <p>Annonce d’erreur claire + contraste fort.</p>
+          </div>
+          <button class="btn btn--err" id="errBtn" type="button">⛔ Erreur</button>
+        </article>
+      </section>
+
+      <div id="live" class="live" role="status" aria-live="polite">
+        Prêt. Appuyez sur les boutons pour voir les retours accessibles.
+      </div>
+
+      <!-- LIGNE 2 : Modale & Raccourcis -->
+      <section class="grid" aria-label="Interaction">
+        <article class="tile">
+          <div>
+            <h2>Fenêtre modale</h2>
+            <p>Focus piégé, fermeture par <span class="kbd">Échap</span>.</p>
+          </div>
+          <button class="btn btn--ghost" id="openModal" aria-haspopup="dialog" aria-controls="demoDialog">🪟 Ouvrir la modale</button>
+        </article>
+
+        <article class="tile">
+          <div>
+            <h2>Raccourcis clavier</h2>
+            <p><span class="kbd">Ctrl</span> + <span class="kbd">Entrée</span> : déclencher l’action réussie.</p>
+          </div>
+          <button class="btn btn--ghost" id="shortcutBtn">⌨️ Tester le raccourci</button>
+        </article>
+
+        <article class="tile">
+          <div>
+            <h2>Accéder à l’assistant vocal</h2>
+            <p>Lecture & dictée : démonstration TTS/STT.</p>
+          </div>
+          <a class="btn btn--accent" href="ia/mini-assistant.html">🧠 Ouvrir l’assistant</a>
+        </article>
+      </section>
+
+      <!-- Modale -->
+      <dialog id="demoDialog" aria-labelledby="dlgTitle" aria-describedby="dlgDesc">
+        <form method="dialog" style="min-width:min(92vw,520px);padding:1rem" class="stack">
+          <h3 id="dlgTitle">Modale accessible</h3>
+          <p id="dlgDesc">Navigation clavier, bouton “Valider” par défaut, fermeture <span class="kbd">Échap</span>.</p>
+          <label for="note">Note</label>
+          <input id="note" type="text" style="font-size:1.1rem;padding:.6rem">
+          <div style="display:flex;gap:.6rem;justify-content:flex-end">
+            <button class="btn" value="cancel">Annuler</button>
+            <button class="btn btn--accent" value="ok">Valider</button>
+          </div>
+        </form>
+      </dialog>
+
+      <p class="foot" role="note">
+        Astuce : utilisez <span class="kbd">Tab</span> / <span class="kbd">Maj+Tab</span> pour naviguer, et la touche
+        <span class="kbd">Échap</span> pour fermer la modale.
+      </p>
+    </main>
+  </div>
+
+  <script>
+    // Live region
+    const $live = document.getElementById('live');
+    const say = (msg, cls) => { $live.textContent = msg; $live.style.borderColor = cls; };
+
+    document.getElementById('okBtn').addEventListener('click', () => say('✅ Action effectuée avec succès.', '#22c55e'));
+    document.getElementById('warnBtn').addEventListener('click', () => say('⚠️ Attention : vérifiez vos paramètres.', '#f59e0b'));
+    document.getElementById('errBtn').addEventListener('click', () => say('⛔ Erreur : opération annulée.', '#ef4444'));
+
+    // Raccourci Ctrl+Entrée -> action OK
+    document.addEventListener('keydown', (e) => {
+      if (e.ctrlKey && e.key === 'Enter') {
+        document.getElementById('okBtn').click();
+        e.preventDefault();
+      }
+    });
+    document.getElementById('shortcutBtn').addEventListener('click', () => {
+      say('Appuyez sur Ctrl + Entrée pour déclencher l’action réussie.', '#2dd4bf');
+    });
+
+    // Modale accessible
+    const dlg = document.getElementById('demoDialog');
+    const opener = document.getElementById('openModal');
+    const note = document.getElementById('note');
+    opener.addEventListener('click', () => { dlg.showModal(); note.focus(); });
+    dlg.addEventListener('cancel', () => { opener.focus(); });
+    dlg.addEventListener('close', () => { opener.focus(); });
+  </script>
+</body>
+</html>

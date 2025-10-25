@@ -1,0 +1,12 @@
+.reader-speed-label {
+  display:inline-flex; align-items:center; gap:.25rem;
+  font-size:.95rem; font-weight:600; color:var(--fg);
+}
+.reader-speed-label select {
+  background:var(--card); color:var(--fg);
+  border:1px solid var(--border); border-radius:.4rem;
+  padding:.2rem .4rem;
+}
+.reader-speed-label select:focus {
+  outline:3px solid #94c5ff; outline-offset:2px;
+}
