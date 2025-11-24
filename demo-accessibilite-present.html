@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Mini-WTD · Mode Présentation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description"
+        content="Mode Présentation de la démo accessibilité Mini-WTD : gros boutons, contraste renforcé et accès rapide aux scénarios.">
+  <meta name="author" content="Patrick Billy">
+  <meta name="theme-color" content="#000000">
+
+  <link rel="icon" href="assets/img/logo-mini-wtd.png" type="image/png">
+  <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    :root{
+      --brand:#0b8457;
+      --brand-soft:#e4f4ec;
+      --bg:#0b0b0b;
+      --fg:#f7f7f7;
+      --card-bg:#181818;
+      --card-border:#444;
+      --accent:#ffd54f;
+      --accent-soft:#3a2c02;
+      --danger:#ff5252;
+      --radius:18px;
+      --shadow:0 10px 30px rgba(0,0,0,.5);
+    }
+    body{
+      margin:0;
+      font-family:System,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:#000;
+      color:var(--fg);
+      line-height:1.5;
+      font-size:1.05rem;
+    }
+    body.present-max{
+      font-size:1.25rem;
+      letter-spacing:.01em;
+    }
+
+    .skiplink{
+      position:absolute;
+      left:-9999px;
+      top:0;
+      padding:.6rem 1.2rem;
+      background:#000;
+      color:#fff;
+      z-index:1000;
+    }
+    .skiplink:focus{
+      left:.7rem;
+      top:.7rem;
+      outline:3px solid #fff;
+    }
+
+    header.site-header{
+      background:#000;
+      border-bottom:1px solid #333;
+    }
+    .shell{
+      max-width:1100px;
+      margin:0 auto;
+      padding:.75rem 1.5rem;
+    }
+    .header-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1.2rem;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:.75rem;
+    }
+    .brand img{
+      width:50px;
+      height:50px;
+      border-radius:50%;
+      box-shadow:0 0 0 3px #fff;
+    }
+    .brand-title{
+      margin:0;
+      font-size:1.4rem;
+      font-weight:700;
+    }
+    .brand-sub{
+      margin:0;
+      font-size:.9rem;
+      color:#c2c2c2;
+    }
+
+    nav{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.7rem;
+      font-size:.9rem;
+    }
+    nav a{
+      text-decoration:none;
+      color:#c2c2c2;
+      padding:.1rem .4rem;
+      border-radius:999px;
+    }
+    nav a[aria-current="page"]{
+      background:#fff;
+      color:#000;
+      font-weight:600;
+    }
+    nav a:hover,
+    nav a:focus{
+      color:#fff;
+      text-decoration:underline;
+    }
+
+    main{
+      max-width:1100px;
+      margin:0 auto;
+      padding:1.5rem 1.5rem 3rem;
+    }
+
+    .page-header{
+      display:flex;
+      flex-direction:column;
+      gap:.5rem;
+      margin-bottom:1.5rem;
+    }
+    .page-header h1{
+      margin:0;
+      font-size:1.9rem;
+    }
+    .muted{
+      color:#c2c2c2;
+      font-size:.95rem;
+    }
+
+    .controls-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.75rem;
+      margin-top:.5rem;
+      align-items:center;
+    }
+
+    .btn-chip{
+      display:inline-flex;
+      align-items:center;
+      gap:.35rem;
+      padding:.4rem .85rem;
+      border-radius:999px;
+      border:1px solid #555;
+      background:#111;
+      color:#f7f7f7;
+      font-size:.85rem;
+      cursor:pointer;
+    }
+    .btn-chip span.led{
+      display:inline-block;
+      width:.6rem;
+      height:.6rem;
+      border-radius:999px;
+      background:#777;
+    }
+    .btn-chip[aria-pressed="true"] span.led{
+      background:#00e676;
+      box-shadow:0 0 0 4px rgba(0,230,118,.25);
+    }
+    .btn-chip:focus{
+      outline:2px solid #fff;
+      outline-offset:2px;
+    }
+
+    /* Grille de gros boutons */
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:1.25rem;
+      margin-top:1.5rem;
+    }
+    @media (max-width:800px){
+      .grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    .tile{
+      border-radius:var(--radius);
+      background:var(--card-bg);
+      border:2px solid var(--card-border);
+      box-shadow:var(--shadow);
+      padding:1.4rem 1.5rem 1.3rem;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      min-height:180px;
+    }
+    .tile--accent{
+      border-color:var(--accent);
+      background:linear-gradient(135deg,#1b1302,#3b2d05);
+    }
+    .tile__title{
+      margin-top:0;
+      font-size:1.35rem;
+      display:flex;
+      align-items:center;
+      gap:.5rem;
+    }
+    .tile__emoji{
+      font-size:1.7rem;
+    }
+    .tile p{
+      margin:.25rem 0 .75rem;
+      font-size:1rem;
+    }
+    .tile .hint{
+      font-size:.85rem;
+      color:#d0d0d0;
+    }
+
+    .tile a,
+    .tile button{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:.5rem;
+      padding:.7rem 1.2rem;
+      border-radius:999px;
+      border:none;
+      font-size:1rem;
+      font-weight:600;
+      cursor:pointer;
+      text-decoration:none;
+    }
+    .tile a.btn-primary{
+      background:#fff;
+      color:#000;
+    }
+    .tile a.btn-secondary{
+      background:transparent;
+      color:#fff;
+      border:2px solid #fff;
+    }
+    .tile a:focus{
+      outline:3px solid var(--accent);
+      outline-offset:3px;
+    }
+
+    .kbd{
+      display:inline-block;
+      padding:.05rem .4rem;
+      border-radius:4px;
+      border:1px solid #666;
+      background:#111;
+      font-size:.85rem;
+      font-family:monospace;
+      color:#f7f7f7;
+    }
+
+    .note-card{
+      margin-top:1.75rem;
+      border-radius:var(--radius);
+      padding:1rem 1.1rem;
+      background:#111;
+      border:1px dashed #444;
+      font-size:.9rem;
+      color:#e0e0e0;
+    }
+
+    footer.site-footer{
+      border-top:1px solid #333;
+      background:#000;
+      color:#c2c2c2;
+      padding:1rem 1.5rem 1.5rem;
+      font-size:.85rem;
+    }
+    footer .shell{
+      max-width:1100px;
+    }
+  </style>
+</head>
+
+<body class="present-mode">
+  <a href="#contenu" class="skiplink">Aller directement au contenu</a>
+
+  <header class="site-header" role="banner">
+    <div class="shell header-inner">
+      <div class="brand">
+        <img src="assets/img/logo-mini-wtd.png" alt="Logo Mini-WTD">
+        <div>
+          <p class="brand-title">Mini-WTD · Work-Test-Demo</p>
+          <p class="brand-sub">Mode Présentation – démo accessibilité en grand écran</p>
+        </div>
+      </div>
+      <nav aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="presentation.html">Présentation</a>
+        <a href="demo-accessibilite.html">Démo accessibilité</a>
+        <a href="demo-accessibilite-present.html" aria-current="page">Mode Présentation</a>
+        <a href="rgaa.html">Audit RGAA</a>
+        <a href="assistant.html">Assistant IA</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu" role="main" tabindex="-1" aria-labelledby="titre-page">
+    <div class="shell">
+      <header class="page-header">
+        <h1 id="titre-page">Mode Présentation</h1>
+        <p class="muted">
+          Pensé pour la projection en salle : gros boutons, contraste renforcé, peu de texte.
+          Tu pilotes au clavier, le public suit sur grand écran.
+        </p>
+        <div class="controls-row">
+          <button type="button" class="btn-chip" id="toggle-max" aria-pressed="true">
+            <span class="led" aria-hidden="true"></span>
+            <span>Accessibilité maximale (police agrandie, contraste fort)</span>
+          </button>
+          <span class="muted">
+            Raccourcis : <span class="kbd">Tab</span> pour naviguer&nbsp;·
+            <span class="kbd">Entrée</span> / <span class="kbd">Espace</span> pour activer&nbsp;·
+            <span class="kbd">Alt</span> + <span class="kbd">←</span> pour revenir en arrière.
+          </span>
+        </div>
+      </header>
+
+      <section aria-labelledby="actions-titre">
+        <h2 id="actions-titre" class="sr-only">Actions principales</h2>
+
+        <div class="grid">
+          <!-- 1. Lancer formulaire & démo -->
+          <article class="tile tile--accent">
+            <h3 class="tile__title">
+              <span class="tile__emoji" aria-hidden="true">📝</span>
+              <span>Formulaire & erreurs visibles</span>
+            </h3>
+            <p>
+              Tu montres comment un formulaire bien construit se comporte
+              avec ou sans erreurs : labels, messages, résumé d’erreurs.
+            </p>
+            <p class="hint">
+              Astuce : demander à quelqu’un d’entrer volontairement une mauvaise adresse e-mail,
+              puis regarder le comportement avec <strong>lecteur d’écran</strong>.
+            </p>
+            <p>
+              <a class="btn-primary" href="demo-accessibilite.html#form-titre">
+                Ouvrir la démo formulaire
+              </a>
+            </p>
+          </article>
+
+          <!-- 2. Lancer le tableau -->
+          <article class="tile">
+            <h3 class="tile__title">
+              <span class="tile__emoji" aria-hidden="true">📊</span>
+              <span>Tableau avec en-têtes</span>
+            </h3>
+            <p>
+              Démonstration d’un tableau simple avec <code>&lt;caption&gt;</code>,
+              en-têtes de colonnes et de lignes.
+            </p>
+            <p class="hint">
+              Demande aux participants d’identifier la ligne et la colonne d’une cellule
+              avec leur techno d’assistance.
+            </p>
+            <p>
+              <a class="btn-primary" href="demo-accessibilite.html#table-titre">
+                Ouvrir la démo tableau
+              </a>
+            </p>
+          </article>
+
+          <!-- 3. Modale -->
+          <article class="tile">
+            <h3 class="tile__title">
+              <span class="tile__emoji" aria-hidden="true">🪟</span>
+              <span>Modale & focus clavier</span>
+            </h3>
+            <p>
+              Tu montres comment une fenêtre de dialogue doit capturer le focus,
+              se fermer avec <span class="kbd">Échap</span> et
+              rendre le focus à l’élément déclencheur.
+            </p>
+            <p class="hint">
+              Lancer cette démo après avoir parlé des pièges des pop-ups non accessibles.
+            </p>
+            <p>
+              <a class="btn-primary" href="demo-accessibilite.html#modal-titre">
+                Ouvrir la démo modale
+              </a>
+            </p>
+          </article>
+
+          <!-- 4. Passage vers Audit RGAA / Assistant -->
+          <article class="tile">
+            <h3 class="tile__title">
+              <span class="tile__emoji" aria-hidden="true">🧪</span>
+              <span>Suite du parcours</span>
+            </h3>
+            <p>
+              Quand le public a compris les bases, tu enchaînes sur l’audit RGAA
+              ou sur le mini-assistant IA pour la prise de notes accessible.
+            </p>
+            <p class="hint">
+              L’idée : garder le même environnement visuel tout en changeant de scénario.
+            </p>
+            <p>
+              <a class="btn-primary" href="rgaa.html">
+                Aller vers l’audit RGAA
+              </a>
+              <a class="btn-secondary" href="assistant.html">
+                Ouvrir l’assistant IA
+              </a>
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="tips-titre">
+        <h2 id="tips-titre" class="sr-only">Conseils d’animation</h2>
+        <div class="note-card">
+          <p>
+            🎙️ <strong>Tips d’animation :</strong> en mode Présentation, tu peux :
+          </p>
+          <ul>
+            <li>faire tester la navigation au clavier à une personne du public ;</li>
+            <li>lancer un lecteur d’écran et commenter ce qu’il lit ;</li>
+            <li>montrer la différence entre un champ correctement labelisé et un champ « anonyme » ;</li>
+            <li>poser la question : « Qui, dans la salle, se sentirait à l’aise sur un site
+              qui ne respecte pas ces règles ? »</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="shell">
+      <p>
+        © <span id="year"></span> Mini-WTD – Work-Test-Demo ·
+        Mode Présentation animé par Patrick Billy / Élan pour tous.
+      </p>
+      <p class="muted">
+        Ce mode est volontairement épuré : l’objectif est de
+        <strong>montrer</strong>, pas de tout expliquer sur une seule page.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // année dynamique
+    (function(){
+      const span = document.getElementById('year');
+      if(span){ span.textContent = new Date().getFullYear(); }
+    })();
+
+    // Toggle "accessibilité maximale"
+    (function(){
+      const btn = document.getElementById('toggle-max');
+      if(!btn) return;
+      const body = document.body;
+
+      function update(state){
+        const on = state !== false;
+        body.classList.toggle('present-max', on);
+        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      }
+
+      // état initial : activé
+      update(true);
+
+      btn.addEventListener('click', function(){
+        const pressed = btn.getAttribute('aria-pressed') === 'true';
+        update(!pressed);
+      });
+    })();
+  </script>
+</body>
+</html>
