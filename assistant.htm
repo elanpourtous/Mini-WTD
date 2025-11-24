@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Mini-WTD · Assistant IA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description"
+        content="Mini-assistant IA de Mini-WTD : prise de notes accessible, lecture vocale (TTS) et dictée vocale (STT) pour les tests et démonstrations.">
+  <meta name="author" content="Patrick Billy">
+  <meta name="theme-color" content="#0b8457">
+
+  <link rel="icon" href="assets/img/logo-mini-wtd.png" type="image/png">
+  <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    :root{
+      --brand:#0b8457;
+      --brand-soft:#e4f4ec;
+      --bg:#0b0b0b;
+      --fg:#f7f7f7;
+      --card-bg:#151515;
+      --card-border:#333;
+      --accent:#ffd54f;
+      --radius:16px;
+      --shadow:0 8px 24px rgba(0,0,0,.45);
+    }
+
+    body{
+      margin:0;
+      font-family:System,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:#050505;
+      color:var(--fg);
+      line-height:1.6;
+      font-size:1.02rem;
+    }
+
+    .skiplink{
+      position:absolute;
+      left:-9999px;
+      top:0;
+      padding:.6rem 1.2rem;
+      background:#000;
+      color:#fff;
+      z-index:1000;
+    }
+    .skiplink:focus{
+      left:.7rem;
+      top:.7rem;
+      outline:3px solid #fff;
+    }
+
+    header.site-header{
+      background:#000;
+      border-bottom:1px solid #262626;
+    }
+    .shell{
+      max-width:1100px;
+      margin:0 auto;
+      padding:.8rem 1.5rem;
+    }
+    .header-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1.2rem;
+      flex-wrap:wrap;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:.75rem;
+    }
+    .brand img{
+      width:50px;
+      height:50px;
+      border-radius:50%;
+      box-shadow:0 0 0 3px #fff;
+    }
+    .brand-title{
+      margin:0;
+      font-size:1.4rem;
+      font-weight:700;
+    }
+    .brand-sub{
+      margin:0;
+      font-size:.9rem;
+      color:#c2c2c2;
+    }
+
+    nav{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.6rem;
+      font-size:.9rem;
+    }
+    nav a{
+      text-decoration:none;
+      color:#c2c2c2;
+      padding:.1rem .45rem;
+      border-radius:999px;
+    }
+    nav a[aria-current="page"]{
+      background:#fff;
+      color:#000;
+      font-weight:600;
+    }
+    nav a:hover,
+    nav a:focus{
+      color:#fff;
+      text-decoration:underline;
+    }
+
+    main{
+      max-width:1100px;
+      margin:0 auto;
+      padding:1.5rem 1.5rem 3rem;
+    }
+
+    .page-header{
+      display:flex;
+      flex-direction:column;
+      gap:.5rem;
+      margin-bottom:1.5rem;
+    }
+    .page-header h1{
+      margin:0;
+      font-size:1.9rem;
+    }
+    .muted{
+      color:#c7c7c7;
+      font-size:.95rem;
+    }
+
+    .card{
+      border-radius:var(--radius);
+      background:var(--card-bg);
+      border:1px solid var(--card-border);
+      box-shadow:var(--shadow);
+      padding:1.1rem 1.2rem 1.2rem;
+      margin-bottom:1.2rem;
+    }
+
+    .card--accent{
+      border-color:var(--accent);
+      background:linear-gradient(135deg,#1b1302,#3b2d05);
+    }
+
+    .card h2{
+      margin-top:0;
+      font-size:1.3rem;
+      display:flex;
+      align-items:center;
+      gap:.5rem;
+    }
+    .card h3{
+      margin-top:0;
+      font-size:1.05rem;
+    }
+    .emoji{
+      font-size:1.5rem;
+    }
+
+    .layout{
+      display:grid;
+      grid-template-columns:minmax(0,2fr) minmax(0,1.4fr);
+      gap:1.3rem;
+    }
+    @media (max-width:880px){
+      .layout{
+        grid-template-columns:1fr;
+      }
+    }
+
+    .iframe-wrap{
+      border-radius:14px;
+      border:1px solid #333;
+      overflow:hidden;
+      background:#000;
+    }
+    .iframe-wrap iframe{
+      display:block;
+      width:100%;
+      height:420px;
+      border:0;
+    }
+    @media (max-width:600px){
+      .iframe-wrap iframe{
+        height:360px;
+      }
+    }
+
+    .kbd{
+      display:inline-block;
+      padding:.05rem .4rem;
+      border-radius:4px;
+      border:1px solid #666;
+      background:#111;
+      font-size:.85rem;
+      font-family:monospace;
+      color:#f7f7f7;
+    }
+
+    ul{
+      padding-left:1.2rem;
+    }
+
+    footer.site-footer{
+      border-top:1px solid #262626;
+      background:#000;
+      color:#c2c2c2;
+      padding:1rem 1.5rem 1.6rem;
+      font-size:.85rem;
+    }
+    footer .shell{
+      max-width:1100px;
+      margin:0 auto;
+    }
+  </style>
+</head>
+
+<body>
+  <a href="#contenu" class="skiplink">Aller directement au contenu</a>
+
+  <header class="site-header" role="banner">
+    <div class="shell header-inner">
+      <div class="brand">
+        <img src="assets/img/logo-mini-wtd.png" alt="Logo Mini-WTD">
+        <div>
+          <p class="brand-title">Mini-WTD · Work-Test-Demo</p>
+          <p class="brand-sub">Mini-assistant IA accessible</p>
+        </div>
+      </div>
+      <nav aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="presentation.html">Présentation</a>
+        <a href="demo-accessibilite.html">Démo accessibilité</a>
+        <a href="demo-accessibilite-present.html">Mode Présentation</a>
+        <a href="rgaa.html">Audit RGAA</a>
+        <a href="assistant.html" aria-current="page">Assistant IA</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu" role="main" tabindex="-1" aria-labelledby="page-title">
+    <div class="shell">
+      <header class="page-header">
+        <h1 id="page-title">Assistant IA · prise de notes accessible</h1>
+        <p class="muted">
+          Un mini-assistant pensé pour les tests : prise de notes, lecture vocale (TTS),
+          dictée vocale (STT) quand le navigateur le permet.
+        </p>
+      </header>
+
+      <section class="card card--accent" aria-labelledby="section-use">
+        <h2 id="section-use">
+          <span class="emoji" aria-hidden="true">🧠</span>
+          1. À quoi sert cet assistant ?
+        </h2>
+        <div class="layout">
+          <div>
+            <p>
+              Cet assistant IA est volontairement <strong>simple</strong> : il sert
+              de support de démonstration pour :
+            </p>
+            <ul>
+              <li>Tester la <strong>prise de notes</strong> avec lecture vocale ;</li>
+              <li>Illustrer l’usage de la <strong>dictée vocale</strong> (si supportée par le navigateur) ;</li>
+              <li>Montrer un <strong>composant dynamique</strong> à auditer côté accessibilité.</li>
+            </ul>
+            <p class="muted">
+              Important : ce n’est pas un chat « magique », mais un outil de travail
+              pour illustrer les besoins réels des personnes en situation de handicap.
+            </p>
+          </div>
+
+          <div class="iframe-wrap" aria-label="Zone de démonstration de l’assistant">
+            <!-- Si tu as déjà ia/mini-assistant.html, on l’intègre ici -->
+            <iframe
+              src="ia/mini-assistant.html"
+              title="Mini-assistant IA – démonstration"
+              loading="lazy">
+            </iframe>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="section-keys">
+        <h2 id="section-keys">
+          <span class="emoji" aria-hidden="true">⌨️</span>
+          2. Raccourcis & comportements
+        </h2>
+        <p>
+          En fonction de ta version de l’assistant, tu peux par exemple définir les conventions suivantes :
+        </p>
+        <ul>
+          <li><span class="kbd">Tab</span> / <span class="kbd">Maj+Tab</span> : naviguer entre les champs et les boutons ;</li>
+          <li><span class="kbd">Entrée</span> sur un bouton « Lire » : lancer la lecture vocale ;</li>
+          <li><span class="kbd">Échap</span> : arrêter ou fermer une zone modale, si présente ;</li>
+          <li><span class="kbd">Ctrl</span> + <span class="kbd">Entrée</span> (exemple) : basculer en mode dictée vocale.</li>
+        </ul>
+        <p class="muted">
+          L’idée Mini-WTD : <strong>documenter</strong> ces raccourcis à côté de l’interface, pas seulement dans la tête du développeur.
+        </p>
+      </section>
+
+      <section class="card" aria-labelledby="section-a11y">
+        <h2 id="section-a11y">
+          <span class="emoji" aria-hidden="true">♿</span>
+          3. Points d’accessibilité à vérifier
+        </h2>
+        <ul>
+          <li>Focus visible en permanence sur les zones d’édition et les boutons ;</li>
+          <li>Libellés clairs sur les boutons (pas uniquement des icônes) ;</li>
+          <li>Zones de statut avec <code>aria-live</code> pour les retours importants ;</li>
+          <li>Respect de <code>prefers-reduced-motion</code> si des animations sont présentes ;</li>
+          <li>Contraste suffisant entre texte, fond et éléments interactifs.</li>
+        </ul>
+        <p class="muted">
+          Mini-WTD sert d’atelier : on peut y casser, tester, corriger, avant de toucher
+          au « vrai » système d’information.
+        </p>
+      </section>
+
+      <section class="card" aria-labelledby="section-next">
+        <h2 id="section-next">
+          <span class="emoji" aria-hidden="true">🔗</span>
+          4. Aller plus loin
+        </h2>
+        <ul>
+          <li>Associer cet assistant aux scénarios de <strong>Work-Test-Demo</strong> (mini-épreuves, formulaires, etc.).</li>
+          <li>L’utiliser pour sensibiliser des développeurs à la notion de <strong>composant accessible</strong>.</li>
+          <li>Documenter ce qui manque pour un usage réel (gestion des erreurs, sauvegarde locale, etc.).</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="shell">
+      <p>
+        © <span id="year"></span> Mini-WTD – Work-Test-Demo ·
+        Mini-assistant IA pédagogique par Patrick Billy / Élan pour tous.
+      </p>
+      <p class="muted">
+        Cette page sert de support de démonstration pour l’accessibilité des outils IA
+        (prise de notes, TTS/STT) dans un contexte de tests de compétences.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const span = document.getElementById('year');
+      if(span){ span.textContent = new Date().getFullYear(); }
+    })();
+  </script>
+</body>
+</html>
