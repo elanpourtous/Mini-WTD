@@ -1,0 +1,799 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Mini-WTD · Démo accessibilité</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description"
+        content="Démo pratique d’accessibilité : formulaire labellisé, messages d’erreur, alertes et tableau accessible.">
+  <meta name="author" content="Patrick Billy">
+  <meta name="theme-color" content="#0b8457">
+
+  <link rel="icon" href="assets/img/logo-mini-wtd.png" type="image/png">
+  <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    :root{
+      --brand:#0b8457;
+      --brand-soft:#e4f4ec;
+      --bg:#f7f7f7;
+      --text:#111;
+      --muted:#555;
+      --border:#d0d0d0;
+      --radius:12px;
+      --shadow:0 6px 16px rgba(0,0,0,.06);
+      --danger:#b00020;
+      --danger-soft:#fde8ea;
+      --info:#0056d6;
+      --info-soft:#e3eeff;
+      --success:#0b8457;
+      --success-soft:#e4f4ec;
+    }
+    body{
+      margin:0;
+      font-family:System,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    .skiplink{
+      position:absolute;
+      left:-9999px;
+      top:0;
+      padding:.5rem 1rem;
+      background:#000;
+      color:#fff;
+      z-index:1000;
+    }
+    .skiplink:focus{
+      left:.5rem;
+      top:.5rem;
+      outline:3px solid #fff;
+    }
+
+    header.site-header{
+      background:#fff;
+      border-bottom:1px solid var(--border);
+    }
+    .shell{
+      max-width:1000px;
+      margin:0 auto;
+      padding:.75rem 1.25rem;
+    }
+    .header-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:.6rem;
+    }
+    .brand img{
+      width:40px;
+      height:40px;
+      border-radius:50%;
+    }
+    .brand-title{
+      margin:0;
+      font-size:1.2rem;
+      font-weight:700;
+    }
+    .brand-sub{
+      margin:0;
+      font-size:.85rem;
+      color:var(--muted);
+    }
+    nav a{
+      margin-left:1rem;
+      font-size:.9rem;
+      text-decoration:none;
+      color:var(--muted);
+    }
+    nav a[aria-current="page"]{
+      color:var(--brand);
+      font-weight:600;
+    }
+    nav a:hover,
+    nav a:focus{
+      color:var(--brand);
+      text-decoration:underline;
+    }
+
+    main{
+      max-width:1000px;
+      margin:0 auto;
+      padding:1.5rem 1.25rem 3rem;
+    }
+
+    .page-header{
+      background:#fff;
+      border-radius:var(--radius);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      padding:1.2rem 1.25rem 1rem;
+      margin-bottom:1.5rem;
+    }
+    .page-header h1{
+      margin-top:0;
+      margin-bottom:.25rem;
+      font-size:1.6rem;
+    }
+    .muted{
+      color:var(--muted);
+      font-size:.9rem;
+    }
+    .back-link{
+      display:inline-flex;
+      align-items:center;
+      gap:.35rem;
+      font-size:.85rem;
+      text-decoration:none;
+      color:var(--brand);
+      margin-bottom:.75rem;
+    }
+    .back-link::before{
+      content:"←";
+      font-size:1rem;
+    }
+    .back-link:hover,
+    .back-link:focus{
+      text-decoration:underline;
+    }
+    h2{
+      margin-top:2rem;
+      font-size:1.25rem;
+    }
+    h3{
+      margin-top:1.4rem;
+      font-size:1.05rem;
+    }
+    .badge{
+      display:inline-block;
+      padding:.1rem .55rem;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:var(--brand-soft);
+      color:var(--brand);
+      font-size:.75rem;
+      font-weight:600;
+      margin-right:.25rem;
+      margin-top:.25rem;
+    }
+    .kbd{
+      display:inline-block;
+      padding:.05rem .35rem;
+      border-radius:4px;
+      border:1px solid var(--border);
+      background:#fff;
+      font-size:.8rem;
+      font-family:monospace;
+    }
+
+    /* Formulaire */
+    .form-card{
+      background:#fff;
+      border-radius:var(--radius);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      padding:1.25rem 1.25rem 1.5rem;
+    }
+    .form-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:1rem;
+    }
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:.25rem;
+    }
+    .field label{
+      font-weight:600;
+      font-size:.9rem;
+    }
+    .field span.req{
+      color:var(--danger);
+      font-weight:700;
+    }
+    .field input,
+    .field select,
+    .field textarea{
+      font:inherit;
+      padding:.4rem .5rem;
+      border-radius:6px;
+      border:1px solid var(--border);
+    }
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus{
+      outline:2px solid var(--brand);
+      outline-offset:2px;
+    }
+    .field textarea{
+      min-height:5rem;
+      resize:vertical;
+    }
+    .field-inline{
+      display:flex;
+      flex-direction:row;
+      align-items:center;
+      gap:.4rem;
+      font-size:.9rem;
+    }
+    .error-msg{
+      font-size:.8rem;
+      color:var(--danger);
+      display:none;
+    }
+    .error-msg.is-visible{
+      display:block;
+    }
+    .error-summary{
+      border-radius:var(--radius);
+      border:2px solid var(--danger);
+      background:var(--danger-soft);
+      padding:.75rem 1rem;
+      margin-bottom:1rem;
+      display:none;
+    }
+    .error-summary h2{
+      margin-top:0;
+      font-size:1rem;
+    }
+    .error-summary ul{
+      margin:.25rem 0 0 1.2rem;
+      padding:0;
+    }
+    .error-summary a{
+      color:inherit;
+      text-decoration:underline;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:.35rem;
+      padding:.45rem .9rem;
+      border-radius:999px;
+      border:1px solid var(--brand);
+      background:var(--brand);
+      color:#fff;
+      font-size:.9rem;
+      cursor:pointer;
+    }
+    .btn--ghost{
+      background:#fff;
+      color:var(--brand);
+    }
+    .btn:focus{
+      outline:2px solid #000;
+      outline-offset:2px;
+    }
+
+    /* Alertes */
+    .alert{
+      border-radius:var(--radius);
+      padding:.6rem .9rem;
+      font-size:.9rem;
+      margin:.75rem 0;
+    }
+    .alert--success{
+      border:1px solid var(--success);
+      background:var(--success-soft);
+      color:var(--success);
+    }
+    .alert--info{
+      border:1px solid var(--info);
+      background:var(--info-soft);
+      color:var(--info);
+    }
+
+    /* Tableau */
+    .table-card{
+      background:#fff;
+      border-radius:var(--radius);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      padding:1rem 1.25rem 1.25rem;
+      overflow-x:auto;
+    }
+    table.demo-table{
+      border-collapse:collapse;
+      width:100%;
+      font-size:.9rem;
+    }
+    table.demo-table caption{
+      text-align:left;
+      font-weight:600;
+      margin-bottom:.4rem;
+    }
+    table.demo-table th,
+    table.demo-table td{
+      border:1px solid var(--border);
+      padding:.4rem .5rem;
+    }
+    table.demo-table thead{
+      background:#f0f0f0;
+    }
+    table.demo-table th[scope="row"]{
+      background:#fafafa;
+      font-weight:600;
+    }
+
+    /* Modale */
+    .modal{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.4);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:2000;
+    }
+    .modal[hidden]{
+      display:none;
+    }
+    .modal__dialog{
+      background:#fff;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      max-width:460px;
+      width:90%;
+      padding:1rem 1.25rem 1rem;
+    }
+    .modal__dialog h2{
+      margin-top:0;
+      font-size:1.25rem;
+    }
+    .modal__footer{
+      margin-top:1rem;
+      display:flex;
+      justify-content:flex-end;
+      gap:.5rem;
+    }
+
+    footer.site-footer{
+      border-top:1px solid var(--border);
+      background:#fff;
+      padding:1rem 1.25rem 1.5rem;
+      font-size:.8rem;
+      color:var(--muted);
+    }
+    footer .shell{
+      max-width:1000px;
+    }
+
+    @media (max-width:720px){
+      .form-grid{
+        grid-template-columns:1fr;
+      }
+      nav{
+        display:none; /* on garde simple pour la démo mobile */
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a href="#contenu" class="skiplink">Aller directement au contenu</a>
+
+  <header class="site-header" role="banner">
+    <div class="shell header-inner">
+      <div class="brand">
+        <img src="assets/img/logo-mini-wtd.png" alt="Logo Mini-WTD">
+        <div>
+          <p class="brand-title">Mini-WTD · Work-Test-Demo</p>
+          <p class="brand-sub">Démo accessibilité & inclusion – par Élan pour tous</p>
+        </div>
+      </div>
+      <nav aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="presentation.html">Présentation</a>
+        <a href="demo-accessibilite.html" aria-current="page">Démo accessibilité</a>
+        <a href="demo-accessibilite-present.html">Mode Présentation</a>
+        <a href="rgaa.html">Audit RGAA</a>
+        <a href="assistant.html">Assistant IA</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu" tabindex="-1" role="main" aria-labelledby="titre-page">
+    <div class="shell">
+      <a href="index.html" class="back-link">Retour à l’accueil Mini-WTD</a>
+
+      <header class="page-header">
+        <h1 id="titre-page">Démo accessibilité · Formulaire & tableau</h1>
+        <p class="muted">
+          Cette page sert de terrain de jeu pour montrer un formulaire accessible,
+          des messages d’erreur lisibles, un tableau correctement structuré et une modale basique.
+        </p>
+        <p>
+          <span class="badge">Formulaire labellisé</span>
+          <span class="badge">Résumé d’erreurs</span>
+          <span class="badge">Tableau avec en-têtes</span>
+          <span class="badge">Modale avec focus</span>
+        </p>
+      </header>
+
+      <!-- SECTION FORMULAIRE -->
+      <section aria-labelledby="form-titre">
+        <h2 id="form-titre">1. Formulaire de contact accessible</h2>
+        <p class="muted">
+          Objectif : montrer un formulaire qui reste compréhensible au clavier et au lecteur d’écran,
+          même en cas d’erreurs.
+        </p>
+
+        <div id="error-summary" class="error-summary" role="alert" aria-labelledby="error-summary-title">
+          <h2 id="error-summary-title">Le formulaire contient des erreurs</h2>
+          <p>Merci de corriger les champs suivants&nbsp;:</p>
+          <ul id="error-summary-list"></ul>
+        </div>
+
+        <div id="success-msg" class="alert alert--success" role="status" aria-live="polite" style="display:none">
+          ✅ Formulaire envoyé (simulation). En vrai atelier, on en profite pour parler du message de confirmation.
+        </div>
+
+        <div class="form-card">
+          <form id="demo-form" novalidate>
+            <div class="form-grid">
+              <div class="field">
+                <label for="nom">Nom <span class="req">*</span></label>
+                <input id="nom" name="nom" type="text" autocomplete="name" required
+                       aria-describedby="nom-hint nom-error">
+                <p id="nom-hint" class="muted" style="font-size:.8rem;margin:.1rem 0 0;">
+                  Par exemple : Dupont.
+                </p>
+                <p id="nom-error" class="error-msg">Merci d’indiquer votre nom.</p>
+              </div>
+
+              <div class="field">
+                <label for="email">E-mail <span class="req">*</span></label>
+                <input id="email" name="email" type="email" autocomplete="email" required
+                       aria-describedby="email-error">
+                <p id="email-error" class="error-msg">Merci d’indiquer une adresse e-mail valide.</p>
+              </div>
+
+              <div class="field">
+                <label for="sujet">Sujet de la demande <span class="req">*</span></label>
+                <select id="sujet" name="sujet" required aria-describedby="sujet-error">
+                  <option value="">-- Choisir un sujet --</option>
+                  <option value="demo">Demande de démo Mini-WTD</option>
+                  <option value="formation">Organisation d’une formation</option>
+                  <option value="support">Support / question technique</option>
+                </select>
+                <p id="sujet-error" class="error-msg">Merci de choisir un sujet.</p>
+              </div>
+
+              <div class="field">
+                <label for="profil">Votre profil</label>
+                <select id="profil" name="profil">
+                  <option value="">(facultatif)</option>
+                  <option value="rh">RH / référent handicap</option>
+                  <option value="chef-projet">Chef de projet</option>
+                  <option value="dev">Développeur·se / intégrateur·rice</option>
+                  <option value="formateur">Formateur / formatrice</option>
+                  <option value="autre">Autre profil</option>
+                </select>
+              </div>
+
+              <div class="field" style="grid-column:1 / -1;">
+                <label for="message">Message <span class="req">*</span></label>
+                <textarea id="message" name="message" required
+                          aria-describedby="message-error"></textarea>
+                <p id="message-error" class="error-msg">Merci de décrire votre besoin ou votre contexte.</p>
+              </div>
+
+              <div class="field" style="grid-column:1 / -1;">
+                <fieldset>
+                  <legend style="font-size:.9rem;font-weight:600;">
+                    Préférences de contact <span class="req">*</span>
+                  </legend>
+                  <p id="contact-hint" class="muted" style="font-size:.8rem;margin:.1rem 0;">
+                    Choisir au moins une option.
+                  </p>
+                  <div class="field-inline">
+                    <input id="contact-mail" type="checkbox" name="contact" value="mail"
+                           aria-describedby="contact-hint contact-error">
+                    <label for="contact-mail">Par e-mail</label>
+                  </div>
+                  <div class="field-inline">
+                    <input id="contact-visio" type="checkbox" name="contact" value="visio">
+                    <label for="contact-visio">En visio</label>
+                  </div>
+                  <p id="contact-error" class="error-msg">Merci de choisir au moins une préférence de contact.</p>
+                </fieldset>
+              </div>
+            </div>
+
+            <p class="muted" style="font-size:.8rem;margin-top:.75rem;">
+              <span class="req">*</span> champs obligatoires – ce formulaire est une démo,
+              aucune donnée n’est réellement envoyée.
+            </p>
+
+            <button type="submit" class="btn" style="margin-top:.75rem;">
+              Envoyer (démo)
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- SECTION TABLEAU -->
+      <section aria-labelledby="table-titre">
+        <h2 id="table-titre">2. Tableau avec en-têtes</h2>
+        <p class="muted">
+          Exemple simple pour montrer l’importance du <code>&lt;caption&gt;</code>, des en-têtes de colonnes et de lignes.
+        </p>
+
+        <div class="table-card">
+          <table class="demo-table">
+            <caption>Exemple de suivi des demandes envoyées pendant la formation</caption>
+            <thead>
+              <tr>
+                <th scope="col">Référence</th>
+                <th scope="col">Type</th>
+                <th scope="col">Priorité</th>
+                <th scope="col">Statut</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">DEM-001</th>
+                <td>Formation accessibilité</td>
+                <td>Haute</td>
+                <td>Planifiée</td>
+              </tr>
+              <tr>
+                <th scope="row">DEM-002</th>
+                <td>Audit RGAA</td>
+                <td>Moyenne</td>
+                <td>En discussion</td>
+              </tr>
+              <tr>
+                <th scope="row">DEM-003</th>
+                <td>Adaptation Mini-WTD</td>
+                <td>Basse</td>
+                <td>En attente</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="alert alert--info" role="status" aria-live="polite">
+            💡 Astuce démo : demander aux participants de lire une cellule avec leur lecteur d’écran
+            et d’identifier à quelles en-têtes elle est reliée.
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION MODALE -->
+      <section aria-labelledby="modal-titre">
+        <h2 id="modal-titre">3. Petite modale accessible</h2>
+        <p class="muted">
+          Objectif : montrer l’ouverture d’une fenêtre de dialogue, la prise de focus et la fermeture avec
+          <span class="kbd">Échap</span>.
+        </p>
+
+        <button type="button" class="btn btn--ghost" id="open-modal">
+          Ouvrir la modale de démo
+        </button>
+
+        <div id="demo-modal" class="modal" role="dialog" aria-modal="true"
+             aria-labelledby="demo-modal-title" hidden>
+          <div class="modal__dialog">
+            <h2 id="demo-modal-title">Modale Mini-WTD</h2>
+            <p>
+              Cette modale est là pour illustrer quelques bonnes pratiques&nbsp;:
+            </p>
+            <ul>
+              <li>focus envoyé dans la fenêtre au moment de l’ouverture ;</li>
+              <li>fermeture possible avec le bouton ou la touche <span class="kbd">Échap</span> ;</li>
+              <li>retour du focus sur le bouton ayant ouvert la modale.</li>
+            </ul>
+            <div class="modal__footer">
+              <button type="button" class="btn btn--ghost" id="close-modal">
+                Fermer
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="shell">
+      <p>
+        © <span id="year"></span> Mini-WTD – Work-Test-Demo · projet initié par
+        Patrick Billy / Élan pour tous.
+      </p>
+      <p class="muted">
+        Page de démonstration : n’hésite pas à la casser en direct, c’est fait pour ça.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Année dynamique
+    (function(){
+      const span = document.getElementById('year');
+      if(span){ span.textContent = new Date().getFullYear(); }
+    })();
+
+    // Validation formulaire
+    (function(){
+      const form = document.getElementById('demo-form');
+      if(!form) return;
+
+      const summary = document.getElementById('error-summary');
+      const summaryList = document.getElementById('error-summary-list');
+      const success = document.getElementById('success-msg');
+
+      function showFieldError(id, message){
+        const input = document.getElementById(id);
+        const error = document.getElementById(id + '-error');
+        if(!input || !error) return;
+        input.setAttribute('aria-invalid', 'true');
+        error.textContent = message;
+        error.classList.add('is-visible');
+      }
+
+      function clearFieldError(id){
+        const input = document.getElementById(id);
+        const error = document.getElementById(id + '-error');
+        if(!input || !error) return;
+        input.removeAttribute('aria-invalid');
+        error.classList.remove('is-visible');
+      }
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        success.style.display = 'none';
+        summary.style.display = 'none';
+        summaryList.innerHTML = '';
+
+        const errors = [];
+
+        // Nom
+        const nom = document.getElementById('nom');
+        if(!nom.value.trim()){
+          errors.push({ id:'nom', msg:'Indiquez votre nom.' });
+          showFieldError('nom','Merci d’indiquer votre nom.');
+        } else {
+          clearFieldError('nom');
+        }
+
+        // Email
+        const email = document.getElementById('email');
+        const emailVal = email.value.trim();
+        const emailOk = !!emailVal && /.+@.+\..+/.test(emailVal);
+        if(!emailOk){
+          errors.push({ id:'email', msg:'Adresse e-mail manquante ou invalide.' });
+          showFieldError('email','Merci d’indiquer une adresse e-mail valide.');
+        } else {
+          clearFieldError('email');
+        }
+
+        // Sujet
+        const sujet = document.getElementById('sujet');
+        if(!sujet.value){
+          errors.push({ id:'sujet', msg:'Choisissez un sujet.' });
+          showFieldError('sujet','Merci de choisir un sujet.');
+        } else {
+          clearFieldError('sujet');
+        }
+
+        // Message
+        const message = document.getElementById('message');
+        if(!message.value.trim()){
+          errors.push({ id:'message', msg:'Renseignez le message.' });
+          showFieldError('message','Merci de décrire votre besoin ou votre contexte.');
+        } else {
+          clearFieldError('message');
+        }
+
+        // Contact (au moins une case cochée)
+        const contactBoxes = Array.from(document.querySelectorAll('input[name="contact"]'));
+        const anyChecked = contactBoxes.some(c => c.checked);
+        const contactError = document.getElementById('contact-error');
+        if(!anyChecked){
+          errors.push({ id:'contact-mail', msg:'Choisissez au moins une préférence de contact.' });
+          contactError.classList.add('is-visible');
+        } else {
+          contactError.classList.remove('is-visible');
+        }
+
+        if(errors.length){
+          summaryList.innerHTML = '';
+          errors.forEach(err => {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = '#' + err.id;
+            a.textContent = err.msg;
+            a.addEventListener('click', function(){
+              const field = document.getElementById(err.id);
+              if(field){ field.focus(); }
+            });
+            li.appendChild(a);
+            summaryList.appendChild(li);
+          });
+          summary.style.display = 'block';
+          summary.focus();
+          return;
+        }
+
+        // Pas d’erreurs : on "simule" un envoi
+        form.reset();
+        success.style.display = 'block';
+        summary.style.display = 'none';
+      });
+    })();
+
+    // Modale
+    (function(){
+      const openBtn = document.getElementById('open-modal');
+      const closeBtn = document.getElementById('close-modal');
+      const modal = document.getElementById('demo-modal');
+      if(!openBtn || !closeBtn || !modal) return;
+
+      let previousFocus = null;
+
+      function getFocusable(container){
+        return Array.from(container.querySelectorAll(
+          'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+        ));
+      }
+
+      function openModal(){
+        previousFocus = document.activeElement;
+        modal.hidden = false;
+        const focusables = getFocusable(modal);
+        if(focusables.length){ focusables[0].focus(); }
+
+        function onKeydown(e){
+          if(e.key === 'Escape'){
+            e.preventDefault();
+            closeModal();
+          } else if(e.key === 'Tab'){
+            const items = getFocusable(modal);
+            if(!items.length) return;
+            const first = items[0];
+            const last = items[items.length - 1];
+            if(e.shiftKey && document.activeElement === first){
+              e.preventDefault();
+              last.focus();
+            } else if(!e.shiftKey && document.activeElement === last){
+              e.preventDefault();
+              first.focus();
+            }
+          }
+        }
+
+        modal.addEventListener('keydown', onKeydown);
+        modal._cleanup = () => modal.removeEventListener('keydown', onKeydown);
+      }
+
+      function closeModal(){
+        if(modal._cleanup) modal._cleanup();
+        modal.hidden = true;
+        if(previousFocus && typeof previousFocus.focus === 'function'){
+          previousFocus.focus();
+        }
+      }
+
+      openBtn.addEventListener('click', openModal);
+      closeBtn.addEventListener('click', closeModal);
+
+      // clic sur fond
+      modal.addEventListener('click', function(e){
+        if(e.target === modal){
+          closeModal();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
