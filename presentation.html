@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Mini-WTD · Présentation générale</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description"
+        content="Présentation de Mini-WTD : objectifs, structure, modes d’accessibilité, raccourcis clavier et scénarios de démonstration.">
+  <meta name="author" content="Patrick Billy">
+  <meta name="theme-color" content="#0b8457">
+
+  <link rel="icon" href="assets/img/logo-mini-wtd.png" type="image/png">
+  <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    :root{
+      --brand:#0b8457;
+      --brand-soft:#e4f4ec;
+      --bg:#f7f7f7;
+      --text:#111;
+      --muted:#555;
+      --border:#d0d0d0;
+      --radius:12px;
+      --shadow:0 6px 16px rgba(0,0,0,.06);
+    }
+    body{
+      margin:0;
+      font-family:System,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    .skiplink{
+      position:absolute;
+      left:-9999px;
+      top:0;
+      padding:.5rem 1rem;
+      background:#000;
+      color:#fff;
+      z-index:1000;
+    }
+    .skiplink:focus{
+      left:.5rem;
+      top:.5rem;
+      outline:3px solid #fff;
+    }
+
+    header.site-header{
+      background:#fff;
+      border-bottom:1px solid var(--border);
+    }
+    .shell{
+      max-width:1000px;
+      margin:0 auto;
+      padding:.75rem 1.25rem;
+    }
+    .header-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:.6rem;
+    }
+    .brand img{
+      width:40px;
+      height:40px;
+      border-radius:50%;
+    }
+    .brand-title{
+      margin:0;
+      font-size:1.2rem;
+      font-weight:700;
+    }
+    .brand-sub{
+      margin:0;
+      font-size:.85rem;
+      color:var(--muted);
+    }
+    nav a{
+      margin-left:1rem;
+      font-size:.9rem;
+      text-decoration:none;
+      color:var(--muted);
+    }
+    nav a:hover,
+    nav a:focus{
+      color:var(--brand);
+      text-decoration:underline;
+    }
+
+    main{
+      max-width:1000px;
+      margin:0 auto;
+      padding:1.5rem 1.25rem 3rem;
+    }
+
+    .page-header{
+      background:#fff;
+      border-radius:var(--radius);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      padding:1.2rem 1.25rem 1rem;
+      margin-bottom:1.5rem;
+    }
+    .page-header h1{
+      margin-top:0;
+      margin-bottom:.25rem;
+      font-size:1.6rem;
+    }
+    .muted{
+      color:var(--muted);
+      font-size:.9rem;
+    }
+
+    h2{
+      margin-top:2rem;
+      font-size:1.25rem;
+    }
+    h3{
+      margin-top:1.4rem;
+      font-size:1.05rem;
+    }
+
+    .badge{
+      display:inline-block;
+      padding:.1rem .55rem;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:var(--brand-soft);
+      color:var(--brand);
+      font-size:.75rem;
+      font-weight:600;
+      margin-right:.25rem;
+      margin-top:.25rem;
+    }
+
+    .kbd{
+      display:inline-block;
+      padding:.05rem .35rem;
+      border-radius:4px;
+      border:1px solid var(--border);
+      background:#fff;
+      font-size:.8rem;
+      font-family:monospace;
+    }
+
+    .callout{
+      border-left:4px solid var(--brand);
+      background:#fff;
+      border-radius:var(--radius);
+      padding:.75rem 1rem;
+      box-shadow:var(--shadow);
+      border:1px solid var(--border);
+    }
+
+    .back-link{
+      display:inline-flex;
+      align-items:center;
+      gap:.35rem;
+      font-size:.85rem;
+      text-decoration:none;
+      color:var(--brand);
+      margin-bottom:.75rem;
+    }
+    .back-link::before{
+      content:"←";
+      font-size:1rem;
+    }
+    .back-link:hover,
+    .back-link:focus{
+      text-decoration:underline;
+    }
+
+    footer.site-footer{
+      border-top:1px solid var(--border);
+      background:#fff;
+      padding:1rem 1.25rem 1.5rem;
+      font-size:.8rem;
+      color:var(--muted);
+    }
+    footer .shell{
+      max-width:1000px;
+    }
+  </style>
+</head>
+
+<body>
+  <a href="#contenu" class="skiplink">Aller directement au contenu</a>
+
+  <header class="site-header" role="banner">
+    <div class="shell header-inner">
+      <div class="brand">
+        <img src="assets/img/logo-mini-wtd.png" alt="Logo Mini-WTD">
+        <div>
+          <p class="brand-title">Mini-WTD · Work-Test-Demo</p>
+          <p class="brand-sub">Démo accessibilité & inclusion – par Élan pour tous</p>
+        </div>
+      </div>
+      <nav aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="demo-accessibilite.html">Démo accessibilité</a>
+        <a href="demo-accessibilite-present.html">Mode Présentation</a>
+        <a href="rgaa.html">Audit RGAA</a>
+        <a href="assistant.html">Assistant IA</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu" tabindex="-1" role="main" aria-labelledby="titre-page">
+    <div class="shell">
+      <a href="index.html" class="back-link">Retour à l’accueil Mini-WTD</a>
+
+      <header class="page-header">
+        <h1 id="titre-page">Présentation de Mini-WTD</h1>
+        <p class="muted">
+          Cette page sert de support d’introduction : objectifs, structure du kit,
+          modes d’accessibilité et façons d’animer une démonstration avec différents publics.
+        </p>
+        <p>
+          <span class="badge">Support de formation</span>
+          <span class="badge">Intro 10–15 minutes</span>
+          <span class="badge">Utilisable en présentiel & visio</span>
+        </p>
+      </header>
+
+      <section aria-labelledby="objectif-titre">
+        <h2 id="objectif-titre">1. Objectif du projet</h2>
+        <p>
+          Mini-WTD répond à une question simple&nbsp;:
+          <strong>comment montrer rapidement ce que change l’accessibilité numérique</strong>,
+          sans recoder tout un site&nbsp;?
+        </p>
+        <ul>
+          <li>Montrer des exemples concrets de bonnes pratiques RGAA / WCAG ;</li>
+          <li>Permettre aux équipes de « jouer » avec l’accessibilité (tester, casser, corriger) ;</li>
+          <li>Donner un support stable pour des ateliers récurrents (sensibilisation, formation, coaching) ;</li>
+          <li>Mettre en avant les besoins des personnes en situation de handicap, au-delà de la simple conformité.</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="structure-titre">
+        <h2 id="structure-titre">2. Structure du kit Mini-WTD</h2>
+        <p class="muted">
+          Le kit est volontairement léger : quelques pages bien choisies valent mieux
+          qu’un gros portail difficile à maintenir.
+        </p>
+        <h3>Pages principales</h3>
+        <ul>
+          <li><strong>Accueil</strong> : vue d’ensemble, actions rapides, liens vers les modules.</li>
+          <li><strong>Présentation</strong> (cette page) : cadrage pour l’animateur / la formatrice.</li>
+          <li><strong>Démo Accessibilité</strong> : formulaire, tableau, alertes, messages d’erreur.</li>
+          <li><strong>Mode Présentation</strong> : même contenu, mais avec gros boutons et contraste renforcé.</li>
+          <li><strong>Audit RGAA démo</strong> : page volontairement imparfaite pour analyser ensemble.</li>
+          <li><strong>Mini-Assistant IA</strong> : prise de notes accessible, lecture vocale & dictée.</li>
+        </ul>
+
+        <h3>Fonctionnement côté technique</h3>
+        <ul>
+          <li>Site statique, servi par GitHub Pages (HTML / CSS / JS uniquement).</li>
+          <li>Aucun suivi caché, aucun cookie marketing.</li>
+          <li>Code source ouvert pour adaptation locale (intranet, formation interne, etc.).</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="access-titre">
+        <h2 id="access-titre">3. Modes d’accessibilité prévus</h2>
+
+        <div class="callout" aria-label="Résumé des modes d’accessibilité">
+          <p class="muted"><strong>Objectif :</strong> rendre la démo utilisable en direct par des personnes équipées ou non,
+          et montrer comment une même page reste utilisable dans plusieurs contextes.</p>
+        </div>
+
+        <h3>Navigation clavier</h3>
+        <ul>
+          <li>Ordre de tabulation logique, <span class="kbd">Tab</span> et <span class="kbd">Maj+Tab</span>.</li>
+          <li>Lien d’évitement « Aller directement au contenu » visible au focus.</li>
+          <li>Focus toujours visible, même en mode Présentation.</li>
+        </ul>
+
+        <h3>Lecteurs d’écran</h3>
+        <ul>
+          <li>Utilisation des bons niveaux de titres (<code>&lt;h1&gt;</code> à <code>&lt;h3&gt;</code>).</li>
+          <li>Labels explicites sur les champs de formulaire.</li>
+          <li>Messages d’erreur reliés aux champs (ARIA / <code>aria-describedby</code>).</li>
+        </ul>
+
+        <h3>Confort visuel & moteur</h3>
+        <ul>
+          <li>Contraste élevé et taille de police suffisante par défaut.</li>
+          <li>Cibles d’interaction d’au moins 44&nbsp;px dans le mode Présentation.</li>
+          <li>Animations limitées, pas d’effets agressifs ni de clignotement rapide.</li>
+        </ul>
+
+        <h3>Assistant vocal & prise de notes</h3>
+        <p>
+          Le Mini-Assistant IA peut être utilisé comme support de prise de notes pour :
+        </p>
+        <ul>
+          <li>les personnes en situation de handicap moteur (dictée vocale) ;</li>
+          <li>les personnes dys ou fatiguables (lecture vocale des notes) ;</li>
+          <li>le formateur ou la formatrice qui veut garder une trace de la séance.</li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="raccourcis-titre">
+        <h2 id="raccourcis-titre">4. Raccourcis utiles pendant la démo</h2>
+        <ul>
+          <li><span class="kbd">Tab</span> / <span class="kbd">Maj+Tab</span> : se déplacer entre les liens, boutons et champs.</li>
+          <li><span class="kbd">Entrée</span> / <span class="kbd">Espace</span> : activer un bouton ou une case à cocher.</li>
+          <li><span class="kbd">Échap</span> : fermer une modale ou un panneau de notification.</li>
+          <li><span class="kbd">Ctrl</span> + <span class="kbd">Espace</span> (dans l’assistant) : pause / reprise de la lecture vocale.</li>
+        </ul>
+        <p class="muted">
+          Tu peux afficher cette section à l’écran au début de l’atelier, ou la lire à voix haute pour caler
+          tout le monde sur les mêmes repères.
+        </p>
+      </section>
+
+      <section aria-labelledby="scenario-titre">
+        <h2 id="scenario-titre">5. Exemple de scénario de démonstration (30–45&nbsp;min)</h2>
+        <ol>
+          <li><strong>Introduction (5&nbsp;min)</strong> – objectif de la séance, présentation rapide de Mini-WTD.</li>
+          <li><strong>Navigation clavier (10&nbsp;min)</strong> – montrer le lien d’évitement, le focus, valider un formulaire sans souris.</li>
+          <li><strong>Formulaire & erreurs (10&nbsp;min)</strong> – volontairement se tromper, lire les messages d’erreur, corriger.</li>
+          <li><strong>Tableau accessible (5–10&nbsp;min)</strong> – lire les en-têtes, montrer l’importance du contexte.</li>
+          <li><strong>Assistant IA / prise de notes (5–10&nbsp;min)</strong> – dicter une synthèse, la faire relire à voix haute.</li>
+        </ol>
+        <p class="muted">
+          Tu peux adapter ce scénario : pour un public très débutant, passer plus de temps sur les bases ;
+          pour une équipe technique, basculer plus vite vers le code et les critères RGAA précis.
+        </p>
+      </section>
+
+      <section aria-labelledby="publics-titre">
+        <h2 id="publics-titre">6. Publics visés</h2>
+        <p>
+          Mini-WTD n’est pas réservé aux développeurs. Il est pensé pour parler à plusieurs types de publics :
+        </p>
+        <ul>
+          <li><strong>Équipes RH & référents handicap</strong> : comprendre les impacts concrets pour les salariés.</li>
+          <li><strong>Chefs de projet & métiers</strong> : voir pourquoi certains choix fonctionnels bloquent l’accessibilité.</li>
+          <li><strong>Équipes numériques</strong> : illustrer les critères RGAA par des exemples très concrets.</li>
+          <li><strong>Stagiaires & apprenants</strong> : pratiquer rapidement sur un terrain de jeu simple.</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="shell">
+      <p>
+        © <span id="year"></span> Mini-WTD – Work-Test-Demo · projet initié par
+        Patrick Billy / Élan pour tous.
+      </p>
+      <p class="muted">
+        Page de présentation – à adapter librement selon ton contexte (entreprise, formation,
+        association, service public…).
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    (function(){
+      const span = document.getElementById('year');
+      if(span){ span.textContent = new Date().getFullYear(); }
+    })();
+  </script>
+</body>
+</html>
