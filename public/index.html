@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <!-- Métadonnées -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mini-WTD · Work-Test-Demo – Accueil</title>
+
+  <meta name="description"
+        content="Mini-WTD est une mini-démonstration d’accessibilité numérique : formulaires, tableaux, modales, lecture vocale, tests et assistant IA.">
+  <meta name="author" content="Patrick Billy">
+  <meta name="theme-color" content="#0b8457">
+
+  <!-- Open Graph (prévisu quand tu partages le lien) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mini-WTD · Work-Test-Demo">
+  <meta property="og:description"
+        content="Outil de démo accessibilité, pensé pour montrer concrètement le RGAA / WCAG à des équipes, formateurs et entreprises.">
+  <meta property="og:url" content="https://elanpourtous.github.io/Mini-WTD/">
+  <meta property="og:site_name" content="Mini-WTD">
+
+  <!-- Icône -->
+  <link rel="icon" href="assets/ima/logo-mini-wtd.png" type="image/png">
+
+  <!-- Styles (adapte les chemins à ton repo : assets/css/...) -->
+  <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+  <!-- Lien d’évitement -->
+  <a class="skiplink" href="#main">Aller directement au contenu</a>
+
+  <!-- En-tête -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="assets/ima/logo-mini-wtd.png"
+             alt="Mini-WTD – Work-Test-Demo"
+             class="brand-logo">
+        <span class="brand-text">
+          <strong>Mini-WTD</strong><br>
+          <span class="brand-tagline">Démo accessibilité &amp; inclusion</span>
+        </span>
+      </a>
+
+      <nav class="main-nav" aria-label="Navigation principale">
+        <ul>
+          <li><a href="index.html" aria-current="page">Accueil</a></li>
+          <li><a href="presentation.html">Présentation</a></li>
+          <li><a href="demo-accessibilite.html">Démo accessibilité</a></li>
+          <li><a href="rgaa.html">Audit RGAA</a></li>
+          <li><a href="assistant.html">Mini-assistant IA</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal -->
+  <main id="main" class="container" role="main" tabindex="-1" aria-labelledby="page-title">
+    <!-- Hero -->
+    <section class="card hero" style="margin-top:1rem">
+      <h1 id="page-title">🇫🇷 Mini-WTD — Work-Test-Demo</h1>
+      <p class="muted">
+        Outil de démo accessibilité, pensé pour les formateurs, les entreprises et les équipes qui veulent
+        voir le RGAA / WCAG en vrai, pas seulement dans un PDF.
+      </p>
+      <p>
+        <strong>Objectif :</strong> montrer, tester et expliquer, avec des exemples simples et reproductibles.
+      </p>
+    </section>
+
+    <!-- Actions rapides -->
+    <section class="grid" aria-labelledby="actions-title" style="margin-top:1rem">
+      <h2 id="actions-title" class="visually-hidden">Actions rapides</h2>
+
+      <article class="card">
+        <h3>📖 Présentation</h3>
+        <p>Structure, modes d’accessibilité, raccourcis clavier, préférences utilisateur.</p>
+        <a class="btn btn--primary" href="presentation.html">Voir la présentation</a>
+      </article>
+
+      <article class="card">
+        <h3>🎨 Démo Accessibilité</h3>
+        <p>Formulaire labellisé, alertes, tableau avec en-têtes, modale accessible, messages ARIA.</p>
+        <a class="btn" href="demo-accessibilite.html">Lancer la démo</a>
+      </article>
+
+      <article class="card">
+        <h3>🖥️ Mode Présentation</h3>
+        <p>Gros boutons, contraste élevé, idéal pour la projection en salle ou en visio.</p>
+        <a class="btn" href="demo-accessibilite-present.html">Ouvrir le mode Présentation</a>
+      </article>
+
+      <article class="card">
+        <h3>🔎 Audit RGAA</h3>
+        <p>Analyse de page (démo) : titres, textes alternatifs, liens, labels, repères, contraste.</p>
+        <a class="btn" href="rgaa.html">Ouvrir l’audit</a>
+      </article>
+
+      <article class="card">
+        <h3>🧠 Mini-Assistant IA</h3>
+        <p>Lecture vocale (TTS) &amp; dictée (STT) pour prise de notes et aide à la rédaction accessible.</p>
+        <a class="btn" href="assistant.html">Essayer l’assistant</a>
+      </article>
+    </section>
+
+    <!-- Raccourcis & accessibilité -->
+    <section class="card" aria-labelledby="a11y-shortcuts" style="margin-top:1rem">
+      <h2 id="a11y-shortcuts">Accessibilité &amp; raccourcis</h2>
+      <ul>
+        <li><span class="kbd">Tab</span> / <span class="kbd">Maj+Tab</span> : navigation au clavier</li>
+        <li><span class="kbd">Entrée</span> / <span class="kbd">Espace</span> : activer un bouton ou un lien</li>
+        <li><span class="kbd">Échap</span> : fermer une modale ou un panneau</li>
+        <li><span class="kbd">Ctrl</span> + <span class="kbd">Espace</span> : pause / reprise de la lecture vocale (si activée)</li>
+      </ul>
+      <p class="muted">
+        Astuce : les pages de démo peuvent activer un mode « accessibilité maximale » (contraste élevé,
+        cibles d’au moins 44&nbsp;px, animations réduites).
+      </p>
+    </section>
+
+    <!-- Info projet -->
+    <section class="card" aria-labelledby="projet" style="margin-top:1rem">
+      <h2 id="projet">À propos du projet</h2>
+      <p>
+        Mini-WTD est un projet expérimental porté par <strong>Élan pour tous</strong>, pour répondre à une question simple :  
+        « Comment montrer rapidement à un public non-spécialiste ce que veut dire <em>accessibilité numérique</em> ? »
+      </p>
+      <p>
+        Le code source est hébergé sur GitHub, avec une priorité claire : lisible, réutilisable et adaptable
+        pour des formations, des ateliers ou des démonstrations courtes.
+      </p>
+    </section>
+  </main>
+
+  <!-- Pied de page -->
+  <footer class="container footer" role="contentinfo">
+    <small>
+      © 2025 Mini-WTD — Work-Test-Demo · Un projet Élan pour tous (Saumur, France)
+    </small>
+  </footer>
+</body>
+</html>
