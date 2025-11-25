@@ -2,307 +2,86 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <title>Mini-WTD · Audit RGAA (démo)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mini-WTD · Audit RGAA (démo)</title>
 
-  <meta name="description"
-        content="Audit RGAA (démo) dans Mini-WTD : vérifier rapidement titres, alternatives, contrastes, formulaires et navigation clavier.">
+  <meta name="description" content="Audit RGAA simplifié pour les pages Mini-WTD : titres, textes alternatifs, liens, labels et repères de structure.">
   <meta name="author" content="Patrick Billy">
   <meta name="theme-color" content="#0b8457">
 
-  <link rel="icon" href="assets/img/logo-mini-wtd.png" type="image/png">
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
   <link rel="stylesheet" href="assets/css/style.css">
 
   <style>
-    :root{
-      --brand:#0b8457;
-      --brand-soft:#e4f4ec;
-      --bg:#0b0b0b;
-      --fg:#f7f7f7;
-      --card-bg:#151515;
-      --card-border:#333;
-      --accent:#ffd54f;
-      --danger:#ff5252;
-      --radius:16px;
-      --shadow:0 8px 24px rgba(0,0,0,.45);
-    }
-
-    body{
-      margin:0;
-      font-family:System,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      background:#050505;
-      color:var(--fg);
-      line-height:1.6;
-      font-size:1.02rem;
-    }
-
-    .skiplink{
-      position:absolute;
-      left:-9999px;
-      top:0;
-      padding:.6rem 1.2rem;
-      background:#000;
-      color:#fff;
-      z-index:1000;
-    }
-    .skiplink:focus{
-      left:.7rem;
-      top:.7rem;
-      outline:3px solid #fff;
-    }
-
-    header.site-header{
-      background:#000;
-      border-bottom:1px solid #262626;
-    }
-    .shell{
-      max-width:1100px;
-      margin:0 auto;
-      padding:.8rem 1.5rem;
-    }
-    .header-inner{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:1.2rem;
-      flex-wrap:wrap;
-    }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:.75rem;
-    }
-    .brand img{
-      width:50px;
-      height:50px;
-      border-radius:50%;
-      box-shadow:0 0 0 3px #fff;
-    }
-    .brand-title{
-      margin:0;
-      font-size:1.4rem;
-      font-weight:700;
-    }
-    .brand-sub{
-      margin:0;
-      font-size:.9rem;
-      color:#c2c2c2;
-    }
-
-    nav{
-      display:flex;
-      flex-wrap:wrap;
-      gap:.6rem;
-      font-size:.9rem;
-    }
-    nav a{
-      text-decoration:none;
-      color:#c2c2c2;
-      padding:.1rem .45rem;
-      border-radius:999px;
-    }
-    nav a[aria-current="page"]{
-      background:#fff;
-      color:#000;
-      font-weight:600;
-    }
-    nav a:hover,
-    nav a:focus{
-      color:#fff;
-      text-decoration:underline;
-    }
-
-    main{
-      max-width:1100px;
-      margin:0 auto;
-      padding:1.5rem 1.5rem 3rem;
-    }
-
-    .page-header{
-      display:flex;
-      flex-direction:column;
-      gap:.5rem;
-      margin-bottom:1.5rem;
-    }
-    .page-header h1{
-      margin:0;
-      font-size:1.9rem;
-    }
-    .muted{
-      color:#c7c7c7;
-      font-size:.95rem;
-    }
-
-    .card{
-      border-radius:var(--radius);
-      background:var(--card-bg);
-      border:1px solid var(--card-border);
-      box-shadow:var(--shadow);
-      padding:1.1rem 1.2rem 1.2rem;
-      margin-bottom:1.2rem;
-    }
-
-    .card--accent{
-      border-color:var(--accent);
-      background:linear-gradient(135deg,#1b1302,#3b2d05);
-    }
-
-    .card h2{
-      margin-top:0;
-      font-size:1.3rem;
-      display:flex;
-      align-items:center;
-      gap:.5rem;
-    }
-    .card h3{
-      margin-top:0;
-      font-size:1.05rem;
-    }
-    .emoji{
-      font-size:1.5rem;
-    }
-
-    .inline-kbd{
+    .badge {
       display:inline-block;
-      padding:.05rem .4rem;
-      border-radius:4px;
-      border:1px solid #666;
-      background:#111;
-      font-size:.85rem;
-      font-family:monospace;
-      color:#f7f7f7;
+      padding:0.2rem 0.6rem;
+      border-radius:999px;
+      font-size:0.85rem;
+      font-weight:600;
     }
-
-    .url-form{
+    .badge-ok {
+      background:#0b8457;
+      color:#fff;
+    }
+    .badge-warn {
+      background:#d9822b;
+      color:#fff;
+    }
+    .badge-err {
+      background:#c53030;
+      color:#fff;
+    }
+    .results-summary {
       display:flex;
       flex-wrap:wrap;
-      gap:.6rem;
-      margin-top:.7rem;
-      align-items:center;
-    }
-    .url-form label{
-      font-weight:600;
-      font-size:.95rem;
-    }
-    .url-form input[type="text"]{
-      flex:1 1 220px;
-      min-width:180px;
-      padding:.45rem .6rem;
-      border-radius:8px;
-      border:1px solid #444;
-      background:#000;
-      color:#f5f5f5;
-    }
-    .url-form button{
-      padding:.55rem 1rem;
-      border-radius:999px;
-      border:none;
-      cursor:pointer;
-      font-weight:600;
-      background:#fff;
-      color:#000;
-    }
-    .url-form button:focus{
-      outline:3px solid var(--accent);
-      outline-offset:2px;
-    }
-
-    .audit-grid{
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
       gap:1rem;
-      margin-top:.5rem;
+      margin-top:1rem;
     }
-    @media (max-width:800px){
-      .audit-grid{
-        grid-template-columns:1fr;
-      }
-    }
-
-    .audit-item{
-      border-radius:12px;
-      border:1px solid #333;
-      padding:.75rem .8rem .7rem;
-      background:#101010;
-      display:grid;
-      grid-template-columns:auto 1fr;
-      gap:.6rem;
-      align-items:flex-start;
-    }
-    .audit-item strong{
-      display:block;
-      margin-bottom:.15rem;
-    }
-    .status-pill{
-      display:inline-flex;
-      align-items:center;
-      gap:.35rem;
-      padding:.2rem .5rem;
-      border-radius:999px;
-      font-size:.8rem;
+    .results-summary div {
+      padding:0.6rem 1rem;
+      border-radius:8px;
       font-weight:600;
     }
-    .status-ok{
-      background:#043d22;
-      color:#b6f7cf;
-      border:1px solid #1de9b6;
+    .results-ok    { background:#0b845714; color:#0b8457; border:1px solid #0b8457; }
+    .results-warn  { background:#d9822b14; color:#d9822b; border:1px solid #d9822b; }
+    .results-err   { background:#c5303014; color:#c53030; border:1px solid #c53030; }
+
+    table.audit {
+      width:100%;
+      border-collapse:collapse;
+      margin-top:1rem;
     }
-    .status-warn{
-      background:#3a2b03;
-      color:#ffe082;
-      border:1px solid #ffd54f;
+    table.audit th,
+    table.audit td {
+      border:1px solid #ddd;
+      padding:0.6rem 0.8rem;
+      vertical-align:top;
     }
-    .status-err{
-      background:#3b0202;
-      color:#ff8a80;
-      border:1px solid #ff5252;
+    table.audit th {
+      background:#f5f5f5;
+      text-align:left;
+    }
+    table.audit tr:nth-child(even) td {
+      background:#fafafa;
     }
 
-    .legend{
-      display:flex;
-      flex-wrap:wrap;
-      gap:.5rem;
-      margin-top:.75rem;
-      font-size:.85rem;
-    }
-
-    .results{
-      margin-top:.5rem;
-      font-size:.95rem;
-    }
-    .results ul{
-      padding-left:1.2rem;
-      margin:.4rem 0;
-    }
-
-    footer.site-footer{
-      border-top:1px solid #262626;
-      background:#000;
-      color:#c2c2c2;
-      padding:1rem 1.5rem 1.6rem;
-      font-size:.85rem;
-    }
-    footer .shell{
-      max-width:1100px;
-      margin:0 auto;
+    .small {
+      font-size:0.85rem;
+      color:#666;
     }
   </style>
 </head>
 
 <body>
-  <a href="#contenu" class="skiplink">Aller directement au contenu</a>
+  <a class="skiplink" href="#main">Aller directement au contenu</a>
 
   <header class="site-header" role="banner">
-    <div class="shell header-inner">
-      <div class="brand">
-        <img src="assets/img/logo-mini-wtd.png" alt="Logo Mini-WTD">
-        <div>
-          <p class="brand-title">Mini-WTD · Work-Test-Demo</p>
-          <p class="brand-sub">Démo d’audit RGAA (simplifié)</p>
-        </div>
-      </div>
-      <nav aria-label="Navigation principale">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">
+        <img src="assets/img/logo-mini-wtd.png" alt="Logo Mini-WTD" height="48">
+      </a>
+      <nav class="nav" aria-label="Navigation principale">
         <a href="index.html">Accueil</a>
         <a href="presentation.html">Présentation</a>
         <a href="demo-accessibilite.html">Démo accessibilité</a>
@@ -313,250 +92,297 @@
     </div>
   </header>
 
-  <main id="contenu" role="main" tabindex="-1" aria-labelledby="page-title">
-    <div class="shell">
-      <header class="page-header">
-        <h1 id="page-title">Audit RGAA (démo)</h1>
-        <p class="muted">
-          Objectif : montrer à quoi ressemble un <strong>audit d’accessibilité</strong> lisible par tout le monde,
-          sans rentrer dans les 106 critères détaillés.
-        </p>
-      </header>
+  <main id="main" class="container" tabindex="-1" role="main" aria-labelledby="page-title">
+    <header class="card" style="margin-top:1rem">
+      <h1 id="page-title">🔎 Audit RGAA (démo Mini-WTD)</h1>
+      <p class="muted">
+        Outil pédagogique pour montrer comment analyser rapidement une page :
+        titres, images, liens, formulaires et repères de structure.
+      </p>
+      <p class="small">
+        <strong>Important :</strong> cet audit est une <strong>démo simplifiée</strong>, il ne remplace pas
+        un audit RGAA complet réalisé par un·e spécialiste.
+      </p>
+    </header>
 
-      <!-- Bloc 1 : choisir la page à auditer -->
-      <section class="card card--accent" aria-labelledby="audit-cible">
-        <h2 id="audit-cible">
-          <span class="emoji" aria-hidden="true">🎯</span>
-          1. Page auditée (exemple)
-        </h2>
-        <p>
-          En vrai, un audit RGAA se fait <strong>sur un échantillon de pages</strong>.
-          Ici, on simplifie : on choisit une seule page de démonstration.
-        </p>
+    <!-- Choix de la page à analyser -->
+    <section class="card" aria-labelledby="section-choix">
+      <h2 id="section-choix">1. Choisir une page Mini-WTD à analyser</h2>
 
-        <form class="url-form" aria-label="Choisir une page à auditer">
-          <label for="audit-url">URL ou chemin de la page :</label>
-          <input id="audit-url"
-                 type="text"
-                 name="audit-url"
-                 value="https://elanpourtous.github.io/elanpourtous/"
-                 autocomplete="off">
-          <button type="button" id="btn-simulate">Simuler l’audit</button>
-        </form>
+      <form id="audit-form" class="form-grid" onsubmit="event.preventDefault(); runAudit();">
+        <label for="page-select"><strong>Page à auditer</strong></label>
+        <select id="page-select" name="page">
+          <option value="index.html">Accueil (index.html)</option>
+          <option value="presentation.html">Présentation</option>
+          <option value="demo-accessibilite.html">Démo accessibilité</option>
+          <option value="demo-accessibilite-present.html">Mode Présentation</option>
+          <option value="rgaa.html" selected>Audit RGAA (cette page)</option>
+          <option value="assistant.html">Assistant IA</option>
+        </select>
 
-        <p class="muted" style="margin-top:.6rem;">
-          Ici, le bouton « Simuler l’audit » ne lance <em>pas</em> un vrai robot : il
-          sert à montrer comment on restitue les résultats à un public non-technique.
-        </p>
-      </section>
+        <button class="btn btn--primary" type="submit" style="margin-top:1rem;">
+          Lancer l’analyse
+        </button>
+      </form>
 
-      <!-- Bloc 2 : critères principaux -->
-      <section class="card" aria-labelledby="audit-axes">
-        <h2 id="audit-axes">
-          <span class="emoji" aria-hidden="true">📋</span>
-          2. Axes principaux vérifiés
-        </h2>
-        <p>
-          On regroupe les critères RGAA par grandes familles, pour que tout le monde s’y retrouve :
-        </p>
+      <p class="small">
+        Astuce en atelier : faites choisir une page aux participant·es, lancez l’audit,
+        puis discutez ensemble de chaque règle (OK / à vérifier / bloquante).
+      </p>
+    </section>
 
-        <div class="audit-grid" aria-describedby="legend-etats">
-          <!-- Axe 1 -->
-          <article class="audit-item" data-axis="structure">
-            <div>
-              <strong>Structure & navigation</strong>
-              <span class="status-pill status-ok">Conforme&nbsp;globalement</span>
-            </div>
-            <div>
-              <ul>
-                <li>Titres hiérarchisés (<code>h1&gt;h2&gt;h3</code>)</li>
-                <li>Lien d’évitement vers le contenu</li>
-                <li>Zones ARIA : <code>header</code>, <code>main</code>, <code>nav</code>, <code>footer</code></li>
-              </ul>
-            </div>
-          </article>
+    <!-- Résultats -->
+    <section class="card" aria-labelledby="section-resultats">
+      <h2 id="section-resultats">2. Résultats de l’analyse</h2>
 
-          <!-- Axe 2 -->
-          <article class="audit-item" data-axis="alternatives">
-            <div>
-              <strong>Images & alternatives</strong>
-              <span class="status-pill status-ok">Conforme</span>
-            </div>
-            <div>
-              <ul>
-                <li>Images porteuses d’info avec attribut <code>alt</code> pertinent</li>
-                <li>Images décoratives ignorées (alt vide)</li>
-                <li>Aucune info transmise uniquement par la couleur</li>
-              </ul>
-            </div>
-          </article>
+      <p id="audit-target" class="muted small">
+        Aucune analyse lancée pour l’instant.
+      </p>
 
-          <!-- Axe 3 -->
-          <article class="audit-item" data-axis="contrast">
-            <div>
-              <strong>Couleurs & contrastes</strong>
-              <span class="status-pill status-warn">À surveiller</span>
-            </div>
-            <div>
-              <ul>
-                <li>Texte / fond &ge; 4.5:1 sur l’essentiel</li>
-                <li>Vérifications spécifiques sur des icônes ou badges colorés</li>
-                <li>Thème sombre disponible (confort visuel)</li>
-              </ul>
-            </div>
-          </article>
+      <div class="results-summary" aria-live="polite">
+        <div class="results-ok">OK : <span id="count-ok">0</span></div>
+        <div class="results-warn">À vérifier : <span id="count-warn">0</span></div>
+        <div class="results-err">Bloquant : <span id="count-err">0</span></div>
+      </div>
 
-          <!-- Axe 4 -->
-          <article class="audit-item" data-axis="forms">
-            <div>
-              <strong>Formulaires & messages</strong>
-              <span class="status-pill status-ok">Conforme</span>
-            </div>
-            <div>
-              <ul>
-                <li>Labels associés aux champs</li>
-                <li>Messages d’erreur lisibles et reliés aux champs</li>
-                <li>Pas de blocage sur la saisie au clavier</li>
-              </ul>
-            </div>
-          </article>
+      <table class="audit" aria-describedby="audit-target">
+        <thead>
+          <tr>
+            <th scope="col">Critère (démo)</th>
+            <th scope="col">Résultat</th>
+            <th scope="col">Détail</th>
+          </tr>
+        </thead>
+        <tbody id="audit-body">
+          <!-- Lignes remplies en JS -->
+        </tbody>
+      </table>
+    </section>
 
-          <!-- Axe 5 -->
-          <article class="audit-item" data-axis="keyboard">
-            <div>
-              <strong>Clavier & focus</strong>
-              <span class="status-pill status-ok">Conforme</span>
-            </div>
-            <div>
-              <ul>
-                <li>Tout est accessible avec <span class="inline-kbd">Tab</span></li>
-                <li>Focus visible en permanence</li>
-                <li>Pas de piège clavier (pas de blocage dans un composant)</li>
-              </ul>
-            </div>
-          </article>
-
-          <!-- Axe 6 -->
-          <article class="audit-item" data-axis="dynamic">
-            <div>
-              <strong>Éléments dynamiques</strong>
-              <span class="status-pill status-warn">Partiel</span>
-            </div>
-            <div>
-              <ul>
-                <li>Modales : focus géré / échap supporté (démo)</li>
-                <li>Composants de type « chat » ou « assistant » : à auditer finement</li>
-                <li>Animations limitées, respect de <code>prefers-reduced-motion</code> (en progression)</li>
-              </ul>
-            </div>
-          </article>
-        </div>
-
-        <div class="legend" id="legend-etats">
-          <span class="status-pill status-ok">Conforme</span>
-          <span class="status-pill status-warn">À surveiller / partiel</span>
-          <span class="status-pill status-err">Non conforme (exemple)</span>
-        </div>
-      </section>
-
-      <!-- Bloc 3 : restitution pédagogique -->
-      <section class="card" aria-labelledby="audit-rest">
-        <h2 id="audit-rest">
-          <span class="emoji" aria-hidden="true">🧾</span>
-          3. Restitution pour les équipes
-        </h2>
-        <p>
-          Le résultat d’un audit ne devrait <strong>jamais</strong> être un pavé illisible.
-          Voici un format lisible pour un RH, un référent handicap ou un manager :
-        </p>
-
-        <div class="results" id="results">
-          <p><strong>Résumé (exemple) :</strong></p>
-          <ul>
-            <li>
-              <strong>Forces :</strong> structure claire, formulaires bien balisés, navigation clavier maîtrisée.
-            </li>
-            <li>
-              <strong>Points d’attention :</strong> vérifier régulièrement les contrastes des
-              icônes et badges ; surveiller les composants dynamiques ajoutés (chat, widgets).
-            </li>
-            <li>
-              <strong>Priorités :</strong> documenter les raccourcis, ajouter une page « Déclaration
-              d’accessibilité » à jour, prévoir 1 à 2 tests utilisateurs avec aides techniques.
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- Bloc 4 : lien vers la déclaration / mini-WTD -->
-      <section class="card" aria-labelledby="liens">
-        <h2 id="liens">
-          <span class="emoji" aria-hidden="true">🔗</span>
-          4. Et après l’audit ?
-        </h2>
-        <p>
-          La logique : <strong>Audit → Plan d’action → Vérification</strong>.
-          Mini-WTD sert de bac à sable pour expliquer les bonnes pratiques,
-          avant de les appliquer sur un vrai site.
-        </p>
-        <ul>
-          <li>
-            Exemple de <strong>déclaration d’accessibilité</strong> :  
-            <span class="inline-kbd">déclaration-accessibilite.html</span> (à adapter à chaque contexte).
-          </li>
-          <li>
-            Vérifier régulièrement le site avec les mêmes scénarios
-            (clavier seul, lecteur d’écran, zoom, contraste).
-          </li>
-          <li>
-            Impliquer au moins une personne concernée (handicap visuel, moteur, cognitif…)
-            dans le test, même sur un échantillon réduit.
-          </li>
-        </ul>
-      </section>
-    </div>
+    <section class="card" aria-labelledby="section-usage">
+      <h2 id="section-usage">3. Comment utiliser cet outil en formation</h2>
+      <ul>
+        <li>Choisir une page Mini-WTD (ou une version modifiée par les stagiaires).</li>
+        <li>Lancer l’audit, lire chaque critère et laisser les participant·es réagir.</li>
+        <li>Ouvrir la page dans un autre onglet, montrer le code HTML correspondant.</li>
+        <li>Modifier le code (par ex. ajouter un <code>alt</code>, un <code>label</code>, un <code>role</code>) et relancer l’audit.</li>
+      </ul>
+      <p class="small">
+        Objectif : rendre le RGAA moins théorique, plus concret, en montrant l’impact direct
+        d’un titre ou d’un texte alternatif sur l’analyse automatique.
+      </p>
+    </section>
   </main>
 
-  <footer class="site-footer" role="contentinfo">
-    <div class="shell">
-      <p>
-        © <span id="year"></span> Mini-WTD – Work-Test-Demo ·
-        Démo d’audit RGAA par Patrick Billy / Élan pour tous.
-      </p>
-      <p class="muted">
-        Cette page ne remplace pas un audit officiel : elle sert de support
-        pédagogique pour expliquer <strong>comment lire</strong> un rapport d’accessibilité.
-      </p>
-    </div>
+  <footer class="container footer" role="contentinfo">
+    <small>© 2025 Mini-WTD — Audit RGAA (démo) · Patrick Billy</small>
   </footer>
 
   <script>
-    // année dynamique
-    (function(){
-      const span = document.getElementById('year');
-      if(span){ span.textContent = new Date().getFullYear(); }
-    })();
+    async function runAudit() {
+      const select = document.getElementById('page-select');
+      const page   = select.value;
+      const target = document.getElementById('audit-target');
+      const tbody  = document.getElementById('audit-body');
 
-    // Petite simulation quand on clique sur "Simuler l’audit"
-    (function(){
-      const btn = document.getElementById('btn-simulate');
-      const urlInput = document.getElementById('audit-url');
-      const results = document.getElementById('results');
-      if(!btn || !urlInput || !results) return;
+      target.textContent = 'Analyse en cours pour : ' + page + '…';
 
-      btn.addEventListener('click', function(){
-        const url = (urlInput.value || '').trim() || 'la page choisie';
-        results.innerHTML = `
-          <p><strong>Résumé pour :</strong> <code>${url.replace(/</g,'&lt;')}</code></p>
-          <ul>
-            <li><strong>Forces :</strong> structure globale conforme, navigation clavier opérationnelle, formulaires lisibles.</li>
-            <li><strong>Points d’attention :</strong> contrastes des éléments secondaires, composants dynamiques à documenter.</li>
-            <li><strong>Recommandations :</strong> prévoir des tests réguliers à chaque refonte du site, mettre à jour la déclaration d’accessibilité et impliquer les utilisateurs concernés.</li>
-          </ul>
-        `;
-      });
-    })();
+      let htmlText = '';
+      try {
+        const resp = await fetch(page, { cache: 'no-store' });
+        if (!resp.ok) throw new Error('HTTP ' + resp.status);
+        htmlText = await resp.text();
+      } catch (e) {
+        target.textContent = 'Impossible de charger la page « ' + page + ' ». (' + e.message + ')';
+        tbody.innerHTML = '';
+        return;
+      }
+
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(htmlText, 'text/html');
+
+      // Compteurs
+      let ok = 0, warn = 0, err = 0;
+      const rows = [];
+
+      function addRow(label, status, detail) {
+        let badgeClass, badgeText;
+        if (status === 'ok') {
+          ok++; badgeClass = 'badge badge-ok'; badgeText = 'OK';
+        } else if (status === 'warn') {
+          warn++; badgeClass = 'badge badge-warn'; badgeText = 'À vérifier';
+        } else {
+          err++; badgeClass = 'badge badge-err'; badgeText = 'Bloquant';
+        }
+        rows.push(
+          '<tr>' +
+            '<td>' + label + '</td>' +
+            '<td><span class="' + badgeClass + '">' + badgeText + '</span></td>' +
+            '<td>' + detail + '</td>' +
+          '</tr>'
+        );
+      }
+
+      // 1. Titre de page
+      const title = doc.querySelector('title');
+      if (title && title.textContent.trim().length > 0) {
+        addRow(
+          'Titre de page',
+          'ok',
+          'Titre présent : <code>' + escapeHtml(title.textContent.trim()) + '</code>.'
+        );
+      } else {
+        addRow(
+          'Titre de page',
+          'err',
+          'Aucun <code>&lt;title&gt;</code> détecté. Chaque page doit avoir un titre explicite.'
+        );
+      }
+
+      // 2. Présence d’un H1
+      const h1 = doc.querySelector('h1');
+      if (h1) {
+        addRow(
+          'Titre de niveau 1 (H1)',
+          'ok',
+          'Un <code>&lt;h1&gt;</code> est présent : « ' + escapeHtml(h1.textContent.trim()) + ' ».'
+        );
+      } else {
+        addRow(
+          'Titre de niveau 1 (H1)',
+          'err',
+          'Aucun <code>&lt;h1&gt;</code> détecté. Il est recommandé d’avoir un titre principal par page.'
+        );
+      }
+
+      // 3. Images sans alt
+      const imgs = Array.from(doc.querySelectorAll('img'));
+      const imgsSansAlt = imgs.filter(img => !img.hasAttribute('alt') || img.getAttribute('alt').trim() === '');
+      if (imgs.length === 0) {
+        addRow(
+          'Images / textes alternatifs',
+          'warn',
+          'Aucune image dans la page. Rien à vérifier ici, mais pensez aux textes alternatifs si vous en ajoutez.'
+        );
+      } else if (imgsSansAlt.length === 0) {
+        addRow(
+          'Images / textes alternatifs',
+          'ok',
+          'Toutes les ' + imgs.length + ' images possèdent un attribut <code>alt</code> renseigné.'
+        );
+      } else {
+        addRow(
+          'Images / textes alternatifs',
+          'err',
+          imgsSansAlt.length + ' image(s) sans <code>alt</code> sur ' + imgs.length +
+          '. Exemple : <code>' + escapeHtml(imgsSansAlt[0].outerHTML) + '</code>.'
+        );
+      }
+
+      // 4. Liens sans texte visible
+      const links = Array.from(doc.querySelectorAll('a'));
+      const emptyLinks = links.filter(a => a.textContent.trim().length === 0);
+      if (links.length === 0) {
+        addRow(
+          'Liens / intitulés',
+          'warn',
+          'Aucun lien trouvé dans la page.'
+        );
+      } else if (emptyLinks.length === 0) {
+        addRow(
+          'Liens / intitulés',
+          'ok',
+          'Tous les liens possèdent un intitulé visible.'
+        );
+      } else {
+        addRow(
+          'Liens / intitulés',
+          'err',
+          emptyLinks.length + ' lien(s) sans texte visible. Exemple : <code>' +
+          escapeHtml(emptyLinks[0].outerHTML) + '</code>.'
+        );
+      }
+
+      // 5. Champs de formulaire sans label
+      const controls = Array.from(doc.querySelectorAll('input, select, textarea'))
+        .filter(el => el.type !== 'hidden');
+      const unlabelled = controls.filter(c => !hasLabel(doc, c));
+      if (controls.length === 0) {
+        addRow(
+          'Formulaires / labels',
+          'warn',
+          'Aucun champ de formulaire détecté.'
+        );
+      } else if (unlabelled.length === 0) {
+        addRow(
+          'Formulaires / labels',
+          'ok',
+          'Tous les ' + controls.length + ' champs de formulaire ont un label associé.'
+        );
+      } else {
+        addRow(
+          'Formulaires / labels',
+          'err',
+          unlabelled.length + ' champ(s) sans label sur ' + controls.length +
+          '. Exemple : <code>' + escapeHtml(unlabelled[0].outerHTML) + '</code>.'
+        );
+      }
+
+      // 6. Repères de structure
+      const hasHeader = !!doc.querySelector('header,[role="banner"]');
+      const hasNav    = !!doc.querySelector('nav,[role="navigation"]');
+      const hasMain   = !!doc.querySelector('main,[role="main"]');
+      const hasFooter = !!doc.querySelector('footer,[role="contentinfo"]');
+
+      const missing = [];
+      if (!hasHeader) missing.push('en-tête (<code>header</code> / <code>role="banner"</code>)');
+      if (!hasNav)    missing.push('navigation (<code>nav</code> / <code>role="navigation"</code>)');
+      if (!hasMain)   missing.push('contenu principal (<code>main</code> / <code>role="main"</code>)');
+      if (!hasFooter) missing.push('pied de page (<code>footer</code> / <code>role="contentinfo"</code>)');
+
+      if (missing.length === 0) {
+        addRow(
+          'Repères de structure (landmarks)',
+          'ok',
+          'Les repères principaux (header, nav, main, footer) sont présents.'
+        );
+      } else {
+        addRow(
+          'Repères de structure (landmarks)',
+          'warn',
+          'Repères manquants : ' + missing.join(', ') + '.'
+        );
+      }
+
+      // Mise à jour du tableau et des compteurs
+      tbody.innerHTML = rows.join('');
+      document.getElementById('count-ok').textContent   = ok;
+      document.getElementById('count-warn').textContent = warn;
+      document.getElementById('count-err').textContent  = err;
+
+      target.textContent = 'Analyse terminée pour : ' + page + '.';
+    }
+
+    function hasLabel(doc, control) {
+      const id = control.id;
+      if (id) {
+        const labelFor = doc.querySelector('label[for="' + CSS.escape(id) + '"]');
+        if (labelFor) return true;
+      }
+      let parent = control.parentElement;
+      while (parent) {
+        if (parent.tagName && parent.tagName.toLowerCase() === 'label') return true;
+        parent = parent.parentElement;
+      }
+      return false;
+    }
+
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g,'&amp;')
+        .replace(/</g,'&lt;')
+        .replace(/>/g,'&gt;');
+    }
   </script>
 </body>
 </html>
-
