@@ -2,537 +2,238 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <title>Mini-assistant IA – Mini-WTD</title>
+  <title>Mini-assistant IA – Prise de notes accessible</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta name="description"
-        content="Mini-assistant IA de Mini-WTD : prise de notes, lecture vocale (TTS) et dictée vocale (STT), pensé pour les démonstrations d’accessibilité.">
-
-  <!-- Favicon & CSS globaux (adaptés au chemin depuis /ia/) -->
-  <link rel="icon" href="../assets/img/logo-mini-wtd.png" type="image/png">
+  <!-- Option : reprendre tes styles Mini-WTD si tu veux -->
   <link rel="stylesheet" href="../assets/css/rgaa-accessible.css">
   <link rel="stylesheet" href="../assets/css/style.css">
 
   <style>
-    :root{
-      --bg:#050505;
-      --bg-card:#151515;
-      --border:#303030;
-      --fg:#f7f7f7;
-      --muted:#b3b3b3;
-      --accent:#0b8457;
-      --accent-soft:#123326;
-      --danger:#ff6b6b;
-      --radius:14px;
-      --shadow:0 10px 30px rgba(0,0,0,.55);
-    }
-
     body{
       margin:0;
-      font-family:System,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      background:var(--bg);
-      color:var(--fg);
-      line-height:1.6;
-      font-size:1rem;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:#f7f7fb;
+      color:#222;
     }
-
-    .skiplink{
-      position:absolute;
-      left:-9999px;
-      top:0;
-      padding:.6rem 1.2rem;
-      background:#000;
-      color:#fff;
-      z-index:1000;
+    .assistant-shell{
+      max-width: 700px;
+      margin: 1rem auto;
+      padding: 1rem;
     }
-    .skiplink:focus{
-      left:.8rem;
-      top:.8rem;
-      outline:3px solid #fff;
+    .assistant-card{
+      background:#fff;
+      border-radius:.75rem;
+      border:1px solid #ddd;
+      padding:1rem 1.25rem;
+      box-shadow:0 4px 10px rgba(0,0,0,.04);
     }
-
-    main{
-      max-width:960px;
-      margin:0 auto;
-      padding:1.2rem 1.2rem 1.8rem;
-    }
-
-    .page-header{
-      margin-bottom:1.2rem;
-    }
-    .page-header h1{
-      margin:.1rem 0 .3rem;
-      font-size:1.5rem;
-    }
-    .page-header p{
-      margin:0;
-      color:var(--muted);
-      font-size:.95rem;
-    }
-
-    .badge{
-      display:inline-block;
-      padding:.1rem .5rem;
-      font-size:.75rem;
-      border-radius:999px;
-      background:#111;
-      border:1px solid #333;
-      color:#e7e7e7;
-      margin-bottom:.25rem;
-    }
-
-    .layout{
-      display:grid;
-      grid-template-columns:minmax(0,3fr) minmax(0,2.4fr);
-      gap:1rem;
-    }
-    @media (max-width:900px){
-      .layout{
-        grid-template-columns:1fr;
-      }
-    }
-
-    .card{
-      background:var(--bg-card);
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      padding:1rem 1rem 1rem;
-      box-shadow:var(--shadow);
-    }
-
-    .card h2{
+    h1{
+      font-size:1.3rem;
       margin-top:0;
-      font-size:1.1rem;
-      display:flex;
-      align-items:center;
-      gap:.5rem;
+      margin-bottom:.5rem;
     }
-
-    .emoji{
-      font-size:1.4rem;
-    }
-
-    label{
-      font-size:.9rem;
-      font-weight:600;
-      display:block;
-      margin-bottom:.25rem;
+    .lead{
+      margin-top:0;
+      margin-bottom:1rem;
+      color:#555;
+      font-size:.95rem;
     }
     textarea{
       width:100%;
-      min-height:230px;
-      resize:vertical;
-      border-radius:10px;
-      border:1px solid #333;
-      padding:.7rem .8rem;
-      background:#050505;
-      color:var(--fg);
-      font-family:inherit;
-      line-height:1.5;
+      min-height:160px;
+      border-radius:.5rem;
+      border:1px solid #ccc;
+      padding:.6rem .75rem;
+      font: inherit;
+      resize: vertical;
     }
     textarea:focus-visible{
-      outline:2px solid var(--accent);
+      outline:3px solid #94c5ff;
       outline-offset:2px;
+      border-color:#94c5ff;
     }
-
-    .btn-row{
+    .row{
       display:flex;
       flex-wrap:wrap;
       gap:.5rem;
-      margin-top:.5rem;
       align-items:center;
+      margin-top:.75rem;
     }
-
     .btn{
-      border-radius:999px;
-      border:1px solid #666;
-      padding:.35rem .9rem;
-      font-size:.9rem;
-      cursor:pointer;
-      background:#111;
-      color:#f0f0f0;
-      display:inline-flex;
-      align-items:center;
-      gap:.35rem;
-    }
-    .btn-primary{
-      background:var(--accent);
-      border-color:var(--accent);
+      border:none;
+      border-radius:.5rem;
+      padding:.45rem .9rem;
+      background:#0b8457;
       color:#fff;
+      cursor:pointer;
       font-weight:600;
+      font-size:.9rem;
     }
-    .btn-danger{
-      border-color:var(--danger);
-      color:#ffecec;
+    .btn.secondary{
+      background:#444;
     }
     .btn[disabled]{
-      opacity:.45;
+      opacity:.5;
       cursor:not-allowed;
     }
-    .btn:focus-visible{
-      outline:2px solid #fff;
-      outline-offset:2px;
-    }
-
     .hint{
-      font-size:.8rem;
-      color:var(--muted);
-      margin-top:.15rem;
+      font-size:.85rem;
+      color:#666;
+      margin-top:.4rem;
     }
-
+    .status{
+      margin-top:.5rem;
+      font-size:.85rem;
+      color:#333;
+    }
+    .status[aria-live]{
+      min-height:1.2em;
+    }
     .kbd{
       display:inline-block;
-      padding:.05rem .4rem;
-      border-radius:4px;
-      border:1px solid #555;
-      background:#111;
-      font-size:.8rem;
-      font-family:monospace;
-      color:#f7f7f7;
-    }
-
-    .panel{
-      display:flex;
-      flex-direction:column;
-      gap:.6rem;
-    }
-
-    select,
-    input[type="range"]{
-      font-size:.9rem;
-    }
-    select{
-      border-radius:999px;
-      border:1px solid #444;
-      padding:.25rem .7rem;
-      background:#050505;
-      color:#f7f7f7;
-    }
-
-    .inline-group{
-      display:flex;
-      flex-wrap:wrap;
-      gap:.5rem;
-      align-items:center;
-      font-size:.85rem;
-    }
-
-    .status{
-      font-size:.85rem;
-      padding:.5rem .65rem;
-      border-radius:10px;
-      background:#0a0a0a;
-      border:1px solid #333;
-      min-height:2.2em;
-    }
-    .status--ok{ border-color:var(--accent); }
-    .status--warn{ border-color:var(--danger); }
-
-    .log{
-      margin:0;
-      padding-left:1.1rem;
-      font-size:.85rem;
-      max-height:190px;
-      overflow:auto;
-    }
-
-    footer{
-      margin-top:1rem;
-      font-size:.75rem;
-      color:var(--muted);
-      text-align:left;
+      padding:0 .3rem;
+      border-radius:.25rem;
+      border:1px solid #ccc;
+      background:#f7f7f7;
+      font-size:.8em;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     }
   </style>
 </head>
-
 <body>
-  <a href="#contenu" class="skiplink">Aller directement au mini-assistant</a>
-
-  <main id="contenu" role="main" aria-labelledby="page-title">
-    <header class="page-header">
-      <span class="badge">Mini-WTD · composant de démonstration</span>
-      <h1 id="page-title">Mini-assistant IA accessible</h1>
-      <p>
-        Prise de notes simple, lecture vocale (TTS), dictée vocale (STT) quand le navigateur le permet.
-        Pensé pour les tests en formation et les démonstrations Work-Test-Demo.
+  <div class="assistant-shell">
+    <div class="assistant-card" role="form" aria-labelledby="assistant-title">
+      <h1 id="assistant-title">Mini-assistant IA – prise de notes</h1>
+      <p class="lead">
+        Écrivez ou dictez vos notes, puis faites relire le texte à voix haute.
+        Pensé pour les tests Mini-WTD et la démonstration d’accessibilité.
       </p>
-    </header>
 
-    <section class="layout" aria-label="Assistant IA et contrôles">
-      <!-- Bloc prise de notes -->
-      <article class="card" aria-labelledby="notes-title">
-        <h2 id="notes-title">
-          <span class="emoji" aria-hidden="true">📝</span>
-          Zone de notes
-        </h2>
+      <label for="note-area"><strong>Zone de texte</strong></label>
+      <textarea id="note-area"
+                placeholder="Exemple : compte-rendu d’entretien, idées de projet, liste de tâches…"></textarea>
 
-        <label for="notes">Vos notes</label>
-        <textarea id="notes" name="notes"
-                  aria-describedby="notes-hint"
-                  placeholder="Écrivez ou dictez vos notes ici…"></textarea>
-        <p id="notes-hint" class="hint">
-          Astuce : vous pouvez faire lire cette zone avec la synthèse vocale, ou la remplir avec la dictée si disponible.
-        </p>
+      <div class="row" aria-label="Commandes de l’assistant">
+        <button type="button" class="btn" id="btn-read">
+          🔊 Lire le texte
+        </button>
+        <button type="button" class="btn secondary" id="btn-stop">
+          ⏹ Stop
+        </button>
+        <button type="button" class="btn" id="btn-dictate">
+          🎙️ Dicter (si disponible)
+        </button>
+      </div>
 
-        <div class="btn-row" aria-label="Actions sur les notes">
-          <button type="button" class="btn btn-primary" id="tts-read">
-            🔊 Lire les notes
-          </button>
-          <button type="button" class="btn" id="tts-stop">
-            ⏹ Arrêter la lecture
-          </button>
-          <button type="button" class="btn btn-danger" id="notes-clear">
-            🧹 Effacer
-          </button>
-        </div>
-
-        <p class="hint" aria-label="Raccourcis clavier synthèse vocale">
-          Raccourcis proposés : <span class="kbd">Ctrl</span> + <span class="kbd">Entrée</span> pour lancer la lecture,
-          <span class="kbd">Échap</span> pour arrêter (si supporté).
-        </p>
-      </article>
-
-      <!-- Bloc TTS + STT -->
-      <article class="card" aria-labelledby="speech-title">
-        <h2 id="speech-title">
-          <span class="emoji" aria-hidden="true">🧠</span>
-          Voix & dictée (TTS / STT)
-        </h2>
-
-        <div class="panel" aria-label="Paramètres de voix">
-          <div class="inline-group">
-            <label for="voice-select">Voix :</label>
-            <select id="voice-select" name="voice-select" aria-label="Choix de la voix de synthèse">
-              <option value="">Par défaut (navigateur)</option>
-            </select>
-          </div>
-
-          <div class="inline-group">
-            <label for="rate">Vitesse :</label>
-            <input id="rate" type="range" min="0.6" max="1.6" value="1" step="0.1">
-            <span id="rate-val" aria-live="polite" aria-atomic="true">1.0×</span>
-          </div>
-        </div>
-
-        <hr aria-hidden="true" style="border:none;border-top:1px solid #2a2a2a;margin:.7rem 0;">
-
-        <div class="panel" aria-label="Dictée vocale (si disponible)">
-          <div class="inline-group">
-            <label for="lang">Langue de dictée :</label>
-            <select id="lang" name="lang">
-              <option value="fr-FR">Français (France)</option>
-              <option value="fr-CA">Français (Canada)</option>
-              <option value="en-US">Anglais (US)</option>
-            </select>
-          </div>
-
-          <div class="btn-row" aria-label="Contrôles de dictée">
-            <button type="button" class="btn" id="stt-start">
-              🎙️ Démarrer la dictée
-            </button>
-            <button type="button" class="btn" id="stt-stop">
-              ⏹ Arrêter la dictée
-            </button>
-          </div>
-
-          <p class="hint">
-            Si la dictée n’est pas disponible, un message vous l’indiquera.
-            Raccourci possible : <span class="kbd">Ctrl</span> + <span class="kbd">Maj</span> + <span class="kbd">Entrée</span>.
-          </p>
-
-          <div class="status" id="stt-status" role="status" aria-live="polite">
-            Dictée : en attente.
-          </div>
-
-          <details>
-            <summary>Journal des transcriptions</summary>
-            <ul class="log" id="stt-log"></ul>
-          </details>
-        </div>
-      </article>
-    </section>
-
-    <footer>
-      <p>
-        Composant conçu comme support de <strong>démonstration</strong> pour Mini-WTD / Work-Test-Demo :
-        on peut le casser, le tester, l’améliorer, avant d’intégrer un outil IA réel dans une application métier.
+      <p class="hint">
+        Raccourcis :
+        <span class="kbd">Ctrl</span>+<span class="kbd">Entrée</span> = Lire ·
+        <span class="kbd">Échap</span> = Stop
       </p>
-    </footer>
-  </main>
+
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </div>
+  </div>
 
   <script>
     (function(){
-      const notes      = document.getElementById('notes');
-      const btnRead    = document.getElementById('tts-read');
-      const btnStop    = document.getElementById('tts-stop');
-      const btnClear   = document.getElementById('notes-clear');
+      const area   = document.getElementById('note-area');
+      const btnRead= document.getElementById('btn-read');
+      const btnStop= document.getElementById('btn-stop');
+      const btnDict= document.getElementById('btn-dictate');
+      const status = document.getElementById('status');
 
-      const rateInput  = document.getElementById('rate');
-      const rateVal    = document.getElementById('rate-val');
-      const voiceSelect= document.getElementById('voice-select');
+      const synth  = window.speechSynthesis;
+      let   utter  = null;
 
-      const sttStart   = document.getElementById('stt-start');
-      const sttStop    = document.getElementById('stt-stop');
-      const sttStatus  = document.getElementById('stt-status');
-      const sttLog     = document.getElementById('stt-log');
-      const langSelect = document.getElementById('lang');
-
-      const synth = window.speechSynthesis;
-      let currentUtterance = null;
-
-      // --- Synthèse vocale (TTS) ---
-      function populateVoices(){
-        if (!synth) return;
-        const voices = synth.getVoices().filter(v => v.lang && v.lang.startsWith('fr'));
-        voiceSelect.innerHTML = '<option value="">Par défaut (navigateur)</option>';
-        voices.forEach((v, idx) => {
-          const opt = document.createElement('option');
-          opt.value = v.name;
-          opt.textContent = `${v.name} (${v.lang})`;
-          if (idx === 0) opt.selected = true;
-          voiceSelect.appendChild(opt);
-        });
-      }
-      if (synth){
-        synth.onvoiceschanged = populateVoices;
-        populateVoices();
+      function setStatus(msg){
+        status.textContent = msg || '';
       }
 
-      function speakNotes(){
-        if (!synth) return;
-        const text = (notes.value || '').trim();
-        if (!text) return;
-        synth.cancel();
-        const utt = new SpeechSynthesisUtterance(text);
-        const rate = parseFloat(rateInput.value || '1');
-        utt.rate = rate;
-        const selectedName = voiceSelect.value;
-        if (selectedName){
-          const voices = synth.getVoices();
-          const found = voices.find(v => v.name === selectedName);
-          if (found) utt.voice = found;
-        } else {
-          utt.lang = 'fr-FR';
+      // 🔊 Lecture
+      function readText(){
+        const text = (area.value || '').trim();
+        if(!text){
+          setStatus('Rien à lire pour le moment.');
+          return;
         }
-        currentUtterance = utt;
-        synth.speak(utt);
-      }
-
-      function stopSpeak(){
-        if (synth && synth.speaking){
-          synth.cancel();
+        try{
+          if(synth.speaking) synth.cancel();
+          utter = new SpeechSynthesisUtterance(text);
+          utter.lang = 'fr-FR';
+          utter.rate = 1.0;
+          utter.onstart = () => setStatus('Lecture en cours…');
+          utter.onend   = () => setStatus('Lecture terminée.');
+          utter.onerror = () => setStatus('Erreur de lecture vocale.');
+          synth.speak(utter);
+        }catch(e){
+          console.error(e);
+          setStatus('Lecture vocale non disponible sur ce navigateur.');
         }
       }
 
-      btnRead.addEventListener('click', speakNotes);
-      btnStop.addEventListener('click', stopSpeak);
-      btnClear.addEventListener('click', () => {
-        notes.value = '';
-        notes.focus();
-      });
-
-      rateInput.addEventListener('input', e => {
-        const v = parseFloat(e.target.value || '1');
-        rateVal.textContent = v.toFixed(1) + '×';
-      });
-
-      // --- Dictée vocale (STT) ---
-      let Recognition = window.SpeechRecognition || window.webkitSpeechRecognition || null;
-      let recog = null;
-      let listening = false;
-
-      function setStatus(text, mode){
-        sttStatus.textContent = text;
-        sttStatus.classList.remove('status--ok','status--warn');
-        if (mode === 'ok') sttStatus.classList.add('status--ok');
-        if (mode === 'warn') sttStatus.classList.add('status--warn');
+      function stopRead(){
+        try{
+          if(synth.speaking || synth.paused){
+            synth.cancel();
+            setStatus('Lecture arrêtée.');
+          }
+        }catch(e){}
       }
 
-      if (!Recognition){
-        sttStart.disabled = true;
-        sttStop.disabled  = true;
-        setStatus("Dictée vocale non disponible dans ce navigateur.", "warn");
-      } else {
-        recog = new Recognition();
-        recog.continuous = true;
-        recog.interimResults = true;
+      btnRead.addEventListener('click', readText);
+      btnStop.addEventListener('click', stopRead);
 
-        recog.onstart = () => {
-          listening = true;
-          setStatus("Dictée en cours… parlez près du micro.", "ok");
-        };
-        recog.onerror = (e) => {
-          setStatus("Erreur dictée : " + e.error, "warn");
-          listening = false;
-        };
-        recog.onend = () => {
-          listening = false;
-          if (!sttStatus.textContent.startsWith("Erreur")){
-            setStatus("Dictée arrêtée.", "ok");
-          }
-        };
-        recog.onresult = (event) => {
-          let finalTranscript = "";
-          for (let i = event.resultIndex; i < event.results.length; i++){
-            const res = event.results[i];
-            if (res.isFinal){
-              finalTranscript += res[0].transcript + " ";
-            }
-          }
-          finalTranscript = finalTranscript.trim();
-          if (finalTranscript){
-            // Ajout dans la zone de notes
-            const add = (notes.value ? notes.value + " " : "") + finalTranscript;
-            notes.value = add.trim();
+      // 🎙️ Dictée (Web Speech API, si dispo)
+      let recognition = null;
+      if('webkitSpeechRecognition' in window || 'SpeechRecognition' in window){
+        const R = window.SpeechRecognition || window.webkitSpeechRecognition;
+        recognition = new R();
+        recognition.lang = 'fr-FR';
+        recognition.continuous = false;
+        recognition.interimResults = false;
 
-            // Log
-            const li = document.createElement('li');
-            li.textContent = finalTranscript;
-            sttLog.appendChild(li);
+        recognition.onstart = () => setStatus('Dictée en cours… Parlez près du micro.');
+        recognition.onerror = () => setStatus('Dictée interrompue ou refusée.');
+        recognition.onend   = () => setStatus('Dictée terminée.');
+        recognition.onresult = (event) => {
+          const t = event.results[0][0].transcript || '';
+          if(t){
+            const current = area.value;
+            area.value = current ? (current + '\n' + t) : t;
           }
         };
 
-        sttStart.addEventListener('click', () => {
-          if (!recog || listening) return;
+        btnDict.addEventListener('click', ()=>{
           try{
-            recog.lang = langSelect.value || "fr-FR";
-            recog.start();
+            recognition.start();
           }catch(e){
-            setStatus("Impossible de démarrer la dictée.", "warn");
+            console.error(e);
+            setStatus('Impossible de démarrer la dictée.');
           }
         });
-
-        sttStop.addEventListener('click', () => {
-          if (!recog || !listening) return;
-          recog.stop();
-        });
+      } else {
+        // Pas de support
+        btnDict.disabled = true;
+        btnDict.textContent = '🎙️ Dictée non disponible';
+        btnDict.title = 'La dictée vocale n’est pas disponible sur ce navigateur.';
       }
 
-      // Raccourcis clavier
-      document.addEventListener('keydown', e => {
-        // Ctrl + Entrée => lire les notes
-        if (e.key === "Enter" && (e.ctrlKey || e.metaKey) && !e.shiftKey){
+      // Raccourcis clavier locaux (dans l’iframe)
+      document.addEventListener('keydown', (e)=>{
+        // Ctrl+Entrée => lecture
+        if(e.key === 'Enter' && (e.ctrlKey || e.metaKey)){
           e.preventDefault();
-          speakNotes();
+          readText();
         }
-        // Ctrl + Maj + Entrée => dictée start/stop (si dispo)
-        if (e.key === "Enter" && (e.ctrlKey || e.metaKey) && e.shiftKey){
-          if (!Recognition || !recog) return;
-          e.preventDefault();
-          if (!listening){
-            sttStart.click();
-          } else {
-            sttStop.click();
-          }
-        }
-        // Échap => stop TTS
-        if (e.key === "Escape"){
-          stopSpeak();
+        // Échap => stop
+        if(e.key === 'Escape'){
+          stopRead();
         }
       });
 
-      // Nettoyage synthèse à la fermeture
-      window.addEventListener('beforeunload', stopSpeak);
+      window.addEventListener('beforeunload', stopRead);
     })();
   </script>
 </body>
