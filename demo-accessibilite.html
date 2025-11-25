@@ -2,304 +2,139 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Mini-WTD · Démo accessibilité</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mini-WTD · Démo Accessibilité</title>
 
-  <meta name="description" content="Démonstration d’accessibilité Mini-WTD : formulaire étiqueté, messages d’erreur, tableau avec en-têtes, modale accessible.">
+  <meta name="description" content="Démonstration pratique d’accessibilité numérique : formulaire labellisé, tableau accessible, modale ARIA, alertes conformes.">
+  <meta name="author" content="Patrick Billy">
+  <meta name="theme-color" content="#004085">
 
-  <!-- Styles globaux Mini-WTD -->
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
-  <!-- Lien d’évitement -->
-  <a class="skiplink" href="#main">Aller au contenu</a>
 
-  <!-- En-tête simple avec retour -->
-  <header class="container" role="banner" style="margin-top:0.5rem">
-    <nav aria-label="Fil d’Ariane">
-      <a href="index.html" class="btn btn--ghost">← Retour à l’accueil Mini-WTD</a>
+<a class="skiplink" href="#main">Aller directement au contenu</a>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="brand">
+      <img src="assets/img/logo-mini-wtd.png" alt="Logo Mini-WTD" />
+    </a>
+
+    <nav class="nav" aria-label="Menu principal">
+      <a href="presentation.html">Présentation</a>
+      <a href="demo-accessibilite.html" aria-current="page">Démo accessibilité</a>
+      <a href="demo-accessibilite-present.html">Mode Présentation</a>
+      <a href="rgaa.html">Audit RGAA</a>
+      <a href="assistant.html">Assistant IA</a>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <!-- Contenu principal -->
-  <main id="main"
-        class="container"
-        tabindex="-1"
-        role="main"
-        aria-labelledby="page-title">
+<main id="main" class="container" tabindex="-1">
 
-    <header class="card" style="margin-top:1rem">
-      <h1 id="page-title">Démo accessibilité</h1>
-      <p class="muted">
-        Exemple de <strong>formulaire</strong>, <strong>alertes</strong>, <strong>tableau</strong> et
-        <strong>modale</strong> conçus avec les bases du RGAA / WCAG.
-      </p>
-    </header>
+  <h1>🎨 Démo d’accessibilité</h1>
+  <p class="muted">Exemples concrets : champs labellisés, tableau structuré, modale accessible, alertes ARIA. Tout ce qu’un formateur doit montrer en vrai.</p>
 
-    <!-- 1. Formulaire accessible -->
-    <section class="card" aria-labelledby="form-title" style="margin-top:1rem">
-      <h2 id="form-title">1. Formulaire accessible</h2>
-      <p class="muted">
-        Chaque champ a un <strong>label</strong> explicite, un <strong>message d’aide</strong>,
-        et les erreurs sont annoncées dans une zone <code>role="alert"</code>.
-      </p>
+  <!-- 1. FORMULAIRE ACCESSIBLE -->
+  <section class="card" style="margin-top:1rem">
+    <h2>📑 Formulaire accessible</h2>
 
-      <!-- Zone d’alerte globale -->
-      <div id="form-alert"
-           class="alert alert--error"
-           role="alert"
-           aria-live="assertive"
-           hidden>
+    <form aria-describedby="form-desc">
+      <p id="form-desc" class="muted">Tous les champs sont associés à un label. Navigation clavier complète.</p>
+
+      <div class="form-group">
+        <label for="nom">Nom</label>
+        <input id="nom" name="nom" type="text" required>
       </div>
 
-      <form id="demo-form" novalidate>
-        <div class="form-group">
-          <label for="df-nom">Nom / Prénom <span aria-hidden="true">*</span></label>
-          <input id="df-nom"
-                 name="nom"
-                 type="text"
-                 autocomplete="name"
-                 required
-                 aria-required="true"
-                 aria-describedby="df-nom-help">
-          <p id="df-nom-help" class="muted">Indiquez le nom qui sera utilisé dans le rapport.</p>
-        </div>
-
-        <div class="form-group">
-          <label for="df-mail">Adresse e-mail <span aria-hidden="true">*</span></label>
-          <input id="df-mail"
-                 name="mail"
-                 type="email"
-                 autocomplete="email"
-                 required
-                 aria-required="true"
-                 aria-describedby="df-mail-help">
-          <p id="df-mail-help" class="muted">Servira uniquement pour vous renvoyer le résultat du test.</p>
-        </div>
-
-        <div class="form-group">
-          <fieldset>
-            <legend>Profil principal <span aria-hidden="true">*</span></legend>
-            <p class="muted">Choisissez la situation qui vous correspond le plus.</p>
-            <div class="form-check">
-              <input type="radio" id="df-prof-demandeur" name="profil" value="demandeur" required>
-              <label for="df-prof-demandeur">Demandeur d’emploi</label>
-            </div>
-            <div class="form-check">
-              <input type="radio" id="df-prof-formateur" name="profil" value="formateur">
-              <label for="df-prof-formateur">Formateur / accompagnant</label>
-            </div>
-            <div class="form-check">
-              <input type="radio" id="df-prof-entreprise" name="profil" value="entreprise">
-              <label for="df-prof-entreprise">Entreprise / RH</label>
-            </div>
-          </fieldset>
-        </div>
-
-        <div class="form-group">
-          <label for="df-besoin">Votre besoin en une phrase</label>
-          <textarea id="df-besoin"
-                    name="besoin"
-                    rows="3"
-                    aria-describedby="df-besoin-help"></textarea>
-          <p id="df-besoin-help" class="muted">
-            Exemple : “Je veux tester un scénario simple de saisie au clavier”.
-          </p>
-        </div>
-
-        <button type="submit" class="btn btn--primary">Envoyer (démo)</button>
-      </form>
-    </section>
-
-    <!-- 2. Tableau accessible -->
-    <section class="card" aria-labelledby="table-title" style="margin-top:1rem">
-      <h2 id="table-title">2. Tableau avec en-têtes</h2>
-      <p class="muted">
-        Exemple de tableau avec <code>&lt;th scope="col"&gt;</code>,
-        lignes simples, et légende associée.
-      </p>
-
-      <figure>
-        <figcaption class="muted">
-          Exemple de résultats à un mini-test (fictif).
-        </figcaption>
-        <table class="rgaa-table">
-          <thead>
-          <tr>
-            <th scope="col">Prénom</th>
-            <th scope="col">Module testé</th>
-            <th scope="col">Score</th>
-            <th scope="col">Commentaire</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td>Amina</td>
-            <td>Navigation clavier</td>
-            <td>18 / 20</td>
-            <td>Très à l’aise avec Tab / Maj+Tab.</td>
-          </tr>
-          <tr>
-            <td>Louis</td>
-            <td>Formulaire</td>
-            <td>15 / 20</td>
-            <td>Un peu de confusion sur les messages d’erreur.</td>
-          </tr>
-          <tr>
-            <td>Sara</td>
-            <td>Mode présentation</td>
-            <td>19 / 20</td>
-            <td>Lecture d’écran + contraste OK.</td>
-          </tr>
-          </tbody>
-        </table>
-      </figure>
-    </section>
-
-    <!-- 3. Modale accessible -->
-    <section class="card" aria-labelledby="modal-title" style="margin-top:1rem">
-      <h2 id="modal-title">3. Modale accessible</h2>
-      <p class="muted">
-        Exemple de fenêtre modale avec rôle <code>dialog</code>, titre et bouton de fermeture.
-        <strong>Échap</strong> ferme la fenêtre.
-      </p>
-
-      <button type="button" class="btn" id="open-modal">
-        Ouvrir l’exemple de modale
-      </button>
-
-      <div id="demo-modal-backdrop"
-           class="modal-backdrop"
-           hidden>
-        <div id="demo-modal"
-             class="modal"
-             role="dialog"
-             aria-modal="true"
-             aria-labelledby="demo-modal-title"
-             aria-describedby="demo-modal-desc">
-          <div class="modal-header">
-            <h3 id="demo-modal-title">Exemple de modale RGAA</h3>
-            <button type="button"
-                    class="btn btn--ghost"
-                    id="close-modal"
-                    aria-label="Fermer la fenêtre">
-              ✕
-            </button>
-          </div>
-          <div class="modal-body">
-            <p id="demo-modal-desc">
-              Cette fenêtre est annoncée comme <strong>dialogue</strong> au lecteur d’écran.
-              On peut naviguer dans son contenu au clavier et la fermer avec le bouton “✕”
-              ou la touche <span class="kbd">Échap</span>.
-            </p>
-            <p class="muted">
-              En situation réelle, on y placerait un message important, une confirmation,
-              ou une explication complémentaire.
-            </p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn--primary" id="close-modal-footer">
-              J’ai compris
-            </button>
-          </div>
-        </div>
+      <div class="form-group">
+        <label for="email">Adresse e-mail</label>
+        <input id="email" name="email" type="email" required>
       </div>
-    </section>
 
-  </main>
+      <div class="form-group">
+        <label for="msg">Message</label>
+        <textarea id="msg" name="msg" rows="4"></textarea>
+      </div>
 
-  <!-- Pied de page -->
-  <footer class="container footer">
-    <small>© 2025 Mini-WTD — Work-Test-Demo</small>
-  </footer>
+      <button type="button" class="btn btn--primary" onclick="showAlert()">Afficher une alerte ARIA</button>
+    </form>
 
-  <!-- JS de démo (validation + modale) -->
-  <script>
-    // ===== Formulaire : validation simple et messages accessibles =====
-    (function () {
-      const form  = document.getElementById('demo-form');
-      const alert = document.getElementById('form-alert');
-      if (!form || !alert) return;
+    <div id="alert" class="alert" role="alert" aria-live="assertive" hidden>
+      ✔ Exemple d’alerte conforme (ARIA + focus + visibilité).
+    </div>
+  </section>
 
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
+  <!-- 2. TABLEAU ACCESSIBLE -->
+  <section class="card" style="margin-top:1rem">
+    <h2>📊 Tableau accessible</h2>
 
-        let errors = [];
+    <table>
+      <caption class="muted">Exemple de tableau avec en-têtes sémantiques.</caption>
+      <thead>
+        <tr>
+          <th scope="col">Nom</th>
+          <th scope="col">Rôle</th>
+          <th scope="col">Statut</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Patrick</td>
+          <td>Formateur</td>
+          <td>Actif</td>
+        </tr>
+        <tr>
+          <td>Tom (IA)</td>
+          <td>Assistant</td>
+          <td>Disponible</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
 
-        const nom   = document.getElementById('df-nom');
-        const mail  = document.getElementById('df-mail');
-        const profil = form.querySelector('input[name="profil"]:checked');
+  <!-- 3. MODALE ACCESSIBLE -->
+  <section class="card" style="margin-top:1rem">
+    <h2>🔒 Modale accessible</h2>
 
-        // reset états
-        [nom, mail].forEach(el => el && el.setAttribute('aria-invalid', 'false'));
+    <button class="btn" onclick="openModal()">Afficher la modale</button>
 
-        if (!nom.value.trim()) {
-          errors.push('Le champ “Nom / Prénom” est obligatoire.');
-          nom.setAttribute('aria-invalid', 'true');
-        }
-        if (!mail.value.trim()) {
-          errors.push('Le champ “Adresse e-mail” est obligatoire.');
-          mail.setAttribute('aria-invalid', 'true');
-        } else if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail.value.trim())) {
-          errors.push('Le format de l’adresse e-mail ne semble pas valide.');
-          mail.setAttribute('aria-invalid', 'true');
-        }
-        if (!profil) {
-          errors.push('Veuillez choisir un profil (demandeur, formateur, entreprise).');
-        }
+    <dialog id="modal" aria-labelledby="modal-title">
+      <h3 id="modal-title">Exemple de modale conforme</h3>
+      <p>Navigation clavier, Échap, focus piégé : la base RGAA.</p>
 
-        if (errors.length) {
-          alert.hidden = false;
-          alert.innerHTML = '<strong>Veuillez corriger&nbsp;:</strong><ul>' +
-            errors.map(e => '<li>' + e + '</li>').join('') +
-            '</ul>';
-          alert.focus();
-          return;
-        }
+      <div class="modal-actions">
+        <button class="btn btn--primary" onclick="closeModal()">Fermer</button>
+      </div>
+    </dialog>
+  </section>
 
-        alert.hidden = false;
-        alert.classList.remove('alert--error');
-        alert.classList.add('alert--success');
-        alert.textContent = 'Formulaire de démonstration valide. Dans un vrai contexte, les données seraient traitées maintenant.';
-      });
-    })();
+</main>
 
-    // ===== Modale : ouverture / fermeture, Échap =====
-    (function () {
-      const openBtn   = document.getElementById('open-modal');
-      const backdrop  = document.getElementById('demo-modal-backdrop');
-      const modal     = document.getElementById('demo-modal');
-      const closeBtn  = document.getElementById('close-modal');
-      const closeFoot = document.getElementById('close-modal-footer');
+<footer class="container footer">
+  <small>© 2025 Mini-WTD — Work-Test-Demo</small>
+</footer>
 
-      if (!openBtn || !backdrop || !modal) return;
+<script>
+function showAlert(){
+  const alert = document.getElementById('alert');
+  alert.hidden = false;
+  alert.focus();
+}
 
-      function openModal() {
-        backdrop.hidden = false;
-        modal.focus();
-        document.addEventListener('keydown', onKeydown);
-      }
+function openModal(){
+  const modal = document.getElementById('modal');
+  modal.showModal();
+}
 
-      function closeModal() {
-        backdrop.hidden = true;
-        document.removeEventListener('keydown', onKeydown);
-        openBtn.focus();
-      }
+function closeModal(){
+  const modal = document.getElementById('modal');
+  modal.close();
+}
+</script>
 
-      function onKeydown(e) {
-        if (e.key === 'Escape' || e.key === 'Esc') {
-          e.preventDefault();
-          closeModal();
-        }
-      }
-
-      openBtn.addEventListener('click', openModal);
-      closeBtn?.addEventListener('click', closeModal);
-      closeFoot?.addEventListener('click', closeModal);
-    })();
-  </script>
 </body>
 </html>
-
