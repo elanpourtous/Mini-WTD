@@ -2,387 +2,149 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mini-WTD · Audit RGAA (démo)</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Mini-WTD · Références RGAA</title>
 
-  <meta name="description" content="Audit RGAA simplifié pour les pages Mini-WTD : titres, textes alternatifs, liens, labels et repères de structure.">
-  <meta name="author" content="Patrick Billy">
-  <meta name="theme-color" content="#0b8457">
+  <meta name="description" content="Synthèse des engagements et limites de conformité RGAA 4.1 / WCAG 2.1 pour le démonstrateur Mini-WTD.">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/ima/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/ima/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="assets/ima/favicon-96.png">
+  <link rel="icon" type="image/svg+xml" href="assets/ima/favicon.svg">
 
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
   <link rel="stylesheet" href="assets/css/style.css">
-
-  <style>
-    .badge {
-      display:inline-block;
-      padding:0.2rem 0.6rem;
-      border-radius:999px;
-      font-size:0.85rem;
-      font-weight:600;
-    }
-    .badge-ok {
-      background:#0b8457;
-      color:#fff;
-    }
-    .badge-warn {
-      background:#d9822b;
-      color:#fff;
-    }
-    .badge-err {
-      background:#c53030;
-      color:#fff;
-    }
-    .results-summary {
-      display:flex;
-      flex-wrap:wrap;
-      gap:1rem;
-      margin-top:1rem;
-    }
-    .results-summary div {
-      padding:0.6rem 1rem;
-      border-radius:8px;
-      font-weight:600;
-    }
-    .results-ok    { background:#0b845714; color:#0b8457; border:1px solid #0b8457; }
-    .results-warn  { background:#d9822b14; color:#d9822b; border:1px solid #d9822b; }
-    .results-err   { background:#c5303014; color:#c53030; border:1px solid #c53030; }
-
-    table.audit {
-      width:100%;
-      border-collapse:collapse;
-      margin-top:1rem;
-    }
-    table.audit th,
-    table.audit td {
-      border:1px solid #ddd;
-      padding:0.6rem 0.8rem;
-      vertical-align:top;
-    }
-    table.audit th {
-      background:#f5f5f5;
-      text-align:left;
-    }
-    table.audit tr:nth-child(even) td {
-      background:#fafafa;
-    }
-
-    .small {
-      font-size:0.85rem;
-      color:#666;
-    }
-  </style>
 </head>
 
 <body>
-  <a class="skiplink" href="#main">Aller directement au contenu</a>
+  <a class="skiplink" href="#main">Aller directement au contenu principal</a>
 
-  <header class="site-header" role="banner">
-    <div class="container header-inner">
-      <a href="index.html" class="brand">
-        <img src="assets/img/logo-mini-wtd.png" alt="Logo Mini-WTD" height="48">
-      </a>
-      <nav class="nav" aria-label="Navigation principale">
-        <a href="index.html">Accueil</a>
-        <a href="presentation.html">Présentation</a>
-        <a href="demo-accessibilite.html">Démo accessibilité</a>
-        <a href="demo-accessibilite-present.html">Mode Présentation</a>
-        <a href="rgaa.html" aria-current="page">Audit RGAA</a>
-        <a href="assistant.html">Assistant IA</a>
-      </nav>
-    </div>
-  </header>
+  <?php include 'includes/nav.html'; ?>
 
   <main id="main" class="container" tabindex="-1" role="main" aria-labelledby="page-title">
     <header class="card" style="margin-top:1rem">
-      <h1 id="page-title">🔎 Audit RGAA (démo Mini-WTD)</h1>
-      <p class="muted">
-        Outil pédagogique pour montrer comment analyser rapidement une page :
-        titres, images, liens, formulaires et repères de structure.
-      </p>
-      <p class="small">
-        <strong>Important :</strong> cet audit est une <strong>démo simplifiée</strong>, il ne remplace pas
-        un audit RGAA complet réalisé par un·e spécialiste.
+      <h1 id="page-title">Références RGAA et accessibilité de Mini-WTD</h1>
+      <p>
+        Mini-WTD est un démonstrateur accessible inspiré du
+        <strong>Référentiel général d’amélioration de l’accessibilité (RGAA&nbsp;4.1)</strong>
+        et des <strong>WCAG&nbsp;2.1</strong>. Cette page résume les principales
+        mesures mises en œuvre et les limites connues.
       </p>
     </header>
 
-    <!-- Choix de la page à analyser -->
-    <section class="card" aria-labelledby="section-choix">
-      <h2 id="section-choix">1. Choisir une page Mini-WTD à analyser</h2>
-
-      <form id="audit-form" class="form-grid" onsubmit="event.preventDefault(); runAudit();">
-        <label for="page-select"><strong>Page à auditer</strong></label>
-        <select id="page-select" name="page">
-          <option value="index.html">Accueil (index.html)</option>
-          <option value="presentation.html">Présentation</option>
-          <option value="demo-accessibilite.html">Démo accessibilité</option>
-          <option value="demo-accessibilite-present.html">Mode Présentation</option>
-          <option value="rgaa.html" selected>Audit RGAA (cette page)</option>
-          <option value="assistant.html">Assistant IA</option>
-        </select>
-
-        <button class="btn btn--primary" type="submit" style="margin-top:1rem;">
-          Lancer l’analyse
-        </button>
-      </form>
-
-      <p class="small">
-        Astuce en atelier : faites choisir une page aux participant·es, lancez l’audit,
-        puis discutez ensemble de chaque règle (OK / à vérifier / bloquante).
+    <section class="card">
+      <h2>Objectifs de conformité</h2>
+      <p>
+        L’objectif de Mini-WTD est d’atteindre un niveau de conformité proche
+        de <strong>RGAA AA</strong> sur l’essentiel des critères, dans le cadre
+        d’un outil léger et portable. Les priorités ont été les suivantes&nbsp;:
       </p>
-    </section>
-
-    <!-- Résultats -->
-    <section class="card" aria-labelledby="section-resultats">
-      <h2 id="section-resultats">2. Résultats de l’analyse</h2>
-
-      <p id="audit-target" class="muted small">
-        Aucune analyse lancée pour l’instant.
-      </p>
-
-      <div class="results-summary" aria-live="polite">
-        <div class="results-ok">OK : <span id="count-ok">0</span></div>
-        <div class="results-warn">À vérifier : <span id="count-warn">0</span></div>
-        <div class="results-err">Bloquant : <span id="count-err">0</span></div>
-      </div>
-
-      <table class="audit" aria-describedby="audit-target">
-        <thead>
-          <tr>
-            <th scope="col">Critère (démo)</th>
-            <th scope="col">Résultat</th>
-            <th scope="col">Détail</th>
-          </tr>
-        </thead>
-        <tbody id="audit-body">
-          <!-- Lignes remplies en JS -->
-        </tbody>
-      </table>
-    </section>
-
-    <section class="card" aria-labelledby="section-usage">
-      <h2 id="section-usage">3. Comment utiliser cet outil en formation</h2>
       <ul>
-        <li>Choisir une page Mini-WTD (ou une version modifiée par les stagiaires).</li>
-        <li>Lancer l’audit, lire chaque critère et laisser les participant·es réagir.</li>
-        <li>Ouvrir la page dans un autre onglet, montrer le code HTML correspondant.</li>
-        <li>Modifier le code (par ex. ajouter un <code>alt</code>, un <code>label</code>, un <code>role</code>) et relancer l’audit.</li>
+        <li>structure claire des pages avec titres hiérarchisés ;</li>
+        <li>navigation au clavier complète ;</li>
+        <li>visuels essentiels avec alternatives textuelles ;</li>
+        <li>contrastes suffisants pour les principaux éléments ;</li>
+        <li>formulaires et composants interactifs labellisés.</li>
       </ul>
-      <p class="small">
-        Objectif : rendre le RGAA moins théorique, plus concret, en montrant l’impact direct
-        d’un titre ou d’un texte alternatif sur l’analyse automatique.
+    </section>
+
+    <section class="card">
+      <h2>Principales bonnes pratiques mises en œuvre</h2>
+      <ul>
+        <li>
+          <strong>Balise de langue</strong> définie sur chaque page
+          (<code>lang="fr"</code>) pour aider les lecteurs d’écran.
+        </li>
+        <li>
+          <strong>Skiplink</strong> en début de page pour accéder directement
+          au contenu principal.
+        </li>
+        <li>
+          Utilisation d’éléments HTML sémantiques
+          (<code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>,
+          <code>&lt;nav&gt;</code>, <code>&lt;footer&gt;</code>) pour structurer
+          le document.
+        </li>
+        <li>
+          <strong>Alternatives textuelles</strong> pour les logos et les images
+          importantes.
+        </li>
+        <li>
+          Possibilité d’activer des <strong>fonctions d’accessibilité
+          complémentaires</strong> via le script
+          <code>assets/js/accessibility.js</code> (taille de police, contraste,
+          espacement).
+        </li>
+        <li>
+          Chatbot et formulaires avec <strong>labels explicites</strong> et
+          messages lisibles.
+        </li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Limites actuelles</h2>
+      <p>
+        Malgré le soin apporté à la conception, certaines limites subsistent&nbsp;:
       </p>
+      <ul>
+        <li>
+          Les contenus vidéo que vous ajouterez n’auront pas automatiquement
+          de sous-titres ou de transcription. C’est à l’utilisateur du kit de
+          les préparer.
+        </li>
+        <li>
+          Le module webcam de démo ne comporte pas à ce stade d’indications
+          audio spécifiques pour les personnes aveugles. Il est recommandé
+          d’accompagner son usage d’un commentaire oral.
+        </li>
+        <li>
+          Certains contrastes ou comportements spécifiques peuvent varier selon
+          les navigateurs et les thèmes système utilisés.
+        </li>
+      </ul>
+      <p>
+        Ces limites peuvent être documentées dans vos propres rapports
+        d’accessibilité. Mini-WTD reste évolutif et perfectible.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Documentation associée</h2>
+      <p>
+        Pour plus de détails, vous pouvez consulter les documents fournis
+        avec le kit&nbsp;:
+      </p>
+      <ul>
+        <li>
+          <a href="README.md">README.md</a> — Présentation générale de Mini-WTD.
+        </li>
+        <li>
+          <a href="README_RGAA_IA.txt">README_RGAA_IA.txt</a> — Notes détaillées
+          sur l’accessibilité et l’usage de l’IA.
+        </li>
+        <li>
+          <a href="a11y-log.php">a11y-log.php</a> — Fichier de journalisation
+          technique lié aux tests d’accessibilité (si activé dans votre
+          environnement).
+        </li>
+      </ul>
     </section>
   </main>
 
-  <footer class="container footer" role="contentinfo">
-    <small>© 2025 Mini-WTD — Audit RGAA (démo) · Patrick Billy</small>
+  <footer class="site-footer">
+    <div class="container">
+      <p>
+        &copy; <?php echo date('Y'); ?> Élan pour tous — Mini-WTD.
+        Synthèse de conformité RGAA / WCAG.
+      </p>
+    </div>
   </footer>
 
-  <script>
-    async function runAudit() {
-      const select = document.getElementById('page-select');
-      const page   = select.value;
-      const target = document.getElementById('audit-target');
-      const tbody  = document.getElementById('audit-body');
+  <?php include 'includes/chatbot-mini-wtd.html'; ?>
 
-      target.textContent = 'Analyse en cours pour : ' + page + '…';
-
-      let htmlText = '';
-      try {
-        const resp = await fetch(page, { cache: 'no-store' });
-        if (!resp.ok) throw new Error('HTTP ' + resp.status);
-        htmlText = await resp.text();
-      } catch (e) {
-        target.textContent = 'Impossible de charger la page « ' + page + ' ». (' + e.message + ')';
-        tbody.innerHTML = '';
-        return;
-      }
-
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(htmlText, 'text/html');
-
-      // Compteurs
-      let ok = 0, warn = 0, err = 0;
-      const rows = [];
-
-      function addRow(label, status, detail) {
-        let badgeClass, badgeText;
-        if (status === 'ok') {
-          ok++; badgeClass = 'badge badge-ok'; badgeText = 'OK';
-        } else if (status === 'warn') {
-          warn++; badgeClass = 'badge badge-warn'; badgeText = 'À vérifier';
-        } else {
-          err++; badgeClass = 'badge badge-err'; badgeText = 'Bloquant';
-        }
-        rows.push(
-          '<tr>' +
-            '<td>' + label + '</td>' +
-            '<td><span class="' + badgeClass + '">' + badgeText + '</span></td>' +
-            '<td>' + detail + '</td>' +
-          '</tr>'
-        );
-      }
-
-      // 1. Titre de page
-      const title = doc.querySelector('title');
-      if (title && title.textContent.trim().length > 0) {
-        addRow(
-          'Titre de page',
-          'ok',
-          'Titre présent : <code>' + escapeHtml(title.textContent.trim()) + '</code>.'
-        );
-      } else {
-        addRow(
-          'Titre de page',
-          'err',
-          'Aucun <code>&lt;title&gt;</code> détecté. Chaque page doit avoir un titre explicite.'
-        );
-      }
-
-      // 2. Présence d’un H1
-      const h1 = doc.querySelector('h1');
-      if (h1) {
-        addRow(
-          'Titre de niveau 1 (H1)',
-          'ok',
-          'Un <code>&lt;h1&gt;</code> est présent : « ' + escapeHtml(h1.textContent.trim()) + ' ».'
-        );
-      } else {
-        addRow(
-          'Titre de niveau 1 (H1)',
-          'err',
-          'Aucun <code>&lt;h1&gt;</code> détecté. Il est recommandé d’avoir un titre principal par page.'
-        );
-      }
-
-      // 3. Images sans alt
-      const imgs = Array.from(doc.querySelectorAll('img'));
-      const imgsSansAlt = imgs.filter(img => !img.hasAttribute('alt') || img.getAttribute('alt').trim() === '');
-      if (imgs.length === 0) {
-        addRow(
-          'Images / textes alternatifs',
-          'warn',
-          'Aucune image dans la page. Rien à vérifier ici, mais pensez aux textes alternatifs si vous en ajoutez.'
-        );
-      } else if (imgsSansAlt.length === 0) {
-        addRow(
-          'Images / textes alternatifs',
-          'ok',
-          'Toutes les ' + imgs.length + ' images possèdent un attribut <code>alt</code> renseigné.'
-        );
-      } else {
-        addRow(
-          'Images / textes alternatifs',
-          'err',
-          imgsSansAlt.length + ' image(s) sans <code>alt</code> sur ' + imgs.length +
-          '. Exemple : <code>' + escapeHtml(imgsSansAlt[0].outerHTML) + '</code>.'
-        );
-      }
-
-      // 4. Liens sans texte visible
-      const links = Array.from(doc.querySelectorAll('a'));
-      const emptyLinks = links.filter(a => a.textContent.trim().length === 0);
-      if (links.length === 0) {
-        addRow(
-          'Liens / intitulés',
-          'warn',
-          'Aucun lien trouvé dans la page.'
-        );
-      } else if (emptyLinks.length === 0) {
-        addRow(
-          'Liens / intitulés',
-          'ok',
-          'Tous les liens possèdent un intitulé visible.'
-        );
-      } else {
-        addRow(
-          'Liens / intitulés',
-          'err',
-          emptyLinks.length + ' lien(s) sans texte visible. Exemple : <code>' +
-          escapeHtml(emptyLinks[0].outerHTML) + '</code>.'
-        );
-      }
-
-      // 5. Champs de formulaire sans label
-      const controls = Array.from(doc.querySelectorAll('input, select, textarea'))
-        .filter(el => el.type !== 'hidden');
-      const unlabelled = controls.filter(c => !hasLabel(doc, c));
-      if (controls.length === 0) {
-        addRow(
-          'Formulaires / labels',
-          'warn',
-          'Aucun champ de formulaire détecté.'
-        );
-      } else if (unlabelled.length === 0) {
-        addRow(
-          'Formulaires / labels',
-          'ok',
-          'Tous les ' + controls.length + ' champs de formulaire ont un label associé.'
-        );
-      } else {
-        addRow(
-          'Formulaires / labels',
-          'err',
-          unlabelled.length + ' champ(s) sans label sur ' + controls.length +
-          '. Exemple : <code>' + escapeHtml(unlabelled[0].outerHTML) + '</code>.'
-        );
-      }
-
-      // 6. Repères de structure
-      const hasHeader = !!doc.querySelector('header,[role="banner"]');
-      const hasNav    = !!doc.querySelector('nav,[role="navigation"]');
-      const hasMain   = !!doc.querySelector('main,[role="main"]');
-      const hasFooter = !!doc.querySelector('footer,[role="contentinfo"]');
-
-      const missing = [];
-      if (!hasHeader) missing.push('en-tête (<code>header</code> / <code>role="banner"</code>)');
-      if (!hasNav)    missing.push('navigation (<code>nav</code> / <code>role="navigation"</code>)');
-      if (!hasMain)   missing.push('contenu principal (<code>main</code> / <code>role="main"</code>)');
-      if (!hasFooter) missing.push('pied de page (<code>footer</code> / <code>role="contentinfo"</code>)');
-
-      if (missing.length === 0) {
-        addRow(
-          'Repères de structure (landmarks)',
-          'ok',
-          'Les repères principaux (header, nav, main, footer) sont présents.'
-        );
-      } else {
-        addRow(
-          'Repères de structure (landmarks)',
-          'warn',
-          'Repères manquants : ' + missing.join(', ') + '.'
-        );
-      }
-
-      // Mise à jour du tableau et des compteurs
-      tbody.innerHTML = rows.join('');
-      document.getElementById('count-ok').textContent   = ok;
-      document.getElementById('count-warn').textContent = warn;
-      document.getElementById('count-err').textContent  = err;
-
-      target.textContent = 'Analyse terminée pour : ' + page + '.';
-    }
-
-    function hasLabel(doc, control) {
-      const id = control.id;
-      if (id) {
-        const labelFor = doc.querySelector('label[for="' + CSS.escape(id) + '"]');
-        if (labelFor) return true;
-      }
-      let parent = control.parentElement;
-      while (parent) {
-        if (parent.tagName && parent.tagName.toLowerCase() === 'label') return true;
-        parent = parent.parentElement;
-      }
-      return false;
-    }
-
-    function escapeHtml(str) {
-      return str
-        .replace(/&/g,'&amp;')
-        .replace(/</g,'&lt;')
-        .replace(/>/g,'&gt;');
-    }
-  </script>
+  <script src="assets/js/accessibility.js"></script>
+  <script src="assets/js/miniwtd-chat.js"></script>
+  <script src="assets/js/miniwtd-webcam.js"></script>
 </body>
 </html>
