@@ -1,196 +1,87 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <!-- Charset -->
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Mini-WTD · Présentation</title>
+  <meta name="description" content="Mini-WTD — Présentation, objectifs, publics, accessibilité intégrée et modes d’utilisation.">
 
-  <!-- Responsive -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Titre SEO -->
-  <title>Mini-WTD · Présentation — Outil numérique accessible, France</title>
-
-  <!-- Meta description -->
-  <meta name="description"
-        content="Mini-WTD : présentation complète du kit numérique inclusif. Navigation accessible, raccourcis clavier, mode présentation, aide vocale et outils pour publics variés. Made in France.">
-
-  <!-- Mots-clés SEO -->
-  <meta name="keywords"
-        content="Mini-WTD, work-test-demo, accessibilité, inclusion, handicap, RGAA, France Travail, MEDEF, formation numérique, outils inclusifs, test compétences, interface accessible, clavier, lecteur d'écran, TTS, STT">
-
-  <!-- Auteur -->
-  <meta name="author" content="Patrick Billy — Élan pour tous">
-
-  <!-- Couleur thème (mobile) -->
-  <meta name="theme-color" content="#0056D6">
-
-  <!-- Données Open Graph (Facebook, LinkedIn) -->
-  <meta property="og:title" content="Mini-WTD · Présentation">
-  <meta property="og:description"
-        content="Découvrez le fonctionnement du Mini-WTD : accessibilité, navigation, modes d'affichage, raccourcis et outils inclusifs.">
-  <meta property="og:image" content="assets/img/logo-mini-wtd-256.png">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://elanpourtous.github.io/Mini-WTD/presentation.html">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Mini-WTD · Présentation">
-  <meta name="twitter:description"
-        content="Structure accessible, raccourcis, TTS/STT, ergonomie : découvrez le Mini-WTD.">
-  <meta name="twitter:image" content="assets/img/logo-mini-wtd-256.png">
-
-  <!-- Favicon propre -->
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/logo-mini-wtd-32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/logo-mini-wtd-16.png">
-  <link rel="apple-touch-icon" href="assets/img/logo-mini-wtd-256.png">
-
-  <!-- Canonical -->
-  <link rel="canonical" href="https://elanpourtous.github.io/Mini-WTD/presentation.html">
-
-  <!-- Préchargement CSS pour rapidité -->
-  <link rel="preload" href="assets/css/rgaa-accessible.css" as="style">
-  <link rel="preload" href="assets/css/style.css" as="style">
-
-  <!-- CSS -->
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
   <link rel="stylesheet" href="assets/css/style.css">
-
-  <!-- Anti-aspi / anti-copie (option) -->
-  <meta name="robots" content="index, follow">
+  <link rel="stylesheet" href="assets/css/chatbot.css">
 </head>
 
-
 <body>
-  <!-- Lien d’évitement -->
   <a class="skiplink" href="#main">Aller au contenu</a>
 
-  <!-- Bandeau simple avec retour -->
   <header class="container" role="banner" style="margin-top:0.5rem">
     <nav aria-label="Fil d’Ariane">
       <a href="index.html" class="btn btn--ghost">← Retour à l’accueil Mini-WTD</a>
     </nav>
   </header>
 
-  <!-- Contenu principal -->
-  <main id="main"
-        class="container"
-        tabindex="-1"
-        role="main"
-        aria-labelledby="page-title">
-
-    <!-- En-tête de page -->
-    <header class="card" style="margin-top:1rem">
-      <h1 id="page-title">Présentation de Mini-WTD</h1>
-      <p class="muted">
-        Mini-WTD est une petite boîte à outils pour <strong>tester, démontrer et expliquer</strong>
-        l’accessibilité numérique et les tests de compétences, sans usine à gaz.
-      </p>
-    </header>
-
-    <!-- Objectifs -->
-    <section class="card" aria-labelledby="objectif-title" style="margin-top:1rem">
-      <h2 id="objectif-title">Objectifs du module</h2>
+  <main id="main" class="container" tabindex="-1" role="main" aria-labelledby="page-title">
+    <article class="card">
+      <header>
+        <h1 id="page-title">Présentation de Mini-WTD</h1>
+      </header>
+      <p>Mini-WTD est un module de démonstration de Work-Test-Demo, pensé pour l’inclusion numérique et l’accessibilité.</p>
       <ul>
-        <li>Montrer qu’on peut faire un outil de test <strong>simple et accessible</strong>.</li>
-        <li>Permettre aux formateurs et structures d’insertion de <strong>visualiser des scénarios concrets</strong>.</li>
-        <li>Servir de base à des <strong>tests de compétences</strong> adaptés à différents publics.</li>
-        <li>Donner des idées pour améliorer des dispositifs existants (sites, exercices, formulaires).</li>
+        <li>Test de compétences en situation.</li>
+        <li>Accompagnement des publics éloignés de l’emploi.</li>
+        <li>Interface inclusive, sobre, RGAA-friendly.</li>
       </ul>
-    </section>
-
-    <!-- Publics -->
-    <section class="card" aria-labelledby="public-title" style="margin-top:1rem">
-      <h2 id="public-title">Pour qui&nbsp;?</h2>
-      <ul>
-        <li><strong>Formateurs numériques</strong> qui veulent un support concret pour parler d’accessibilité.</li>
-        <li><strong>Référents handicap</strong> et accompagnants emploi.</li>
-        <li><strong>Structures d’insertion, missions locales, centres de formation</strong>.</li>
-        <li>Personnes en situation de handicap qui veulent <strong>tester tranquillement</strong> un outil avant une formation plus lourde.</li>
-      </ul>
-    </section>
-
-    <!-- Accessibilité intégrée -->
-    <section class="grid" aria-labelledby="a11y-title" style="margin-top:1rem">
-      <h2 id="a11y-title" class="visually-hidden">Accessibilité intégrée</h2>
-
-      <article class="card">
-        <h3>Structure claire</h3>
-        <ul>
-          <li>Titres hiérarchisés (h1, h2, h3…)</li>
-          <li>Régions ARIA (main, nav, etc.)</li>
-          <li>Ordre de tabulation logique</li>
-        </ul>
-      </article>
-
-      <article class="card">
-        <h3>Navigation clavier</h3>
-        <ul>
-          <li>Lien d’évitement “Aller au contenu”.</li>
-          <li>Focus visible renforcé.</li>
-          <li>Composants testés uniquement au clavier.</li>
-        </ul>
-      </article>
-
-      <article class="card">
-        <h3>Visuels & contrastes</h3>
-        <ul>
-          <li>Contrastes respectant WCAG AA.</li>
-          <li>Pas de texte noyé dans les images.</li>
-          <li>Icônes toujours accompagnées de texte.</li>
-        </ul>
-      </article>
-
-      <article class="card">
-        <h3>Préférences utilisateur</h3>
-        <ul>
-          <li>Prise en compte de <code>prefers-reduced-motion</code>.</li>
-          <li>Police de base lisible, sans fantaisie.</li>
-          <li>Pas d’animations agressives.</li>
-        </ul>
-      </article>
-    </section>
-
-    <!-- Modes d'utilisation -->
-    <section class="card" aria-labelledby="usage-title" style="margin-top:1rem">
-      <h2 id="usage-title">Comment utiliser Mini-WTD&nbsp;?</h2>
-      <ol>
-        <li><strong>Lancer la Présentation</strong> (cette page) pour expliquer le cadre aux participants.</li>
-        <li>Ouvrir la <strong>Démo Accessibilité</strong> pour montrer un formulaire, une modale, un tableau conformes RGAA.</li>
-        <li>Utiliser le <strong>Mode Présentation</strong> pour projeter en grand (salle, groupe).</li>
-        <li>Explorer la page <strong>Audit RGAA</strong> pour parler de contrôle et d’auto-évaluation.</li>
-        <li>Tester l’<strong>assistant IA</strong> pour la prise de notes / lecture vocale.</li>
-      </ol>
-      <p class="muted">
-        L’idée n’est pas de remplacer vos dispositifs, mais de vous donner un <strong>support simple</strong>
-        à adapter à votre réalité de terrain.
-      </p>
-    </section>
-
-    <!-- Raccourcis et scénarios -->
-    <section class="card" aria-labelledby="scenario-title" style="margin-top:1rem">
-      <h2 id="scenario-title">Exemples de scénarios d’animation</h2>
-      <ul>
-        <li><strong>Atelier 1h</strong> : tour rapide de la Démo Accessibilité + discussion sur les blocages rencontrés.</li>
-        <li><strong>Demi-journée</strong> : présentation, démo complète, audit simplifié d’un site (au tableau).</li>
-        <li><strong>Parcours long</strong> : Mini-WTD comme “banc d’essai” pour mesurer les progrès des apprenants.</li>
-      </ul>
-    </section>
-
-    <!-- Boutons de navigation -->
-    <section class="card" aria-label="Navigation vers les autres modules" style="margin-top:1rem">
-      <p><strong>Poursuivre avec les modules :</strong></p>
+    </article>
+    <section class="card">
+      <h2>Module « Adaptation Express » (Webcam)</h2>
       <p>
-        <a class="btn btn--primary" href="demo-accessibilite.html">➡ Démo Accessibilité</a>
-        <a class="btn" href="mode-presentation.html">🖥 Mode Présentation</a>
-        <a class="btn" href="rgaa.html">📋 Audit RGAA</a>
-        <a class="btn" href="ia/mini-assistant.html">🧠 Assistant IA</a>
+        Activez la caméra et expliquez simplement vos besoins d’aménagement de poste
+        à votre employeur ou référent. Aucune donnée médicale n’est analysée ou stockée
+        automatiquement : il s’agit d’un support d’échange humain et concret.
+      </p>
+
+      <video id="wtd-video" autoplay playsinline
+             style="width:100%; max-width:400px; border-radius:8px; background:#000;"></video>
+
+      <button id="wtd-capture" class="btn" style="margin-top:10px;">
+        Prendre une capture pour illustrer un geste
+      </button>
+
+      <canvas id="wtd-canvas" style="display:none; margin-top:10px; max-width:400px;"></canvas>
+
+      <p class="muted" style="margin-top:0.5rem; font-size:0.9rem;">
+        ⚠ Cette fonctionnalité nécessite votre accord explicite pour activer la caméra.
+        Vous pouvez à tout moment la désactiver depuis votre navigateur.
       </p>
     </section>
+
+    <script src="assets/js/camera.js"></script>
+
   </main>
 
-  <!-- Pied de page -->
-  <footer class="container footer">
-    <small>© 2025 Mini-WTD — Work-Test-Demo</small>
-  </footer>
+    <!-- 💬 Chatbot IA – Élan pour tous -->
+    <link rel="stylesheet" href="assets/css/chatbot.css">
+
+    <div id="tom-chat-widget">
+      <button id="tom-chat-toggle" aria-label="Ouvrir le chat">💬</button>
+
+      <div id="tom-chat-panel" aria-live="polite">
+        <div id="tom-chat-header">
+          <strong>Tom Élan</strong>
+          <button id="tom-chat-close" aria-label="Fermer">✖</button>
+        </div>
+
+        <div id="tom-chat-container"></div>
+
+        <form id="tom-chat-form">
+          <input id="tom-chat-input" type="text" placeholder="Message…" autocomplete="off">
+          <button id="tom-chat-send" type="submit">➤</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="assets/js/chatbot.js"></script>
+    <script>window.initElanChat();</script>
+
 </body>
 </html>
