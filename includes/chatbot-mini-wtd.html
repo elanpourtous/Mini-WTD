@@ -1,0 +1,58 @@
+<!-- 💬 Chatbot Mini-WTD + module webcam (démo) -->
+<button id="mwt-chat-toggle"
+        class="mwt-chat-fab"
+        type="button"
+        aria-label="Ouvrir le chatbot Mini-WTD">
+  💬
+</button>
+
+<section id="mwt-chat-panel"
+         class="mwt-chat-panel"
+         role="dialog"
+         aria-modal="false"
+         aria-hidden="true"
+         aria-labelledby="mwt-chat-title">
+  <header class="mwt-chat-header">
+    <div>
+      <h2 id="mwt-chat-title">Mini-WTD · Chat inclusion</h2>
+      <small>Pour les dirigeants pressés qui veulent des réponses claires.</small>
+      <p class="mwt-chat-tagline">
+        Coach IA : Patrick Billy — concepteur de Mini-WTD.
+      </p>
+    </div>
+    <button type="button"
+            id="mwt-chat-close"
+            class="mwt-chat-close"
+            aria-label="Fermer le chatbot">
+      ✕
+    </button>
+  </header>
+
+  <div id="mwt-chat-body" class="mwt-chat-body" aria-live="polite">
+    <!-- Messages injectés par JavaScript -->
+  </div>
+
+  <div class="mwt-webcam-box" aria-live="polite">
+    <strong>Module webcam (démo)</strong><br>
+    Cet outil sert à observer une situation de travail pour discuter d’adaptations.
+    Il ne fournit <strong>aucun diagnostic médical</strong>.
+    <div class="mwt-webcam-actions">
+      <button type="button" id="mwt-webcam-start">Activer la webcam</button>
+      <button type="button" id="mwt-webcam-stop">Arrêter</button>
+    </div>
+    <video id="mwt-webcam-video"
+           autoplay
+           playsinline
+           style="width:100%;margin-top:.25rem;display:none;"
+           aria-hidden="true"></video>
+  </div>
+
+  <form id="mwt-chat-form" class="mwt-chat-footer">
+    <label class="sr-only" for="mwt-chat-input">Votre question</label>
+    <input id="mwt-chat-input"
+           type="text"
+           autocomplete="off"
+           placeholder="Posez une question sur Mini-WTD, l’inclusion, le handicap…">
+    <button type="submit">Envoyer</button>
+  </form>
+</section>
