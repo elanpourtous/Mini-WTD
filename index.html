@@ -4,54 +4,166 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Mini-WTD · Accueil</title>
-  <meta name="description" content="Mini-WTD — module de démonstration Work-Test-Demo.">
+
+  <meta name="description" content="Mini-WTD — démonstrateur Work-Test-Demo : tester en vrai l’inclusion, l’accessibilité et l’adaptation des postes pour les personnes en situation de handicap.">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/ima/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/ima/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="assets/ima/favicon-96.png">
+  <link rel="icon" type="image/svg+xml" href="assets/ima/favicon.svg">
 
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
   <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/chatbot.css">
 </head>
 
 <body>
-  <a class="skiplink" href="#main">Aller au contenu</a>
+  <a class="skiplink" href="#main">Aller directement au contenu principal</a>
 
-  <!-- Inclusion de la navigation -->
   <?php include 'includes/nav.html'; ?>
 
   <main id="main" class="container" tabindex="-1" role="main" aria-labelledby="page-title">
-    <header class="card" style="margin-top:1rem">
-      <h1 id="page-title">🇫🇷 Mini-WTD — Accueil</h1>
-      <p class="muted">Version de démonstration avec chatbot graphique Tom Élan.</p>
+    <header class="card card--hero" style="margin-top:1rem">
+      <div class="card__media">
+        <img src="assets/ima/logo-mini-wtd-256.png"
+             alt="Logo Mini-WTD"
+             class="brand-logo-large">
+      </div>
+      <div class="card__body">
+        <h1 id="page-title">Mini-WTD — Démonstrateur d’inclusion par le test réel</h1>
+        <p>
+          Mini-WTD est une version légère du programme <strong>Work-Test-Demo</strong>.
+          L’objectif est simple&nbsp;: sortir du blabla sur l’inclusion et
+          montrer, en conditions réelles, comment une personne en situation de
+          handicap peut tenir un poste avec les bonnes adaptations.
+        </p>
+        <p>
+          Ce site est conçu pour fonctionner aussi bien en
+          <strong>intranet d’entreprise</strong> que sur une
+          <strong>clé USB autonome</strong>. Il ne fait
+          <strong>aucun diagnostic médical</strong> et ne remplace pas les
+          services officiels (MDPH, médecine du travail, etc.). Il sert à ouvrir
+          le dialogue, à observer le réel et à documenter les besoins.
+        </p>
+      </div>
     </header>
 
+    <section class="grid">
+      <article class="card">
+        <h2>Comprendre le concept Mini-WTD</h2>
+        <p>
+          La page <a href="presentation.html">Présentation</a> détaille la
+          philosophie Work-Test-Demo&nbsp;: pourquoi partir d’un test réel,
+          comment impliquer les dirigeants, les équipes RH et les référents
+          handicap sans les noyer sous la théorie.
+        </p>
+        <p>
+          Vous y trouverez les objectifs, les publics visés et les différents
+          usages possibles&nbsp;: démonstration rapide, atelier d’une demi-journée,
+          journée complète de tests, ou intégration à un parcours de recrutement.
+        </p>
+        <p>
+          Mini-WTD est pensé pour être <strong>portable</strong>, <strong>hors
+          connexion</strong> et <strong>compréhensible par tous</strong>, y
+          compris des dirigeants qui n’ont ni le temps ni l’habitude de parler
+          handicap.
+        </p>
+      </article>
+
+      <article class="card">
+        <h2>Tester l’accessibilité en direct</h2>
+        <p>
+          Les pages <a href="demo-accessibilite.html">Démo accessibilité</a> et
+          <a href="demo-accessibilite-present.html">Démo accessibilité — version présentation</a>
+          vous permettent de montrer concrètement ce que signifie un site
+          accessible&nbsp;: navigation au clavier, contrastes, aides visuelles,
+          lecture vocale, etc.
+        </p>
+        <p>
+          C’est aussi un support de formation pour les équipes numériques,
+          les communicants et les prestataires web qui doivent se mettre
+          au niveau des exigences <strong>RGAA&nbsp;4.1</strong> et
+          <strong>WCAG&nbsp;2.1</strong>.
+        </p>
+      </article>
+
+      <article class="card">
+        <h2>Assistant IA et module webcam</h2>
+        <p>
+          Mini-WTD intègre un <strong>assistant IA</strong> sous forme de
+          chatbot pour répondre aux questions fréquentes des dirigeants,
+          RH, référents handicap et partenaires.
+          La page <a href="assistant.html">Assistant</a> détaille son usage.
+        </p>
+        <p>
+          Un <strong>module webcam démo</strong> permet de filmer une scène
+          de travail (posture, gestes, environnement). Il sert uniquement de
+          support de discussion pour réfléchir aux adaptations possibles.
+          Il n’a pas vocation à poser des diagnostics médicaux, ni à noter
+          les personnes.
+        </p>
+      </article>
+
+      <article class="card">
+        <h2>Références RGAA et documentation</h2>
+        <p>
+          La page <a href="rgaa.html">Références RGAA</a> regroupe les principaux
+          engagements pris pour que Mini-WTD reste conforme aux règles
+          d’accessibilité numérique, dans la limite d’un démonstrateur.
+        </p>
+        <p>
+          Pour aller plus loin, consultez également les documents à la racine
+          du kit&nbsp;: le fichier
+          <a href="README.md">README.md</a> présente l’outil et
+          <a href="README_RGAA_IA.txt">README_RGAA_IA.txt</a> décrit les choix
+          d’accessibilité et les bonnes pratiques autour de l’usage de l’IA.
+        </p>
+      </article>
+    </section>
+
     <section class="card">
-      <h2>Bienvenue</h2>
-      <p>Cette page est un exemple prêt à l’emploi pour tester le chatbot graphique inclusif.</p>
+      <h2>À qui s’adresse Mini-WTD&nbsp;?</h2>
+      <ul>
+        <li>
+          Aux <strong>dirigeants</strong> qui veulent arrêter de cocher des cases
+          et comprendre ce que signifie réellement adapter un poste.
+        </li>
+        <li>
+          Aux <strong>services RH</strong> et aux <strong>référents handicap</strong>
+          qui cherchent un support concret pour dialoguer avec les équipes et les
+          candidats.
+        </li>
+        <li>
+          Aux <strong>organismes publics et associatifs</strong> (MDPH, Cap
+          Emploi, Agefiph, Missions locales, etc.) qui souhaitent disposer
+          d’un outil pédagogique neutre et portable.
+        </li>
+        <li>
+          Aux <strong>formateurs</strong> qui construisent des modules sur
+          l’inclusion en entreprise, la prévention de la désinsertion
+          professionnelle et la prise en compte des maladies chroniques.
+        </li>
+      </ul>
     </section>
   </main>
 
-    <!-- 💬 Chatbot IA – Élan pour tous -->
-    <link rel="stylesheet" href="assets/css/chatbot.css">
-
-    <div id="tom-chat-widget">
-      <button id="tom-chat-toggle" aria-label="Ouvrir le chat">💬</button>
-
-      <div id="tom-chat-panel" aria-live="polite">
-        <div id="tom-chat-header">
-          <strong>Tom Élan</strong>
-          <button id="tom-chat-close" aria-label="Fermer">✖</button>
-        </div>
-
-        <div id="tom-chat-container"></div>
-
-        <form id="tom-chat-form">
-          <input id="tom-chat-input" type="text" placeholder="Message…" autocomplete="off">
-          <button id="tom-chat-send" type="submit">➤</button>
-        </form>
-      </div>
+  <footer class="site-footer">
+    <div class="container">
+      <p>
+        &copy; <?php echo date('Y'); ?> Élan pour tous — Mini-WTD.
+        Outil de démo accessibilité et inclusion par le test.
+      </p>
+      <p>
+        Ce kit est fourni à titre pédagogique. Il ne remplace ni la médecine
+        du travail, ni les services de santé, ni les décisions juridiques.
+      </p>
     </div>
+  </footer>
 
-    <script src="assets/js/chatbot.js"></script>
-    <script>window.initElanChat();</script>
+  <!-- Chatbot + webcam -->
+  <?php include 'includes/chatbot-mini-wtd.html'; ?>
 
+  <script src="assets/js/accessibility.js"></script>
+  <script src="assets/js/miniwtd-chat.js"></script>
+  <script src="assets/js/miniwtd-webcam.js"></script>
 </body>
 </html>
