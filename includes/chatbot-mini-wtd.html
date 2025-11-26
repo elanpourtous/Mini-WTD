@@ -1,8 +1,11 @@
-<!-- 💬 Chatbot Mini-WTD + module webcam (démo) -->
+<!-- 💬 Chatbot Mini-WTD + Webcam + Assistant d’observation -->
 <button id="mwt-chat-toggle"
         class="mwt-chat-fab"
         type="button"
-        aria-label="Ouvrir le chatbot Mini-WTD">
+        aria-label="Ouvrir le chatbot Mini-WTD"
+        aria-haspopup="dialog"
+        aria-expanded="false"
+        aria-controls="mwt-chat-panel">
   💬
 </button>
 
@@ -13,11 +16,14 @@
          aria-hidden="true"
          aria-labelledby="mwt-chat-title">
   <header class="mwt-chat-header">
-    <div>
-      <h2 id="mwt-chat-title">Mini-WTD · Chat inclusion</h2>
-      <small>Pour les dirigeants pressés qui veulent des réponses claires.</small>
+    <div class="mwt-chat-header__text">
+      <h2 id="mwt-chat-title">Mini-WTD · Chat inclusion & adaptation</h2>
+      <small>
+        Pour les dirigeants pressés, les RH, les référents handicap et les partenaires
+        qui veulent des réponses claires, sans langue de bois.
+      </small>
       <p class="mwt-chat-tagline">
-        Coach IA : Patrick Billy — concepteur de Mini-WTD.
+        Coach IA : Patrick Billy — concepteur de Mini-WTD, cuisinier LDL & designer inclusif.
       </p>
     </div>
     <button type="button"
@@ -28,31 +34,170 @@
     </button>
   </header>
 
-  <div id="mwt-chat-body" class="mwt-chat-body" aria-live="polite">
-    <!-- Messages injectés par JavaScript -->
+  <!-- Zone de messages du chatbot -->
+  <div id="mwt-chat-body"
+       class="mwt-chat-body"
+       aria-live="polite">
+    <!-- Les messages seront injectés ici par assets/js/chatbot.js -->
   </div>
 
+  <!-- Bloc Webcam + Assistant d’observation / adaptation -->
   <div class="mwt-webcam-box" aria-live="polite">
-    <strong>Module webcam (démo)</strong><br>
+    <strong>Module webcam Mini-WTD (démo)</strong><br>
     Cet outil sert à observer une situation de travail pour discuter d’adaptations.
-    Il ne fournit <strong>aucun diagnostic médical</strong>.
+    Il ne fournit <strong>aucun diagnostic médical</strong> et ne doit pas être utilisé
+    pour juger la santé de la personne.
     <div class="mwt-webcam-actions">
-      <button type="button" id="mwt-webcam-start">Activer la webcam</button>
-      <button type="button" id="mwt-webcam-stop">Arrêter</button>
+      <button type="button"
+              id="mwt-webcam-start">
+        Activer la webcam
+      </button>
+      <button type="button"
+              id="mwt-webcam-stop">
+        Arrêter
+      </button>
     </div>
+
     <video id="mwt-webcam-video"
            autoplay
            playsinline
            style="width:100%;margin-top:.25rem;display:none;"
            aria-hidden="true"></video>
+
+    <hr>
+
+    <!-- Assistant d’observation / adaptation -->
+    <strong>Assistant d’observation Mini-WTD</strong>
+    <p style="font-size:0.8rem;margin-top:0.25rem;">
+      Remplis ce mini-formulaire à partir de ce que tu vois (et de ce que la personne
+      décrit). L’outil génère une synthèse pour préparer un aménagement ou une prise
+      de contact avec la médecine du travail, la MDPH, Cap Emploi ou l’Agefiph.
+    </p>
+
+    <form id="mwt-observer-form"
+          class="mwt-observer-form">
+      <!-- Type de poste -->
+      <label for="mwt-job-type">
+        Type principal de poste
+      </label>
+      <select id="mwt-job-type" name="jobType">
+        <option value="">Choisir…</option>
+        <option value="bureau">Poste de bureau / travail sur écran</option>
+        <option value="manutention">Manutention / gestes physiques</option>
+        <option value="accueil">Accueil / relationnel</option>
+        <option value="mixte">Poste mixte / polyvalent</option>
+      </select>
+
+      <!-- Contexte (recrutement / maintien / retour) -->
+      <label for="mwt-context-type">
+        Contexte de la situation
+      </label>
+      <select id="mwt-context-type" name="contextType">
+        <option value="">Choisir…</option>
+        <option value="recrutement">Test de recrutement</option>
+        <option value="maintien">Maintien dans l’emploi</option>
+        <option value="retour">Retour après arrêt / maladie</option>
+      </select>
+
+      <!-- Points de vigilance observés -->
+      <fieldset>
+        <legend>Ce que tu observes ou que la personne signale</legend>
+
+        <label>
+          <input type="checkbox" name="issues" value="fatigue">
+          Fatigue rapide / besoin de pauses
+        </label>
+
+        <label>
+          <input type="checkbox" name="issues" value="gestes">
+          Difficulté sur certains gestes / mouvements
+        </label>
+
+        <label>
+          <input type="checkbox" name="issues" value="deplacements">
+          Difficulté pour les déplacements (locaux, escaliers, trajets…)
+        </label>
+
+        <label>
+          <input type="checkbox" name="issues" value="concentration">
+          Difficultés de concentration / surcharge d’informations
+        </label>
+
+        <label>
+          <input type="checkbox" name="issues" value="communication">
+          Difficultés de communication (oral, écrit, bruit…)
+        </label>
+
+        <label>
+          <input type="checkbox" name="issues" value="securite">
+          Risque sécurité identifié (chute, crise, machine, etc.)
+        </label>
+      </fieldset>
+
+      <!-- Description des 2 photos (interprétation humaine) -->
+      <label for="mwt-photo-room">
+        Photo 1 — Description de la pièce / du poste de travail
+      </label>
+      <textarea id="mwt-photo-room"
+                name="photoRoom"
+                rows="2"
+                placeholder="Ex : bureau partagé, passage étroit, câbles au sol, écran à gauche, beaucoup de bruit…"></textarea>
+
+      <label for="mwt-photo-person">
+        Photo 2 — Description du candidat / salarié en situation
+        (sans jugement sur la personne)
+      </label>
+      <textarea id="mwt-photo-person"
+                name="photoPerson"
+                rows="2"
+                placeholder="Ex : utilise une canne, posture penchée, s’assoit fréquemment, doit se lever souvent, etc."></textarea>
+
+      <!-- Coût estimé des adaptations -->
+      <label for="mwt-cost-level">
+        Estimation grossière du coût des adaptations envisagées
+        (ressenti, pas un devis)
+      </label>
+      <select id="mwt-cost-level" name="costLevel">
+        <option value="">Je ne sais pas</option>
+        <option value="faible">Faible (organisation, petits achats &lt; 500€)</option>
+        <option value="moyen">Moyen (aménagement ponctuel, matériel spécifique)</option>
+        <option value="eleve">Élevé / complexe</option>
+      </select>
+
+      <!-- Notes libres -->
+      <label for="mwt-observer-notes">
+        Notes complémentaires (facultatif)
+      </label>
+      <textarea id="mwt-observer-notes"
+                name="notes"
+                rows="3"
+                placeholder="Infos utiles : rythme, douleur, préférences, contraintes du service, retour de la personne…"></textarea>
+
+      <button type="submit">
+        Générer la synthèse d’adaptation
+      </button>
+    </form>
+
+    <div id="mwt-observer-result"
+         class="mwt-observer-result"
+         aria-live="polite"
+         style="margin-top:0.5rem;font-size:0.8rem;">
+      <!-- Synthèse générée par assets/js/observer.js -->
+    </div>
   </div>
 
-  <form id="mwt-chat-form" class="mwt-chat-footer">
-    <label class="sr-only" for="mwt-chat-input">Votre question</label>
+  <!-- Formulaire principal du chatbot -->
+  <form id="mwt-chat-form"
+        class="mwt-chat-footer">
+    <label class="sr-only" for="mwt-chat-input">
+      Votre question pour Mini-WTD
+    </label>
     <input id="mwt-chat-input"
            type="text"
            autocomplete="off"
-           placeholder="Posez une question sur Mini-WTD, l’inclusion, le handicap…">
-    <button type="submit">Envoyer</button>
+           placeholder="Posez une question sur Mini-WTD, le handicap, les adaptations…">
+    <button type="submit">
+      Envoyer
+    </button>
   </form>
 </section>
