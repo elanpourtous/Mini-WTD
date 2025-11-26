@@ -2,128 +2,128 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Mini-WTD · Assistant IA</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta name="description"
-        content="Mini-assistant IA pour prise de notes accessible : lecture vocale, dictée (si disponible), intégré à Mini-WTD.">
+  <meta name="description" content="Assistant IA Mini-WTD : chatbot inclusif pour aider dirigeants, RH et référents handicap à comprendre l’outil, l’accessibilité et les adaptations possibles.">
 
-  <!-- Styles globaux Mini-WTD -->
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/ima/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/ima/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="assets/ima/favicon-96.png">
+  <link rel="icon" type="image/svg+xml" href="assets/ima/favicon.svg">
+
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
   <link rel="stylesheet" href="assets/css/style.css">
-
-  <style>
-    .assistant-layout {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 1rem;
-    }
-    .assistant-header {
-      margin-top: 1rem;
-      margin-bottom: 1rem;
-    }
-    .assistant-header h1 {
-      margin: 0 0 .25rem 0;
-      font-size: 1.6rem;
-    }
-    .assistant-header .muted {
-      margin: 0;
-      color: #555;
-    }
-    .assistant-note {
-      margin: 1rem 0;
-      padding: .75rem 1rem;
-      border-radius: .6rem;
-      border: 1px solid #ddd;
-      background: #f7f7fb;
-      font-size: .95rem;
-    }
-
-    .assistant-frame-wrapper {
-      margin-top: 1rem;
-      border-radius: .75rem;
-      border: 1px solid #ddd;
-      overflow: hidden;
-      background: #fff;
-      box-shadow: 0 6px 16px rgba(0,0,0,.06);
-    }
-
-    .assistant-frame {
-      width: 100%;
-      min-height: 420px;
-      border: none;
-    }
-
-    @media (min-height: 800px) {
-      .assistant-frame {
-        min-height: 520px;
-      }
-    }
-
-    .kbd {
-      display:inline-block;
-      padding:0 .3rem;
-      border-radius:.25rem;
-      border:1px solid #ccc;
-      background:#f7f7f7;
-      font-size:.8em;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    }
-  </style>
 </head>
 
 <body>
-  <!-- Lien d’évitement -->
-  <a class="skiplink" href="#main">Aller au contenu</a>
+  <a class="skiplink" href="#main">Aller directement au contenu principal</a>
 
-  <!-- En-tête simple Mini-WTD -->
-  <header class="container" role="banner">
-    <nav class="nav-inline" aria-label="Fil d’Ariane">
-      <a href="index.html">← Retour à l’accueil Mini-WTD</a>
-    </nav>
-  </header>
+  <?php include 'includes/nav.html'; ?>
 
-  <!-- Contenu principal -->
-  <main id="main" class="assistant-layout" role="main" tabindex="-1" aria-labelledby="page-title">
-    <header class="assistant-header">
-      <h1 id="page-title">Mini-assistant IA (intégré)</h1>
-      <p class="muted">
-        Prise de notes accessible, lecture vocale et dictée expérimentale,
-        pour démontrer un assistant simple dans Mini-WTD.
+  <main id="main" class="container" tabindex="-1" role="main" aria-labelledby="page-title">
+    <header class="card" style="margin-top:1rem">
+      <h1 id="page-title">Assistant IA Mini-WTD</h1>
+      <p>
+        L’assistant IA intégré à Mini-WTD joue le rôle de <strong>coach
+        numérique</strong>. Il aide à formuler les questions, à clarifier les
+        enjeux et à préparer les messages à destination des dirigeants, des
+        équipes et des partenaires.
       </p>
     </header>
 
-    <section class="assistant-note" aria-label="Description de l’assistant">
-      <p>
-        Cet assistant est chargé <strong>dans un cadre dédié</strong> pour vos démos :
-      </p>
+    <section class="card">
+      <h2>Ce que l’assistant peut faire</h2>
       <ul>
-        <li>Saisie au clavier d’un texte (compte-rendu, idées, liste de tâches…)</li>
-        <li>Lecture à voix haute avec la synthèse vocale du navigateur</li>
-        <li>Dictée vocale si la Web Speech API est disponible</li>
+        <li>
+          Expliquer le fonctionnement de Mini-WTD avec des mots simples, y
+          compris pour des personnes qui n’ont pas l’habitude du numérique.
+        </li>
+        <li>
+          Proposer des formulations de mails, de comptes rendus ou de
+          comptes-rendus de réunion à partir des observations faites pendant un
+          test.
+        </li>
+        <li>
+          Reformuler des arguments en les adaptant au public ciblé&nbsp;:
+          dirigeant pressé, équipe RH, partenaires institutionnels, etc.
+        </li>
+        <li>
+          Rappeler les règles éthiques et les limites de l’outil, pour éviter
+          les dérives (diagnostic médical sauvage, notation abusive, etc.).
+        </li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Ce que l’assistant ne fait pas</h2>
+      <ul>
+        <li>
+          Il ne prend <strong>aucune décision à votre place</strong> sur le
+          recrutement, le maintien ou la santé d’une personne.
+        </li>
+        <li>
+          Il ne donne pas de <strong>diagnostic médical</strong> ni de conseil
+          juridique opposable.
+        </li>
+        <li>
+          Il ne remplace pas les discussions directes entre la personne
+          concernée, l’entreprise et les professionnels de santé ou du droit.
+        </li>
       </ul>
       <p>
-        Raccourcis dans l’assistant :
-        <span class="kbd">Ctrl</span>+<span class="kbd">Entrée</span> = lancer la lecture ·
-        <span class="kbd">Échap</span> = arrêter.
+        Il s’agit d’un outil d’aide à la réflexion, pas d’un juge automatique.
       </p>
     </section>
 
-    <!-- IFRAME : cœur de l’assistant -->
-    <section aria-label="Cadre de l’assistant IA">
-      <div class="assistant-frame-wrapper">
-        <iframe
-          class="assistant-frame"
-          src="ia/mini-assistant.html"
-          title="Mini-assistant de prise de notes accessible (lecture vocale et dictée)"
-          loading="lazy">
-        </iframe>
-      </div>
+    <section class="card">
+      <h2>Utilisation combinée avec le module webcam</h2>
+      <p>
+        Lorsqu’une scène de travail est filmée avec le <strong>module webcam
+        Mini-WTD</strong>, l’assistant peut aider à :
+      </p>
+      <ul>
+        <li>rédiger une description factuelle de la scène ;</li>
+        <li>lister les difficultés observées sans jugement de valeur ;</li>
+        <li>proposer une première liste d’adaptations possibles ;</li>
+        <li>préparer une note de synthèse pour la direction ou la médecine du travail.</li>
+      </ul>
+      <p>
+        Aucune image n’est envoyée automatiquement vers un service extérieur
+        sans décision explicite de l’entreprise. Le fonctionnement de base est
+        entièrement <strong>local</strong>.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Accéder au chatbot depuis les autres pages</h2>
+      <p>
+        Le <strong>bouton flottant</strong> en bas à droite est visible sur
+        toutes les pages de Mini-WTD. Il ouvre le chatbot Mini-WTD qui reprend
+        les mêmes principes que l’assistant présenté ici.
+      </p>
+      <p>
+        Si vous souhaitez modifier le comportement ou le style de l’assistant,
+        vous pouvez adapter le fichier
+        <code>assets/js/miniwtd-chat.js</code> ainsi que le bloc HTML
+        <code>includes/chatbot-mini-wtd.html</code>.
+      </p>
     </section>
   </main>
 
-  <footer class="container footer" role="contentinfo">
-    <small>© Mini-WTD – Work-Test-Demo · Assistant IA expérimental</small>
+  <footer class="site-footer">
+    <div class="container">
+      <p>
+        &copy; <?php echo date('Y'); ?> Élan pour tous — Mini-WTD.
+        Assistant IA inclusif pour l’inclusion en entreprise.
+      </p>
+    </div>
   </footer>
+
+  <?php include 'includes/chatbot-mini-wtd.html'; ?>
+
+  <script src="assets/js/accessibility.js"></script>
+  <script src="assets/js/miniwtd-chat.js"></script>
+  <script src="assets/js/miniwtd-webcam.js"></script>
 </body>
 </html>
