@@ -1,160 +1,145 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <!-- Charset -->
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Mini-WTD · Démo accessibilité — Présentation</title>
 
-  <!-- Responsive -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Support de présentation rapide pour montrer Mini-WTD à des dirigeants ou partenaires : bénéfices, risques maîtrisés, engagement concret sur l’accessibilité.">
 
-  <!-- Titre SEO -->
-  <title>Mini-WTD · Mode Présentation — Version contraste élevé & formation</title>
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/ima/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/ima/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="assets/ima/favicon-96.png">
+  <link rel="icon" type="image/svg+xml" href="assets/ima/favicon.svg">
 
-  <!-- Description SEO -->
-  <meta name="description"
-        content="Mode Présentation du Mini-WTD : contraste élevé, gros boutons, navigation clavier, modale accessible, idéal pour formations accessibilité, MEDEF 44 et France Travail.">
-
-  <!-- Keywords SEO -->
-  <meta name="keywords"
-        content="Mini-WTD, Work-Test-Demo, mode présentation, accessibilité, RGAA, formation handicap, projection salle, contraste élevé, MEDEF 44, France Travail, inclusion, clavier, modale accessible">
-
-  <!-- Auteur -->
-  <meta name="author" content="Patrick Billy — Élan pour tous">
-
-  <!-- Thème -->
-  <meta name="theme-color" content="#000">
-
-  <!-- Canonical -->
-  <link rel="canonical" href="https://elanpourtous.github.io/Mini-WTD/demo-accessibilite-present.html">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Mini-WTD · Mode Présentation">
-  <meta property="og:description"
-        content="Version très contrastée pour salles de formation : gros boutons, navigation clavier, modale accessible.">
-  <meta property="og:image" content="assets/img/logo-mini-wtd-256.png">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://elanpourtous.github.io/Mini-WTD/demo-accessibilite-present.html">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Mini-WTD · Mode Présentation">
-  <meta name="twitter:description"
-        content="Contraste élevé, actions visibles, interface salle, démonstration accessibilité.">
-  <meta name="twitter:image" content="assets/img/logo-mini-wtd-256.png">
-
-  <!-- Favicon et logos -->
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/logo-mini-wtd-16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/logo-mini-wtd-32.png">
-  <link rel="apple-touch-icon" href="assets/img/logo-mini-wtd-256.png">
-
-  <!-- CSS -->
-  <link rel="preload" href="assets/css/rgaa-accessible.css" as="style">
-  <link rel="preload" href="assets/css/style.css" as="style">
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
   <link rel="stylesheet" href="assets/css/style.css">
-
-  <!-- Indexation OK -->
-  <meta name="robots" content="index, follow">
 </head>
 
 <body>
+  <a class="skiplink" href="#main">Aller directement au contenu principal</a>
 
-<a class="skiplink" href="#main">Aller au contenu</a>
+  <?php include 'includes/nav.html'; ?>
 
-<header class="site-header" style="background:#111;padding:1rem 0;">
-  <div class="container header-inner">
-    <a href="index.html" class="brand">
-      <img src="assets/img/logo-mini-wtd.png" alt="Logo Mini-WTD" style="height:60px;">
-    </a>
-    <nav class="nav" aria-label="Navigation principale">
-      <a href="presentation.html">Présentation</a>
-      <a href="demo-accessibilite.html">Démo accessibilité</a>
-      <a href="demo-accessibilite-present.html" aria-current="page">Mode Présentation</a>
-      <a href="rgaa.html">Audit RGAA</a>
-      <a href="assistant.html">Assistant IA</a>
-    </nav>
-  </div>
-</header>
+  <main id="main" class="container" tabindex="-1" role="main" aria-labelledby="page-title">
+    <header class="card" style="margin-top:1rem">
+      <h1 id="page-title">Démo accessibilité — Version dirigeants</h1>
+      <p>
+        Cette page est pensée comme un <strong>script de présentation</strong>
+        de Mini-WTD pour des dirigeants, des DRH ou des partenaires institutionnels.
+        Elle permet d’expliquer clairement où vous allez, sans jargon inutile.
+      </p>
+    </header>
 
-<main id="main" class="container" tabindex="-1">
+    <section class="card">
+      <h2>Problème de départ</h2>
+      <p>
+        La plupart des entreprises ont des obligations en matière de handicap
+        et d’accessibilité, mais manquent de temps, d’expertise et parfois
+        d’informations fiables. Résultat&nbsp;: on coche des cases,
+        on signe des chartes, mais la réalité du terrain bouge très peu.
+      </p>
+      <p>
+        Mini-WTD apporte une réponse simple&nbsp;: <strong>on teste en vrai</strong>,
+        sur des situations de travail concrètes, et on regarde ce qu’il faut
+        adapter, poste par poste.
+      </p>
+    </section>
 
-  <h1>🎥 Mode Présentation — Mini-WTD</h1>
-  <p style="color:#aaa;">Version simplifiée et très contrastée, pensée pour les salles de formation et la démonstration en direct.</p>
+    <section class="card">
+      <h2>Ce que Mini-WTD apporte à l’entreprise</h2>
+      <ul>
+        <li>
+          Un <strong>support concret</strong> pour dialoguer avec les salariés,
+          la médecine du travail, les partenaires handicap et les représentants
+          du personnel.
+        </li>
+        <li>
+          Une <strong>traçabilité</strong> des essais et des échanges, sans
+          passer par des usines à gaz ou des logiciels lourds.
+        </li>
+        <li>
+          Une façon d’<strong>impliquer les managers</strong> en les mettant
+          face à des scènes de travail réelles, plutôt qu’à des slides théoriques.
+        </li>
+        <li>
+          La possibilité de <strong>capitaliser</strong> sur les retours d’expérience
+          pour améliorer progressivement les processus de recrutement et de
+          maintien dans l’emploi.
+        </li>
+      </ul>
+    </section>
 
-  <!-- BOUTONS DE DÉMO -->
-  <section class="card">
-    <h2>📌 Actions visibles</h2>
+    <section class="card">
+      <h2>Gestion des risques et limites</h2>
+      <p>
+        Mini-WTD est volontairement conçu avec un cadre clair&nbsp;:
+      </p>
+      <ul>
+        <li>
+          Les images et les données restent dans le périmètre défini avec
+          l’entreprise (intranet sécurisé, clé USB chiffrée, etc.).
+        </li>
+        <li>
+          Aucune décision RH ne doit être prise uniquement sur la base d’une
+          vidéo ou d’un test isolé.
+        </li>
+        <li>
+          Le module webcam est une <strong>démo pédagogique</strong>, pas un
+          dispositif médical ou juridique.
+        </li>
+        <li>
+          Le chatbot IA sert de <strong>coach de réflexion</strong> et non de
+          décisionnaire automatisé. Il ne remplace ni les médecins ni les juristes.
+        </li>
+      </ul>
+      <p>
+        Ces règles peuvent être reprises dans vos procédures internes, vos
+        notes de service ou vos annexes de contrats avec les partenaires.
+      </p>
+    </section>
 
-    <button class="big-btn" onclick="showAlert()">Afficher une alerte ARIA</button>
-    <button class="big-btn" onclick="openModal()">Afficher une modale accessible</button>
-    <button class="big-btn" onclick="scrollToTable()">Aller au tableau</button>
+    <section class="card">
+      <h2>Comment lancer un premier test Mini-WTD</h2>
+      <ol>
+        <li>
+          Choisir un <strong>cas concret</strong> : un poste, une difficulté,
+          un projet de recrutement ou de maintien dans l’emploi.
+        </li>
+        <li>
+          Identifier les personnes à inviter&nbsp;: salarié, manager direct,
+          RH, médecin du travail, référent handicap, éventuellement un représentant
+          du personnel.
+        </li>
+        <li>
+          Utiliser les pages <a href="demo-accessibilite.html">Démo accessibilité</a>
+          et <a href="assistant.html">Assistant</a> comme support de travail.
+        </li>
+        <li>
+          Définir un ou deux <strong>engagements concrets</strong> à l’issue
+          de la séance (aménagement, demande d’avis externe, étape suivante).
+        </li>
+      </ol>
+      <p>
+        En moins de deux heures, l’entreprise peut déjà passer de discours
+        général à un plan d’action ciblé sur une situation réelle.
+      </p>
+    </section>
+  </main>
 
-    <div id="alert" class="card" style="border-color:#0f0;display:none;color:#0f0;">
-      ✔ Alerte conforme ARIA (visible / focus / live region)
+  <footer class="site-footer">
+    <div class="container">
+      <p>
+        &copy; <?php echo date('Y'); ?> Élan pour tous — Mini-WTD.
+        Support de présentation pour dirigeants et partenaires.
+      </p>
     </div>
-  </section>
+  </footer>
 
-  <!-- TABLEAU -->
-  <section class="card" id="table">
-    <h2>📊 Tableau accessible</h2>
-    <table>
-      <thead>
-        <tr>
-          <th scope="col">Nom</th>
-          <th scope="col">Rôle</th>
-          <th scope="col">Statut</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Patrick</td>
-          <td>Formateur</td>
-          <td>Actif</td>
-        </tr>
-        <tr>
-          <td>Tom</td>
-          <td>Assistant IA</td>
-          <td>Disponible</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
+  <?php include 'includes/chatbot-mini-wtd.html'; ?>
 
-  <!-- MODALE -->
-  <dialog id="modal" aria-labelledby="modal-title">
-    <h3 id="modal-title">Modale accessible</h3>
-    <p>Navigation clavier (Tab / Shift+Tab) + Échap pour fermer.</p>
-
-    <button class="big-btn" onclick="closeModal()">Fermer</button>
-  </dialog>
-
-</main>
-
-<footer class="container footer" style="text-align:center;color:#888;margin-top:2rem;">
-  © 2025 Mini-WTD — Mode Présentation
-</footer>
-
-<script>
-function showAlert(){
-  const alert = document.getElementById('alert');
-  alert.style.display = "block";
-  alert.focus();
-}
-
-function openModal(){
-  const modal = document.getElementById('modal');
-  modal.showModal();
-}
-
-function closeModal(){
-  const modal = document.getElementById('modal');
-  modal.close();
-}
-
-function scrollToTable(){
-  document.getElementById('table').scrollIntoView({behavior:"smooth"});
-}
-</script>
-
+  <script src="assets/js/accessibility.js"></script>
+  <script src="assets/js/miniwtd-chat.js"></script>
+  <script src="assets/js/miniwtd-webcam.js"></script>
 </body>
 </html>
