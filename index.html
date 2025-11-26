@@ -3,168 +3,292 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Mini-WTD · Accueil</title>
+  <title>Mini-WTD · Accueil — Work-Test-Demo Inclusif</title>
 
-  <meta name="description" content="Mini-WTD — démonstrateur Work-Test-Demo : tester en vrai l’inclusion, l’accessibilité et l’adaptation des postes pour les personnes en situation de handicap.">
+  <meta name="description" content="Mini-WTD — module d’évaluation inclusive et d’aménagements raisonnables pour les entreprises, RH, managers et missions handicap.">
 
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/ima/favicon-16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/ima/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="assets/ima/favicon-96.png">
-  <link rel="icon" type="image/svg+xml" href="assets/ima/favicon.svg">
+  <!-- Favicon / logo -->
+  <link rel="icon" href="assets/ima/logo-mini-wtd-256.png" type="image/png">
 
-  <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/mini-wtd-2025.css">
 </head>
 
-<body>
-  <a class="skiplink" href="#main">Aller directement au contenu principal</a>
+<body class="mwtd-shell">
+  <a href="#main" class="skiplink">Aller directement au contenu principal</a>
 
-  <?php include 'includes/nav.html'; ?>
-
-  <main id="main" class="container" tabindex="-1" role="main" aria-labelledby="page-title">
-    <header class="card card--hero" style="margin-top:1rem">
-      <div class="card__media">
-        <img src="assets/ima/logo-mini-wtd-256.png"
-             alt="Logo Mini-WTD"
-             class="brand-logo-large">
+  <!-- ===== En-tête / navigation ===== -->
+  <header class="mwtd-header" role="banner">
+    <div class="mwtd-brand">
+      <div class="mwtd-logo" aria-hidden="true">
+        <img src="assets/ima/logo-mini-wtd-256.png" alt="">
       </div>
-      <div class="card__body">
-        <h1 id="page-title">Mini-WTD — Démonstrateur d’inclusion par le test réel</h1>
-        <p>
-          Mini-WTD est une version légère du programme <strong>Work-Test-Demo</strong>.
-          L’objectif est simple&nbsp;: sortir du blabla sur l’inclusion et
-          montrer, en conditions réelles, comment une personne en situation de
-          handicap peut tenir un poste avec les bonnes adaptations.
-        </p>
-        <p>
-          Ce site est conçu pour fonctionner aussi bien en
-          <strong>intranet d’entreprise</strong> que sur une
-          <strong>clé USB autonome</strong>. Il ne fait
-          <strong>aucun diagnostic médical</strong> et ne remplace pas les
-          services officiels (MDPH, médecine du travail, etc.). Il sert à ouvrir
-          le dialogue, à observer le réel et à documenter les besoins.
-        </p>
+      <div>
+        <div class="mwtd-brand-title">Mini-WTD</div>
+        <div class="mwtd-tagline">Work-Test-Demo · Inclusion &amp; IA</div>
       </div>
-    </header>
+    </div>
 
-    <section class="grid">
-      <article class="card">
-        <h2>Comprendre le concept Mini-WTD</h2>
-        <p>
-          La page <a href="presentation.html">Présentation</a> détaille la
-          philosophie Work-Test-Demo&nbsp;: pourquoi partir d’un test réel,
-          comment impliquer les dirigeants, les équipes RH et les référents
-          handicap sans les noyer sous la théorie.
-        </p>
-        <p>
-          Vous y trouverez les objectifs, les publics visés et les différents
-          usages possibles&nbsp;: démonstration rapide, atelier d’une demi-journée,
-          journée complète de tests, ou intégration à un parcours de recrutement.
-        </p>
-        <p>
-          Mini-WTD est pensé pour être <strong>portable</strong>, <strong>hors
-          connexion</strong> et <strong>compréhensible par tous</strong>, y
-          compris des dirigeants qui n’ont ni le temps ni l’habitude de parler
-          handicap.
-        </p>
-      </article>
+    <nav aria-label="Navigation principale">
+      <div class="mwtd-row">
+        <a class="mwtd-btn mwtd-btn-ghost" href="#section-pour-qui">Pour qui&nbsp;?</a>
+        <a class="mwtd-btn mwtd-btn-ghost" href="#section-fonctionnalites">Fonctionnalités</a>
+        <a class="mwtd-btn mwtd-btn-primary" href="#section-demarrer">
+          Démarrer l’évaluation
+        </a>
+      </div>
+    </nav>
+  </header>
 
-      <article class="card">
-        <h2>Tester l’accessibilité en direct</h2>
-        <p>
-          Les pages <a href="demo-accessibilite.html">Démo accessibilité</a> et
-          <a href="demo-accessibilite-present.html">Démo accessibilité — version présentation</a>
-          vous permettent de montrer concrètement ce que signifie un site
-          accessible&nbsp;: navigation au clavier, contrastes, aides visuelles,
-          lecture vocale, etc.
-        </p>
-        <p>
-          C’est aussi un support de formation pour les équipes numériques,
-          les communicants et les prestataires web qui doivent se mettre
-          au niveau des exigences <strong>RGAA&nbsp;4.1</strong> et
-          <strong>WCAG&nbsp;2.1</strong>.
-        </p>
-      </article>
+  <!-- ===== Contenu principal ===== -->
+  <main id="main" class="mwtd-main" role="main" tabindex="-1">
 
-      <article class="card">
-        <h2>Assistant IA et module webcam</h2>
-        <p>
-          Mini-WTD intègre un <strong>assistant IA</strong> sous forme de
-          chatbot pour répondre aux questions fréquentes des dirigeants,
-          RH, référents handicap et partenaires.
-          La page <a href="assistant.html">Assistant</a> détaille son usage.
+    <!-- === Hero / introduction === -->
+    <section class="mwtd-panel mwtd-grid" aria-labelledby="hero-title">
+      <div>
+        <p class="mwtd-page-kicker">Accueil</p>
+        <h1 id="hero-title" class="mwtd-page-title">
+          Évaluer, adapter, inclure.
+        </h1>
+        <p class="mwtd-lead">
+          Mini-WTD est un module d’évaluation inclusive conçu pour aider les
+          entreprises à identifier rapidement les besoins d’aménagement
+          d’un candidat ou d’un salarié, sans procédure lourde, et dans le
+          respect du RGPD et des normes d’accessibilité.
         </p>
-        <p>
-          Un <strong>module webcam démo</strong> permet de filmer une scène
-          de travail (posture, gestes, environnement). Il sert uniquement de
-          support de discussion pour réfléchir aux adaptations possibles.
-          Il n’a pas vocation à poser des diagnostics médicaux, ni à noter
-          les personnes.
-        </p>
-      </article>
 
-      <article class="card">
-        <h2>Références RGAA et documentation</h2>
-        <p>
-          La page <a href="rgaa.html">Références RGAA</a> regroupe les principaux
-          engagements pris pour que Mini-WTD reste conforme aux règles
-          d’accessibilité numérique, dans la limite d’un démonstrateur.
-        </p>
-        <p>
-          Pour aller plus loin, consultez également les documents à la racine
-          du kit&nbsp;: le fichier
-          <a href="README.md">README.md</a> présente l’outil et
-          <a href="README_RGAA_IA.txt">README_RGAA_IA.txt</a> décrit les choix
-          d’accessibilité et les bonnes pratiques autour de l’usage de l’IA.
-        </p>
-      </article>
+        <div class="mwtd-row">
+          <a class="mwtd-btn mwtd-btn-primary" href="#section-demarrer">
+            Lancer un bilan d’aménagement
+          </a>
+          <a class="mwtd-btn mwtd-btn-ghost" href="#section-pour-qui">
+            Comprendre l’outil
+          </a>
+        </div>
+
+        <div style="margin-top:1rem;">
+          <span class="mwtd-chip mwtd-pill-info">
+            Compatible intranet &amp; clé USB · Sans installation lourde
+          </span>
+        </div>
+      </div>
+
+      <!-- Bloc aperçu chatbot -->
+      <aside class="mwtd-chat-shell" aria-label="Aperçu du chatbot Mini-WTD">
+        <div class="mwtd-chat-header">
+          <div>
+            <div class="mwtd-chat-title">Assistant IA Mini-WTD</div>
+            <div class="mwtd-chat-status">En ligne — réponses guidées</div>
+          </div>
+          <span class="mwtd-badge">IA inclusive</span>
+        </div>
+
+        <div class="mwtd-chat-messages" aria-live="polite">
+          <div class="mwtd-chat-bubble mwtd-chat-bubble--bot">
+            Bonjour, je vous aide à décrire une situation de travail et à
+            identifier les aménagements utiles pour le candidat ou le salarié.
+          </div>
+          <div class="mwtd-chat-bubble mwtd-chat-bubble--user">
+            La personne se déplace avec une canne et fatigue vite en station debout.
+          </div>
+          <div class="mwtd-chat-bubble mwtd-chat-bubble--bot">
+            Merci pour cette précision. Nous pourrons proposer&nbsp;:
+            <ul>
+              <li>Réduction des déplacements longs dans la journée,</li>
+              <li>Siège adapté ou appui ischiatique,</li>
+              <li>Place de parking réservée à proximité si possible.</li>
+            </ul>
+          </div>
+        </div>
+
+        <form class="mwtd-chat-input-row" aria-label="Champ de démonstration (non connecté)">
+          <input class="mwtd-input" type="text"
+                 placeholder="Exemple : difficulté à rester assis longtemps…" disabled>
+          <button class="mwtd-btn mwtd-btn-primary" type="button" aria-disabled="true">
+            Démo
+          </button>
+        </form>
+      </aside>
     </section>
 
-    <section class="card">
-      <h2>À qui s’adresse Mini-WTD&nbsp;?</h2>
-      <ul>
-        <li>
-          Aux <strong>dirigeants</strong> qui veulent arrêter de cocher des cases
-          et comprendre ce que signifie réellement adapter un poste.
-        </li>
-        <li>
-          Aux <strong>services RH</strong> et aux <strong>référents handicap</strong>
-          qui cherchent un support concret pour dialoguer avec les équipes et les
-          candidats.
-        </li>
-        <li>
-          Aux <strong>organismes publics et associatifs</strong> (MDPH, Cap
-          Emploi, Agefiph, Missions locales, etc.) qui souhaitent disposer
-          d’un outil pédagogique neutre et portable.
-        </li>
-        <li>
-          Aux <strong>formateurs</strong> qui construisent des modules sur
-          l’inclusion en entreprise, la prévention de la désinsertion
-          professionnelle et la prise en compte des maladies chroniques.
-        </li>
-      </ul>
+    <!-- === Pour qui ? === -->
+    <section id="section-pour-qui" class="mwtd-panel" style="margin-top:1.75rem;">
+      <header class="mwtd-card-header">
+        <div>
+          <h2 class="mwtd-card-title">À qui s’adresse Mini-WTD&nbsp;?</h2>
+          <p class="mwtd-card-subtitle">
+            Un outil conçu pour les RH, les managers, les missions handicap et les DSI.
+          </p>
+        </div>
+      </header>
+
+      <div class="mwtd-grid" style="margin-top:0.75rem;">
+        <article class="mwtd-card">
+          <h3 class="mwtd-card-title">Ressources humaines &amp; Mission handicap</h3>
+          <p class="mwtd-lead">
+            Structurer les demandes d’aménagement, gagner du temps dans
+            l’instruction des situations individuelles et disposer d’un
+            <strong>bilan clair</strong> à partager avec les partenaires
+            (médecine du travail, MDPH, Agefiph…).
+          </p>
+          <ul>
+            <li>Questionnaire guidé par type de situation.</li>
+            <li>Synthèse textuelle prête à être jointe au dossier.</li>
+            <li>Traçabilité documentée des échanges.</li>
+          </ul>
+        </article>
+
+        <article class="mwtd-card">
+          <h3 class="mwtd-card-title">Managers de proximité</h3>
+          <p class="mwtd-lead">
+            Être accompagnés pour poser les bonnes questions,
+            sans diagnostic médical, et construire un compromis réaliste
+            entre contraintes du poste et besoins de la personne.
+          </p>
+          <ul>
+            <li>Vocabulaire simple, non médical.</li>
+            <li>Exemples d’aménagements concrets.</li>
+            <li>Affichage des impacts sur l’organisation.</li>
+          </ul>
+        </article>
+
+        <article class="mwtd-card">
+          <h3 class="mwtd-card-title">DSI &amp; sécurité des systèmes</h3>
+          <p class="mwtd-lead">
+            Déployer une solution légère, auditée et maîtrisable au sein
+            de l’infrastructure de l’entreprise, sans flux sortant obligatoire.
+          </p>
+          <ul>
+            <li>HTML/CSS/JS standards, auditables.</li>
+            <li>Fonctionnement possible 100&nbsp;% hors-ligne.</li>
+            <li>Approche «&nbsp;privacy by design&nbsp;» et RGPD.</li>
+          </ul>
+        </article>
+      </div>
     </section>
+
+    <!-- === Fonctionnalités clés === -->
+    <section id="section-fonctionnalites" class="mwtd-panel" style="margin-top:1.75rem;">
+      <header class="mwtd-card-header">
+        <div>
+          <h2 class="mwtd-card-title">Fonctionnalités clés</h2>
+          <p class="mwtd-card-subtitle">
+            Un dispositif modulaire, adapté aux environnements sensibles et aux contraintes du terrain.
+          </p>
+        </div>
+      </header>
+
+      <div class="mwtd-grid" style="margin-top:0.75rem;">
+        <div class="mwtd-card">
+          <h3 class="mwtd-card-title">Évaluation guidée</h3>
+          <p class="mwtd-lead">
+            Mini-WTD propose une série de questions simples sur la mobilité,
+            la fatigue, la communication, l’environnement de travail.
+          </p>
+          <ul>
+            <li>Parcours candidat / salarié.</li>
+            <li>Parcours manager / RH.</li>
+            <li>Mise en avant des situations urgentes.</li>
+          </ul>
+        </div>
+
+        <div class="mwtd-card">
+          <h3 class="mwtd-card-title">Bilan d’aménagement</h3>
+          <p class="mwtd-lead">
+            À l’issue du questionnaire, un <strong>bilan structuré</strong>
+            est généré automatiquement&nbsp;: description de la situation,
+            pistes d’aménagement, besoins de validation médicale si nécessaire.
+          </p>
+          <ul>
+            <li>Export PDF possible.</li>
+            <li>Syntaxe claire et réutilisable.</li>
+            <li>Statuts&nbsp;: à étudier, validé, à sécuriser.</li>
+          </ul>
+        </div>
+
+        <div class="mwtd-card">
+          <h3 class="mwtd-card-title">Accessibilité &amp; IA</h3>
+          <p class="mwtd-lead">
+            L’interface est conçue pour être utilisable par des personnes
+            en situation de handicap et peut intégrer, en option, des
+            composants IA pour l’analyse ergonomique.
+          </p>
+          <ul>
+            <li>Contrastes renforcés, tailles adaptables.</li>
+            <li>Structure compatible lecteur d’écran.</li>
+            <li>IA en option, dans un cadre sécurisé.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- === Démarrer / CTA === -->
+    <section id="section-demarrer" class="mwtd-panel" style="margin-top:1.75rem;">
+      <header class="mwtd-card-header">
+        <div>
+          <h2 class="mwtd-card-title">Démarrer avec Mini-WTD</h2>
+          <p class="mwtd-card-subtitle">
+            Choisissez un parcours pour lancer un premier test dans votre organisation.
+          </p>
+        </div>
+      </header>
+
+      <div class="mwtd-grid" style="margin-top:0.75rem;">
+        <article class="mwtd-card">
+          <h3 class="mwtd-card-title">Parcours pilote</h3>
+          <p class="mwtd-lead">
+            Installation sur un site ou un service pilote, avec un échantillon
+            limité de situations accompagnées.
+          </p>
+          <ul>
+            <li>Configuration intranet ou clé USB.</li>
+            <li>Accompagnement court des équipes RH / managers.</li>
+            <li>Retour d’expérience structuré.</li>
+          </ul>
+          <a class="mwtd-btn mwtd-btn-primary" href="contact.html">
+            Contacter pour un pilote
+          </a>
+        </article>
+
+        <article class="mwtd-card">
+          <h3 class="mwtd-card-title">Intégration entreprise</h3>
+          <p class="mwtd-lead">
+            Intégration dans le système d’information, documentation
+            complète pour la DSI, accompagnement sur les aspects RGPD.
+          </p>
+          <ul>
+            <li>Déploiement multi-sites.</li>
+            <li>Adaptation aux procédures internes.</li>
+            <li>Support au démarrage.</li>
+          </ul>
+          <a class="mwtd-btn mwtd-btn-ghost" href="mailto:contact@mini-wtd.example">
+            Échanger avec la DSI
+          </a>
+        </article>
+      </div>
+    </section>
+
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>
-        &copy; <?php echo date('Y'); ?> Élan pour tous — Mini-WTD.
-        Outil de démo accessibilité et inclusion par le test.
+  <!-- ===== Pied de page ===== -->
+  <footer class="mwtd-main" role="contentinfo" style="padding-top:0;">
+    <div class="mwtd-row-between" style="border-top:1px solid rgba(255,255,255,0.06); padding-top:1rem; margin-top:1rem;">
+      <p class="mwtd-tagline">
+        © <span id="mwtd-year">2025</span> · Mini-WTD — Work-Test-Demo inclusif.
       </p>
-      <p>
-        Ce kit est fourni à titre pédagogique. Il ne remplace ni la médecine
-        du travail, ni les services de santé, ni les décisions juridiques.
-      </p>
+      <div class="mwtd-row">
+        <span class="mwtd-chip">Accessibilité pensée dès la conception</span>
+        <span class="mwtd-chip">RGPD &amp; privacy by design</span>
+      </div>
     </div>
   </footer>
 
-  <!-- Chatbot + webcam -->
-  <?php include 'includes/chatbot-mini-wtd.html'; ?>
-
-  <script src="assets/js/accessibility.js"></script>
-  <script src="assets/js/miniwtd-chat.js"></script>
-  <script src="assets/js/miniwtd-webcam.js"></script>
+  <script>
+    // Mise à jour de l’année automatiquement
+    (function () {
+      const el = document.getElementById('mwtd-year');
+      if (el) el.textContent = new Date().getFullYear();
+    })();
+  </script>
 </body>
 </html>
-
