@@ -2,139 +2,167 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mini-WTD · Démo Accessibilité</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Mini-WTD · Démo accessibilité</title>
 
-  <meta name="description" content="Démonstration pratique d’accessibilité numérique : formulaire labellisé, tableau accessible, modale ARIA, alertes conformes.">
-  <meta name="author" content="Patrick Billy">
-  <meta name="theme-color" content="#004085">
+  <meta name="description" content="Démonstration pratique de l’accessibilité numérique dans Mini-WTD : contrastes, navigation clavier, lecteur d’écran, aides visuelles et vocales.">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/ima/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/ima/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="assets/ima/favicon-96.png">
+  <link rel="icon" type="image/svg+xml" href="assets/ima/favicon.svg">
 
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
+  <a class="skiplink" href="#main">Aller directement au contenu principal</a>
 
-<a class="skiplink" href="#main">Aller directement au contenu</a>
+  <?php include 'includes/nav.html'; ?>
 
-<header class="site-header">
-  <div class="container header-inner">
-    <a href="index.html" class="brand">
-      <img src="assets/img/logo-mini-wtd.png" alt="Logo Mini-WTD" />
-    </a>
+  <main id="main" class="container" tabindex="-1" role="main" aria-labelledby="page-title">
+    <header class="card" style="margin-top:1rem">
+      <h1 id="page-title">Démo accessibilité Mini-WTD</h1>
+      <p>
+        Cette page est conçue pour montrer en situation ce que signifie un site
+        accessible. Elle ne prétend pas être parfaite, mais elle permet de
+        visualiser les principaux leviers exigés par le
+        <strong>RGAA&nbsp;4.1</strong> et les <strong>WCAG&nbsp;2.1</strong>.
+      </p>
+    </header>
 
-    <nav class="nav" aria-label="Menu principal">
-      <a href="presentation.html">Présentation</a>
-      <a href="demo-accessibilite.html" aria-current="page">Démo accessibilité</a>
-      <a href="demo-accessibilite-present.html">Mode Présentation</a>
-      <a href="rgaa.html">Audit RGAA</a>
-      <a href="assistant.html">Assistant IA</a>
-    </nav>
-  </div>
-</header>
+    <section class="card">
+      <h2>Éléments testables en direct</h2>
+      <table class="table">
+        <caption>Checklist de démo accessibilité pour Mini-WTD</caption>
+        <thead>
+          <tr>
+            <th scope="col">Point testé</th>
+            <th scope="col">Comment le vérifier</th>
+            <th scope="col">Objectif pédagogique</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Navigation au clavier</td>
+            <td>
+              Utiliser la touche <kbd>Tab</kbd> pour parcourir les liens et
+              boutons. Vérifier la présence de la <strong>skiplink</strong>
+              en haut de page.
+            </td>
+            <td>
+              Montrer qu’une personne qui ne peut pas utiliser la souris
+              peut malgré tout consulter le contenu.
+            </td>
+          </tr>
+          <tr>
+            <td>Contrastes de couleur</td>
+            <td>
+              Activer le mode contraste renforcé via le bouton d’accessibilité
+              (si présent dans votre version) ou utiliser un simulateur externe.
+            </td>
+            <td>
+              Expliquer la notion de contraste suffisant et l’impact sur les
+              personnes malvoyantes ou fatiguées.
+            </td>
+          </tr>
+          <tr>
+            <td>Structure des titres</td>
+            <td>
+              Avec un lecteur d’écran ou les outils de développement, vérifier
+              la hiérarchie des balises <code>&lt;h1&gt;</code> à
+              <code>&lt;h3&gt;</code>.
+            </td>
+            <td>
+              Illustrer la différence entre un texte “joli” et un texte
+              correctement structuré pour la lecture vocale.
+            </td>
+          </tr>
+          <tr>
+            <td>Alternatives textuelles</td>
+            <td>
+              Repérer les images significatives et vérifier qu’elles disposent
+              d’un attribut <code>alt</code> explicite.
+            </td>
+            <td>
+              Comprendre qu’une image sans texte alternatif est
+              invisible pour certains utilisateurs.
+            </td>
+          </tr>
+          <tr>
+            <td>Formulaires accessibles</td>
+            <td>
+              Tester des champs de formulaire (par exemple dans
+              <a href="assistant.html">Assistant</a> ou dans la page
+              <a href="demo-accessibilite-present.html">présentation</a>)
+              et vérifier la présence de labels associés.
+            </td>
+            <td>
+              Montrer qu’un formulaire accessible profite à tout le monde,
+              y compris sur smartphone.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
 
-<main id="main" class="container" tabindex="-1">
+    <section class="card">
+      <h2>Utiliser cette page en atelier</h2>
+      <ol>
+        <li>
+          Choisir deux ou trois scénarios de navigation typiques
+          (exemple&nbsp;: candidat malvoyant, RH pressé, développeur web).
+        </li>
+        <li>
+          Demander à chaque participant de parcourir la page en jouant un rôle,
+          puis de noter ce qui fonctionne bien et ce qui bloque.
+        </li>
+        <li>
+          Confronter les points de vue&nbsp;: ce qui paraît évident pour l’un
+          ne l’est pas pour l’autre.
+        </li>
+        <li>
+          Identifier les améliorations prioritaires et les relier à des actions
+          concrètes (contrats de maintenance, consignes aux prestataires, etc.).
+        </li>
+      </ol>
+      <p>
+        Le chatbot Mini-WTD peut être utilisé pour répondre aux questions
+        techniques ou pour reformuler les arguments à destination de la
+        direction et des décideurs.
+      </p>
+    </section>
 
-  <h1>🎨 Démo d’accessibilité</h1>
-  <p class="muted">Exemples concrets : champs labellisés, tableau structuré, modale accessible, alertes ARIA. Tout ce qu’un formateur doit montrer en vrai.</p>
+    <section class="card">
+      <h2>Aller plus loin</h2>
+      <p>
+        Pour une analyse détaillée de la conformité, reportez-vous à la page
+        <a href="rgaa.html">Références RGAA</a> ainsi qu’au document
+        <a href="README_RGAA_IA.txt">README_RGAA_IA.txt</a> fourni avec
+        le kit.
+      </p>
+      <p>
+        Mini-WTD n’a pas vocation à se substituer à un audit complet, mais à
+        rendre visible les bases indispensables d’un service numérique
+        accessible.
+      </p>
+    </section>
+  </main>
 
-  <!-- 1. FORMULAIRE ACCESSIBLE -->
-  <section class="card" style="margin-top:1rem">
-    <h2>📑 Formulaire accessible</h2>
-
-    <form aria-describedby="form-desc">
-      <p id="form-desc" class="muted">Tous les champs sont associés à un label. Navigation clavier complète.</p>
-
-      <div class="form-group">
-        <label for="nom">Nom</label>
-        <input id="nom" name="nom" type="text" required>
-      </div>
-
-      <div class="form-group">
-        <label for="email">Adresse e-mail</label>
-        <input id="email" name="email" type="email" required>
-      </div>
-
-      <div class="form-group">
-        <label for="msg">Message</label>
-        <textarea id="msg" name="msg" rows="4"></textarea>
-      </div>
-
-      <button type="button" class="btn btn--primary" onclick="showAlert()">Afficher une alerte ARIA</button>
-    </form>
-
-    <div id="alert" class="alert" role="alert" aria-live="assertive" hidden>
-      ✔ Exemple d’alerte conforme (ARIA + focus + visibilité).
+  <footer class="site-footer">
+    <div class="container">
+      <p>
+        &copy; <?php echo date('Y'); ?> Élan pour tous — Mini-WTD.
+        Démonstrateur d’accessibilité numérique.
+      </p>
     </div>
-  </section>
+  </footer>
 
-  <!-- 2. TABLEAU ACCESSIBLE -->
-  <section class="card" style="margin-top:1rem">
-    <h2>📊 Tableau accessible</h2>
+  <?php include 'includes/chatbot-mini-wtd.html'; ?>
 
-    <table>
-      <caption class="muted">Exemple de tableau avec en-têtes sémantiques.</caption>
-      <thead>
-        <tr>
-          <th scope="col">Nom</th>
-          <th scope="col">Rôle</th>
-          <th scope="col">Statut</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Patrick</td>
-          <td>Formateur</td>
-          <td>Actif</td>
-        </tr>
-        <tr>
-          <td>Tom (IA)</td>
-          <td>Assistant</td>
-          <td>Disponible</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <!-- 3. MODALE ACCESSIBLE -->
-  <section class="card" style="margin-top:1rem">
-    <h2>🔒 Modale accessible</h2>
-
-    <button class="btn" onclick="openModal()">Afficher la modale</button>
-
-    <dialog id="modal" aria-labelledby="modal-title">
-      <h3 id="modal-title">Exemple de modale conforme</h3>
-      <p>Navigation clavier, Échap, focus piégé : la base RGAA.</p>
-
-      <div class="modal-actions">
-        <button class="btn btn--primary" onclick="closeModal()">Fermer</button>
-      </div>
-    </dialog>
-  </section>
-
-</main>
-
-<footer class="container footer">
-  <small>© 2025 Mini-WTD — Work-Test-Demo</small>
-</footer>
-
-<script>
-function showAlert(){
-  const alert = document.getElementById('alert');
-  alert.hidden = false;
-  alert.focus();
-}
-
-function openModal(){
-  const modal = document.getElementById('modal');
-  modal.showModal();
-}
-
-function closeModal(){
-  const modal = document.getElementById('modal');
-  modal.close();
-}
-</script>
-
+  <script src="assets/js/accessibility.js"></script>
+  <script src="assets/js/miniwtd-chat.js"></script>
+  <script src="assets/js/miniwtd-webcam.js"></script>
 </body>
 </html>
