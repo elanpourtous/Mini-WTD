@@ -3,166 +3,131 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Mini-WTD · Démo accessibilité</title>
+  <title>Mini-WTD · Démo accessibilité détaillée</title>
 
-  <meta name="description" content="Démonstration pratique de l’accessibilité numérique dans Mini-WTD : contrastes, navigation clavier, lecteur d’écran, aides visuelles et vocales.">
+  <meta name="description"
+        content="Démonstration détaillée des options d’accessibilité de Mini-WTD et de l’adaptation de l’interface aux besoins des utilisateurs.">
 
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/ima/favicon-16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/ima/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="assets/ima/favicon-96.png">
-  <link rel="icon" type="image/svg+xml" href="assets/ima/favicon.svg">
-
-  <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" type="image/png" href="assets/ima/logo-mini-wtd-256.png">
+  <link rel="stylesheet" href="assets/css/mini-wtd-2025.css">
 </head>
 
-<body>
+<body class="mwtd-shell">
   <a class="skiplink" href="#main">Aller directement au contenu principal</a>
 
   <?php include 'includes/nav.html'; ?>
 
-  <main id="main" class="container" tabindex="-1" role="main" aria-labelledby="page-title">
-    <header class="card" style="margin-top:1rem">
-      <h1 id="page-title">Démo accessibilité Mini-WTD</h1>
-      <p>
-        Cette page est conçue pour montrer en situation ce que signifie un site
-        accessible. Elle ne prétend pas être parfaite, mais elle permet de
-        visualiser les principaux leviers exigés par le
-        <strong>RGAA&nbsp;4.1</strong> et les <strong>WCAG&nbsp;2.1</strong>.
+  <main id="main" class="mwtd-main" tabindex="-1" role="main">
+
+    <section class="mwtd-panel" aria-labelledby="page-title">
+      <p class="mwtd-page-kicker">Démonstration</p>
+      <h1 id="page-title" class="mwtd-page-title">Démo accessibilité détaillée</h1>
+      <p class="mwtd-lead">
+        Cette page montre comment Mini-WTD ajuste l’affichage pour des personnes
+        ayant des besoins visuels, moteurs ou cognitifs spécifiques.
       </p>
-    </header>
 
-    <section class="card">
-      <h2>Éléments testables en direct</h2>
-      <table class="table">
-        <caption>Checklist de démo accessibilité pour Mini-WTD</caption>
-        <thead>
-          <tr>
-            <th scope="col">Point testé</th>
-            <th scope="col">Comment le vérifier</th>
-            <th scope="col">Objectif pédagogique</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Navigation au clavier</td>
-            <td>
-              Utiliser la touche <kbd>Tab</kbd> pour parcourir les liens et
-              boutons. Vérifier la présence de la <strong>skiplink</strong>
-              en haut de page.
-            </td>
-            <td>
-              Montrer qu’une personne qui ne peut pas utiliser la souris
-              peut malgré tout consulter le contenu.
-            </td>
-          </tr>
-          <tr>
-            <td>Contrastes de couleur</td>
-            <td>
-              Activer le mode contraste renforcé via le bouton d’accessibilité
-              (si présent dans votre version) ou utiliser un simulateur externe.
-            </td>
-            <td>
-              Expliquer la notion de contraste suffisant et l’impact sur les
-              personnes malvoyantes ou fatiguées.
-            </td>
-          </tr>
-          <tr>
-            <td>Structure des titres</td>
-            <td>
-              Avec un lecteur d’écran ou les outils de développement, vérifier
-              la hiérarchie des balises <code>&lt;h1&gt;</code> à
-              <code>&lt;h3&gt;</code>.
-            </td>
-            <td>
-              Illustrer la différence entre un texte “joli” et un texte
-              correctement structuré pour la lecture vocale.
-            </td>
-          </tr>
-          <tr>
-            <td>Alternatives textuelles</td>
-            <td>
-              Repérer les images significatives et vérifier qu’elles disposent
-              d’un attribut <code>alt</code> explicite.
-            </td>
-            <td>
-              Comprendre qu’une image sans texte alternatif est
-              invisible pour certains utilisateurs.
-            </td>
-          </tr>
-          <tr>
-            <td>Formulaires accessibles</td>
-            <td>
-              Tester des champs de formulaire (par exemple dans
-              <a href="assistant.html">Assistant</a> ou dans la page
-              <a href="demo-accessibilite-present.html">présentation</a>)
-              et vérifier la présence de labels associés.
-            </td>
-            <td>
-              Montrer qu’un formulaire accessible profite à tout le monde,
-              y compris sur smartphone.
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <section class="card">
-      <h2>Utiliser cette page en atelier</h2>
-      <ol>
-        <li>
-          Choisir deux ou trois scénarios de navigation typiques
-          (exemple&nbsp;: candidat malvoyant, RH pressé, développeur web).
-        </li>
-        <li>
-          Demander à chaque participant de parcourir la page en jouant un rôle,
-          puis de noter ce qui fonctionne bien et ce qui bloque.
-        </li>
-        <li>
-          Confronter les points de vue&nbsp;: ce qui paraît évident pour l’un
-          ne l’est pas pour l’autre.
-        </li>
-        <li>
-          Identifier les améliorations prioritaires et les relier à des actions
-          concrètes (contrats de maintenance, consignes aux prestataires, etc.).
-        </li>
-      </ol>
-      <p>
-        Le chatbot Mini-WTD peut être utilisé pour répondre aux questions
-        techniques ou pour reformuler les arguments à destination de la
-        direction et des décideurs.
+      <div class="mwtd-row" style="margin-top:1rem;">
+        <button class="mwtd-btn mwtd-btn-primary" type="button" data-action="font+">
+          A+ Agrandir le texte
+        </button>
+        <button class="mwtd-btn mwtd-btn-ghost" type="button" data-action="font-">
+          A− Réduire le texte
+        </button>
+        <button class="mwtd-btn mwtd-btn-ghost" type="button" data-action="contrast">
+          Contraste renforcé
+        </button>
+        <button class="mwtd-btn mwtd-btn-ghost" type="button" data-action="spacing">
+          Espacement augmenté
+        </button>
+      </div>
+      <p class="mwtd-tagline" style="margin-top:.75rem;">
+        Ces contrôles utilisent <code>accessibility.js</code> pour mémoriser les préférences.
       </p>
     </section>
 
-    <section class="card">
-      <h2>Aller plus loin</h2>
-      <p>
-        Pour une analyse détaillée de la conformité, reportez-vous à la page
-        <a href="rgaa.html">Références RGAA</a> ainsi qu’au document
-        <a href="README_RGAA_IA.txt">README_RGAA_IA.txt</a> fourni avec
-        le kit.
+    <section class="mwtd-panel" style="margin-top:1.5rem;">
+      <h2 class="mwtd-card-title">Exemple de texte long</h2>
+      <p class="mwtd-lead">
+        Mini-WTD est pensé pour des personnes qui n’ont pas toujours la force de
+        naviguer dans des interfaces compliquées. L’accessibilité n’est pas un
+        “plus”, c’est une condition d’entrée&nbsp;: contraste lisible, taille
+        de police ajustable, espacement généreux, navigation clavier, structure
+        claire pour les lecteurs d’écran.
       </p>
+
       <p>
-        Mini-WTD n’a pas vocation à se substituer à un audit complet, mais à
-        rendre visible les bases indispensables d’un service numérique
-        accessible.
+        En activant le <strong>contraste renforcé</strong>, la palette devient
+        beaucoup plus tranchée, ce qui aide les personnes malvoyantes. L’option
+        <strong>espacement augmenté</strong> ajoute de l’air entre les lignes
+        et les paragraphes pour réduire la fatigue de lecture.
       </p>
+
+      <p>
+        Ces paramètres peuvent être testés en atelier avec des personnes
+        concernées, pour leur demander directement ce qui fonctionne ou non.
+        Mini-WTD devient alors un outil de dialogue&nbsp;: on ne parle pas
+        dans le vide, on ajuste en direct.
+      </p>
+    </section>
+
+    <section class="mwtd-panel" style="margin-top:1.5rem;">
+      <h2 class="mwtd-card-title">Simulation de profils utilisateurs</h2>
+
+      <div class="mwtd-grid" style="margin-top:.75rem;">
+        <article class="mwtd-card">
+          <h3 class="mwtd-card-title">Profil 1 · Malvoyance légère</h3>
+          <p class="mwtd-lead">
+            La personne peut lire un écran, mais a besoin d’un contraste fort et
+            d’un texte plus grand, surtout en fin de journée.
+          </p>
+          <ul>
+            <li>Activer contraste renforcé.</li>
+            <li>Augmenter la taille du texte.</li>
+            <li>Limiter les blocs de texte trop compacts.</li>
+          </ul>
+        </article>
+
+        <article class="mwtd-card">
+          <h3 class="mwtd-card-title">Profil 2 · Fatigue cognitive</h3>
+          <p class="mwtd-lead">
+            La personne lit plus lentement et se fatigue vite lorsqu’il y a trop
+            d’informations en même temps.
+          </p>
+          <ul>
+            <li>Ajouter de l’espacement.</li>
+            <li>Segmenter en sections courtes.</li>
+            <li>Utiliser des listes plutôt que des pavés.</li>
+          </ul>
+        </article>
+
+        <article class="mwtd-card">
+          <h3 class="mwtd-card-title">Profil 3 · Utilisation clavier</h3>
+          <p class="mwtd-lead">
+            La personne se déplace surtout au clavier. Les liens d’évitement,
+            l’ordre de tabulation et le focus visible sont essentiels.
+          </p>
+          <ul>
+            <li>Tester les liens d’évitement.</li>
+            <li>Vérifier que tous les boutons sont accessibles.</li>
+            <li>Contrôler le focus visuel.</li>
+          </ul>
+        </article>
+      </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>
-        &copy; <?php echo date('Y'); ?> Élan pour tous — Mini-WTD.
-        Démonstrateur d’accessibilité numérique.
+  <footer class="mwtd-main" role="contentinfo" style="padding-top:0;">
+    <div class="mwtd-row-between" style="border-top:1px solid rgba(255,255,255,0.06); padding-top:1rem; margin-top:1rem;">
+      <p class="mwtd-tagline">
+        © <?php echo date('Y'); ?> — Mini-WTD · Démo accessibilité.
       </p>
+      <span class="mwtd-chip">Accessibilité testable en direct</span>
     </div>
   </footer>
 
   <?php include 'includes/chatbot-mini-wtd.html'; ?>
 
   <script src="assets/js/accessibility.js"></script>
-  <script src="assets/js/miniwtd-chat.js"></script>
-  <script src="assets/js/miniwtd-webcam.js"></script>
 </body>
 </html>
