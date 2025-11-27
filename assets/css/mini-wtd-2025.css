@@ -472,3 +472,138 @@ img {
   background: rgba(69,176,255,0.1);
   color: var(--mwtd-info);
 }
+/* =========================================
+   Complément RGAA 2025 · Mini-WTD
+   - Focus visibles
+   - Mode contraste élevé (déjà branché via .high-contrast)
+   - Espacement augmenté (.large-spacing)
+   - Contenu masqué pour lecteurs d’écran
+   - Réduction des animations
+   ========================================= */
+
+/* 1) Focus visibles et navigation clavier */
+
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--mwtd-accent);
+  outline-offset: 2px;
+}
+
+/* On enlève les outlines moches par défaut */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+}
+
+/* 2) Texte caché mais lisible par les lecteurs d’écran */
+
+.sr-only,
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Variante : redevient visible au focus si besoin */
+.sr-only-focusable:focus,
+.sr-only-focusable:active {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  clip: auto !important;
+  white-space: normal !important;
+}
+
+/* 3) Espacement augmenté (.large-spacing sur <html>) */
+
+.large-spacing body,
+.large-spacing p,
+.large-spacing li,
+.large-spacing dt,
+.large-spacing dd {
+  line-height: 1.8;
+}
+
+.large-spacing p,
+.large-spacing li {
+  margin-bottom: 0.8rem;
+}
+
+.large-spacing .mwtd-panel,
+.large-spacing .mwtd-card {
+  padding-top: 1.9rem;
+  padding-bottom: 1.9rem;
+}
+
+/* 4) Renfort contraste en mode .high-contrast (tu utilises déjà les variables) */
+
+.high-contrast body {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.high-contrast .mwtd-panel,
+.high-contrast .mwtd-card,
+.high-contrast .mwtd-chat-shell {
+  background: #000000;
+  border-color: #ffffff;
+  box-shadow: none;
+}
+
+.high-contrast .mwtd-btn,
+.high-contrast .mwtd-btn-primary,
+.high-contrast .mwtd-btn-ghost {
+  background: #000000;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  box-shadow: none;
+}
+
+.high-contrast .mwtd-chip,
+.high-contrast .mwtd-badge {
+  background: #000000;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+}
+
+/* 5) Réduction des animations (préférence OS) */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* 6) Tableaux plus lisibles */
+
+table {
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+th {
+  text-align: left;
+}
