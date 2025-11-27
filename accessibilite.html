@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Mini-WTD · Accessibilité</title>
+
+  <meta name="description" content="Informations officielles sur l’accessibilité numérique du module Mini-WTD, conforme aux bonnes pratiques RGAA 2025, avec réglages de confort et navigation inclusive.">
+
+  <link rel="icon" href="assets/ima/logo-mini-wtd-256.png" type="image/png">
+  <link rel="stylesheet" href="assets/css/mini-wtd-2025.css">
+  <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
+</head>
+
+<body class="mwtd-shell">
+  <a href="#main" class="skiplink">Aller directement au contenu</a>
+
+  <!-- Header partagé -->
+  <?php include 'includes/nav.html'; ?>
+
+  <main id="main" class="mwtd-main" role="main" tabindex="-1">
+
+    <!-- ===== HERO ===== -->
+    <section class="mwtd-panel" aria-labelledby="title-access">
+      <p class="mwtd-page-kicker">Information</p>
+      <h1 id="title-access" class="mwtd-page-title">Accessibilité numérique</h1>
+
+      <p class="mwtd-lead">
+        Mini-WTD est conçu pour être utilisé par toutes les personnes, y compris celles
+        ayant des besoins visuels, moteurs, cognitifs ou liés à la fatigue.
+        Cette page détaille les engagements, règles et réglages intégrés dans le module.
+      </p>
+
+      <div class="mwtd-row" style="margin-top:0.75rem;">
+        <button class="mwtd-btn mwtd-btn-ghost" data-action="font+">A+ Agrandir le texte</button>
+        <button class="mwtd-btn mwtd-btn-ghost" data-action="font-">A− Réduire le texte</button>
+        <button class="mwtd-btn mwtd-btn-ghost" data-action="contrast">Contraste renforcé</button>
+        <button class="mwtd-btn mwtd-btn-ghost" data-action="spacing">Espacement augmenté</button>
+      </div>
+    </section>
+
+    <!-- ===== RÉGLAGES ===== -->
+    <section class="mwtd-panel" style="margin-top:1.75rem;">
+      <h2 class="mwtd-card-title">Réglages d’accessibilité disponibles</h2>
+
+      <ul class="mwtd-lead">
+        <li><strong>Agrandissement du texte</strong> (A+) jusqu’à +80%.</li>
+        <li><strong>Réduction du texte</strong> lisible pour petits écrans.</li>
+        <li><strong>Contraste renforcé</strong> (mode noir + blanc haute lisibilité).</li>
+        <li><strong>Espacement augmenté</strong> pour réduire la fatigue visuelle.</li>
+        <li><strong>Préférence OS “réduction des animations” respectée</strong>.</li>
+        <li><strong>Navigation clavier complète</strong> (focus visible renforcé).</li>
+        <li><strong>Compatibilité lecteur d’écran</strong> (structure claire H1-H2-H3, aria-labels).</li>
+      </ul>
+
+      <p class="mwtd-lead">
+        Les réglages sont mémorisés automatiquement dans votre navigateur (localStorage).
+      </p>
+    </section>
+
+    <!-- ===== ENGAGEMENT ===== -->
+    <section class="mwtd-panel" style="margin-top:1.75rem;">
+      <h2 class="mwtd-card-title">Engagements du projet Mini-WTD</h2>
+
+      <p class="mwtd-lead">
+        L’accessibilité n’est pas une option dans Mini-WTD : c’est une exigence
+        intégrée dès la conception. Chaque fonctionnalité est pensée pour rester
+        utilisable dans des conditions réelles d’entreprise, y compris en contexte
+        de fatigue, de stress ou d’environnement peu adapté.
+      </p>
+
+      <ul class="mwtd-lead">
+        <li>Structure logique des pages (titres, navigation, zones ARIA).</li>
+        <li>Textes en langage clair, sans jargon médical obligatoire.</li>
+        <li>Absence d’éléments clignotants ou agressifs.</li>
+        <li>Compatibilité hors-ligne (clé USB / intranet interne).</li>
+        <li>Interface testée avec des profils variés (vision, cognition, mobilité).</li>
+      </ul>
+    </section>
+
+    <!-- ===== RGAA ===== -->
+    <section class="mwtd-panel" style="margin-top:1.75rem;">
+      <h2 class="mwtd-card-title">Conformité RGAA</h2>
+
+      <p class="mwtd-lead">
+        Mini-WTD s’appuie sur les bonnes pratiques du <strong>RGAA 4.1</strong>
+        (Référentiel Général d’Amélioration de l’Accessibilité) appliquées aux
+        interfaces web et intranet.
+      </p>
+
+      <ul class="mwtd-lead">
+        <li><strong>Alternatives textuelles</strong> présentes ou déclarées.</li>
+        <li><strong>Couleurs vérifiées</strong> pour un contraste suffisant.</li>
+        <li><strong>Clavier utilisable</strong> sur tous les composants interactifs.</li>
+        <li><strong>Langue indiquée</strong> dans chaque document HTML.</li>
+        <li><strong>Liens explicites</strong> — jamais “cliquez ici”.</li>
+        <li><strong>Structure logique</strong> et respect des niveaux de titres.</li>
+        <li><strong>Aucune information transmise uniquement par la couleur</strong>.</li>
+      </ul>
+
+      <p class="mwtd-lead">
+        Une mise en conformité complète peut être réalisée sur demande pour les
+        déploiements institutionnels ou multi-sites.
+      </p>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="mwtd-panel" style="margin-top:1.75rem;">
+      <h2 class="mwtd-card-title">Signaler un problème d’accessibilité</h2>
+
+      <p class="mwtd-lead">
+        Malgré le soin apporté à la conception, si vous rencontrez un problème
+        d’accessibilité ou si une fonctionnalité ne vous paraît pas adaptée à
+        votre situation, vous pouvez nous contacter :
+      </p>
+
+      <p class="mwtd-lead">
+        📧 <strong>elanpourtous49@gmail.com</strong><br>
+        📱 <strong>07 83 33 67 57</strong>
+      </p>
+
+      <p class="mwtd-lead">
+        Une réponse vous sera apportée dans les meilleurs délais.
+      </p>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="mwtd-main" role="contentinfo" style="padding-top:0;">
+    <div class="mwtd-row-between" style="border-top:1px solid rgba(255,255,255,0.06); padding-top:1rem;">
+      <p class="mwtd-tagline">
+        © <span id="mwtd-year">2025</span> · Mini-WTD — Accessibilité intégrée.
+      </p>
+      <span class="mwtd-chip">RGAA · Conception inclusive</span>
+    </div>
+  </footer>
+
+  <script src="assets/js/accessibility.js"></script>
+  <script>
+    document.getElementById("mwtd-year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
