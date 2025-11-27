@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Mini-WTD · Analyse posture & environnement</title>
+
+  <meta name="description"
+        content="Module expérimental d’analyse de posture et d’environnement de travail, dans un cadre éthique et respectueux du RGPD.">
+
+  <link rel="icon" type="image/png" href="assets/ima/logo-mini-wtd-256.png">
+  <link rel="stylesheet" href="assets/css/mini-wtd-2025.css">
+</head>
+
+<body class="mwtd-shell">
+  <a class="skiplink" href="#main">Aller directement au contenu principal</a>
+
+  <?php include 'includes/nav.html'; ?>
+
+  <main id="main" class="mwtd-main" tabindex="-1" role="main">
+
+    <section class="mwtd-panel mwtd-grid" aria-labelledby="page-title">
+      <div>
+        <p class="mwtd-page-kicker">Module expérimental</p>
+        <h1 id="page-title" class="mwtd-page-title">Analyse posture &amp; environnement</h1>
+        <p class="mwtd-lead">
+          Ce module est une <strong>preuve de concept</strong> permettant de
+          visualiser la posture générale et certains éléments de l’environnement
+          (distance à l’écran, éclairage approximatif, espace disponible),
+          sans aucun diagnostic médical.
+        </p>
+        <p class="mwtd-lead">
+          Il doit être utilisé uniquement après information et consentement
+          des personnes concernées, dans un cadre strictement professionnel et
+          documenté.
+        </p>
+
+        <div style="margin-top:1rem;">
+          <span class="mwtd-chip mwtd-pill-warning">Expérimental</span>
+          <span class="mwtd-chip mwtd-pill-info">Aucun stockage automatique</span>
+        </div>
+      </div>
+
+      <aside class="mwtd-card" aria-label="Zone de capture vidéo">
+        <h2 class="mwtd-card-title">Aperçu caméra (locale)</h2>
+        <p class="mwtd-card-subtitle">
+          Le flux reste local sur l’ordinateur. Aucune image n’est envoyée
+          à un serveur sans accord explicite.
+        </p>
+
+        <div style="margin-top:.75rem;">
+          <video id="mwtd-webcam" width="100%" autoplay playsinline muted
+                 style="border-radius:.75rem; border:1px solid rgba(255,255,255,0.18); background:#000;"></video>
+        </div>
+
+        <div class="mwtd-row" style="margin-top:.75rem;">
+          <button id="mwtd-webcam-start" class="mwtd-btn mwtd-btn-primary" type="button">
+            Activer la caméra
+          </button>
+          <button id="mwtd-webcam-stop" class="mwtd-btn mwtd-btn-ghost" type="button">
+            Arrêter
+          </button>
+        </div>
+
+        <p id="mwtd-webcam-status" class="mwtd-tagline" style="margin-top:.5rem;">
+          La caméra est désactivée.
+        </p>
+      </aside>
+    </section>
+
+    <section class="mwtd-panel" style="margin-top:1.5rem;">
+      <h2 class="mwtd-card-title">Lecture ergonomique simplifiée</h2>
+      <p class="mwtd-lead">
+        L’objectif n’est pas de « juger » une personne, mais de créer un support
+        visuel pour discuter&nbsp;:
+      </p>
+      <ul>
+        <li>de la distance à l’écran ou au plan de travail&nbsp;;</li>
+        <li>de la place disponible pour les aides techniques&nbsp;;</li>
+        <li>de la lumière (trop forte, contre-jour, reflet)&nbsp;;</li>
+        <li>de la posture globale (assise debout, torsions visibles).</li>
+      </ul>
+      <p class="mwtd-lead">
+        Toute interprétation fine (pathologies, troubles) relève de la
+        médecine du travail ou de spécialistes, pas de Mini-WTD.
+      </p>
+    </section>
+  </main>
+
+  <footer class="mwtd-main" role="contentinfo" style="padding-top:0;">
+    <div class="mwtd-row-between" style="border-top:1px solid rgba(255,255,255,0.06); padding-top:1rem; margin-top:1rem;">
+      <p class="mwtd-tagline">
+        © <?php echo date('Y'); ?> — Mini-WTD · Module expérimental posture &amp; environnement.
+      </p>
+      <span class="mwtd-chip">Preuve de concept · à encadrer juridiquement</span>
+    </div>
+  </footer>
+
+  <?php include 'includes/chatbot-mini-wtd.html'; ?>
+
+  <script src="assets/js/miniwtd-webcam.js"></script>
+</body>
+</html>
