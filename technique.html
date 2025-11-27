@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Mini-WTD · Notice technique DSI</title>
+
+  <meta name="description" content="Guide technique officiel pour les DSI et services informatiques : installation, sécurité, compatibilité, offline, intranet, navigateurs supportés et architecture du module Mini-WTD 2025.">
+
+  <link rel="icon" href="assets/ima/logo-mini-wtd-256.png" type="image/png">
+  <link rel="stylesheet" href="assets/css/mini-wtd-2025.css">
+  <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
+</head>
+
+<body class="mwtd-shell">
+  <a href="#main" class="skiplink">Aller directement au contenu</a>
+
+  <?php include 'includes/nav.html'; ?>
+
+  <main id="main" class="mwtd-main" role="main" tabindex="-1">
+
+    <!-- HERO -->
+    <section class="mwtd-panel" aria-labelledby="title-tech">
+      <p class="mwtd-page-kicker">Documentation</p>
+      <h1 id="title-tech" class="mwtd-page-title">Notice technique DSI</h1>
+
+      <p class="mwtd-lead">
+        Ce document fournit les informations nécessaires pour intégrer Mini-WTD
+        dans un environnement informatique : intranet d’entreprise, serveur interne,
+        clé USB ou poste isolé.  
+        Mini-WTD est conçu pour être <strong>léger, auditif, offline et sans installation.</strong>
+      </p>
+    </section>
+
+    <!-- ARCHITECTURE -->
+    <section class="mwtd-panel" style="margin-top:1.75rem;">
+      <h2 class="mwtd-card-title">Architecture du module</h2>
+
+      <p class="mwtd-lead">
+        Mini-WTD est intégralement basé sur des technologies web statiques auditables :
+      </p>
+
+      <ul class="mwtd-lead">
+        <li>HTML5 (pages statiques)</li>
+        <li>CSS3 (charte graphique Mini-WTD 2025 + RGAA)</li>
+        <li>JavaScript pur (modules locaux uniquement)</li>
+      </ul>
+
+      <p class="mwtd-lead">
+        Aucun backend, aucune base de données, aucun serveur distant.
+        Le module est <strong>100 % autonome</strong>.
+      </p>
+    </section>
+
+    <!-- OFFLINE -->
+    <section class="mwtd-panel" style="margin-top:1.75rem;">
+      <h2 class="mwtd-card-title">Fonctionnement hors-ligne</h2>
+
+      <p class="mwtd-lead">
+        Mini-WTD fonctionne entièrement <strong>offline</strong>.
+        Cela garantit : confidentialité, contrôle total des données, usage en salles sensibles.
+      </p>
+
+      <ul class="mwtd-lead">
+        <li>Compatible clé USB</li>
+        <li>Compatible postes isolés sans accès Internet</li>
+        <li>Ne nécessite aucune installation de logiciel</li>
+        <li>Fonctionne sur navigateur standard (HTML/CSS/JS)</li>
+      </ul>
+
+      <p class="mwtd-lead">
+        Toutes les fonctionnalités — évaluation, génération de bilan, réglages d’accessibilité —
+        restent actives sans réseau.
+      </p>
+    </section>
+
+    <!-- INTRANET -->
+    <section class="mwtd-panel" style="margin-top:1.75rem;">
+      <h2 class="mwtd-card-title">Installation en intranet d’entreprise</h2>
+
+      <p class="mwtd-lead">
+        Pour un déploiement sur intranet :
+      </p>
+
+      <ol class="mwtd-lead">
+        <li>Copier le dossier <strong>mini-wtd-2025/</strong> dans un répertoire interne<br>
+          Exemple : <code>/var/www/intranet/mini-wtd/</code>
+        </li>
+        <li>Donner un accès lecture seule aux utilisateurs</li>
+        <li>Fournir l’URL interne :
+          <br><code>https://intranet/mini-wtd/index.html</code>
+        </li>
+      </ol>
+
+      <p class="mwtd-lead">
+        Aucun serveur applicatif nécessaire. Fonctionne sur Apache, Nginx, IIS ou fichier local.
+      </p>
+    </section>
+
+    <!-- SÉCURITÉ -->
+    <section class="mwtd-panel" style="margin-top:1.75rem;">
+      <h2 class="mwtd-card-title">Sécurité & confidentialité</h2>
+
+      <p class="mwtd-lead">
+        Mini-WTD est conçu selon les principes <strong>Privacy by Design</strong> et
+        <strong>Security by Design</strong>.
+      </p>
+
+      <ul class="mwtd-lead">
+        <li><strong>Aucune donnée envoyée en ligne</strong> (sauf si l’entreprise décide d’intégrer une API interne).</li>
+        <li><strong>Pas de cookie</strong> autre que le localStorage des réglages d’accessibilité.</li>
+        <li><strong>Pas de tracking</strong> ni d’analytics.</li>
+        <li><strong>Pas d’enregistrement automatique</strong> du bilan ou des réponses.</li>
+      </ul>
+
+      <h3 class="mwtd-card-title" style="margin-top:1rem;">Sécurité de la webcam</h3>
+
+      <ul class="mwtd-lead">
+        <li>Flux local uniquement — aucune transmission réseau.</li>
+        <li>Pas de stockage automatique des images.</li>
+        <li>Aucune reconnaissance faciale, jamais.</li>
+        <li>Activation uniquement sur action volontaire.</li>
+      </ul>
+    </section>
+
+    <!-- NAVIGATEURS SUPPORTÉS -->
+    <section class="mwtd-panel" style="margin-top:1.75rem;">
+      <h2 class="mwtd-card-title">Navigateurs supportés</h2>
+
+      <p class="mwtd-lead">
+        Mini-WTD fonctionne sur tous les navigateurs modernes :
+      </p>
+
+      <ul class="mwtd-lead">
+        <li>Chrome 85+</li>
+        <li>Edge 90+</li>
+        <li>Firefox 80+</li>
+        <li>Safari 14+ (mode local OK)</li>
+      </ul>
+
+      <p class="mwtd-lead">
+        Les versions plus anciennes peuvent fonctionner mais ne sont pas garanties.
+      </p>
+    </section>
+
+    <!-- COMPATIBILITÉ -->
+    <section class="mwtd-panel" style="margin-top:1.75rem;">
+      <h2 class="mwtd-card-title">Compatibilité postes & environnements</h2>
+
+      <ul class="mwtd-lead">
+        <li>Windows 10 / 11</li>
+        <li>Linux (Ubuntu, Debian, Mint…)</li>
+        <li>macOS (Intel / M1 / M2)</li>
+        <li>Chromebook</li>
+        <li>Postes virtualisés (Citrix, VMware Horizon)</li>
+      </ul>
+
+      <p class="mwtd-lead">
+        Aucune installation ni privilèges administrateur requis.
+      </p>
+    </section>
+
+    <!-- EXPORT PDF -->
+    <section class="mwtd-panel" style="margin-top:1.75rem;">
+      <h2 class="mwtd-card-title">Export PDF (optionnel)</h2>
+
+      <p class="mwtd-lead">
+        Le bilan peut être exporté en PDF par :
+      </p>
+
+      <ul class="mwtd-lead">
+        <li>le bouton “Imprimer / PDF” du navigateur</li>
+        <li>ou une future intégration interne (API entreprise)</li>
+      </ul>
+
+      <p class="mwtd-lead">
+        Aucun export automatique n’est réalisé par défaut.
+      </p>
+    </section>
+
+    <!-- INTÉGRATION IA (OPTIONNELLE) -->
+    <section class="mwtd-panel" style="margin-top:1.75rem;">
+      <h2 class="mwtd-card-title">Intégration IA (facultative)</h2>
+
+      <p class="mwtd-lead">
+        Mini-WTD peut fonctionner avec un assistant IA local ou connecté à un serveur interne
+        si l’entreprise le souhaite.
+      </p>
+
+      <ul class="mwtd-lead">
+        <li>IA entièrement désactivée par défaut.</li>
+        <li>Peut être branchée sur une API interne OpenAI / Azure / LLM local.</li>
+        <li>Jamais de connexion sortante sans configuration volontaire.</li>
+      </ul>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="mwtd-panel" style="margin-top:1.75rem;">
+      <h2 class="mwtd-card-title">Support technique</h2>
+
+      <p class="mwtd-lead">
+        Pour assistance technique, intégration ou audit interne :
+      </p>
+
+      <p class="mwtd-lead">
+        📧 <strong>elanpourtous49@gmail.com</strong><br>
+        📱 <strong>07 83 33 67 57</strong>
+      </p>
+
+      <p class="mwtd-lead">
+        Réponse sous 24 à 48 heures.
+      </p>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="mwtd-main" role="contentinfo" style="padding-top:0;">
+    <div class="mwtd-row-between" style="border-top:1px solid rgba(255,255,255,0.06); padding-top:1rem;">
+      <p class="mwtd-tagline">
+        © <span id="mwtd-year">2025</span> · Mini-WTD — Notice technique DSI.
+      </p>
+      <span class="mwtd-chip">Offline · Sécure · Intranet</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("mwtd-year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
