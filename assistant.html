@@ -5,125 +5,93 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Mini-WTD · Assistant IA</title>
 
-  <meta name="description" content="Assistant IA Mini-WTD : chatbot inclusif pour aider dirigeants, RH et référents handicap à comprendre l’outil, l’accessibilité et les adaptations possibles.">
+  <meta name="description"
+        content="Assistant IA Mini-WTD pour accompagner RH, managers et référents handicap dans les démarches d’aménagement raisonnable.">
 
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/ima/favicon-16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/ima/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="assets/ima/favicon-96.png">
-  <link rel="icon" type="image/svg+xml" href="assets/ima/favicon.svg">
-
-  <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" type="image/png" href="assets/ima/logo-mini-wtd-256.png">
+  <link rel="stylesheet" href="assets/css/mini-wtd-2025.css">
 </head>
 
-<body>
+<body class="mwtd-shell">
   <a class="skiplink" href="#main">Aller directement au contenu principal</a>
 
   <?php include 'includes/nav.html'; ?>
 
-  <main id="main" class="container" tabindex="-1" role="main" aria-labelledby="page-title">
-    <header class="card" style="margin-top:1rem">
-      <h1 id="page-title">Assistant IA Mini-WTD</h1>
-      <p>
-        L’assistant IA intégré à Mini-WTD joue le rôle de <strong>coach
-        numérique</strong>. Il aide à formuler les questions, à clarifier les
-        enjeux et à préparer les messages à destination des dirigeants, des
-        équipes et des partenaires.
-      </p>
-    </header>
+  <main id="main" class="mwtd-main" tabindex="-1" role="main">
 
-    <section class="card">
-      <h2>Ce que l’assistant peut faire</h2>
-      <ul>
-        <li>
-          Expliquer le fonctionnement de Mini-WTD avec des mots simples, y
-          compris pour des personnes qui n’ont pas l’habitude du numérique.
-        </li>
-        <li>
-          Proposer des formulations de mails, de comptes rendus ou de
-          comptes-rendus de réunion à partir des observations faites pendant un
-          test.
-        </li>
-        <li>
-          Reformuler des arguments en les adaptant au public ciblé&nbsp;:
-          dirigeant pressé, équipe RH, partenaires institutionnels, etc.
-        </li>
-        <li>
-          Rappeler les règles éthiques et les limites de l’outil, pour éviter
-          les dérives (diagnostic médical sauvage, notation abusive, etc.).
-        </li>
-      </ul>
+    <section class="mwtd-panel mwtd-grid" aria-labelledby="page-title">
+      <div>
+        <p class="mwtd-page-kicker">Assistant</p>
+        <h1 id="page-title" class="mwtd-page-title">Assistant IA Mini-WTD</h1>
+        <p class="mwtd-lead">
+          Cet assistant est conçu pour aider les <strong>RH</strong>, les
+          <strong>managers</strong> et les <strong>référents handicap</strong>
+          à formuler correctement une situation, clarifier les enjeux et préparer
+          un bilan d’aménagement raisonnable.
+        </p>
+        <p class="mwtd-lead">
+          Il ne remplace ni le médecin du travail, ni les instances légales&nbsp;:
+          il sert à structurer les idées et à éviter les angles morts.
+        </p>
+
+        <div style="margin-top:1rem;">
+          <span class="mwtd-chip mwtd-pill-info">Outil d’aide à la réflexion</span>
+          <span class="mwtd-chip mwtd-pill-warning">Pas de diagnostic médical</span>
+        </div>
+      </div>
+
+      <aside class="mwtd-chat-shell" aria-label="Assistant IA Mini-WTD">
+        <div class="mwtd-chat-header">
+          <div>
+            <div class="mwtd-chat-title">Mini-WTD · Assistant IA</div>
+            <div class="mwtd-chat-status">En ligne — échanges guidés</div>
+          </div>
+          <span class="mwtd-badge">Conseil aménagement</span>
+        </div>
+
+        <div id="mwtd-chat-messages" class="mwtd-chat-messages" aria-live="polite">
+          <div class="mwtd-chat-bubble mwtd-chat-bubble--bot">
+            Bonjour, je vous aide à décrire votre situation de travail
+            et les difficultés rencontrées, pour préparer un aménagement raisonnable.
+          </div>
+        </div>
+
+        <form id="mwtd-chat-form" class="mwtd-chat-input-row">
+          <label class="sr-only" for="mwtd-chat-input">Votre message</label>
+          <input id="mwtd-chat-input"
+                 class="mwtd-input"
+                 type="text"
+                 autocomplete="off"
+                 placeholder="Exemple : difficulté à porter des charges ou à rester debout longtemps…">
+          <button class="mwtd-btn mwtd-btn-primary" type="submit">
+            Envoyer
+          </button>
+        </form>
+      </aside>
     </section>
 
-    <section class="card">
-      <h2>Ce que l’assistant ne fait pas</h2>
+    <section class="mwtd-panel" style="margin-top:1.5rem;">
+      <h2 class="mwtd-card-title">Exemples de questions possibles</h2>
       <ul>
-        <li>
-          Il ne prend <strong>aucune décision à votre place</strong> sur le
-          recrutement, le maintien ou la santé d’une personne.
-        </li>
-        <li>
-          Il ne donne pas de <strong>diagnostic médical</strong> ni de conseil
-          juridique opposable.
-        </li>
-        <li>
-          Il ne remplace pas les discussions directes entre la personne
-          concernée, l’entreprise et les professionnels de santé ou du droit.
-        </li>
+        <li>« Comment expliquer une fatigue importante en fin de journée sans parler de diagnostic&nbsp;? »</li>
+        <li>« Comment décrire une limite de port de charge sans stigmatiser la personne&nbsp;? »</li>
+        <li>« Quels exemples d’aménagements proposer dans un atelier logistique&nbsp;? »</li>
+        <li>« Comment préparer un argumentaire pour la direction ou le CSE&nbsp;? »</li>
       </ul>
-      <p>
-        Il s’agit d’un outil d’aide à la réflexion, pas d’un juge automatique.
-      </p>
-    </section>
-
-    <section class="card">
-      <h2>Utilisation combinée avec le module webcam</h2>
-      <p>
-        Lorsqu’une scène de travail est filmée avec le <strong>module webcam
-        Mini-WTD</strong>, l’assistant peut aider à :
-      </p>
-      <ul>
-        <li>rédiger une description factuelle de la scène ;</li>
-        <li>lister les difficultés observées sans jugement de valeur ;</li>
-        <li>proposer une première liste d’adaptations possibles ;</li>
-        <li>préparer une note de synthèse pour la direction ou la médecine du travail.</li>
-      </ul>
-      <p>
-        Aucune image n’est envoyée automatiquement vers un service extérieur
-        sans décision explicite de l’entreprise. Le fonctionnement de base est
-        entièrement <strong>local</strong>.
-      </p>
-    </section>
-
-    <section class="card">
-      <h2>Accéder au chatbot depuis les autres pages</h2>
-      <p>
-        Le <strong>bouton flottant</strong> en bas à droite est visible sur
-        toutes les pages de Mini-WTD. Il ouvre le chatbot Mini-WTD qui reprend
-        les mêmes principes que l’assistant présenté ici.
-      </p>
-      <p>
-        Si vous souhaitez modifier le comportement ou le style de l’assistant,
-        vous pouvez adapter le fichier
-        <code>assets/js/miniwtd-chat.js</code> ainsi que le bloc HTML
-        <code>includes/chatbot-mini-wtd.html</code>.
-      </p>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>
-        &copy; <?php echo date('Y'); ?> Élan pour tous — Mini-WTD.
-        Assistant IA inclusif pour l’inclusion en entreprise.
+  <footer class="mwtd-main" role="contentinfo" style="padding-top:0;">
+    <div class="mwtd-row-between" style="border-top:1px solid rgba(255,255,255,0.06); padding-top:1rem; margin-top:1rem;">
+      <p class="mwtd-tagline">
+        © <?php echo date('Y'); ?> — Mini-WTD · Assistant IA.
       </p>
+      <span class="mwtd-chip">Support à la décision RH</span>
     </div>
   </footer>
 
   <?php include 'includes/chatbot-mini-wtd.html'; ?>
 
-  <script src="assets/js/accessibility.js"></script>
   <script src="assets/js/miniwtd-chat.js"></script>
-  <script src="assets/js/miniwtd-webcam.js"></script>
 </body>
 </html>
