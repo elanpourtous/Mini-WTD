@@ -18,27 +18,7 @@
   <a href="#main" class="skiplink">Aller directement au contenu principal</a>
 
   <!-- ===== En-tête / navigation ===== -->
-  <header class="mwtd-header" role="banner">
-    <div class="mwtd-brand">
-      <div class="mwtd-logo" aria-hidden="true">
-        <img src="assets/ima/logo-mini-wtd-256.png" alt="">
-      </div>
-      <div>
-        <div class="mwtd-brand-title">Mini-WTD</div>
-        <div class="mwtd-tagline">Work-Test-Demo · Inclusion &amp; IA</div>
-      </div>
-    </div>
-
-    <nav aria-label="Navigation principale">
-      <div class="mwtd-row">
-        <a class="mwtd-btn mwtd-btn-ghost" href="#section-pour-qui">Pour qui&nbsp;?</a>
-        <a class="mwtd-btn mwtd-btn-ghost" href="#section-fonctionnalites">Fonctionnalités</a>
-        <a class="mwtd-btn mwtd-btn-primary" href="#section-demarrer">
-          Démarrer l’évaluation
-        </a>
-      </div>
-    </nav>
-  </header>
+  <?php include 'includes/nav.html'; ?>
 
   <!-- ===== Contenu principal ===== -->
   <main id="main" class="mwtd-main" role="main" tabindex="-1">
@@ -284,7 +264,6 @@
   </footer>
 
   <script>
-    // Mise à jour de l’année automatiquement
     (function () {
       const el = document.getElementById('mwtd-year');
       if (el) el.textContent = new Date().getFullYear();
