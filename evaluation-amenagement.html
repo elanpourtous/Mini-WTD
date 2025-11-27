@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Mini-WTD · Bilan d’aménagement</title>
+
+  <meta name="description"
+        content="Formulaire d’évaluation pour décrire une situation de travail et générer un bilan d’aménagement raisonnable.">
+
+  <link rel="icon" type="image/png" href="assets/ima/logo-mini-wtd-256.png">
+  <link rel="stylesheet" href="assets/css/mini-wtd-2025.css">
+</head>
+
+<body class="mwtd-shell">
+  <a class="skiplink" href="#main">Aller directement au contenu principal</a>
+
+  <?php include 'includes/nav.html'; ?>
+
+  <main id="main" class="mwtd-main" tabindex="-1" role="main">
+
+    <section class="mwtd-panel" aria-labelledby="page-title">
+      <p class="mwtd-page-kicker">Bilan</p>
+      <h1 id="page-title" class="mwtd-page-title">Bilan d’aménagement Mini-WTD</h1>
+      <p class="mwtd-lead">
+        Ce formulaire permet de décrire une situation de travail, les difficultés
+        rencontrées et les pistes d’aménagement possibles. Le résultat peut être
+        utilisé comme base d’échange avec la RH, le référent handicap ou la
+        médecine du travail.
+      </p>
+    </section>
+
+    <section class="mwtd-panel" style="margin-top:1.5rem;">
+      <form id="mwtd-form-bilan" aria-describedby="bilan-help">
+        <p id="bilan-help" class="mwtd-tagline">
+          Les champs marqués d’un astérisque (*) sont obligatoires.
+        </p>
+
+        <div class="mwtd-form-field">
+          <label class="mwtd-label" for="bilan-contexte">Contexte du poste *</label>
+          <textarea id="bilan-contexte" class="mwtd-textarea" rows="3" required
+            placeholder="Exemple : poste d’opérateur en logistique, préparation de commandes, déplacements fréquents…"></textarea>
+        </div>
+
+        <div class="mwtd-form-field">
+          <label class="mwtd-label" for="bilan-taches">Tâches principales *</label>
+          <textarea id="bilan-taches" class="mwtd-textarea" rows="3" required
+            placeholder="Décrire les tâches clés : port de charge, conduite de machine, saisie informatique, accueil du public…"></textarea>
+        </div>
+
+        <div class="mwtd-form-field">
+          <label class="mwtd-label" for="bilan-difficultes">Difficultés observées *</label>
+          <textarea id="bilan-difficultes" class="mwtd-textarea" rows="4" required
+            placeholder="Exemple : difficulté à rester debout longuement, fatigue importante, gestes répétitifs douloureux…"></textarea>
+        </div>
+
+        <div class="mwtd-form-field">
+          <label class="mwtd-label" for="bilan-adaptations">Adaptations déjà en place</label>
+          <textarea id="bilan-adaptations" class="mwtd-textarea" rows="3"
+            placeholder="Exemple : pauses supplémentaires, aide d’un collègue pour certains gestes, matériel adapté partiellement…"></textarea>
+        </div>
+
+        <div class="mwtd-form-field">
+          <label class="mwtd-label" for="bilan-pistes">Pistes d’aménagement envisagées</label>
+          <textarea id="bilan-pistes" class="mwtd-textarea" rows="3"
+            placeholder="Exemple : siège assis-debout, réorganisation du poste, limitation de certaines tâches, horaires adaptés…"></textarea>
+        </div>
+
+        <div class="mwtd-form-field">
+          <label class="mwtd-label" for="bilan-urgence">Niveau d’urgence</label>
+          <select id="bilan-urgence" class="mwtd-select">
+            <option value="">Sélectionner…</option>
+            <option value="1">1 — À surveiller</option>
+            <option value="2">2 — À traiter dans les prochains mois</option>
+            <option value="3">3 — À traiter dans le mois</option>
+            <option value="4">4 — Situation critique / à sécuriser immédiatement</option>
+          </select>
+        </div>
+
+        <div class="mwtd-row" style="margin-top:1rem;">
+          <button class="mwtd-btn mwtd-btn-primary" type="submit">
+            Générer le bilan
+          </button>
+          <button class="mwtd-btn mwtd-btn-ghost" type="reset">
+            Réinitialiser
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <section class="mwtd-panel" style="margin-top:1.5rem;">
+      <h2 class="mwtd-card-title">Bilan généré (aperçu)</h2>
+      <p class="mwtd-tagline">
+        Ce bloc affiche un exemple de synthèse à partir des éléments saisis.
+      </p>
+      <div id="mwtd-bilan-resultat" class="mwtd-card">
+        <p class="mwtd-lead">
+          Remplissez le formulaire ci-dessus puis cliquez sur
+          <strong>« Générer le bilan »</strong> pour obtenir une synthèse textuelle.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mwtd-main" role="contentinfo" style="padding-top:0;">
+    <div class="mwtd-row-between" style="border-top:1px solid rgba(255,255,255,0.06); padding-top:1rem; margin-top:1rem;">
+      <p class="mwtd-tagline">
+        © <?php echo date('Y'); ?> — Mini-WTD · Bilan d’aménagement.
+      </p>
+      <span class="mwtd-chip">Support à l’aménagement raisonnable</span>
+    </div>
+  </footer>
+
+  <?php include 'includes/chatbot-mini-wtd.html'; ?>
+
+  <script src="assets/js/miniwtd-bilan.js"></script>
+</body>
+</html>
