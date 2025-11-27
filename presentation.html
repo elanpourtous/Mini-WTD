@@ -5,157 +5,163 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Mini-WTD · Présentation</title>
 
-  <meta name="description" content="Présentation détaillée de Mini-WTD : objectifs, publics, usages, cadre éthique et lien avec le programme Work-Test-Demo.">
+  <meta name="description"
+        content="Présentation de Mini-WTD : principes, publics, usages, cadre éthique et intégration dans le programme Work-Test-Demo.">
 
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/ima/favicon-16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/ima/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="assets/ima/favicon-96.png">
-  <link rel="icon" type="image/svg+xml" href="assets/ima/favicon.svg">
+  <link rel="icon" type="image/png" href="assets/ima/logo-mini-wtd-256.png">
 
-  <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Charte graphique 2025 -->
+  <link rel="stylesheet" href="assets/css/mini-wtd-2025.css">
 </head>
 
-<body>
+<body class="mwtd-shell">
   <a class="skiplink" href="#main">Aller directement au contenu principal</a>
 
+  <!-- ===== NAVIGATION ===== -->
   <?php include 'includes/nav.html'; ?>
 
-  <main id="main" class="container" tabindex="-1" role="main" aria-labelledby="page-title">
-    <header class="card" style="margin-top:1rem">
-      <h1 id="page-title">Présentation de Mini-WTD</h1>
-      <p>
-        Mini-WTD est un <strong>démonstrateur portable</strong> du programme
-        Work-Test-Demo. Il a été conçu pour aider les organisations à passer
-        d’un discours abstrait sur le handicap à une observation concrète des
-        compétences et des besoins d’adaptation.
-      </p>
-    </header>
+  <!-- ===== CONTENU PRINCIPAL ===== -->
+  <main id="main" class="mwtd-main" tabindex="-1" role="main">
 
-    <section class="card">
-      <h2>Un principe simple&nbsp;: tester en vrai</h2>
-      <p>
-        Work-Test-Demo part d’un constat&nbsp;: une personne ne se résume ni à
-        son CV ni à son diagnostic. Ce qui intéresse l’entreprise, ce sont les
-        <strong>situations de travail</strong>. Mini-WTD propose donc de
-        recréer des tâches concrètes, filmées ou observées, afin de repérer&nbsp;:
-      </p>
-      <ul>
-        <li>ce que la personne sait déjà faire sans aide&nbsp;;</li>
-        <li>ce qu’elle pourrait faire avec un aménagement raisonnable&nbsp;;</li>
-        <li>ce qui relève clairement d’une impossibilité ou d’un risque.</li>
-      </ul>
-      <p>
-        Plutôt que de débattre en théorie, on regarde ensemble une séquence
-        vidéo ou une démonstration en direct, puis on discute calmement des
-        solutions possibles.
+    <!-- INTRO -->
+    <section class="mwtd-panel" aria-labelledby="page-title">
+      <h1 id="page-title" class="mwtd-page-title">Présentation de Mini-WTD</h1>
+      <p class="mwtd-lead">
+        Mini-WTD est un <strong>démonstrateur portable</strong> du programme
+        Work-Test-Demo. Il aide les organisations à passer d’un discours
+        abstrait sur le handicap à une observation concrète des compétences et
+        des besoins d’adaptation.
       </p>
     </section>
 
-    <section class="card">
-      <h2>Publics visés</h2>
-      <p>
-        Mini-WTD n’est pas un gadget pour salon professionnel. C’est un outil
-        conçu pour des situations très concrètes&nbsp;:
+    <!-- PRINCIPES -->
+    <section class="mwtd-panel" style="margin-top:1.5rem;">
+      <h2 class="mwtd-card-title">Un principe simple&nbsp;: tester en vrai</h2>
+      <p class="mwtd-lead">
+        Work-Test-Demo part d’un constat&nbsp;: une personne ne se résume ni à
+        son CV ni à son diagnostic. Ce qui intéresse l’entreprise, ce sont les
+        <strong>situations de travail</strong>.
       </p>
+
+      <p class="mwtd-lead">
+        Mini-WTD propose d’observer des tâches concrètes, filmées ou réalisées
+        en direct, pour repérer&nbsp;:
+      </p>
+
+      <ul>
+        <li>ce que la personne sait déjà faire sans aide&nbsp;;</li>
+        <li>ce qu’elle peut faire avec un aménagement raisonnable&nbsp;;</li>
+        <li>ce qui relève d’une impossibilité ou d’un risque réel.</li>
+      </ul>
+
+      <p class="mwtd-lead">
+        On ne débat plus en théorie. On regarde ensemble une <strong>séquence
+        concrète</strong> puis on discute calmement des solutions réalistes.
+      </p>
+    </section>
+
+    <!-- PUBLICS -->
+    <section class="mwtd-panel" style="margin-top:1.5rem;">
+      <h2 class="mwtd-card-title">Publics visés</h2>
+      <p class="mwtd-lead">
+        Mini-WTD n’est pas un gadget de salon. C’est un outil conçu pour des
+        situations très concrètes&nbsp;:
+      </p>
+
       <ul>
         <li>
-          <strong>Dirigeants de PME et TPE</strong> qui veulent comprendre
-          rapidement les enjeux sans lire 80 pages de procédures.
+          <strong>Dirigeants de PME/TPE</strong> qui veulent comprendre vite sans
+          lire 80 pages de procédures.
         </li>
         <li>
           <strong>Responsables RH</strong> qui doivent sécuriser un recrutement,
-          un maintien dans l’emploi ou un retour après arrêt de travail.
+          un maintien dans l’emploi ou un retour après arrêt.
         </li>
         <li>
-          <strong>Référents handicap</strong> qui cherchent un support neutre pour
-          faire dialoguer salarié, hiérarchie, médecine du travail et partenaires.
+          <strong>Référents handicap</strong> cherchant un support neutre pour
+          dialoguer avec salarié, hiérarchie et médecine du travail.
         </li>
         <li>
           <strong>Structures d’insertion et de formation</strong> qui veulent
-          travailler à partir de situations de travail réelles plutôt que de
-          questionnaires abstraits.
+          travailler sur des situations réelles plutôt que des questionnaires.
         </li>
       </ul>
     </section>
 
-    <section class="card">
-      <h2>Trois usages principaux</h2>
+    <!-- USAGES -->
+    <section class="mwtd-panel" style="margin-top:1.5rem;">
+      <h2 class="mwtd-card-title">Trois usages principaux</h2>
 
-      <h3>1. Démonstration courte (15 à 30 minutes)</h3>
-      <p>
-        Dans ce format, l’animateur utilise surtout les pages
-        <a href="demo-accessibilite-present.html">Démo accessibilité — version présentation</a>
-        et <a href="assistant.html">Assistant</a>. L’objectif est de montrer
-        rapidement que l’inclusion peut être <strong>pratique, mesurable et
-        documentée</strong> sans transformer l’entreprise en laboratoire.
+      <h3 class="mwtd-card-subtitle">1. Démonstration courte (15 à 30 minutes)</h3>
+      <p class="mwtd-lead">
+        L’animateur utilise surtout les pages
+        <a href="demo-accessibilite-present.html">Démo accessibilité – présentation</a>
+        et <a href="assistant.html">Assistant</a>.  
+        Objectif&nbsp;: montrer que l’inclusion peut être
+        <strong>pratique, mesurable et documentée</strong>.
       </p>
 
-      <h3>2. Atelier d’une demi-journée</h3>
-      <p>
+      <h3 class="mwtd-card-subtitle">2. Atelier d’une demi-journée</h3>
+      <p class="mwtd-lead">
         L’atelier combine l’<a href="index.html">Accueil</a>,
-        la présente page et la <a href="demo-accessibilite.html">Démo accessibilité détaillée</a>.
-        Les participants sont invités à décrire leurs propres situations de
-        travail, à identifier les points de friction et à proposer des pistes
-        d’adaptation réalistes. Le chatbot Mini-WTD sert de support pour
-        clarifier des notions ou préparer des arguments pour la direction.
+        cette page et la <a href="demo-accessibilite.html">Démo accessibilité détaillée</a>.
+        Les participants décrivent leurs situations de travail, repèrent les
+        points de friction et proposent des adaptations réalistes.
       </p>
 
-      <h3>3. Intégration dans un parcours Work-Test-Demo complet</h3>
-      <p>
-        Dans un programme complet, Mini-WTD est la porte d’entrée numérique et
-        pédagogique. Il est combiné à des mises en situation filmées,
-        à des entretiens structurés et à des outils de suivi. Il sert aussi de
-        support mémoire pour les personnes qui rejoignent l’expérience en
-        cours de route.
+      <p class="mwtd-lead">
+        Le chatbot Mini-WTD sert de support pour clarifier et structurer les
+        arguments destinés à la direction.
+      </p>
+
+      <h3 class="mwtd-card-subtitle">3. Intégration dans un parcours Work-Test-Demo complet</h3>
+      <p class="mwtd-lead">
+        Mini-WTD devient alors la porte d’entrée numérique et pédagogique.
+        Il s’intègre aux mises en situation filmées, entretiens structurés et
+        outils de suivi. Il sert aussi de support mémoire pour les nouveaux.
       </p>
     </section>
 
-    <section class="card">
-      <h2>Cadre éthique</h2>
-      <p>
-        Mini-WTD est construit autour de quelques règles simples et non
-        négociables&nbsp;:
+    <!-- ETHIQUE -->
+    <section class="mwtd-panel" style="margin-top:1.5rem;">
+      <h2 class="mwtd-card-title">Cadre éthique</h2>
+
+      <p class="mwtd-lead">
+        Mini-WTD repose sur des principes simples et non négociables&nbsp;:
       </p>
+
       <ul>
-        <li>
-          <strong>Pas de diagnostic médical</strong> : les images et les
-          observations servent à parler d’adaptation du poste, pas de santé.
-        </li>
-        <li>
-          <strong>Consentement éclairé</strong> : aucune captation d’image ou
-          de son ne doit être réalisée sans l’accord explicite des personnes
-          concernées.
-        </li>
-        <li>
-          <strong>Respect de la dignité</strong> : on ne se moque pas, on ne
-          commente pas les corps, on ne réduit pas quelqu’un à sa pathologie.
-        </li>
-        <li>
-          <strong>Transparence</strong> : les usages des vidéos et des données
-          sont expliqués clairement, y compris en langage simple pour les
-          personnes qui ne maîtrisent pas le jargon juridique.
-        </li>
+        <li><strong>Pas de diagnostic médical</strong>&nbsp;: on parle d’aménagements, pas de santé.</li>
+        <li><strong>Consentement éclairé</strong>&nbsp;: aucune capture sans accord explicite.</li>
+        <li><strong>Respect de la dignité</strong>&nbsp;: on ne commente pas les corps.</li>
+        <li><strong>Transparence</strong>&nbsp;: explications claires, en langage simple.</li>
       </ul>
-      <p>
-        Pour toute utilisation en entreprise, il est recommandé d’impliquer la
-        médecine du travail, le CSE ou les instances qui s’occupent déjà de la
-        santé et de la sécurité au travail.
+
+      <p class="mwtd-lead">
+        Pour tout usage réel en entreprise, il est recommandé d’impliquer
+        médecine du travail, CSE et instances santé-sécurité.
       </p>
     </section>
+
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>
-        &copy; <?php echo date('Y'); ?> Élan pour tous — Mini-WTD.
-        Conception et texte : Patrick Billy.
+  <!-- ===== Pied de page ===== -->
+  <footer class="mwtd-main" role="contentinfo" style="padding-top:0;">
+    <div class="mwtd-row-between" style="border-top:1px solid rgba(255,255,255,0.06); padding-top:1rem; margin-top:1rem;">
+      <p class="mwtd-tagline">
+        © <?php echo date('Y'); ?> — Mini-WTD · Élan pour tous · Conception : Patrick Billy.
       </p>
+      <div class="mwtd-row">
+        <span class="mwtd-chip">IA inclusive</span>
+        <span class="mwtd-chip">RGPD &amp; Accessibilité</span>
+      </div>
     </div>
   </footer>
 
+  <!-- ===== Chatbot intégré ===== -->
   <?php include 'includes/chatbot-mini-wtd.html'; ?>
 
+  <!-- JS -->
   <script src="assets/js/accessibility.js"></script>
   <script src="assets/js/miniwtd-chat.js"></script>
   <script src="assets/js/miniwtd-webcam.js"></script>
