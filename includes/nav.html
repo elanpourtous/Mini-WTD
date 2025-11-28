@@ -1,33 +1,94 @@
-<!-- =========================================
-     Mini-WTD · Header / Navigation 2025
-     ========================================= -->
+<!-- ======================================================
+     🔝 HEADER ACCESSIBLE — Mini-WTD (Work-Test-Demo 2025)
+     ====================================================== -->
 
 <header class="mwtd-header" role="banner">
-  <div class="mwtd-brand">
-    <div class="mwtd-logo">
-      <img src="assets/ima/logo-mini-wtd-256.png" alt="Logo Mini-WTD">
-    </div>
+  <nav class="mwtd-nav container" role="navigation" aria-label="Menu principal Mini-WTD">
 
-    <div>
-      <div class="mwtd-brand-title">Mini-WTD</div>
-      <div class="mwtd-tagline">Work-Test-Demo · Inclusion & IA</div>
-    </div>
-  </div>
+    <!-- Logo + identité Mini-WTD -->
+    <a href="index.html" class="mwtd-brand" aria-label="Accueil Mini-WTD">
+      <img src="assets/ima/logo-mini-wtd-128.png"
+           alt="Logo Mini-WTD"
+           class="mwtd-logo-img">
+      <span class="sr-only">Retour à l’accueil</span>
+    </a>
 
-  <nav class="mwtd-nav" aria-label="Navigation principale">
-    <ul class="mwtd-nav-list">
+    <!-- Bouton menu mobile -->
+    <button
+      type="button"
+      class="mwtd-menu-toggle btn-icon"
+      id="menu-toggle"
+      aria-label="Ouvrir le menu"
+      aria-expanded="false"
+      aria-controls="primary-nav">
+      <span class="sr-only">Menu</span>
+      <span class="mwtd-burger" aria-hidden="true"></span>
+    </button>
+
+    <!-- ======================
+         Navigation principale
+         ====================== -->
+    <ul id="primary-nav" class="mwtd-nav-list" hidden>
       <li><a href="index.html" class="mwtd-nav-link">Accueil</a></li>
       <li><a href="presentation.html" class="mwtd-nav-link">Présentation</a></li>
-      <li><a href="demo-accessibilite.html" class="mwtd-nav-link">Accessibilité</a></li>
+
+      <!-- Démos / outils -->
+      <li><a href="demo-accessibilite.html" class="mwtd-nav-link">Démo accessibilité</a></li>
+      <li><a href="demo-accessibilite-present.html" class="mwtd-nav-link">Version dirigeant</a></li>
       <li><a href="assistant.html" class="mwtd-nav-link">Assistant IA</a></li>
-      <li><a href="evaluation-amenagement.html" class="mwtd-nav-link">Bilan</a></li>
-      <li><a href="webcam-analyse.html" class="mwtd-nav-link">Webcam</a></li>
+      <li><a href="evaluation-amenagement.html" class="mwtd-nav-link">Bilan & aménagement</a></li>
+      <li><a href="webcam-analyse.html" class="mwtd-nav-link">Webcam / Analyse</a></li>
+
+      <!-- Cadre / références -->
+      <li><a href="accessibilite.html" class="mwtd-nav-link">Accessibilité</a></li>
+      <li><a href="rgaa.html" class="mwtd-nav-link">RGAA</a></li>
+      <li><a href="rgpd.html" class="mwtd-nav-link">RGPD</a></li>
+      <li><a href="ethique.html" class="mwtd-nav-link">Éthique</a></li>
+      <li><a href="technique.html" class="mwtd-nav-link">Technique</a></li>
+
+      <!-- Nouvelle page WTD -->
+      <li><a href="wtd-vitrine.html" class="mwtd-nav-link">WTD – Simulation de poste</a></li>
     </ul>
 
-    <div class="mwtd-nav-actions">
-      <a href="evaluation-amenagement.html" class="mwtd-btn mwtd-btn-primary">
+    <!-- ==========================
+        Actions accessibilité / IA
+        ========================== -->
+    <div class="mwtd-nav-actions" aria-label="Réglages d’accessibilité">
+
+      <!-- Lancer un test -->
+      <a href="evaluation-amenagement.html"
+         class="mwtd-btn mwtd-btn-primary mwtd-desktop-only">
         Démarrer un test
       </a>
+
+      <!-- Thème clair/sombre -->
+      <button
+        type="button"
+        class="theme-toggle btn-icon"
+        id="theme-toggle"
+        aria-pressed="false"
+        aria-label="Basculer le thème clair/sombre"
+        title="Changer le thème">
+        🌓
+      </button>
+
+      <!-- Contrôles accessibilité -->
+      <button type="button" class="access-btn" data-action="font-" aria-label="Réduire la taille du texte" title="A− (Alt + -)">A−</button>
+      <button type="button" class="access-btn" data-action="font+" aria-label="Augmenter la taille du texte" title="A+ (Alt + =)">A+</button>
+      <button type="button" class="access-btn" data-action="contrast" aria-label="Contraste élevé" title="Contraste élevé (Alt + C)">◐</button>
+      <button type="button" class="access-btn" data-action="spacing" aria-label="Augmenter l’espacement du texte" title="Espacement (Alt + S)">↕︎</button>
+      <button type="button" class="access-btn" data-action="reset" aria-label="Réinitialiser l’affichage" title="Reset (Alt + 0)">⟲</button>
+
+      <!-- Lecture vocale -->
+      <button
+        type="button"
+        class="btn-icon"
+        id="tts-toggle"
+        aria-label="Lecture vocale"
+        aria-pressed="false"
+        title="Lire la page">
+        🔊
+      </button>
     </div>
   </nav>
 </header>
