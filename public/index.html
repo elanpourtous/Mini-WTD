@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="fr">
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Mini-WTD · Accueil — Laboratoire public</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+        content="Mini-WTD — laboratoire public : tests d’accessibilité, formulaires, RGAA, annuaires et outils d’observation pour l’inclusion.">
+
+  <!-- CSS global Mini-WTD -->
+  <link rel="stylesheet" href="assets/css-/mini-wtd-2025.css">
+  <link rel="stylesheet" href="assets/css-/style.css">
+
+  <!-- Socle accessibilité -->
+  <link rel="stylesheet" href="assets/css-/base-a11y.css">
+
+  <!-- Couche RGAA -->
+  <link rel="stylesheet" href="assets/css-/rgaa-accessible.css">
+</head>
+
+
+
+<body>
+  <a href="#main" class="skiplink">Aller directement au contenu principal</a>
+
+  <header class="site-header" role="banner">
+    <div class="container site-header-inner">
+      <div class="site-brand">
+        <div class="site-logo">
+          <img src="assets/ima/logo-mini-wtd-256.png"
+               alt="Logo Mini-WTD / Élan pour tous"
+               loading="lazy">
+        </div>
+        <div class="site-brand-text">
+          <h1 class="site-title">
+            Mini-WTD · Laboratoire public
+          </h1>
+          <p class="site-tagline">
+            Work-Test-Demo · Inclusion, accessibilité &amp; tests réels.
+          </p>
+        </div>
+      </div>
+
+      <div class="a11y-toolbar" aria-label="Réglages d’accessibilité et de lecture">
+        <button class="access-btn" data-action="font-" type="button"
+                aria-label="Réduire la taille du texte" title="A− (Alt + -)">A−</button>
+        <button class="access-btn" data-action="font+" type="button"
+                aria-label="Augmenter la taille du texte" title="A+ (Alt + =)">A+</button>
+        <button class="access-btn" data-action="contrast" type="button"
+                aria-label="Activer le contraste élevé" title="Contraste élevé (Alt + C)">◐</button>
+        <button class="access-btn" data-action="spacing" type="button"
+                aria-label="Augmenter l’espacement du texte" title="Espacement (Alt + S)">↕︎</button>
+        <button class="access-btn" data-action="reset" type="button"
+                aria-label="Réinitialiser l’affichage" title="Réinitialiser (Alt + 0)">⟲</button>
+
+        <button id="theme-toggle" class="btn-icon" type="button"
+                aria-pressed="false"
+                aria-label="Basculer le thème clair/sombre"
+                title="Thème clair / sombre">
+          🌓
+        </button>
+
+        <button id="tts-toggle" class="btn-icon" type="button"
+                aria-pressed="false"
+                aria-label="Activer la lecture vocale de la page"
+                title="Lecture vocale">
+          🔊
+        </button>
+      </div>
+    </div>
+
+    <div class="container site-nav-toggle">
+      <button
+        type="button"
+        class="btn-icon"
+        id="menu-toggle"
+        aria-label="Ouvrir ou fermer le menu de navigation"
+        aria-expanded="false"
+        aria-controls="primary-nav">
+        <span class="sr-only">Menu</span>
+        <span class="burger" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <nav class="site-nav" aria-label="Navigation principale">
+      <ul id="primary-nav">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="demo-accessibilite.html">Démo accessibilité</a></li>
+        <li><a href="test-formulaires.html">Tests formulaires</a></li>
+        <li><a href="rgaa_plus.html">RGAA · Plus</a></li>
+        <li><a href="annuaires.html">Annuaires &amp; ressources</a></li>
+        <li><a href="rgaa_profile.html">Profil RGAA</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="container" role="main" tabindex="-1">
+    <section class="hero">
+      <h2>Bienvenue dans le laboratoire public Mini-WTD</h2>
+      <p>
+        Ce site est un terrain d’essai pour l’accessibilité, l’inclusion et
+        l’observation réelle des usages. On ne parle pas d’inclusion en
+        powerpoint : on la teste sur un site vivant.
+      </p>
+      <p>
+        Vous pouvez ici expérimenter&nbsp;:
+      </p>
+      <ul>
+        <li>des démos d’accessibilité (clavier, contrastes, lecture vocale),</li>
+        <li>des formulaires testés avec les critères RGAA,</li>
+        <li>des outils d’auto-évaluation et de profil RGAA,</li>
+        <li>une sélection de ressources utiles (annuaires, référentiels, acteurs).</li>
+      </ul>
+    </section>
+
+    <section class="cards-grid">
+      <article class="card">
+        <h3>Tester l’accessibilité en direct</h3>
+        <p>
+          Contraste, focus, navigation clavier, lecture vocale&nbsp;: la page
+          <strong>“Démo accessibilité”</strong> vous permet de voir tout de suite ce qui aide
+          ou bloque un utilisateur.
+        </p>
+        <p><a href="demo-accessibilite.html" class="btn btn-primary">Lancer la démo</a></p>
+      </article>
+
+      <article class="card">
+        <h3>Formulaires et erreurs</h3>
+        <p>
+          Les formulaires sont le point noir de beaucoup de sites. La page
+          <strong>“Tests formulaires”</strong> montre des champs bien étiquetés, des erreurs
+          claires et une logique de focus compréhensible.
+        </p>
+        <p><a href="test-formulaires.html" class="btn">Voir les formulaires</a></p>
+      </article>
+
+      <article class="card">
+        <h3>RGAA · Plus</h3>
+        <p>
+          Le RGAA ne doit pas rester un PDF qu’on subit. La page
+          <strong>“RGAA · Plus”</strong> propose une lecture concrète&nbsp;: ce que ça change
+          pour un dev, un designer, un responsable d’établissement.
+        </p>
+        <p><a href="rgaa_plus.html" class="btn">Découvrir RGAA · Plus</a></p>
+      </article>
+
+      <article class="card">
+        <h3>Annuaire &amp; profils</h3>
+        <p>
+          Référents handicap, ressources officielles, outils d’audit, profils
+          d’accessibilité&nbsp;: l’axe “Annuaire &amp; Profil RGAA” sert de base pour une
+          politique d’accessibilité qui tient la route.
+        </p>
+        <p>
+          <a href="annuaires.html" class="btn">Consulter les annuaires</a>
+          <br>
+          <a href="rgaa_profile.html" class="btn btn-ghost">Voir un exemple de profil</a>
+        </p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <p>
+        © 2025 · Mini-WTD — Laboratoire public d’inclusion et d’accessibilité.
+      </p>
+      <p>
+        Expérimentations&nbsp;: formulaires, accessibilité, profils RGAA, dispositifs IA.
+      </p>
+    </div>
+  </footer>
+
+  <script src="assets/js/a11y-perf.js"></script>
+  <script src="assets/js/quickfix-overlay.js"></script>
+  <script src="assets/js/mwtd-menu.js"></script>
+  <script src="assets/js/mwtd-accessibility.js"></script>
+  <script src="assets/js/mwtd-theme.js"></script>
+  <script src="assets/js/mwtd-tts.js"></script>
+</body>
+</html>
