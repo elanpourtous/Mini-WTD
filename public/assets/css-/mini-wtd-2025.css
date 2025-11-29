@@ -1,0 +1,663 @@
+/* =========================================
+   Mini-WTD · Charte graphique 2025 (Style B)
+   Moderne · Tech · IA · Bleu nuit
+   ========================================= */
+
+/* ---------- 1. Variables globales ---------- */
+
+:root {
+  /* Palette principale */
+  --mwtd-primary: #42466c;       /* Bleu nuit du logo */
+  --mwtd-primary-soft: #3c4a80;
+  --mwtd-accent: #32b5c4;        /* Cyan tech */
+  --mwtd-accent-soft: #173b4a;
+
+  /* Fonds & surfaces */
+  --mwtd-bg: #050814;            /* Fond général */
+  --mwtd-surface: #0f1424;       /* Cartes/panels */
+  --mwtd-surface-soft: #141a2b;
+
+  /* Typo */
+  --mwtd-text: #f5f7ff;
+  --mwtd-text-muted: #a3a8c2;
+
+  /* Bordures & séparateurs */
+  --mwtd-border: #252a40;
+
+  /* États */
+  --mwtd-success: #3dd68c;
+  --mwtd-warning: #ffc857;
+  --mwtd-danger: #ff4f6a;
+  --mwtd-info: #45b0ff;
+
+  /* Rayons / ombres */
+  --mwtd-radius-lg: 1.25rem;
+  --mwtd-radius-md: 0.75rem;
+  --mwtd-radius-pill: 999px;
+
+  --mwtd-shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.55);
+  --mwtd-shadow-subtle: 0 8px 24px rgba(0, 0, 0, 0.35);
+
+  /* Typo */
+  --mwtd-font-sans: system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Dimensions */
+  --mwtd-max-width: 1120px;
+  --mwtd-gap: 1.5rem;
+}
+
+/* Mode contraste élevé possible via JS */
+.high-contrast {
+  --mwtd-bg: #000000;
+  --mwtd-surface: #050505;
+  --mwtd-surface-soft: #101010;
+  --mwtd-text: #ffffff;
+  --mwtd-text-muted: #e0e0e0;
+  --mwtd-border: #ffffff;
+}
+
+/* ---------- 2. Reset léger & base ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: var(--mwtd-font-sans);
+  background: radial-gradient(circle at top, #101735 0, var(--mwtd-bg) 55%);
+  color: var(--mwtd-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Lien d’évitement RGAA */
+.skiplink,
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: #000;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  z-index: 1000;
+}
+
+.skiplink:focus,
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
+/* ---------- 3. Mise en page générale ---------- */
+
+.mwtd-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.mwtd-main {
+  flex: 1;
+  width: 100%;
+  max-width: var(--mwtd-max-width);
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 2.5rem;
+}
+
+/* Conteneur carte “page” */
+.mwtd-panel {
+  background: linear-gradient(135deg, var(--mwtd-surface) 0, var(--mwtd-surface-soft) 60%);
+  border-radius: var(--mwtd-radius-lg);
+  box-shadow: var(--mwtd-shadow-soft);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 1.75rem 1.5rem;
+}
+
+/* Layout grille simple */
+.mwtd-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.2fr);
+  gap: var(--mwtd-gap);
+  align-items: flex-start;
+}
+
+@media (max-width: 900px) {
+  .mwtd-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- 4. En-tête / logo ---------- */
+
+.mwtd-header {
+  width: 100%;
+  max-width: var(--mwtd-max-width);
+  margin: 0 auto;
+  padding: 1.25rem 1.25rem 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.mwtd-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.mwtd-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 20%, #ffffff 0, #dfe3ff 12%, #42466c 40%, #050814 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.06),
+              0 0 18px rgba(66, 70, 108, 0.9);
+  overflow: hidden;
+}
+
+.mwtd-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mwtd-brand-title {
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.mwtd-tagline {
+  font-size: 0.8rem;
+  color: var(--mwtd-text-muted);
+}
+
+/* ---------- 5. Titres & textes ---------- */
+
+.mwtd-page-title {
+  font-size: 1.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0 0 0.75rem;
+}
+
+.mwtd-page-kicker {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  color: var(--mwtd-accent);
+  margin-bottom: 0.35rem;
+}
+
+.mwtd-lead {
+  font-size: 0.97rem;
+  line-height: 1.6;
+  color: var(--mwtd-text-muted);
+  margin-bottom: 1.25rem;
+}
+
+/* ---------- 6. Boutons ---------- */
+
+.mwtd-btn {
+  --btn-bg: var(--mwtd-primary);
+  --btn-color: #ffffff;
+  --btn-border: transparent;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+
+  padding: 0.55rem 1.1rem;
+  border-radius: var(--mwtd-radius-pill);
+  border: 1px solid var(--btn-border);
+  background: var(--btn-bg);
+  color: var(--btn-color);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.12s ease-out, box-shadow 0.12s ease-out,
+              background 0.15s ease-out, border-color 0.15s ease-out;
+}
+
+.mwtd-btn:focus-visible {
+  outline: 2px solid var(--mwtd-accent);
+  outline-offset: 2px;
+}
+
+.mwtd-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--mwtd-shadow-subtle);
+}
+
+.mwtd-btn-primary {
+  --btn-bg: linear-gradient(135deg, var(--mwtd-primary) 0, var(--mwtd-accent) 100%);
+}
+
+.mwtd-btn-ghost {
+  --btn-bg: transparent;
+  --btn-color: var(--mwtd-text);
+  --btn-border: rgba(255,255,255,0.16);
+}
+
+.mwtd-btn-ghost:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+/* ---------- 7. Cartes & blocs ---------- */
+
+.mwtd-card {
+  background: radial-gradient(circle at top left, rgba(50,181,196,0.16) 0, transparent 50%),
+              var(--mwtd-surface);
+  border-radius: var(--mwtd-radius-md);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 1.25rem 1.1rem;
+  box-shadow: var(--mwtd-shadow-subtle);
+}
+
+.mwtd-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.mwtd-card-title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.mwtd-card-subtitle {
+  font-size: 0.8rem;
+  color: var(--mwtd-text-muted);
+}
+
+/* Petit badge “IA”, “Bêta”, etc. */
+.mwtd-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.6rem;
+  border-radius: var(--mwtd-radius-pill);
+  font-size: 0.75rem;
+  border: 1px solid rgba(255,255,255,0.16);
+  color: var(--mwtd-accent);
+  background: rgba(24, 182, 211, 0.08);
+}
+
+/* ---------- 8. Zone chatbot Mini-WTD ---------- */
+
+.mwtd-chat-shell {
+  position: relative;
+  background: radial-gradient(circle at top, rgba(50,181,196,0.18) 0, transparent 55%),
+              var(--mwtd-surface);
+  border-radius: var(--mwtd-radius-lg);
+  padding: 1.1rem;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: var(--mwtd-shadow-soft);
+  overflow: hidden;
+}
+
+.mwtd-chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.mwtd-chat-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.mwtd-chat-status {
+  font-size: 0.75rem;
+  color: var(--mwtd-text-muted);
+}
+
+/* Bulles de message */
+
+.mwtd-chat-messages {
+  max-height: 320px;
+  overflow-y: auto;
+  padding-right: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.mwtd-chat-bubble {
+  max-width: 92%;
+  padding: 0.55rem 0.75rem;
+  border-radius: 0.9rem;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  margin-bottom: 0.4rem;
+}
+
+.mwtd-chat-bubble--bot {
+  background: rgba(15, 119, 145, 0.25);
+  border: 1px solid rgba(50,181,196,0.6);
+  border-bottom-left-radius: 0.2rem;
+}
+
+.mwtd-chat-bubble--user {
+  margin-left: auto;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-bottom-right-radius: 0.2rem;
+}
+
+/* Champ de saisie */
+
+.mwtd-chat-input-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mwtd-input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.55rem 0.65rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(6, 10, 24, 0.95);
+  color: var(--mwtd-text);
+  font-size: 0.88rem;
+}
+
+.mwtd-input::placeholder {
+  color: var(--mwtd-text-muted);
+}
+
+.mwtd-input:focus-visible {
+  outline: 2px solid var(--mwtd-accent);
+  outline-offset: 1px;
+}
+
+/* ---------- 9. Formulaires (bilan aménagement) ---------- */
+
+.mwtd-form-field {
+  margin-bottom: 0.75rem;
+}
+
+.mwtd-label {
+  display: block;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--mwtd-text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.mwtd-select,
+.mwtd-textarea {
+  width: 100%;
+  padding: 0.55rem 0.65rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(6, 10, 24, 0.98);
+  color: var(--mwtd-text);
+  font-size: 0.86rem;
+  resize: vertical;
+}
+
+.mwtd-select:focus-visible,
+.mwtd-textarea:focus-visible {
+  outline: 2px solid var(--mwtd-accent);
+  outline-offset: 1px;
+}
+
+/* ---------- 10. Petits utilitaires ---------- */
+
+.mwtd-row {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.mwtd-row-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mwtd-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--mwtd-radius-pill);
+  font-size: 0.72rem;
+  background: rgba(255,255,255,0.05);
+  color: var(--mwtd-text-muted);
+}
+
+/* Statuts pour tes bilans d’aménagement, candidats, etc. */
+.mwtd-pill-success {
+  background: rgba(61,214,140,0.1);
+  color: var(--mwtd-success);
+}
+.mwtd-pill-warning {
+  background: rgba(255,200,87,0.1);
+  color: var(--mwtd-warning);
+}
+.mwtd-pill-danger {
+  background: rgba(255,79,106,0.1);
+  color: var(--mwtd-danger);
+}
+.mwtd-pill-info {
+  background: rgba(69,176,255,0.1);
+  color: var(--mwtd-info);
+}
+/* =========================================
+   Complément RGAA 2025 · Mini-WTD
+   - Focus visibles
+   - Mode contraste élevé (déjà branché via .high-contrast)
+   - Espacement augmenté (.large-spacing)
+   - Contenu masqué pour lecteurs d’écran
+   - Réduction des animations
+   ========================================= */
+
+/* 1) Focus visibles et navigation clavier */
+
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--mwtd-accent);
+  outline-offset: 2px;
+}
+
+/* On enlève les outlines moches par défaut */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+}
+
+/* 2) Texte caché mais lisible par les lecteurs d’écran */
+
+.sr-only,
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Variante : redevient visible au focus si besoin */
+.sr-only-focusable:focus,
+.sr-only-focusable:active {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  clip: auto !important;
+  white-space: normal !important;
+}
+
+/* 3) Espacement augmenté (.large-spacing sur <html>) */
+
+.large-spacing body,
+.large-spacing p,
+.large-spacing li,
+.large-spacing dt,
+.large-spacing dd {
+  line-height: 1.8;
+}
+
+.large-spacing p,
+.large-spacing li {
+  margin-bottom: 0.8rem;
+}
+
+.large-spacing .mwtd-panel,
+.large-spacing .mwtd-card {
+  padding-top: 1.9rem;
+  padding-bottom: 1.9rem;
+}
+
+/* 4) Renfort contraste en mode .high-contrast (tu utilises déjà les variables) */
+
+.high-contrast body {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.high-contrast .mwtd-panel,
+.high-contrast .mwtd-card,
+.high-contrast .mwtd-chat-shell {
+  background: #000000;
+  border-color: #ffffff;
+  box-shadow: none;
+}
+
+.high-contrast .mwtd-btn,
+.high-contrast .mwtd-btn-primary,
+.high-contrast .mwtd-btn-ghost {
+  background: #000000;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  box-shadow: none;
+}
+
+.high-contrast .mwtd-chip,
+.high-contrast .mwtd-badge {
+  background: #000000;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+}
+
+/* 5) Réduction des animations (préférence OS) */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* 6) Tableaux plus lisibles */
+
+table {
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+th {
+  text-align: left;
+}
+/* ============================
+   Sous-navigation de page
+   ============================ */
+
+.mwtd-subnav {
+  position: sticky;
+  top: 0; /* ajuste si tu as déjà un header fixe */
+  z-index: 30;
+  margin: 0 auto 1rem;
+  padding: 0.35rem 0.75rem;
+  max-width: 960px;
+  backdrop-filter: blur(10px);
+  background: rgba(5, 9, 20, 0.92);
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.mwtd-subnav-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.mwtd-subnav a {
+  display: inline-block;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: #e5f7f0;
+  border: 1px solid transparent;
+  background: transparent;
+}
+
+.mwtd-subnav a:hover,
+.mwtd-subnav a:focus-visible {
+  border-color: #24d18a;
+  background: rgba(36, 209, 138, 0.12);
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  .mwtd-subnav {
+    border-radius: 16px;
+  }
+
+  .mwtd-subnav-list {
+    justify-content: flex-start;
+  }
+}
