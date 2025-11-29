@@ -607,3 +607,57 @@ td {
 th {
   text-align: left;
 }
+/* ============================
+   Sous-navigation de page
+   ============================ */
+
+.mwtd-subnav {
+  position: sticky;
+  top: 0; /* ajuste si tu as déjà un header fixe */
+  z-index: 30;
+  margin: 0 auto 1rem;
+  padding: 0.35rem 0.75rem;
+  max-width: 960px;
+  backdrop-filter: blur(10px);
+  background: rgba(5, 9, 20, 0.92);
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.mwtd-subnav-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.mwtd-subnav a {
+  display: inline-block;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: #e5f7f0;
+  border: 1px solid transparent;
+  background: transparent;
+}
+
+.mwtd-subnav a:hover,
+.mwtd-subnav a:focus-visible {
+  border-color: #24d18a;
+  background: rgba(36, 209, 138, 0.12);
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  .mwtd-subnav {
+    border-radius: 16px;
+  }
+
+  .mwtd-subnav-list {
+    justify-content: flex-start;
+  }
+}
