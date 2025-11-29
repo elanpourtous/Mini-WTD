@@ -1,38 +1,416 @@
-/* assets/css/style.css */
-/* Placeholder de base Mini-WTD – à fusionner avec ton propre style.css */
+/* ================================
+   MINI-WTD · Labo public 2025
+   Mise en forme globale
+   ================================ */
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   margin: 0;
-  padding: 0;
-  background: #f5f5f5;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.5;
+  background: #f5f5f7;
   color: #222;
 }
 
 .container {
-  max-width: 960px;
+  max-width: 1040px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 0 1rem;
 }
 
-.card {
-  background: #fff;
-  border-radius: 8px;
-  padding: 1rem 1.25rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  margin-bottom: 1rem;
+/* Skiplink */
+.skiplink {
+  position: absolute;
+  top: -40px;
+  left: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: #0B8457;
+  color: #fff;
+  text-decoration: none;
+  z-index: 1000;
 }
+.skiplink:focus {
+  top: 0.5rem;
+}
+
+/* ================================
+   HEADER & NAV
+   ================================ */
+
+.site-header {
+  background: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 1.5rem;
+}
+
+.site-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 0.75rem 0;
+}
+
+.site-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.site-logo img {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+.site-title {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.site-tagline {
+  margin: 0.1rem 0 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Nav principale */
+.site-nav {
+  background: #ffffff;
+  border-top: 1px solid #e0e0e0;
+}
+
+.site-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 1rem;
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: #333;
+  font-size: 0.95rem;
+  padding: 0.25rem 0;
+  border-bottom: 2px solid transparent;
+}
+
+.site-nav a:hover,
+.site-nav a:focus {
+  color: #0B8457;
+}
+
+.site-nav a[aria-current="page"] {
+  border-bottom-color: #0B8457;
+  font-weight: 600;
+}
+
+/* Burger + nav mobile */
+.site-nav-toggle {
+  display: none;
+  padding: 0 1rem 0.5rem;
+}
+
+.btn-icon {
+  border: 1px solid #d0d0d0;
+  background: #fff;
+  border-radius: 999px;
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.btn-icon:hover,
+.btn-icon:focus-visible {
+  border-color: #0B8457;
+}
+
+/* Icône burger */
+.burger {
+  display: inline-block;
+  width: 18px;
+  height: 2px;
+  background: currentColor;
+  position: relative;
+}
+.burger::before,
+.burger::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 18px;
+  height: 2px;
+  background: currentColor;
+}
+.burger::before {
+  top: -5px;
+}
+.burger::after {
+  top: 5px;
+}
+
+/* Petits écrans : menu replié */
+@media (max-width: 768px) {
+  .site-header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .site-nav-toggle {
+    display: block;
+  }
+
+  .site-nav ul {
+    flex-direction: column;
+    padding-top: 0;
+  }
+
+  /* on laisse mwtd-menu.js gérer [hidden] sur #primary-nav */
+}
+
+/* ================================
+   BARRE ACCESSIBILITÉ
+   ================================ */
+
+.a11y-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.a11y-toolbar .access-btn,
+.a11y-toolbar .btn-icon {
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
+/* ================================
+   BOUTONS GÉNÉRIQUES
+   ================================ */
 
 .btn {
   display: inline-block;
-  padding: 0.4rem 0.8rem;
+  padding: 0.45rem 0.9rem;
   border-radius: 999px;
-  border: 1px solid #0056D6;
-  background: #0056D6;
-  color: #fff;
+  border: 1px solid #0B8457;
+  background: #ffffff;
+  color: #0B8457;
+  font-size: 0.9rem;
   text-decoration: none;
+  cursor: pointer;
 }
-.btn.btn--ghost {
+.btn:hover,
+.btn:focus-visible {
+  background: #e7f4ef;
+}
+
+.btn-primary {
+  background: #0B8457;
+  color: #ffffff;
+}
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  background: #086342;
+  color: #ffffff;
+}
+
+.btn-ghost {
   background: transparent;
-  color: #0056D6;
+  border-color: #9aa4ad;
+  color: #333;
+}
+.btn-ghost:hover,
+.btn-ghost:focus-visible {
+  background: #f1f3f5;
+}
+
+/* ================================
+   HERO / BLOCS DE CONTENU
+   ================================ */
+
+main {
+  padding-bottom: 2rem;
+}
+
+.hero {
+  margin-bottom: 1.5rem;
+  padding: 1.25rem 1.25rem 1rem;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+}
+
+.hero h2 {
+  margin-top: 0;
+  margin-bottom: 0.4rem;
+  font-size: 1.35rem;
+}
+
+.hero p {
+  margin-top: 0.3rem;
+}
+
+/* Cartes en grille */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1rem;
+  border: 1px solid #e0e0e0;
+}
+
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+}
+
+.card ul {
+  padding-left: 1.1rem;
+  margin: 0.4rem 0 0.6rem;
+}
+
+.card p {
+  margin: 0.3rem 0;
+}
+
+/* Blocs de test / sections secondaires */
+.test-block {
+  margin-top: 1.5rem;
+  padding: 1.1rem 1.1rem 1rem;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+}
+
+.test-block h3 {
+  margin-top: 0;
+  margin-bottom: 0.4rem;
+}
+
+/* Notes / textes secondaires */
+.note {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+/* Formulaires */
+.form-card {
+  margin-top: 0.8rem;
+  padding: 1rem;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+.form-group {
+  margin-bottom: 0.9rem;
+}
+
+.form-group label {
+  display: inline-block;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+  width: 100%;
+  max-width: 100%;
+  padding: 0.45rem 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #c5c5c5;
+  font: inherit;
+  box-sizing: border-box;
+}
+
+.field-hint {
+  font-size: 0.8rem;
+  color: #666;
+  margin: 0.2rem 0 0;
+}
+
+/* Focus global renforcé (complété par base-a11y.css) */
+:focus-visible {
+  outline: 3px solid #0B8457;
+  outline-offset: 2px;
+}
+
+/* ================================
+   FOOTER
+   ================================ */
+
+.site-footer {
+  border-top: 1px solid #e0e0e0;
+  padding: 1rem 0 1.5rem;
+  background: #ffffff;
+  margin-top: 2rem;
+}
+
+.site-footer p {
+  margin: 0.25rem 0;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+/* ================================
+   VARIANTS THÈME SOMBRE
+   (complète base-a11y.css)
+   ================================ */
+
+html[data-theme="dark"] body {
+  background: #111318;
+  color: #e5e5e5;
+}
+
+html[data-theme="dark"] .site-header,
+html[data-theme="dark"] .site-nav,
+html[data-theme="dark"] .hero,
+html[data-theme="dark"] .card,
+html[data-theme="dark"] .test-block,
+html[data-theme="dark"] .form-card,
+html[data-theme="dark"] .site-footer {
+  background: #181b22;
+  border-color: #2a2f3a;
+}
+
+html[data-theme="dark"] .site-tagline,
+html[data-theme="dark"] .note,
+html[data-theme="dark"] .field-hint {
+  color: #b5bdc9;
+}
+
+html[data-theme="dark"] .site-nav a {
+  color: #e5e5e5;
+}
+
+html[data-theme="dark"] .site-nav a[aria-current="page"] {
+  border-bottom-color: #0B8457;
+}
+
+html[data-theme="dark"] .btn {
+  border-color: #0B8457;
+  color: #0B8457;
+  background: #111318;
+}
+
+html[data-theme="dark"] .btn-primary {
+  background: #0B8457;
+  color: #ffffff;
+}
+
+html[data-theme="dark"] .btn-ghost {
+  border-color: #555e6a;
+  color: #e5e5e5;
 }
