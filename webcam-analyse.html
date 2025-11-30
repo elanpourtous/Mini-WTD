@@ -12,6 +12,115 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/base-a11y.css">
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
+
+  <!-- Ajustements de lisibilité pour la page webcam -->
+  <style>
+    body.webcam-page {
+      background: radial-gradient(circle at top, #111827 0%, #020617 55%, #00010a 100%);
+      color: #e5f0ff;
+    }
+
+    body.webcam-page .site-header,
+    body.webcam-page .site-footer {
+      background: transparent;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+    }
+
+    body.webcam-page .site-title,
+    body.webcam-page .site-tagline {
+      color: #f9fafb;
+    }
+
+    body.webcam-page .hero,
+    body.webcam-page .mwtd-panel,
+    body.webcam-page .cards-grid .card,
+    body.webcam-page .mwtd-card {
+      background: #020617;
+      color: #e5f0ff;
+      border-radius: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
+    }
+
+    body.webcam-page h1,
+    body.webcam-page h2,
+    body.webcam-page h3 {
+      color: #ffffff;
+    }
+
+    body.webcam-page p,
+    body.webcam-page li,
+    body.webcam-page label,
+    body.webcam-page .form-hint {
+      color: #e5f0ff;
+    }
+
+    /* Bloc webcam : cadre plus lisible */
+    body.webcam-page .mwtd-webcam-video-wrap {
+      background: #020617;
+      border-radius: 0.9rem;
+      border: 1px solid rgba(148, 163, 184, 0.9);
+      overflow: hidden;
+      position: relative;
+    }
+
+    body.webcam-page #mwtd-video,
+    body.webcam-page #mwtd-pose-canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    body.webcam-page .mwtd-webcam-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(
+        to bottom,
+        rgba(15, 23, 42, 0.9),
+        rgba(15, 23, 42, 0.98)
+      );
+      color: #f9fafb;
+      font-weight: 600;
+      padding: 1.5rem;
+      font-size: 1rem;
+    }
+
+    body.webcam-page .mwtd-observe-list dt {
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    body.webcam-page .mwtd-observe-list dd {
+      color: #e5f0ff;
+    }
+
+    body.webcam-page #mwtd-notes {
+      background: #020617;
+      color: #e5f0ff;
+      border: 1px solid rgba(148, 163, 184, 0.8);
+    }
+
+    body.webcam-page .btn.btn-primary {
+      background: #2563eb;
+      border-color: #2563eb;
+      color: #ffffff;
+    }
+
+    body.webcam-page .btn {
+      background: #0f172a;
+      border-color: #1e293b;
+      color: #e5f0ff;
+    }
+
+    body.webcam-page .btn:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+  </style>
 </head>
 
 <body class="webcam-page">
@@ -510,4 +619,3 @@
   <script src="assets/js/mwtd-tts.js"></script>
 </body>
 </html>
-
