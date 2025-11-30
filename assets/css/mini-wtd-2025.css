@@ -837,5 +837,51 @@ body.bilan-page {
   background: transparent !important;
 }
 
+/* ============================================================
+   🔥 Correctif Prioritaire — Forcer la version claire Bilan
+   ============================================================ */
+
+body.bilan-page {
+  background-color: #f3f4f6 !important;
+  color: #111827 !important;
+}
+
+/* Neutralise TOUT LE BLEU NUIT venant du thème global */
+body.bilan-page .mwtd-panel,
+body.bilan-page .mwtd-panel *,
+body.bilan-page .mwtd-card,
+body.bilan-page .mwtd-card *,
+body.bilan-page .mwtd-card-header {
+  background: #ffffff !important;
+  color: #111827 !important;
+  border: 1px solid #e5e7eb !important;
+  box-shadow: none !important;
+}
+
+/* Sous-titres (1. Contexte, etc.) */
+body.bilan-page legend {
+  color: #111827 !important;
+  font-weight: 600 !important;
+  padding: 0 0.35rem !important;
+  background: #fafafa !important;
+}
+
+/* Supprimer la barre sombre au-dessus ("Grille de bilan") */
+body.bilan-page .mwtd-card-header {
+  border-bottom: 1px solid #e5e7eb !important;
+  padding-bottom: 1rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+/* Inputs lisibles */
+body.bilan-page input,
+body.bilan-page textarea,
+body.bilan-page select {
+  background: #ffffff !important;
+  color: #111827 !important;
+  border: 1px solid #d1d5db !important;
+}
+
+
 
 
