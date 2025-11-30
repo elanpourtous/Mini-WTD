@@ -827,4 +827,62 @@ body.bilan-page {
   color: #0f172a !important;
 }
 
+/* ============================================
+   PAGE BILAN — MODE CLAIR LISIBLE
+   ============================================ */
+
+/* Conteneur principal */
+.bilan-page .mwtd-panel {
+  background-color: #f5f5f7 !important;   /* Fond clair */
+  color: #111827 !important;
+  border-radius: 12px;
+  border: none;
+  padding: 2rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+/* Fieldsets */
+.bilan-page .mwtd-fieldset {
+  background-color: #ffffff !important;   /* Fond blanc */
+  border: 1px solid #e5e7eb !important;   /* Gris clair */
+  padding: 1.5rem !important;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+}
+
+/* Légendes */
+.bilan-page .mwtd-fieldset legend {
+  color: #1f2937 !important;
+  font-weight: 600;
+}
+
+/* Textes */
+.bilan-page label,
+.bilan-page p,
+.bilan-page .form-hint {
+  color: #1f2937 !important;
+}
+
+/* Inputs et textarea */
+.bilan-page input,
+.bilan-page textarea,
+.bilan-page select {
+  background-color: #fff !important;
+  border: 1px solid #d1d5db !important; /* gris doux */
+  color: #111 !important;
+  border-radius: 6px !important;
+}
+
+/* Boutons */
+.bilan-page .btn-primary {
+  background-color: #2563eb !important; /* bleu accessible */
+  border-color: #1d4ed8 !important;
+  color: #ffffff !important;
+}
+
+/* Supprime totalement la bande bleue foncée */
+.bilan-page .mwtd-card,
+.bilan-page .mwtd-panel > * {
+  background: transparent !important;
+}
 
