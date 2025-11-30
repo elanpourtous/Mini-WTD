@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Mini-WTD · Tests formulaires</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+        content="Page de test pour formulaires accessibles : labels, erreurs, aides et focus.">
+
+  <link rel="stylesheet" href="../assets/css/mini-wtd-2025.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/base-a11y.css">
+  <link rel="stylesheet" href="../assets/css/rgaa-accessible.css">
+</head>
+
+<body>
+  <a href="#main" class="skiplink">Aller directement au contenu</a>
+
+  <header class="site-header">
+    <div class="container site-header-inner">
+      <div class="site-brand">
+        <img src="../assets/ima/logo-mini-wtd-256.png"
+             alt="Logo Mini-WTD"
+             class="site-logo">
+        <div class="site-brand-text">
+          <h1 class="site-title">Mini-WTD · Laboratoire public</h1>
+          <p class="site-tagline">Tests formulaires & erreurs</p>
+        </div>
+      </div>
+
+      <div class="a11y-toolbar">
+        <button class="access-btn" data-action="font-">A−</button>
+        <button class="access-btn" data-action="font+">A+</button>
+        <button class="access-btn" data-action="contrast">◐</button>
+        <button class="access-btn" data-action="spacing">↕︎</button>
+        <button class="access-btn" data-action="reset">⟲</button>
+        <button id="theme-toggle">🌓</button>
+        <button id="tts-toggle">🔊</button>
+      </div>
+    </div>
+
+    <nav class="site-nav">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="demo-accessibilite.html">Démo accessibilité</a></li>
+        <li><a href="test-formulaires.html" aria-current="page">Tests formulaires</a></li>
+        <li><a href="rgaa_plus.html">RGAA · Plus</a></li>
+        <li><a href="annuaires.html">Annuaires</a></li>
+        <li><a href="rgaa_profile.html">Profil RGAA</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="container" tabindex="-1">
+    <section class="hero">
+      <h2>Formulaires & erreurs accessibles</h2>
+      <p>
+        Exemple de formulaire simple, avec labels explicites, message d’erreur clair et
+        focus cohérent. À utiliser comme base de test.
+      </p>
+    </section>
+
+    <section class="cards-grid">
+      <article class="card">
+        <h3>Formulaire de contact test</h3>
+
+        <form id="demo-form" novalidate>
+          <div class="form-group">
+            <label for="nom">Nom <span aria-hidden="true">*</span></label>
+            <input id="nom" name="nom" type="text" required>
+            <p class="form-hint">Indiquez votre nom ou celui du testeur.</p>
+            <p class="form-error" id="error-nom" hidden>Merci d’indiquer un nom.</p>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Adresse e-mail <span aria-hidden="true">*</span></label>
+            <input id="email" name="email" type="email" required>
+            <p class="form-hint">Format attendu : nom@domaine.fr</p>
+            <p class="form-error" id="error-email" hidden>Adresse e-mail invalide.</p>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message (facultatif)</label>
+            <textarea id="message" name="message" rows="4"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Envoyer le formulaire test</button>
+        </form>
+
+        <p style="margin-top:1rem;">
+          Soumettez le formulaire vide : les erreurs doivent apparaître clairement et le focus
+          doit se placer sur le premier champ en erreur.
+        </p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2025 · Mini-WTD — Laboratoire public d’inclusion et d’accessibilité.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mini script d’exemple pour les erreurs
+    (function () {
+      const form = document.getElementById('demo-form');
+      if (!form) return;
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        let firstError = null;
+
+        const nom = document.getElementById('nom');
+        const email = document.getElementById('email');
+        const errNom = document.getElementById('error-nom');
+        const errEmail = document.getElementById('error-email');
+
+        errNom.hidden = true;
+        errEmail.hidden = true;
+
+        if (!nom.value.trim()) {
+          errNom.hidden = false;
+          firstError = firstError || nom;
+        }
+
+        if (!email.value.trim() || !email.value.includes('@')) {
+          errEmail.hidden = false;
+          firstError = firstError || email;
+        }
+
+        if (firstError) {
+          firstError.focus();
+        } else {
+          alert('Formulaire test envoyé (simulation).');
+        }
+      });
+    })();
+  </script>
+
+  <script src="../assets/js/mwtd-accessibility.js"></script>
+  <script src="../assets/js/mwtd-theme.js"></script>
+  <script src="../assets/js/mwtd-tts.js"></script>
+  <script src="../assets/js/mwtd-menu.js"></script>
+</body>
+</html>
