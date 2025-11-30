@@ -701,3 +701,64 @@ body.webcam-page .mwtd-webcam-overlay {
   color: #f9fafb;
 }
 
+/* ================================
+   Corrections de lisibilité formulaires
+   (bilan + webcam)
+   ================================ */
+
+/* Fond des panneaux : clair */
+.bilan-page .mwtd-panel,
+.webcam-page .mwtd-panel {
+  background-color: #f5f5f7;   /* gris très clair */
+  color: #111827;              /* texte foncé */
+}
+
+/* Cartes / blocs internes : blanc */
+.bilan-page .mwtd-card,
+.webcam-page .mwtd-card {
+  background-color: #ffffff;
+  color: #111827;
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+}
+
+/* Fieldsets et légendes */
+.mwtd-fieldset {
+  border: 1px solid #e5e7eb;
+  background-color: #ffffff;
+}
+
+.mwtd-fieldset legend {
+  color: #111827;
+}
+
+/* Inputs, selects, textareas lisibles sur fond clair */
+.mwtd-form input[type="text"],
+.mwtd-form input[type="email"],
+.mwtd-form input[type="tel"],
+.mwtd-form select,
+.mwtd-form textarea {
+  background-color: #ffffff;
+  color: #111827;
+  border: 1px solid #cbd5f5;
+}
+
+/* Texte d’aide */
+.form-hint {
+  color: #4b5563;
+}
+
+/* Labels bien visibles */
+.mwtd-form label {
+  color: #111827;
+}
+
+/* Quand le contraste élevé est activé,
+   on garde quand même une bonne lisibilité */
+.high-contrast .bilan-page .mwtd-panel,
+.high-contrast .webcam-page .mwtd-panel,
+.high-contrast .bilan-page .mwtd-card,
+.high-contrast .webcam-page .mwtd-card {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
