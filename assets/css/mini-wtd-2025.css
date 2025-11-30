@@ -886,3 +886,33 @@ body.bilan-page {
   background: transparent !important;
 }
 
+/* ============================================
+   Correction fond sombre du bilan — 100% CLAIR
+   ============================================ */
+
+.bilan-page .mwtd-panel,
+.bilan-page .mwtd-card,
+.bilan-page .mwtd-card-header {
+    background-color: #ffffff !important; /* blanc */
+    color: #111 !important;
+    border: 1px solid #e5e7eb !important; /* gris clair */
+}
+
+/* Supprime le fond bleu nuit de l'intérieur */
+.bilan-page .mwtd-panel * {
+    background: transparent !important;
+}
+
+/* Amélioration des titres */
+.bilan-page .mwtd-card-title,
+.bilan-page .mwtd-card-subtitle {
+    color: #1f2937 !important; /* gris foncé lisible */
+}
+
+/* Style des fieldsets */
+.bilan-page .mwtd-fieldset {
+    background: #fafafa !important;      /* fond gris très clair */
+    border: 1px solid #e5e7eb !important;
+    border-radius: 10px;
+    padding: 1.5rem;
+}
