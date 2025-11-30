@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Mini-WTD · Exemple de profil RGAA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+        content="Exemple de profil RGAA pour suivre la maturité accessibilité d’une organisation.">
+
+  <link rel="stylesheet" href="../assets/css/mini-wtd-2025.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/base-a11y.css">
+  <link rel="stylesheet" href="../assets/css/rgaa-accessible.css">
+</head>
+
+<body>
+  <a href="#main" class="skiplink">Aller directement au contenu</a>
+
+  <header class="site-header">
+    <div class="container site-header-inner">
+      <div class="site-brand">
+        <img src="../assets/ima/logo-mini-wtd-256.png"
+             alt="Logo Mini-WTD"
+             class="site-logo">
+        <div class="site-brand-text">
+          <h1 class="site-title">Mini-WTD · Laboratoire public</h1>
+          <p class="site-tagline">Exemple de profil RGAA</p>
+        </div>
+      </div>
+
+      <div class="a11y-toolbar">
+        <button class="access-btn" data-action="font-">A−</button>
+        <button class="access-btn" data-action="font+">A+</button>
+        <button class="access-btn" data-action="contrast">◐</button>
+        <button class="access-btn" data-action="spacing">↕︎</button>
+        <button class="access-btn" data-action="reset">⟲</button>
+        <button id="theme-toggle">🌓</button>
+        <button id="tts-toggle">🔊</button>
+      </div>
+    </div>
+
+    <nav class="site-nav">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="demo-accessibilite.html">Démo accessibilité</a></li>
+        <li><a href="test-formulaires.html">Tests formulaires</a></li>
+        <li><a href="rgaa_plus.html">RGAA · Plus</a></li>
+        <li><a href="annuaires.html">Annuaires</a></li>
+        <li><a href="rgaa_profile.html" aria-current="page">Profil RGAA</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="container" tabindex="-1">
+    <section class="hero">
+      <h2>Exemple de profil RGAA</h2>
+      <p>
+        Ce profil fictif permet de visualiser la maturité d’une organisation sur l’accessibilité.
+        Il peut servir de base pour vos propres grilles.
+      </p>
+    </section>
+
+    <section class="cards-grid">
+      <article class="card">
+        <h3>Organisation</h3>
+        <dl>
+          <dt>Nom</dt>
+          <dd>Entreprise de démonstration</dd>
+
+          <dt>Type</dt>
+          <dd>Collectivité / Entreprise de services</dd>
+
+          <dt>Contact référent accessibilité</dt>
+          <dd>à définir</dd>
+        </dl>
+      </article>
+
+      <article class="card">
+        <h3>Niveau de conformité cible</h3>
+        <dl>
+          <dt>Objectif</dt>
+          <dd>Conformité RGAA 4.1 niveau AA sur les principaux services en ligne.</dd>
+
+          <dt>Échéance</dt>
+          <dd>2 ans</dd>
+
+          <dt>Priorités</dt>
+          <dd>Services usagers, intranet RH, documentation PDF essentielle.</dd>
+        </dl>
+      </article>
+
+      <article class="card">
+        <h3>Actions engagées</h3>
+        <ul>
+          <li>Audit initial réalisé sur le site principal.</li>
+          <li>Formation de base pour l’équipe web (dev + design + communication).</li>
+          <li>Plan de mise en conformité en cours de rédaction.</li>
+        </ul>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2025 · Mini-WTD — Laboratoire public d’inclusion et d’accessibilité.</p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/mwtd-accessibility.js"></script>
+  <script src="../assets/js/mwtd-theme.js"></script>
+  <script src="../assets/js/mwtd-tts.js"></script>
+  <script src="../assets/js/mwtd-menu.js"></script>
+</body>
+</html>
