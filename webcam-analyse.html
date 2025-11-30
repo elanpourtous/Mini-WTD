@@ -2,102 +2,353 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Mini-WTD · Analyse posture & environnement</title>
-
+  <title>Mini-WTD · Webcam & observation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description"
-        content="Module expérimental d’analyse de posture et d’environnement de travail, dans un cadre éthique et respectueux du RGPD.">
+        content="Mini-WTD — module webcam de démonstration : observer une posture, vérifier l’éclairage et ouvrir le dialogue sur l’aménagement de poste.">
 
-  <link rel="icon" type="image/png" href="assets/ima/logo-mini-wtd-256.png">
+  <!-- Styles globaux -->
   <link rel="stylesheet" href="assets/css/mini-wtd-2025.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/base-a11y.css">
+  <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
 </head>
 
-<body class="mwtd-shell">
-  <a class="skiplink" href="#main">Aller directement au contenu principal</a>
+<body>
+<a href="#main" class="skiplink">Aller directement au contenu</a>
 
-  <?php include 'includes/nav.html'; ?>
+<!-- ===== HEADER ===== -->
+<header class="site-header" role="banner">
+  <div class="container site-header-inner">
+    <div class="site-brand">
+      <div class="site-logo">
+        <img src="assets/ima/logo-mini-wtd-256.png" alt="Logo Mini-WTD" loading="lazy">
+      </div>
+      <div class="site-brand-text">
+        <h1 class="site-title">Mini-WTD</h1>
+        <p class="site-tagline">Work-Test-Demo · Module webcam (démo)</p>
+      </div>
+    </div>
 
-  <main id="main" class="mwtd-main" tabindex="-1" role="main">
+    <div class="a11y-toolbar" aria-label="Réglages d’accessibilité et de lecture">
+      <button class="access-btn" data-action="font-" type="button">A−</button>
+      <button class="access-btn" data-action="font+" type="button">A+</button>
+      <button class="access-btn" data-action="contrast" type="button">◐</button>
+      <button class="access-btn" data-action="spacing" type="button">↕︎</button>
+      <button class="access-btn" data-action="reset" type="button">⟲</button>
+      <button id="theme-toggle" class="btn-icon" type="button">🌓</button>
+      <button id="tts-toggle" class="btn-icon" type="button">🔊</button>
+    </div>
+  </div>
 
-    <section class="mwtd-panel mwtd-grid" aria-labelledby="page-title">
+  <div class="container site-nav-toggle">
+    <button
+      id="menu-toggle"
+      class="btn-icon"
+      type="button"
+      aria-label="Ouvrir ou fermer le menu"
+      aria-expanded="false"
+      aria-controls="primary-nav">
+      <span class="burger" aria-hidden="true"></span>
+      <span class="sr-only">Menu</span>
+    </button>
+  </div>
+
+  <nav class="site-nav" aria-label="Navigation principale">
+    <ul id="primary-nav">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="presentation.html">Présentation</a></li>
+      <li><a href="assistant.html">Assistant IA</a></li>
+      <li><a href="evaluation-amenagement.html">Bilan</a></li>
+      <li><a href="webcam-analyse.html" class="active" aria-current="page">Webcam</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ===== CONTENU ===== -->
+<main id="main" class="container" role="main" tabindex="-1">
+
+  <!-- Hero -->
+  <section class="hero">
+    <h2>Module webcam · observation ergonomique (démo)</h2>
+    <p class="mwtd-lead">
+      Ce module permet de <strong>visualiser une posture</strong> via la webcam et de
+      lancer une discussion sur l’aménagement de poste : hauteur d’écran,
+      éclairage, distance, organisation de l’espace.
+    </p>
+    <p>
+      <strong>Version 1</strong> : démo simple, 100&nbsp;% locale.
+      Aucune image n’est enregistrée ni envoyée sur Internet.
+      Les résultats sont indicatifs et doivent toujours être complétés par
+      l’observation humaine et l’échange avec la personne.
+    </p>
+  </section>
+
+  <!-- Ce que fait / ne fait pas -->
+  <section class="cards-grid" aria-label="Limites et objectifs du module">
+    <article class="card">
+      <h3>Ce que fait ce module</h3>
+      <ul>
+        <li>Affiche l’image de la webcam sur l’écran.</li>
+        <li>Donne un retour rapide sur l’éclairage de la scène.</li>
+        <li>Propose une synthèse textuelle d’observation.</li>
+        <li>Ouvre un dialogue sur les pistes d’aménagement.</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <h3>Ce qu’il ne fait pas</h3>
+      <ul>
+        <li>Pas de diagnostic médical, ni d’avis de santé.</li>
+        <li>Pas de reconnaissance faciale, pas d’identification.</li>
+        <li>Pas de stockage ni d’envoi des images.</li>
+        <li>Pas de décision automatique sur l’aptitude.</li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- Bloc webcam -->
+  <section class="mwtd-panel" aria-labelledby="webcam-title">
+    <header class="mwtd-card-header">
       <div>
-        <p class="mwtd-page-kicker">Module expérimental</p>
-        <h1 id="page-title" class="mwtd-page-title">Analyse posture &amp; environnement</h1>
-        <p class="mwtd-lead">
-          Ce module est une <strong>preuve de concept</strong> permettant de
-          visualiser la posture générale et certains éléments de l’environnement
-          (distance à l’écran, éclairage approximatif, espace disponible),
-          sans aucun diagnostic médical.
+        <h2 id="webcam-title" class="mwtd-card-title">Observation en direct via webcam</h2>
+        <p class="mwtd-card-subtitle">
+          Utilisation recommandée en <strong>présence de la personne</strong>, avec son accord explicite.
         </p>
-        <p class="mwtd-lead">
-          Il doit être utilisé uniquement après information et consentement
-          des personnes concernées, dans un cadre strictement professionnel et
-          documenté.
+      </div>
+    </header>
+
+    <div class="mwtd-grid" style="margin-top:1rem;">
+      <!-- Colonne gauche : vidéo -->
+      <div class="mwtd-card">
+        <h3>Vue caméra</h3>
+        <p class="form-hint">
+          Cliquez sur “Activer la webcam” et autorisez l’accès à la caméra.
         </p>
 
-        <div style="margin-top:1rem;">
-          <span class="mwtd-chip mwtd-pill-warning">Expérimental</span>
-          <span class="mwtd-chip mwtd-pill-info">Aucun stockage automatique</span>
+        <div class="mwtd-webcam-shell">
+          <div class="mwtd-webcam-video-wrap">
+            <video id="mwtd-video"
+                   playsinline
+                   autoplay
+                   muted
+                   aria-label="Flux vidéo de la webcam (aucun enregistrement)">
+            </video>
+            <div id="mwtd-video-overlay" class="mwtd-webcam-overlay" aria-hidden="true">
+              <p>En attente d’autorisation…</p>
+            </div>
+          </div>
+
+          <div class="mwtd-row" style="margin-top:0.75rem;">
+            <button id="mwtd-start" type="button" class="btn btn-primary">
+              Activer la webcam
+            </button>
+            <button id="mwtd-stop" type="button" class="btn" disabled>
+              Arrêter
+            </button>
+            <button id="mwtd-analyse" type="button" class="btn" disabled>
+              Analyser l’image (démo)
+            </button>
+          </div>
+
+          <p id="mwtd-webcam-status"
+             class="form-hint"
+             aria-live="polite"
+             style="margin-top:0.5rem;">
+            Statut : en attente.
+          </p>
         </div>
+
+        <!-- Canvas caché pour l’analyse de luminosité -->
+        <canvas id="mwtd-canvas" width="320" height="240" hidden></canvas>
       </div>
 
-      <aside class="mwtd-card" aria-label="Zone de capture vidéo">
-        <h2 class="mwtd-card-title">Aperçu caméra (locale)</h2>
-        <p class="mwtd-card-subtitle">
-          Le flux reste local sur l’ordinateur. Aucune image n’est envoyée
-          à un serveur sans accord explicite.
-        </p>
+      <!-- Colonne droite : résultats -->
+      <div class="mwtd-card">
+        <h3>Retour rapide sur l’environnement</h3>
 
-        <div style="margin-top:.75rem;">
-          <video id="mwtd-webcam" width="100%" autoplay playsinline muted
-                 style="border-radius:.75rem; border:1px solid rgba(255,255,255,0.18); background:#000;"></video>
+        <dl class="mwtd-observe-list" aria-live="polite">
+          <div class="mwtd-observe-item">
+            <dt>Lumière &amp; contraste</dt>
+            <dd id="mwtd-result-light">En attente d’analyse.</dd>
+          </div>
+          <div class="mwtd-observe-item">
+            <dt>Distance écran / personne</dt>
+            <dd id="mwtd-result-distance">
+              À évaluer avec la personne (démo : rappel des bonnes pratiques).
+            </dd>
+          </div>
+          <div class="mwtd-observe-item">
+            <dt>Posture générale</dt>
+            <dd id="mwtd-result-posture">
+              Vérifier hauteur d’écran, position de la chaise, appui des pieds.
+            </dd>
+          </div>
+        </dl>
+
+        <div class="mwtd-observer-notes">
+          <label for="mwtd-notes">
+            Notes d’observation (facultatif)
+          </label>
+          <textarea id="mwtd-notes" rows="4"
+                    placeholder="Exemples : écran trop haut, reflet sur l’écran, besoin d’appui pour les avant-bras…"></textarea>
+          <p class="form-hint">
+            Vous pouvez copier-coller ces notes dans le bilan d’aménagement.
+          </p>
         </div>
-
-        <div class="mwtd-row" style="margin-top:.75rem;">
-          <button id="mwtd-webcam-start" class="mwtd-btn mwtd-btn-primary" type="button">
-            Activer la caméra
-          </button>
-          <button id="mwtd-webcam-stop" class="mwtd-btn mwtd-btn-ghost" type="button">
-            Arrêter
-          </button>
-        </div>
-
-        <p id="mwtd-webcam-status" class="mwtd-tagline" style="margin-top:.5rem;">
-          La caméra est désactivée.
-        </p>
-      </aside>
-    </section>
-
-    <section class="mwtd-panel" style="margin-top:1.5rem;">
-      <h2 class="mwtd-card-title">Lecture ergonomique simplifiée</h2>
-      <p class="mwtd-lead">
-        L’objectif n’est pas de « juger » une personne, mais de créer un support
-        visuel pour discuter&nbsp;:
-      </p>
-      <ul>
-        <li>de la distance à l’écran ou au plan de travail&nbsp;;</li>
-        <li>de la place disponible pour les aides techniques&nbsp;;</li>
-        <li>de la lumière (trop forte, contre-jour, reflet)&nbsp;;</li>
-        <li>de la posture globale (assise debout, torsions visibles).</li>
-      </ul>
-      <p class="mwtd-lead">
-        Toute interprétation fine (pathologies, troubles) relève de la
-        médecine du travail ou de spécialistes, pas de Mini-WTD.
-      </p>
-    </section>
-  </main>
-
-  <footer class="mwtd-main" role="contentinfo" style="padding-top:0;">
-    <div class="mwtd-row-between" style="border-top:1px solid rgba(255,255,255,0.06); padding-top:1rem; margin-top:1rem;">
-      <p class="mwtd-tagline">
-        © <?php echo date('Y'); ?> — Mini-WTD · Module expérimental posture &amp; environnement.
-      </p>
-      <span class="mwtd-chip">Preuve de concept · à encadrer juridiquement</span>
+      </div>
     </div>
-  </footer>
+  </section>
 
-  <?php include 'includes/chatbot-mini-wtd.html'; ?>
+  <!-- Mode d’emploi -->
+  <section class="mwtd-panel" aria-labelledby="mode-usage-title">
+    <header class="mwtd-card-header">
+      <div>
+        <h2 id="mode-usage-title" class="mwtd-card-title">Comment utiliser ce module en entretien&nbsp;?</h2>
+        <p class="mwtd-card-subtitle">
+          Quelques repères pour un usage éthique, simple et respectueux.
+        </p>
+      </div>
+    </header>
 
-  <script src="assets/js/miniwtd-webcam.js"></script>
+    <ol class="mwtd-list-steps">
+      <li><strong>Demander l’accord</strong> de la personne avant d’activer la webcam.</li>
+      <li>Positionner la caméra de façon à voir le buste, l’écran et la zone de travail.</li>
+      <li>Lancer l’analyse (démo) pour obtenir un retour sur la lumière.</li>
+      <li>Compléter par l’observation : hauteur de l’écran, distances, gestes, appuis.</li>
+      <li>Noter les pistes d’aménagement et les intégrer au <a href="evaluation-amenagement.html">bilan</a>.</li>
+    </ol>
+
+    <p class="form-hint">
+      Version 1 : analyse légère, uniquement sur la luminosité de la scène.  
+      Version 2 (optionnelle) pourra intégrer une analyse IA plus poussée (posture) côté entreprise,
+      dans un cadre technique et juridique renforcé.
+    </p>
+  </section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <p>© 2025 · Mini-WTD — Module webcam de démonstration, sans enregistrement d’images.</p>
+  </div>
+</footer>
+
+<!-- ===== SCRIPTS ===== -->
+<script>
+(function () {
+  const video   = document.getElementById('mwtd-video');
+  const canvas  = document.getElementById('mwtd-canvas');
+  const overlay = document.getElementById('mwtd-video-overlay');
+  const btnStart   = document.getElementById('mwtd-start');
+  const btnStop    = document.getElementById('mwtd-stop');
+  const btnAnalyse = document.getElementById('mwtd-analyse');
+  const statusEl   = document.getElementById('mwtd-webcam-status');
+
+  const lightEl    = document.getElementById('mwtd-result-light');
+  const distEl     = document.getElementById('mwtd-result-distance');
+  const postureEl  = document.getElementById('mwtd-result-posture');
+
+  let stream = null;
+
+  function setStatus(msg) {
+    if (statusEl) statusEl.textContent = 'Statut : ' + msg;
+  }
+
+  async function startWebcam() {
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      setStatus("Webcam non supportée par ce navigateur.");
+      return;
+    }
+    try {
+      stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+      video.srcObject = stream;
+      if (overlay) overlay.innerHTML = "<p>Webcam active (démo).</p>";
+      btnStop.disabled = false;
+      btnAnalyse.disabled = false;
+      setStatus("webcam active.");
+    } catch (err) {
+      console.error(err);
+      setStatus("accès refusé ou impossible.");
+      if (overlay) overlay.innerHTML =
+        "<p>Accès à la webcam refusé ou impossible.</p>";
+    }
+  }
+
+  function stopWebcam() {
+    if (stream) {
+      stream.getTracks().forEach(t => t.stop());
+      stream = null;
+    }
+    video.srcObject = null;
+    if (overlay) overlay.innerHTML = "<p>Webcam arrêtée.</p>";
+    btnStop.disabled = true;
+    btnAnalyse.disabled = true;
+    setStatus("webcam arrêtée.");
+  }
+
+  function analyseFrame() {
+    if (!stream || !video.videoWidth || !video.videoHeight) {
+      setStatus("aucune image à analyser.");
+      return;
+    }
+
+    const ctx = canvas.getContext('2d');
+    const w = canvas.width;
+    const h = canvas.height;
+
+    // Dessine une version réduite de l’image pour analyse rapide
+    ctx.drawImage(video, 0, 0, w, h);
+    const data = ctx.getImageData(0, 0, w, h).data;
+
+    let sum = 0;
+    // Moyenne de luminosité simple (0-255)
+    for (let i = 0; i < data.length; i += 4) {
+      const r = data[i];
+      const g = data[i + 1];
+      const b = data[i + 2];
+      const lum = 0.299 * r + 0.587 * g + 0.114 * b;
+      sum += lum;
+    }
+    const avg = sum / (data.length / 4);
+
+    let msgLight;
+    if (avg < 60) {
+      msgLight = "Éclairage très faible : risque de fatigue visuelle, pensez à ajouter une source de lumière douce.";
+    } else if (avg < 120) {
+      msgLight = "Éclairage plutôt faible : vérifier que le visage et le plan de travail sont bien visibles.";
+    } else if (avg > 210) {
+      msgLight = "Éclairage très fort : surveiller les reflets et l’éblouissement sur l’écran.";
+    } else {
+      msgLight = "Éclairage globalement correct pour l’écran et le visage (à valider avec la personne).";
+    }
+    lightEl.textContent = msgLight;
+
+    distEl.textContent =
+      "En démo, la distance n’est pas mesurée automatiquement. " +
+      "Vérifier que la personne peut tendre légèrement les bras pour toucher l’écran sans effort, " +
+      "et que le haut de l’écran est à hauteur des yeux ou légèrement en dessous.";
+
+    postureEl.textContent =
+      "Observer : appui des pieds au sol, dos soutenu, épaules relâchées, avant-bras appuyés. " +
+      "Adapter la hauteur de la chaise et de l’écran si nécessaire.";
+
+    setStatus("analyse simple effectuée (démo).");
+  }
+
+  if (btnStart)   btnStart.addEventListener('click', startWebcam);
+  if (btnStop)    btnStop.addEventListener('click', stopWebcam);
+  if (btnAnalyse) btnAnalyse.addEventListener('click', analyseFrame);
+
+  // Arrêt sécuritaire si on quitte la page
+  window.addEventListener('beforeunload', stopWebcam);
+})();
+</script>
+
+<script src="assets/js/mwtd-menu.js"></script>
+<script src="assets/js/mwtd-accessibility.js"></script>
+<script src="assets/js/mwtd-theme.js"></script>
+<script src="assets/js/mwtd-tts.js"></script>
 </body>
 </html>
