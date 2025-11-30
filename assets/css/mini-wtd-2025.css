@@ -882,6 +882,41 @@ body.bilan-page select {
   border: 1px solid #d1d5db !important;
 }
 
+/* ============================
+   PAGE CONTACT — FORMULAIRE CLAIR
+   ============================ */
+
+body.contact-page {
+  background-color: #f3f4f6;
+  color: #0f172a;
+}
+
+.contact-page .mwtd-panel {
+  background-color: #ffffff;
+  color: #0f172a;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  padding: 2rem;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+}
+
+.contact-page label {
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.contact-page .form-hint {
+  color: #475569;
+}
+
+.contact-page input,
+.contact-page textarea,
+.contact-page select {
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  color: #111827;
+  border-radius: 6px;
+}
 
 
 
