@@ -661,3 +661,43 @@ th {
     justify-content: flex-start;
   }
 }
+/* =======================================
+   🚨 Boost contraste page webcam IA
+   ======================================= */
+
+body.webcam-page,
+body.webcam-page .mwtd-panel {
+  background: #020617; /* fond très sombre mais uniforme */
+}
+
+/* Les deux cartes principales */
+body.webcam-page .mwtd-panel .mwtd-card {
+  background: #020617;
+  color: #f9fafb;
+  box-shadow:
+    0 0 0 1px rgba(148, 163, 184, 0.5),
+    0 20px 40px rgba(15, 23, 42, 0.9);
+}
+
+/* Titres & textes dans le bloc webcam */
+body.webcam-page .mwtd-panel h2,
+body.webcam-page .mwtd-panel h3,
+body.webcam-page .mwtd-panel p,
+body.webcam-page .mwtd-panel li,
+body.webcam-page .mwtd-panel dt,
+body.webcam-page .mwtd-panel dd {
+  color: #f9fafb;
+}
+
+/* Légendes un peu moins fortes mais lisibles */
+body.webcam-page .form-hint,
+body.webcam-page .mwtd-observe-item dd {
+  color: #e5e7eb;
+}
+
+/* Overlay “en attente d’autorisation…” plus lisible */
+body.webcam-page .mwtd-webcam-overlay {
+  background: rgba(15,23,42,0.85);
+  color: #f9fafb;
+}
+
