@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Mini-WTD · RGAA · Plus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+        content="RGAA · Plus : une lecture concrète du référentiel pour dev, designers et décideurs.">
+
+  <link rel="stylesheet" href="../assets/css/mini-wtd-2025.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/base-a11y.css">
+  <link rel="stylesheet" href="../assets/css/rgaa-accessible.css">
+</head>
+
+<body>
+  <a href="#main" class="skiplink">Aller directement au contenu</a>
+
+  <header class="site-header">
+    <div class="container site-header-inner">
+      <div class="site-brand">
+        <img src="../assets/ima/logo-mini-wtd-256.png"
+             alt="Logo Mini-WTD"
+             class="site-logo">
+        <div class="site-brand-text">
+          <h1 class="site-title">Mini-WTD · Laboratoire public</h1>
+          <p class="site-tagline">RGAA · Plus — lecture concrète</p>
+        </div>
+      </div>
+
+      <div class="a11y-toolbar">
+        <button class="access-btn" data-action="font-">A−</button>
+        <button class="access-btn" data-action="font+">A+</button>
+        <button class="access-btn" data-action="contrast">◐</button>
+        <button class="access-btn" data-action="spacing">↕︎</button>
+        <button class="access-btn" data-action="reset">⟲</button>
+        <button id="theme-toggle">🌓</button>
+        <button id="tts-toggle">🔊</button>
+      </div>
+    </div>
+
+    <nav class="site-nav">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="demo-accessibilite.html">Démo accessibilité</a></li>
+        <li><a href="test-formulaires.html">Tests formulaires</a></li>
+        <li><a href="rgaa_plus.html" aria-current="page">RGAA · Plus</a></li>
+        <li><a href="annuaires.html">Annuaires</a></li>
+        <li><a href="rgaa_profile.html">Profil RGAA</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="container" tabindex="-1">
+    <section class="hero">
+      <h2>RGAA · Plus : ce que ça change pour vous</h2>
+      <p>
+        Ici, on ne récite pas les critères. On explique <strong>ce que ça implique</strong>
+        pour les métiers qui travaillent sur un projet numérique.
+      </p>
+    </section>
+
+    <section class="cards-grid">
+      <article class="card">
+        <h3>Pour les développeurs</h3>
+        <ul>
+          <li>Structurer la page avec les bons niveaux de titres.</li>
+          <li>Associer correctement les labels aux champs de formulaire.</li>
+          <li>Gérer le focus (clavier) lors des ouvertures/fermetures de modales.</li>
+          <li>Éviter le contenu qui bouge sans contrôle utilisateur.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h3>Pour les designers / UI</h3>
+        <ul>
+          <li>Choisir des contrastes suffisants (texte, boutons, liens).</li>
+          <li>Prévoir des états : survol, focus, actif.</li>
+          <li>Éviter les textes très longs en majuscules ou condensés.</li>
+          <li>Penser aux lecteurs d’écran dès la maquette (ordre de lecture).</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h3>Pour les décideurs</h3>
+        <ul>
+          <li>Intégrer l’accessibilité dans les cahiers des charges.</li>
+          <li>Prévoir du temps pour tester avec des utilisateurs en situation réelle.</li>
+          <li>Éviter les “grands projets vitrines” sans suivi derrière.</li>
+          <li>Faire de l’accessibilité un critère qualité, pas un bonus.</li>
+        </ul>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2025 · Mini-WTD — Laboratoire public d’inclusion et d’accessibilité.</p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/mwtd-accessibility.js"></script>
+  <script src="../assets/js/mwtd-theme.js"></script>
+  <script src="../assets/js/mwtd-tts.js"></script>
+  <script src="../assets/js/mwtd-menu.js"></script>
+</body>
+</html>
