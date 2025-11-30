@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
 </head>
 
-  <body class="bilan-page">
+<body class="bilan-page">
   <a href="#main" class="skiplink">Aller directement au contenu</a>
 
   <!-- ===== HEADER ===== -->
@@ -115,13 +115,13 @@
       <header class="mwtd-card-header">
         <div>
           <h3 id="form-bilan-title" class="mwtd-card-title">Grille de bilan</h3>
-          <p class="mwtd-card-subtitle">
+          <p id="form-bilan-help" class="mwtd-card-subtitle">
             Aucun enregistrement automatique : ce que vous saisissez reste sur cet appareil.
           </p>
         </div>
       </header>
 
-      <form class="mwtd-form" id="form-bilan" novalidate>
+      <form class="mwtd-form" id="form-bilan" novalidate aria-describedby="form-bilan-help">
         <!-- Identité / contexte -->
         <fieldset class="mwtd-fieldset">
           <legend>1. Contexte</legend>
