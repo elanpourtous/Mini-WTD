@@ -1,122 +1,294 @@
-/* ================================
-   Corrections de lisibilité formulaires
-   (bilan + webcam)
-   ================================ */
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Mini-WTD · Bilan d’aménagement</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+        content="Mini-WTD — Bilan d’aménagement de poste : description de la situation, contraintes, impacts et pistes d’adaptation.">
 
-/* Fond des panneaux : clair */
-.bilan-page .mwtd-panel,
-.webcam-page .mwtd-panel {
-  background-color: #f5f5f7;   /* gris très clair */
-  color: #111827;              /* texte foncé */
-}
+  <!-- Styles globaux -->
+  <link rel="stylesheet" href="assets/css/mini-wtd-2025.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/base-a11y.css">
+  <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
+</head>
 
-/* Cartes / blocs internes : blanc */
-.bilan-page .mwtd-card,
-.webcam-page .mwtd-card {
-  background-color: #ffffff;
-  color: #111827;
-  border-radius: 0.75rem;
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
-}
+<body class="bilan-page">
+  <a href="#main" class="skiplink">Aller directement au contenu</a>
 
-/* Fieldsets et légendes */
-.mwtd-fieldset {
-  border: 1px solid #e5e7eb;
-  background-color: #ffffff;
-}
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" role="banner">
+    <div class="container site-header-inner">
+      <div class="site-brand">
+        <div class="site-logo">
+          <img src="assets/ima/logo-mini-wtd-256.png" alt="Logo Mini-WTD" loading="lazy">
+        </div>
+        <div class="site-brand-text">
+          <h1 class="site-title">Mini-WTD</h1>
+          <p class="site-tagline">Work-Test-Demo · Bilan d’aménagement</p>
+        </div>
+      </div>
 
-.mwtd-fieldset legend {
-  color: #111827;
-}
+      <div class="a11y-toolbar" aria-label="Réglages d’accessibilité et de lecture">
+        <button class="access-btn" data-action="font-"
+                type="button"
+                aria-label="Réduire la taille du texte"
+                title="A− (Alt + -)">A−</button>
 
-/* Inputs, selects, textareas lisibles sur fond clair */
-.mwtd-form input[type="text"],
-.mwtd-form input[type="email"],
-.mwtd-form input[type="tel"],
-.mwtd-form select,
-.mwtd-form textarea {
-  background-color: #ffffff;
-  color: #111827;
-  border: 1px solid #cbd5f5;
-}
+        <button class="access-btn" data-action="font+"
+                type="button"
+                aria-label="Augmenter la taille du texte"
+                title="A+ (Alt + =)">A+</button>
 
-/* Texte d’aide */
-.form-hint {
-  color: #4b5563;
-}
+        <button class="access-btn" data-action="contrast"
+                type="button"
+                aria-label="Activer le contraste élevé"
+                title="Contraste élevé (Alt + C)">◐</button>
 
-/* Labels bien visibles */
-.mwtd-form label {
-  color: #111827;
-}
+        <button class="access-btn" data-action="spacing"
+                type="button"
+                aria-label="Augmenter l’espacement du texte"
+                title="Espacement (Alt + S)">↕︎</button>
 
-/* Quand le contraste élevé est activé,
-   on garde quand même une bonne lisibilité */
-.high-contrast .bilan-page .mwtd-panel,
-.high-contrast .webcam-page .mwtd-panel,
-.high-contrast .bilan-page .mwtd-card,
-.high-contrast .webcam-page .mwtd-card {
-  background-color: #ffffff !important;
-  color: #000000 !important;
-}
-/* ================================
-   Corrections de lisibilité formulaires
-   (bilan + webcam)
-   ================================ */
+        <button class="access-btn" data-action="reset"
+                type="button"
+                aria-label="Réinitialiser l’affichage"
+                title="Réinitialiser (Alt + 0)">⟲</button>
 
-/* Fond des panneaux : clair */
-.bilan-page .mwtd-panel,
-.webcam-page .mwtd-panel {
-  background-color: #f5f5f7;   /* gris très clair */
-  color: #111827;              /* texte foncé */
-}
+        <button id="theme-toggle"
+                class="btn-icon"
+                type="button"
+                aria-pressed="false"
+                aria-label="Basculer le thème clair/sombre"
+                title="Thème clair / sombre">🌓</button>
 
-/* Cartes / blocs internes : blanc */
-.bilan-page .mwtd-card,
-.webcam-page .mwtd-card {
-  background-color: #ffffff;
-  color: #111827;
-  border-radius: 0.75rem;
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
-}
+        <button id="tts-toggle"
+                class="btn-icon"
+                type="button"
+                aria-pressed="false"
+                aria-label="Activer la lecture vocale de la page"
+                title="Lecture vocale">🔊</button>
+      </div>
+    </div>
 
-/* Fieldsets et légendes */
-.mwtd-fieldset {
-  border: 1px solid #e5e7eb;
-  background-color: #ffffff;
-}
+    <div class="container site-nav-toggle">
+      <button
+        id="menu-toggle"
+        class="btn-icon"
+        type="button"
+        aria-label="Ouvrir ou fermer le menu"
+        aria-expanded="false"
+        aria-controls="primary-nav">
+        <span class="burger" aria-hidden="true"></span>
+        <span class="sr-only">Menu</span>
+      </button>
+    </div>
 
-.mwtd-fieldset legend {
-  color: #111827;
-}
+    <nav class="site-nav" aria-label="Navigation principale">
+      <ul id="primary-nav">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="presentation.html">Présentation</a></li>
+        <li><a href="assistant.html">Assistant IA</a></li>
+        <li><a href="evaluation-amenagement.html" class="active" aria-current="page">Bilan</a></li>
+        <li><a href="webcam-analyse.html">Webcam</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-/* Inputs, selects, textareas lisibles sur fond clair */
-.mwtd-form input[type="text"],
-.mwtd-form input[type="email"],
-.mwtd-form input[type="tel"],
-.mwtd-form select,
-.mwtd-form textarea {
-  background-color: #ffffff;
-  color: #111827;
-  border: 1px solid #cbd5f5;
-}
+  <!-- ===== CONTENU ===== -->
+  <main id="main" class="container" role="main" tabindex="-1">
+    <section class="hero">
+      <h2>Bilan d’aménagement de poste</h2>
+      <p class="mwtd-lead">
+        Cette page sert de support pour construire un <strong>bilan structuré</strong> :
+        situation de travail, contraintes, impacts, pistes d’aménagement et décisions.
+      </p>
+      <p>
+        Vous pouvez l’utiliser comme grille d’entretien, puis copier-coller le résultat
+        dans un document à partager (RH, manager, référent handicap, médecine du travail).
+      </p>
+    </section>
 
-/* Texte d’aide */
-.form-hint {
-  color: #4b5563;
-}
+    <section class="mwtd-panel" aria-labelledby="form-bilan-title">
+      <header class="mwtd-card-header">
+        <div>
+          <h3 id="form-bilan-title" class="mwtd-card-title">Grille de bilan</h3>
+          <p class="mwtd-card-subtitle">
+            Aucun enregistrement automatique : ce que vous saisissez reste sur cet appareil.
+          </p>
+        </div>
+      </header>
 
-/* Labels bien visibles */
-.mwtd-form label {
-  color: #111827;
-}
+      <form class="mwtd-form" id="form-bilan" novalidate>
+        <!-- Identité / contexte -->
+        <fieldset class="mwtd-fieldset">
+          <legend>1. Contexte</legend>
 
-/* Quand le contraste élevé est activé,
-   on garde quand même une bonne lisibilité */
-.high-contrast .bilan-page .mwtd-panel,
-.high-contrast .webcam-page .mwtd-panel,
-.high-contrast .bilan-page .mwtd-card,
-.high-contrast .webcam-page .mwtd-card {
-  background-color: #ffffff !important;
-  color: #000000 !important;
-}
+          <div class="form-group">
+            <label for="bilan-personne">Candidat / salarié</label>
+            <input id="bilan-personne" name="bilan-personne" type="text" autocomplete="off">
+            <p class="form-hint">Nom ou identifiant interne (facultatif pour tests).</p>
+          </div>
+
+          <div class="form-group">
+            <label for="bilan-poste">Poste de travail / fonction actuelle</label>
+            <input id="bilan-poste" name="bilan-poste" type="text" autocomplete="off">
+          </div>
+
+          <div class="form-group">
+            <label for="bilan-service">Service / site</label>
+            <input id="bilan-service" name="bilan-service" type="text" autocomplete="off">
+          </div>
+        </fieldset>
+
+        <!-- Description de la situation -->
+        <fieldset class="mwtd-fieldset">
+          <legend>2. Description de la situation</legend>
+
+          <div class="form-group">
+            <label for="bilan-taches">Tâches principales du poste</label>
+            <textarea id="bilan-taches" name="bilan-taches" rows="4"></textarea>
+            <p class="form-hint">Exemples : accueil du public, saisie informatique, déplacements sur site…</p>
+          </div>
+
+          <div class="form-group">
+            <label for="bilan-difficultes">
+              Difficultés rencontrées dans la situation actuelle
+            </label>
+            <textarea id="bilan-difficultes" name="bilan-difficultes" rows="4"></textarea>
+            <p class="form-hint">
+              Exemples : fatigue en station debout, difficultés à utiliser un clavier ou un écran,
+              déplacements longs, bruit, lumière…
+            </p>
+          </div>
+        </fieldset>
+
+        <!-- Impacts & urgences -->
+        <fieldset class="mwtd-fieldset">
+          <legend>3. Impacts & urgences</legend>
+
+          <div class="form-group">
+            <label for="bilan-impacts">
+              Impacts sur le travail, la santé, l’équipe, les usagers
+            </label>
+            <textarea id="bilan-impacts" name="bilan-impacts" rows="3"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="bilan-urgence">Niveau d’urgence perçu</label>
+            <select id="bilan-urgence" name="bilan-urgence">
+              <option value="">Sélectionner…</option>
+              <option value="immédiat">Immédiat : situation critique</option>
+              <option value="prioritaire">Prioritaire : à traiter dans les semaines à venir</option>
+              <option value="a-planifier">À planifier : peut attendre un projet plus large</option>
+            </select>
+          </div>
+        </fieldset>
+
+        <!-- Pistes d’aménagement -->
+        <fieldset class="mwtd-fieldset">
+          <legend>4. Pistes d’aménagement envisagées</legend>
+
+          <div class="form-group">
+            <label for="bilan-materiel">Aménagements matériels</label>
+            <textarea id="bilan-materiel" name="bilan-materiel" rows="3"></textarea>
+            <p class="form-hint">Exemples : siège adapté, repose-pieds, écran plus grand, outils de saisie…</p>
+          </div>
+
+          <div class="form-group">
+            <label for="bilan-organisation">
+              Aménagements organisationnels / horaires
+            </label>
+            <textarea id="bilan-organisation" name="bilan-organisation" rows="3"></textarea>
+            <p class="form-hint">Exemples : télétravail partiel, pauses supplémentaires, adaptation des horaires…</p>
+          </div>
+
+          <div class="form-group">
+            <label for="bilan-numerique">
+              Aménagements numériques / logiciels
+            </label>
+            <textarea id="bilan-numerique" name="bilan-numerique" rows="3"></textarea>
+            <p class="form-hint">Exemples : lecteurs d’écran, zoom, paramétrage, simplification des interfaces…</p>
+          </div>
+        </fieldset>
+
+        <!-- Acteurs concernés / décisions -->
+        <fieldset class="mwtd-fieldset">
+          <legend>5. Acteurs & décisions</legend>
+
+          <div class="form-group">
+            <label for="bilan-acteurs">
+              Acteurs à associer (interne / externe)
+            </label>
+            <textarea id="bilan-acteurs" name="bilan-acteurs" rows="3"></textarea>
+            <p class="form-hint">
+              Exemples : manager, RH, référent handicap, médecine du travail, Agefiph, MDPH…
+            </p>
+          </div>
+
+          <div class="form-group">
+            <label for="bilan-decisions">
+              Décisions / prochaines étapes
+            </label>
+            <textarea id="bilan-decisions" name="bilan-decisions" rows="3"></textarea>
+            <p class="form-hint">
+              Exemples : phase d’essai de 3 mois, achat de matériel, demande de financement,
+              nouvelle rencontre planifiée à une date donnée.
+            </p>
+          </div>
+        </fieldset>
+
+        <!-- Résumé -->
+        <fieldset class="mwtd-fieldset">
+          <legend>6. Résumé du bilan (brouillon)</legend>
+          <div class="form-group">
+            <label for="bilan-resume">
+              Résumé à partager (copier-coller possible vers un document interne)
+            </label>
+            <textarea id="bilan-resume" name="bilan-resume" rows="6"></textarea>
+            <p class="form-hint">
+              Vous pouvez y coller un texte généré par l’assistant IA, puis le modifier.
+            </p>
+          </div>
+        </fieldset>
+
+        <p class="form-hint">
+          Mini-WTD ne stocke pas vos données : pensez à enregistrer ce bilan dans vos
+          outils internes (SIRH, dossier RH, fichier sécurisé…).
+        </p>
+
+        <button type="submit" class="btn btn-primary">
+          Utilisation en démo — aucune donnée n’est envoyée
+        </button>
+      </form>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <p>© 2025 · Mini-WTD — Bilan d’aménagement de poste.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // On empêche tout envoi réel : c'est une grille d'appui.
+    (function () {
+      const form = document.getElementById('form-bilan');
+      if (!form) return;
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        alert("Mode démo : le formulaire n'est pas envoyé. Copiez le contenu pour l'utiliser dans vos outils internes.");
+      });
+    })();
+  </script>
+
+  <script src="assets/js/mwtd-menu.js"></script>
+  <script src="assets/js/mwtd-accessibility.js"></script>
+  <script src="assets/js/mwtd-theme.js"></script>
+  <script src="assets/js/mwtd-tts.js"></script>
+</body>
+</html>
