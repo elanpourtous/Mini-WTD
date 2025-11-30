@@ -1,6 +1,7 @@
 /* =========================================
    Mini-WTD · Charte graphique 2025 (Style B)
    Moderne · Tech · IA · Bleu nuit
+   + Compléments RGAA 2025
    ========================================= */
 
 /* ---------- 1. Variables globales ---------- */
@@ -169,8 +170,9 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 0 2px rgba(255,255,255,0.06),
-              0 0 18px rgba(66, 70, 108, 0.9);
+  box-shadow:
+    0 0 0 2px rgba(255,255,255,0.06),
+    0 0 18px rgba(66, 70, 108, 0.9);
   overflow: hidden;
 }
 
@@ -396,7 +398,7 @@ img {
   outline-offset: 1px;
 }
 
-/* ---------- 9. Formulaires (bilan aménagement) ---------- */
+/* ---------- 9. Formulaires généraux ---------- */
 
 .mwtd-form-field {
   margin-bottom: 0.75rem;
@@ -455,7 +457,8 @@ img {
   color: var(--mwtd-text-muted);
 }
 
-/* Statuts pour tes bilans d’aménagement, candidats, etc. */
+/* Statuts pour bilans, candidats, etc. */
+
 .mwtd-pill-success {
   background: rgba(61,214,140,0.1);
   color: var(--mwtd-success);
@@ -472,11 +475,12 @@ img {
   background: rgba(69,176,255,0.1);
   color: var(--mwtd-info);
 }
+
 /* =========================================
    Complément RGAA 2025 · Mini-WTD
    - Focus visibles
-   - Mode contraste élevé (déjà branché via .high-contrast)
-   - Espacement augmenté (.large-spacing)
+   - Mode contraste élevé
+   - Espacement augmenté
    - Contenu masqué pour lecteurs d’écran
    - Réduction des animations
    ========================================= */
@@ -493,7 +497,6 @@ textarea:focus-visible {
   outline-offset: 2px;
 }
 
-/* On enlève les outlines moches par défaut */
 a:focus,
 button:focus,
 input:focus,
@@ -517,7 +520,7 @@ textarea:focus {
   border: 0 !important;
 }
 
-/* Variante : redevient visible au focus si besoin */
+/* Variante focusable */
 .sr-only-focusable:focus,
 .sr-only-focusable:active {
   position: static !important;
@@ -550,7 +553,7 @@ textarea:focus {
   padding-bottom: 1.9rem;
 }
 
-/* 4) Renfort contraste en mode .high-contrast (tu utilises déjà les variables) */
+/* 4) Renfort contraste général en mode .high-contrast */
 
 .high-contrast body {
   background-color: #000000;
@@ -607,13 +610,14 @@ td {
 th {
   text-align: left;
 }
+
 /* ============================
    Sous-navigation de page
    ============================ */
 
 .mwtd-subnav {
   position: sticky;
-  top: 0; /* ajuste si tu as déjà un header fixe */
+  top: 0;
   z-index: 30;
   margin: 0 auto 1rem;
   padding: 0.35rem 0.75rem;
@@ -661,258 +665,107 @@ th {
     justify-content: flex-start;
   }
 }
+
 /* =======================================
-   🚨 Boost contraste page webcam IA
+   PAGES SPÉCIALES — FORMULAIRES LISIBLES
+   (webcam IA + bilan d’aménagement)
    ======================================= */
 
+/* Corps en fond clair sur ces pages */
 body.webcam-page,
-body.webcam-page .mwtd-panel {
-  background: #020617; /* fond très sombre mais uniforme */
-}
-
-/* Les deux cartes principales */
-body.webcam-page .mwtd-panel .mwtd-card {
-  background: #020617;
-  color: #f9fafb;
-  box-shadow:
-    0 0 0 1px rgba(148, 163, 184, 0.5),
-    0 20px 40px rgba(15, 23, 42, 0.9);
-}
-
-/* Titres & textes dans le bloc webcam */
-body.webcam-page .mwtd-panel h2,
-body.webcam-page .mwtd-panel h3,
-body.webcam-page .mwtd-panel p,
-body.webcam-page .mwtd-panel li,
-body.webcam-page .mwtd-panel dt,
-body.webcam-page .mwtd-panel dd {
-  color: #f9fafb;
-}
-
-/* Légendes un peu moins fortes mais lisibles */
-body.webcam-page .form-hint,
-body.webcam-page .mwtd-observe-item dd {
-  color: #e5e7eb;
-}
-
-/* Overlay “en attente d’autorisation…” plus lisible */
-body.webcam-page .mwtd-webcam-overlay {
-  background: rgba(15,23,42,0.85);
-  color: #f9fafb;
-}
-
-/* ================================
-   Corrections de lisibilité formulaires
-   (bilan + webcam)
-   ================================ */
-
-/* Fond des panneaux : clair */
-.bilan-page .mwtd-panel,
-.webcam-page .mwtd-panel {
-  background-color: #f5f5f7;   /* gris très clair */
-  color: #111827;              /* texte foncé */
-}
-
-/* Cartes / blocs internes : blanc */
-.bilan-page .mwtd-card,
-.webcam-page .mwtd-card {
-  background-color: #ffffff;
-  color: #111827;
-  border-radius: 0.75rem;
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
-}
-
-/* Fieldsets et légendes */
-.mwtd-fieldset {
-  border: 1px solid #e5e7eb;
-  background-color: #ffffff;
-}
-
-.mwtd-fieldset legend {
-  color: #111827;
-}
-
-/* Inputs, selects, textareas lisibles sur fond clair */
-.mwtd-form input[type="text"],
-.mwtd-form input[type="email"],
-.mwtd-form input[type="tel"],
-.mwtd-form select,
-.mwtd-form textarea {
-  background-color: #ffffff;
-  color: #111827;
-  border: 1px solid #cbd5f5;
-}
-
-/* Texte d’aide */
-.form-hint {
-  color: #4b5563;
-}
-
-/* Labels bien visibles */
-.mwtd-form label {
-  color: #111827;
-}
-
-/* Quand le contraste élevé est activé,
-   on garde quand même une bonne lisibilité */
-.high-contrast .bilan-page .mwtd-panel,
-.high-contrast .webcam-page .mwtd-panel,
-.high-contrast .bilan-page .mwtd-card,
-.high-contrast .webcam-page .mwtd-card {
-  background-color: #ffffff !important;
-  color: #000000 !important;
-}
-
-<body class="bilan-page">
-
-/* ============================================================
-   🌟 Bilan d’aménagement — Version claire & lisible
-   ============================================================ */
-
-/* Corps de page en fond clair */
 body.bilan-page {
   background-color: #f3f4f6;
   color: #0f172a;
 }
 
-/* Bloc principal du formulaire */
-.bilan-page .mwtd-panel {
-  background-color: #ffffff;
-  color: #0f172a;
+/* Bloc principal */
+.webcam-page .mwtd-panel,
+.bilan-page  .mwtd-panel {
+  background-color: #f5f5f7;
+  color: #111827;
   border-radius: 1rem;
   box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
-  padding: 2rem;
-}
-
-/* Cartes internes */
-.bilan-page .mwtd-card,
-.bilan-page fieldset {
-  background-color: #ffffff !important;
   border: 1px solid #e5e7eb;
+}
+
+/* Cartes / fieldsets internes */
+.webcam-page .mwtd-card,
+.bilan-page  .mwtd-card,
+.bilan-page  .mwtd-fieldset {
+  background-color: #ffffff;
+  color: #111827;
   border-radius: 0.75rem;
-  padding: 1.5rem;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
 }
 
-/* Lignes horizontales (les barres noires du screenshot) */
-.bilan-page hr,
-.bilan-page .mwtd-fieldset legend::before {
-  background: transparent !important;
-  border: none !important;
+/* Légendes et titres */
+.bilan-page  .mwtd-fieldset legend,
+.bilan-page  .mwtd-card-title,
+.webcam-page .mwtd-card-title {
+  color: #1f2937;
+  font-weight: 600;
 }
 
-/* Inputs et textarea */
-.bilan-page input,
-.bilan-page textarea,
-.bilan-page select {
-  background-color: #ffffff !important;
-  border: 1px solid #d1d5db !important;
-  color: #0f172a !important;
+/* Labels & texte d’aide */
+.bilan-page  label,
+.webcam-page label {
+  color: #111827;
+  font-weight: 600;
+}
+
+.bilan-page  .form-hint,
+.webcam-page .form-hint {
+  color: #4b5563;
+}
+
+/* Inputs, selects, textareas — fond blanc, texte foncé */
+.bilan-page  input[type="text"],
+.bilan-page  input[type="email"],
+.bilan-page  input[type="tel"],
+.bilan-page  select,
+.bilan-page  textarea,
+.webcam-page input[type="text"],
+.webcam-page input[type="email"],
+.webcam-page input[type="tel"],
+.webcam-page select,
+.webcam-page textarea {
+  background-color: #ffffff;
+  color: #111827;
+  border: 1px solid #cbd5f5;
+  border-radius: 6px;
   font-size: 1rem;
   padding: 0.75rem;
 }
 
-/* Labels */
-.bilan-page label {
-  color: #0f172a !important;
-  font-weight: 600;
+/* Boutons principaux sur ces pages */
+.bilan-page .btn.btn-primary,
+.webcam-page .btn.btn-primary {
+  background-color: #2563eb;
+  border-color: #1d4ed8;
+  color: #ffffff;
 }
 
-/* Sous-titres et hints */
-.bilan-page .form-hint {
-  color: #475569 !important;
+/* Overlay webcam (“en attente d’autorisation…”) */
+.webcam-page .mwtd-webcam-overlay {
+  background: rgba(15,23,42,0.85);
+  color: #f9fafb;
 }
 
-/* Titre de section */
-.bilan-page .mwtd-card-title {
-  color: #0f172a !important;
+/* En mode contraste élevé, on garde un fond clair
+   (noir sur blanc, très lisible) */
+.high-contrast body.webcam-page,
+.high-contrast body.bilan-page {
+  background-color: #ffffff;
+  color: #000000;
 }
 
-/* ============================================
-   PAGE BILAN — MODE CLAIR LISIBLE
-   ============================================ */
-
-/* Conteneur principal */
-.bilan-page .mwtd-panel {
-  background-color: #f5f5f7 !important;   /* Fond clair */
-  color: #111827 !important;
-  border-radius: 12px;
-  border: none;
-  padding: 2rem;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-}
-
-/* Fieldsets */
-.bilan-page .mwtd-fieldset {
-  background-color: #ffffff !important;   /* Fond blanc */
-  border: 1px solid #e5e7eb !important;   /* Gris clair */
-  padding: 1.5rem !important;
-  border-radius: 10px;
-  margin-bottom: 2rem;
-}
-
-/* Légendes */
-.bilan-page .mwtd-fieldset legend {
-  color: #1f2937 !important;
-  font-weight: 600;
-}
-
-/* Textes */
-.bilan-page label,
-.bilan-page p,
-.bilan-page .form-hint {
-  color: #1f2937 !important;
-}
-
-/* Inputs et textarea */
-.bilan-page input,
-.bilan-page textarea,
-.bilan-page select {
-  background-color: #fff !important;
-  border: 1px solid #d1d5db !important; /* gris doux */
-  color: #111 !important;
-  border-radius: 6px !important;
-}
-
-/* Boutons */
-.bilan-page .btn-primary {
-  background-color: #2563eb !important; /* bleu accessible */
-  border-color: #1d4ed8 !important;
-  color: #ffffff !important;
-}
-
-/* Supprime totalement la bande bleue foncée */
-.bilan-page .mwtd-card,
-.bilan-page .mwtd-panel > * {
-  background: transparent !important;
-}
-
-/* ============================================
-   Correction fond sombre du bilan — 100% CLAIR
-   ============================================ */
-
-.bilan-page .mwtd-panel,
-.bilan-page .mwtd-card,
-.bilan-page .mwtd-card-header {
-    background-color: #ffffff !important; /* blanc */
-    color: #111 !important;
-    border: 1px solid #e5e7eb !important; /* gris clair */
-}
-
-/* Supprime le fond bleu nuit de l'intérieur */
-.bilan-page .mwtd-panel * {
-    background: transparent !important;
-}
-
-/* Amélioration des titres */
-.bilan-page .mwtd-card-title,
-.bilan-page .mwtd-card-subtitle {
-    color: #1f2937 !important; /* gris foncé lisible */
-}
-
-/* Style des fieldsets */
-.bilan-page .mwtd-fieldset {
-    background: #fafafa !important;      /* fond gris très clair */
-    border: 1px solid #e5e7eb !important;
-    border-radius: 10px;
-    padding: 1.5rem;
+.high-contrast .webcam-page .mwtd-panel,
+.high-contrast .bilan-page  .mwtd-panel,
+.high-contrast .webcam-page .mwtd-card,
+.high-contrast .bilan-page  .mwtd-card {
+  background-color: #ffffff;
+  color: #000000;
+  border: 2px solid #000000;
+  box-shadow: none;
 }
