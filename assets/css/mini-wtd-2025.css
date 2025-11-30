@@ -804,3 +804,36 @@ body.bilan-page {
 .bilan-page .mwtd-fieldset {
   overflow: visible !important;
 }
+
+/* ============================================
+   PAGE BILAN — corriger le header et les titres
+   ============================================ */
+
+/* Fond du panneau bilan en clair */
+.bilan-page .mwtd-panel {
+  background-color: #f5f5f7 !important;
+  color: #111827 !important;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+/* En-tête "Grille de bilan" */
+.bilan-page .mwtd-panel .mwtd-card-header {
+  background: transparent !important;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+/* Titre et sous-titre en texte foncé lisible */
+.bilan-page .mwtd-panel .mwtd-card-title,
+.bilan-page .mwtd-panel .mwtd-card-subtitle {
+  color: #111827 !important;
+}
+
+/* Légendes des fieldsets (1. Contexte, 2. Description...) */
+.bilan-page .mwtd-fieldset legend {
+  color: #111827 !important;
+  background: transparent !important;
+}
+
