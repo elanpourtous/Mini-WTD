@@ -769,3 +769,38 @@ body.bilan-page {
   border: 2px solid #000000;
   box-shadow: none;
 }
+
+/* ============================================
+   BILAN — Correction sous-titres (legend)
+   ============================================ */
+
+.bilan-page .mwtd-fieldset {
+  position: relative;
+  margin: 1.5rem 0;
+  padding: 1.5rem 1.5rem 1.5rem;
+  border: 1px solid #e5e7eb !important;
+  background-color: #ffffff !important;
+  border-radius: 10px;
+}
+
+/* Légende visible, non coupée */
+.bilan-page .mwtd-fieldset legend {
+  padding: 0 0.5rem;
+  margin: 0;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #1f2937 !important;
+}
+
+/* On supprime toute déco avant qui faisait une barre sombre */
+.bilan-page .mwtd-fieldset legend::before,
+.bilan-page .mwtd-fieldset legend::after {
+  content: none !important;
+}
+
+/* On s’assure qu’aucun overflow ne coupe le texte */
+.bilan-page .mwtd-panel,
+.bilan-page .mwtd-card,
+.bilan-page .mwtd-fieldset {
+  overflow: visible !important;
+}
