@@ -764,3 +764,66 @@ body.webcam-page .mwtd-webcam-overlay {
 }
 
 <body class="bilan-page">
+
+/* ============================================================
+   🌟 Bilan d’aménagement — Version claire & lisible
+   ============================================================ */
+
+/* Corps de page en fond clair */
+body.bilan-page {
+  background-color: #f3f4f6;
+  color: #0f172a;
+}
+
+/* Bloc principal du formulaire */
+.bilan-page .mwtd-panel {
+  background-color: #ffffff;
+  color: #0f172a;
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+  padding: 2rem;
+}
+
+/* Cartes internes */
+.bilan-page .mwtd-card,
+.bilan-page fieldset {
+  background-color: #ffffff !important;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+}
+
+/* Lignes horizontales (les barres noires du screenshot) */
+.bilan-page hr,
+.bilan-page .mwtd-fieldset legend::before {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Inputs et textarea */
+.bilan-page input,
+.bilan-page textarea,
+.bilan-page select {
+  background-color: #ffffff !important;
+  border: 1px solid #d1d5db !important;
+  color: #0f172a !important;
+  font-size: 1rem;
+  padding: 0.75rem;
+}
+
+/* Labels */
+.bilan-page label {
+  color: #0f172a !important;
+  font-weight: 600;
+}
+
+/* Sous-titres et hints */
+.bilan-page .form-hint {
+  color: #475569 !important;
+}
+
+/* Titre de section */
+.bilan-page .mwtd-card-title {
+  color: #0f172a !important;
+}
+
