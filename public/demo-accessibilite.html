@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Mini-WTD · Démo accessibilité</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+        content="Démo d’accessibilité Mini-WTD : focus clavier, contrastes, tailles de texte et lecture vocale.">
+
+  <link rel="stylesheet" href="../assets/css/mini-wtd-2025.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/base-a11y.css">
+  <link rel="stylesheet" href="../assets/css/rgaa-accessible.css">
+</head>
+
+<body>
+  <a href="#main" class="skiplink">Aller directement au contenu</a>
+
+  <header class="site-header">
+    <div class="container site-header-inner">
+      <div class="site-brand">
+        <img src="../assets/ima/logo-mini-wtd-256.png"
+             alt="Logo Mini-WTD"
+             class="site-logo">
+        <div class="site-brand-text">
+          <h1 class="site-title">Mini-WTD · Laboratoire public</h1>
+          <p class="site-tagline">Démo d’accessibilité en direct</p>
+        </div>
+      </div>
+
+      <div class="a11y-toolbar">
+        <button class="access-btn" data-action="font-">A−</button>
+        <button class="access-btn" data-action="font+">A+</button>
+        <button class="access-btn" data-action="contrast">◐</button>
+        <button class="access-btn" data-action="spacing">↕︎</button>
+        <button class="access-btn" data-action="reset">⟲</button>
+        <button id="theme-toggle">🌓</button>
+        <button id="tts-toggle">🔊</button>
+      </div>
+    </div>
+
+    <nav class="site-nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="demo-accessibilite.html" aria-current="page">Démo accessibilité</a></li>
+        <li><a href="test-formulaires.html">Tests formulaires</a></li>
+        <li><a href="rgaa_plus.html">RGAA · Plus</a></li>
+        <li><a href="annuaires.html">Annuaires</a></li>
+        <li><a href="rgaa_profile.html">Profil RGAA</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="container" tabindex="-1">
+    <section class="hero">
+      <h2>Tester l’accessibilité en direct</h2>
+      <p>
+        Cette page sert de terrain de jeu pour vérifier ce qui aide ou bloque un utilisateur :
+        navigation clavier, focus visible, contraste, lecture vocale.
+      </p>
+    </section>
+
+    <section class="cards-grid">
+      <article class="card">
+        <h3>1. Navigation au clavier</h3>
+        <p>Utilisez la touche <strong>Tab</strong> pour circuler entre les éléments suivants :</p>
+        <p>
+          <a href="#test-bouton" class="btn btn-primary">Bouton test</a>
+          <a href="#test-lien" class="btn">Lien test</a>
+          <button type="button" class="btn btn-ghost" id="test-bouton">Bouton natif</button>
+        </p>
+        <p id="test-lien">
+          Si le focus reste visible partout, c’est un bon point.  
+          S’il disparaît, un utilisateur clavier peut se “perdre”.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>2. Contrastes & thèmes</h3>
+        <p>
+          Utilisez les boutons <strong>A+</strong>, <strong>A−</strong>, <strong>◐</strong> et <strong>🌓</strong> dans la barre d’outils
+          pour tester les variations de contraste, de taille de texte et de thème.
+        </p>
+        <p>
+          L’objectif : que le contenu reste lisible dans toutes les configurations.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>3. Lecture vocale</h3>
+        <p>
+          Sélectionnez un paragraphe de cette page, puis activez le bouton <strong>🔊</strong>.
+          Selon le navigateur, la synthèse vocale lit le texte sélectionné.
+        </p>
+        <p>
+          Cela aide à comprendre comment une personne non-voyante ou dyslexique consomme le contenu.
+        </p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <p>© 2025 · Mini-WTD — Laboratoire public d’inclusion et d’accessibilité.</p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/mwtd-accessibility.js"></script>
+  <script src="../assets/js/mwtd-theme.js"></script>
+  <script src="../assets/js/mwtd-tts.js"></script>
+  <script src="../assets/js/mwtd-menu.js"></script>
+</body>
+</html>
