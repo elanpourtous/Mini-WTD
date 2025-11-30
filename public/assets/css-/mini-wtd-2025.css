@@ -607,3 +607,38 @@ td {
 th {
   text-align: left;
 }
+
+/* === Correctif lisibilité BILAN (titre + sous-titre) === */
+
+/* On garde le panneau sombre, mais texte en blanc */
+.bilan-page .mwtd-panel {
+  background: #020617;          /* fond bleu nuit */
+  color: #f9fafb;
+}
+
+/* Titre "Grille de bilan" + sous-titre en blanc bien visibles */
+.bilan-page .mwtd-panel .mwtd-card-header,
+.bilan-page .mwtd-panel .mwtd-card-title,
+.bilan-page .mwtd-panel .mwtd-card-subtitle {
+  color: #f9fafb !important;
+}
+
+/* === Légendes de fieldset non coupées === */
+
+/* On évite que le panneau coupe le haut des légendes */
+.mwtd-panel {
+  overflow: visible;  /* au lieu de hidden si tu l'avais mis */
+}
+
+/* Un peu d’air au-dessus des fieldsets */
+.bilan-page .mwtd-fieldset {
+  margin-top: 1.25rem;
+}
+
+/* Légende bien détachée de la bordure */
+.bilan-page .mwtd-fieldset legend {
+  padding: 0 0.35rem;
+  background: #020617;          /* même fond que le panneau */
+  color: #f9fafb;
+}
+
