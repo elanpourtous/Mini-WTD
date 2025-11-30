@@ -14,499 +14,500 @@
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
 </head>
 
-<body>
-<a href="#main" class="skiplink">Aller directement au contenu</a>
+<body class="webcam-page">
+  <a href="#main" class="skiplink">Aller directement au contenu</a>
 
-<!-- ===== HEADER ===== -->
-<header class="site-header" role="banner">
-  <div class="container site-header-inner">
-    <div class="site-brand">
-      <div class="site-logo">
-        <img src="assets/ima/logo-mini-wtd-256.png" alt="Logo Mini-WTD" loading="lazy">
-      </div>
-      <div class="site-brand-text">
-        <h1 class="site-title">Mini-WTD</h1>
-        <p class="site-tagline">Work-Test-Demo · Module webcam IA (démo)</p>
-      </div>
-    </div>
-
-    <div class="a11y-toolbar" aria-label="Réglages d’accessibilité et de lecture">
-      <button class="access-btn" data-action="font-" type="button">A−</button>
-      <button class="access-btn" data-action="font+" type="button">A+</button>
-      <button class="access-btn" data-action="contrast" type="button">◐</button>
-      <button class="access-btn" data-action="spacing" type="button">↕︎</button>
-      <button class="access-btn" data-action="reset" type="button">⟲</button>
-      <button id="theme-toggle" class="btn-icon" type="button">🌓</button>
-      <button id="tts-toggle" class="btn-icon" type="button">🔊</button>
-    </div>
-  </div>
-
-  <div class="container site-nav-toggle">
-    <button
-      id="menu-toggle"
-      class="btn-icon"
-      type="button"
-      aria-label="Ouvrir ou fermer le menu"
-      aria-expanded="false"
-      aria-controls="primary-nav">
-      <span class="burger" aria-hidden="true"></span>
-      <span class="sr-only">Menu</span>
-    </button>
-  </div>
-
-  <nav class="site-nav" aria-label="Navigation principale">
-    <ul id="primary-nav">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="presentation.html">Présentation</a></li>
-      <li><a href="assistant.html">Assistant IA</a></li>
-      <li><a href="evaluation-amenagement.html">Bilan</a></li>
-      <li><a href="webcam-analyse.html" class="active" aria-current="page">Webcam IA</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
-</header>
-
-<!-- ===== CONTENU ===== -->
-<main id="main" class="container" role="main" tabindex="-1">
-
-  <!-- Hero -->
-  <section class="hero">
-    <h2>Module webcam · observation ergonomique avec IA</h2>
-    <p class="mwtd-lead">
-      Ce module utilise <strong>MediaPipe Pose</strong> pour repérer la position générale
-      du corps et proposer un retour rapide sur la posture et l’environnement
-      de travail. Il ne produit aucun diagnostic médical et n’enregistre pas les images.
-    </p>
-    <p>
-      Tout reste <strong>local dans le navigateur</strong> de l’ordinateur utilisé.
-      Les résultats sont des <strong>indications pédagogiques</strong> pour ouvrir le dialogue
-      sur l’aménagement de poste (hauteur d’écran, distance, appuis, lumière…).
-    </p>
-  </section>
-
-  <!-- Ce que fait / ne fait pas -->
-  <section class="cards-grid" aria-label="Limites et objectifs du module">
-    <article class="card">
-      <h3>Ce que fait ce module</h3>
-      <ul>
-        <li>Affiche la vidéo de la webcam et un schéma simplifié du corps.</li>
-        <li>Estime la lumière globale de la scène.</li>
-        <li>Donne des messages sur la posture (buste penché, écran trop haut/bas…)</li>
-        <li>Aide à remplir le <a href="evaluation-amenagement.html">bilan d’aménagement</a>.</li>
-      </ul>
-    </article>
-
-    <article class="card">
-      <h3>Ce qu’il ne fait pas</h3>
-      <ul>
-        <li>Pas de diagnostic médical ni d’avis d’aptitude.</li>
-        <li>Pas de reconnaissance faciale ni d’identification de personne.</li>
-        <li>Pas d’enregistrement des images ni d’envoi vers un serveur.</li>
-        <li>Pas de décision automatique sur le recrutement.</li>
-      </ul>
-    </article>
-  </section>
-
-  <!-- Bloc webcam + IA -->
-  <section class="mwtd-panel" aria-labelledby="webcam-title">
-    <header class="mwtd-card-header">
-      <div>
-        <h2 id="webcam-title" class="mwtd-card-title">Observation en direct via webcam</h2>
-        <p class="mwtd-card-subtitle">
-          Utilisation recommandée en <strong>présence de la personne</strong>, avec son accord explicite.
-        </p>
-      </div>
-    </header>
-
-    <div class="mwtd-grid" style="margin-top:1rem;">
-      <!-- Colonne gauche : vidéo + pose -->
-      <div class="mwtd-card">
-        <h3>Vue caméra &amp; schéma de posture</h3>
-        <p class="form-hint">
-          Cliquez sur <strong>“Activer la webcam”</strong>, autorisez l’accès à la caméra,
-          puis laissez tourner quelques secondes pour que l’IA se stabilise.
-        </p>
-
-        <div class="mwtd-webcam-shell">
-          <div class="mwtd-webcam-video-wrap">
-            <video id="mwtd-video"
-                   playsinline
-                   autoplay
-                   muted
-                   aria-label="Flux vidéo de la webcam (aucun enregistrement)">
-            </video>
-            <!-- Canvas pour le squelette / analyse -->
-            <canvas id="mwtd-pose-canvas"
-                    aria-hidden="true"></canvas>
-
-            <div id="mwtd-video-overlay" class="mwtd-webcam-overlay" aria-hidden="true">
-              <p>En attente d’autorisation…</p>
-            </div>
-          </div>
-
-          <div class="mwtd-row" style="margin-top:0.75rem;">
-            <button id="mwtd-start" type="button" class="btn btn-primary">
-              Activer la webcam IA
-            </button>
-            <button id="mwtd-stop" type="button" class="btn" disabled>
-              Arrêter
-            </button>
-            <button id="mwtd-snapshot" type="button" class="btn" disabled>
-              Refaire une analyse
-            </button>
-          </div>
-
-          <p id="mwtd-webcam-status"
-             class="form-hint"
-             aria-live="polite"
-             style="margin-top:0.5rem;">
-            Statut : en attente.
-          </p>
-
-          <!-- Canvas caché pour la lumière -->
-          <canvas id="mwtd-light-canvas" width="320" height="240" hidden></canvas>
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" role="banner">
+    <div class="container site-header-inner">
+      <div class="site-brand">
+        <div class="site-logo">
+          <img src="assets/ima/logo-mini-wtd-256.png" alt="Logo Mini-WTD" loading="lazy">
+        </div>
+        <div class="site-brand-text">
+          <h1 class="site-title">Mini-WTD</h1>
+          <p class="site-tagline">Work-Test-Demo · Module webcam IA (démo)</p>
         </div>
       </div>
 
-      <!-- Colonne droite : résultats -->
-      <div class="mwtd-card">
-        <h3>Retour ergonomique (démo)</h3>
+      <div class="a11y-toolbar" aria-label="Réglages d’accessibilité et de lecture">
+        <button class="access-btn" data-action="font-" type="button"
+                aria-label="Réduire la taille du texte" title="A− (Alt + -)">A−</button>
+        <button class="access-btn" data-action="font+" type="button"
+                aria-label="Augmenter la taille du texte" title="A+ (Alt + =)">A+</button>
+        <button class="access-btn" data-action="contrast" type="button"
+                aria-label="Activer le contraste élevé" title="Contraste élevé (Alt + C)">◐</button>
+        <button class="access-btn" data-action="spacing" type="button"
+                aria-label="Augmenter l’espacement du texte" title="Espacement (Alt + S)">↕︎</button>
+        <button class="access-btn" data-action="reset" type="button"
+                aria-label="Réinitialiser l’affichage" title="Réinitialiser (Alt + 0)">⟲</button>
 
-        <dl class="mwtd-observe-list" aria-live="polite">
-          <div class="mwtd-observe-item">
-            <dt>Lumière &amp; contraste</dt>
-            <dd id="mwtd-result-light">En attente de flux caméra.</dd>
-          </div>
-          <div class="mwtd-observe-item">
-            <dt>Alignement buste / écran</dt>
-            <dd id="mwtd-result-buste">En attente de détection de posture.</dd>
-          </div>
-          <div class="mwtd-observe-item">
-            <dt>Distance approximative</dt>
-            <dd id="mwtd-result-distance">
-              L’IA estime la taille du buste dans l’image et propose un rappel
-              des bonnes pratiques (sans mesure exacte en centimètres).
-            </dd>
-          </div>
-          <div class="mwtd-observe-item">
-            <dt>Points de vigilance</dt>
-            <dd id="mwtd-result-points">
-              Observer les épaules, la nuque, la rotation du tronc et la stabilité des appuis.
-            </dd>
-          </div>
-        </dl>
+        <button id="theme-toggle" class="btn-icon" type="button"
+                aria-pressed="false"
+                aria-label="Basculer le thème clair/sombre"
+                title="Thème clair / sombre">🌓</button>
 
-        <div class="mwtd-observer-notes">
-          <label for="mwtd-notes">
-            Notes d’observation (facultatif)
-          </label>
-          <textarea id="mwtd-notes" rows="4"
-                    placeholder="Exemples : buste très penché en avant, lumière venant de l’arrière, besoin d’un support pour l’avant-bras…"></textarea>
+        <button id="tts-toggle" class="btn-icon" type="button"
+                aria-pressed="false"
+                aria-label="Activer la lecture vocale de la page"
+                title="Lecture vocale">🔊</button>
+      </div>
+    </div>
+
+    <div class="container site-nav-toggle">
+      <button
+        id="menu-toggle"
+        class="btn-icon"
+        type="button"
+        aria-label="Ouvrir ou fermer le menu"
+        aria-expanded="false"
+        aria-controls="primary-nav">
+        <span class="burger" aria-hidden="true"></span>
+        <span class="sr-only">Menu</span>
+      </button>
+    </div>
+
+    <nav class="site-nav" aria-label="Navigation principale">
+      <ul id="primary-nav">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="presentation.html">Présentation</a></li>
+        <li><a href="assistant.html">Assistant IA</a></li>
+        <li><a href="evaluation-amenagement.html">Bilan</a></li>
+        <li><a href="webcam-analyse.html" class="active" aria-current="page">Webcam IA</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== CONTENU ===== -->
+  <main id="main" class="container" role="main" tabindex="-1">
+
+    <!-- Hero -->
+    <section class="hero">
+      <h2>Module webcam · observation ergonomique avec IA</h2>
+      <p class="mwtd-lead">
+        Ce module utilise <strong>MediaPipe Pose</strong> pour repérer la position générale
+        du corps et proposer un retour rapide sur la posture et l’environnement
+        de travail. Il ne produit aucun diagnostic médical et n’enregistre pas les images.
+      </p>
+      <p>
+        Tout reste <strong>local dans le navigateur</strong> de l’ordinateur utilisé.
+        Les résultats sont des <strong>indications pédagogiques</strong> pour ouvrir le dialogue
+        sur l’aménagement de poste (hauteur d’écran, distance, appuis, lumière…).
+      </p>
+    </section>
+
+    <!-- Ce que fait / ne fait pas -->
+    <section class="cards-grid" aria-label="Limites et objectifs du module">
+      <article class="card">
+        <h3>Ce que fait ce module</h3>
+        <ul>
+          <li>Affiche la vidéo de la webcam et un schéma simplifié du corps.</li>
+          <li>Estime la lumière globale de la scène.</li>
+          <li>Donne des messages sur la posture (buste penché, écran trop haut/bas…)</li>
+          <li>Aide à remplir le <a href="evaluation-amenagement.html">bilan d’aménagement</a>.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h3>Ce qu’il ne fait pas</h3>
+        <ul>
+          <li>Pas de diagnostic médical ni d’avis d’aptitude.</li>
+          <li>Pas de reconnaissance faciale ni d’identification de personne.</li>
+          <li>Pas d’enregistrement des images ni d’envoi vers un serveur.</li>
+          <li>Pas de décision automatique sur le recrutement.</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- Bloc webcam + IA -->
+    <section class="mwtd-panel" aria-labelledby="webcam-title">
+      <header class="mwtd-card-header">
+        <div>
+          <h2 id="webcam-title" class="mwtd-card-title">Observation en direct via webcam</h2>
+          <p class="mwtd-card-subtitle">
+            Utilisation recommandée en <strong>présence de la personne</strong>, avec son accord explicite.
+          </p>
+        </div>
+      </header>
+
+      <div class="mwtd-grid" style="margin-top:1rem;">
+        <!-- Colonne gauche : vidéo + pose -->
+        <div class="mwtd-card">
+          <h3>Vue caméra &amp; schéma de posture</h3>
           <p class="form-hint">
-            Vous pouvez copier-coller ces notes dans le bilan d’aménagement.
+            Cliquez sur <strong>«&nbsp;Activer la webcam&nbsp;»</strong>, autorisez l’accès à la caméra,
+            puis laissez tourner quelques secondes pour que l’IA se stabilise.
           </p>
+
+          <div class="mwtd-webcam-shell">
+            <div class="mwtd-webcam-video-wrap">
+              <video id="mwtd-video"
+                     playsinline
+                     autoplay
+                     muted
+                     aria-label="Flux vidéo de la webcam (aucun enregistrement)">
+              </video>
+              <!-- Canvas pour le squelette / analyse -->
+              <canvas id="mwtd-pose-canvas" aria-hidden="true"></canvas>
+
+              <div id="mwtd-video-overlay" class="mwtd-webcam-overlay" aria-hidden="true">
+                <p>En attente d’autorisation…</p>
+              </div>
+            </div>
+
+            <div class="mwtd-row" style="margin-top:0.75rem;">
+              <button id="mwtd-start" type="button" class="btn btn-primary">
+                Activer la webcam IA
+              </button>
+              <button id="mwtd-stop" type="button" class="btn" disabled>
+                Arrêter
+              </button>
+              <button id="mwtd-snapshot" type="button" class="btn" disabled>
+                Refaire une analyse
+              </button>
+            </div>
+
+            <p id="mwtd-webcam-status"
+               class="form-hint"
+               aria-live="polite"
+               style="margin-top:0.5rem;">
+              Statut : en attente.
+            </p>
+
+            <!-- Canvas caché pour la lumière -->
+            <canvas id="mwtd-light-canvas" width="320" height="240" hidden></canvas>
+          </div>
+        </div>
+
+        <!-- Colonne droite : résultats -->
+        <div class="mwtd-card">
+          <h3>Retour ergonomique (démo)</h3>
+
+          <dl class="mwtd-observe-list" aria-live="polite">
+            <div class="mwtd-observe-item">
+              <dt>Lumière &amp; contraste</dt>
+              <dd id="mwtd-result-light">En attente de flux caméra.</dd>
+            </div>
+            <div class="mwtd-observe-item">
+              <dt>Alignement buste / écran</dt>
+              <dd id="mwtd-result-buste">En attente de détection de posture.</dd>
+            </div>
+            <div class="mwtd-observe-item">
+              <dt>Distance approximative</dt>
+              <dd id="mwtd-result-distance">
+                L’IA estime la taille du buste dans l’image et propose un rappel
+                des bonnes pratiques (sans mesure exacte en centimètres).
+              </dd>
+            </div>
+            <div class="mwtd-observe-item">
+              <dt>Points de vigilance</dt>
+              <dd id="mwtd-result-points">
+                Observer les épaules, la nuque, la rotation du tronc et la stabilité des appuis.
+              </dd>
+            </div>
+          </dl>
+
+          <div class="mwtd-observer-notes">
+            <label for="mwtd-notes">Notes d’observation (facultatif)</label>
+            <textarea id="mwtd-notes" rows="4"
+                      placeholder="Exemples : buste très penché en avant, lumière venant de l’arrière, besoin d’un support pour l’avant-bras…"></textarea>
+            <p class="form-hint">
+              Vous pouvez copier-coller ces notes dans le bilan d’aménagement.
+            </p>
+          </div>
         </div>
       </div>
+    </section>
+
+    <!-- Mode d’emploi -->
+    <section class="mwtd-panel" aria-labelledby="mode-usage-title">
+      <header class="mwtd-card-header">
+        <div>
+          <h2 id="mode-usage-title" class="mwtd-card-title">Usage recommandé en entretien</h2>
+          <p class="mwtd-card-subtitle">
+            L’IA sert d’<strong>outil de discussion</strong>, pas de verdict.
+          </p>
+        </div>
+      </header>
+
+      <ol class="mwtd-list-steps">
+        <li>Expliquer le but : améliorer le poste, pas juger la personne.</li>
+        <li>Demander l’accord clair avant d’activer la webcam.</li>
+        <li>Positionner la caméra pour voir le buste et l’écran sans dévoiler d’éléments privés inutiles.</li>
+        <li>Lire ensemble les retours (lumière, buste, distance) et demander le ressenti de la personne.</li>
+        <li>Reporter dans le <a href="evaluation-amenagement.html">bilan d’aménagement</a> les pistes d’action concrètes.</li>
+      </ol>
+
+      <p class="form-hint">
+        Toute décision doit rester <strong>humaine</strong> et concertée.  
+        L’IA n’est qu’un repère visuel et textuel pour mieux comprendre la situation.
+      </p>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <p>© 2025 · Mini-WTD — Module webcam IA de démonstration, sans enregistrement d’images.</p>
     </div>
-  </section>
+  </footer>
 
-  <!-- Mode d’emploi -->
-  <section class="mwtd-panel" aria-labelledby="mode-usage-title">
-    <header class="mwtd-card-header">
-      <div>
-        <h2 id="mode-usage-title" class="mwtd-card-title">Usage recommandé en entretien</h2>
-        <p class="mwtd-card-subtitle">
-          L’IA sert d’<strong>outil de discussion</strong>, pas de verdict.
-        </p>
-      </div>
-    </header>
+  <!-- ===== Librairies MediaPipe (IA locale dans le navigateur) ===== -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js"></script>
 
-    <ol class="mwtd-list-steps">
-      <li>Expliquer le but : améliorer le poste, pas juger la personne.</li>
-      <li>Demander l’accord clair avant d’activer la webcam.</li>
-      <li>Positionner la caméra pour voir le buste et l’écran sans dévoiler d’éléments privés inutiles.</li>
-      <li>Lire ensemble les retours (lumière, buste, distance) et demander le ressenti de la personne.</li>
-      <li>Reporter dans le <a href="evaluation-amenagement.html">bilan d’aménagement</a> les pistes d’action concrètes.</li>
-    </ol>
+  <!-- ===== Script IA Mini-WTD ===== -->
+  <script>
+  (function () {
+    const video        = document.getElementById('mwtd-video');
+    const canvasPose   = document.getElementById('mwtd-pose-canvas');
+    const ctxPose      = canvasPose.getContext('2d');
+    const canvasLight  = document.getElementById('mwtd-light-canvas');
+    const ctxLight     = canvasLight.getContext('2d');
+    const overlay      = document.getElementById('mwtd-video-overlay');
 
-    <p class="form-hint">
-      Toute décision doit rester <strong>humaine</strong> et concertée.  
-      L’IA n’est qu’un repère visuel et textuel pour mieux comprendre la situation.
-    </p>
-  </section>
-</main>
+    const btnStart     = document.getElementById('mwtd-start');
+    const btnStop      = document.getElementById('mwtd-stop');
+    const btnSnapshot  = document.getElementById('mwtd-snapshot');
+    const statusEl     = document.getElementById('mwtd-webcam-status');
 
-<!-- ===== FOOTER ===== -->
-<footer class="site-footer" role="contentinfo">
-  <div class="container">
-    <p>© 2025 · Mini-WTD — Module webcam IA de démonstration, sans enregistrement d’images.</p>
-  </div>
-</footer>
+    const lightEl      = document.getElementById('mwtd-result-light');
+    const busteEl      = document.getElementById('mwtd-result-buste');
+    const distanceEl   = document.getElementById('mwtd-result-distance');
+    const pointsEl     = document.getElementById('mwtd-result-points');
 
-<!-- ===== Librairies MediaPipe (IA locale dans le navigateur) ===== -->
-<script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js"></script>
+    let camera = null;
+    let lastLandmarks = null;
 
-<!-- ===== Script IA Mini-WTD ===== -->
-<script>
-(function () {
-  const video        = document.getElementById('mwtd-video');
-  const canvasPose   = document.getElementById('mwtd-pose-canvas');
-  const ctxPose      = canvasPose.getContext('2d');
-  const canvasLight  = document.getElementById('mwtd-light-canvas');
-  const ctxLight     = canvasLight.getContext('2d');
-  const overlay      = document.getElementById('mwtd-video-overlay');
-
-  const btnStart     = document.getElementById('mwtd-start');
-  const btnStop      = document.getElementById('mwtd-stop');
-  const btnSnapshot  = document.getElementById('mwtd-snapshot');
-  const statusEl     = document.getElementById('mwtd-webcam-status');
-
-  const lightEl      = document.getElementById('mwtd-result-light');
-  const busteEl      = document.getElementById('mwtd-result-buste');
-  const distanceEl   = document.getElementById('mwtd-result-distance');
-  const pointsEl     = document.getElementById('mwtd-result-points');
-
-  let camera = null;
-  let lastLandmarks = null;
-
-  function setStatus(text) {
-    if (statusEl) statusEl.textContent = 'Statut : ' + text;
-  }
-
-  // --- Analyse simple de la lumière ---
-  function analyseLuminosite() {
-    if (!video.videoWidth || !video.videoHeight) return;
-
-    const w = canvasLight.width;
-    const h = canvasLight.height;
-    ctxLight.drawImage(video, 0, 0, w, h);
-    const data = ctxLight.getImageData(0, 0, w, h).data;
-
-    let sum = 0;
-    for (let i = 0; i < data.length; i += 4) {
-      const r = data[i];
-      const g = data[i + 1];
-      const b = data[i + 2];
-      const lum = 0.299 * r + 0.587 * g + 0.114 * b;
-      sum += lum;
-    }
-    const avg = sum / (data.length / 4);
-
-    let msg;
-    if (avg < 60) {
-      msg = "Éclairage très faible : risque de fatigue visuelle, ajouter une lumière douce orientée vers le plan de travail.";
-    } else if (avg < 120) {
-      msg = "Éclairage plutôt faible : vérifier que le visage et le clavier sont bien visibles.";
-    } else if (avg > 210) {
-      msg = "Éclairage très fort : attention aux reflets et à l’éblouissement sur l’écran.";
-    } else {
-      msg = "Éclairage globalement correct (à valider avec la personne).";
-    }
-    lightEl.textContent = msg;
-  }
-
-  // --- Utilitaires pour la posture ---
-  function getPoint(landmarks, index) {
-    return landmarks && landmarks[index] ? landmarks[index] : null;
-  }
-
-  function distance(a, b) {
-    if (!a || !b) return null;
-    const dx = a.x - b.x;
-    const dy = a.y - b.y;
-    return Math.sqrt(dx * dx + dy * dy);
-  }
-
-  function analysePosture(landmarks) {
-    if (!landmarks || landmarks.length === 0) {
-      busteEl.textContent = "Aucune posture détectée. Demander à la personne de se placer face à la caméra.";
-      pointsEl.textContent = "Impossible d’évaluer les appuis et la rotation du tronc sans détection du corps.";
-      return;
+    function setStatus(text) {
+      if (statusEl) statusEl.textContent = 'Statut : ' + text;
     }
 
-    lastLandmarks = landmarks;
+    // --- Analyse simple de la lumière ---
+    function analyseLuminosite() {
+      if (!video.videoWidth || !video.videoHeight) return;
 
-    // Indices principaux MediaPipe Pose
-    const nose     = getPoint(landmarks, 0);
-    const leftShoulder  = getPoint(landmarks, 11);
-    const rightShoulder = getPoint(landmarks, 12);
-    const leftHip       = getPoint(landmarks, 23);
-    const rightHip      = getPoint(landmarks, 24);
+      const w = canvasLight.width;
+      const h = canvasLight.height;
+      ctxLight.drawImage(video, 0, 0, w, h);
+      const data = ctxLight.getImageData(0, 0, w, h).data;
 
-    // Centre épaules / hanches
-    let msgBuste = "";
-    let msgPoints = [];
+      let sum = 0;
+      for (let i = 0; i < data.length; i += 4) {
+        const r = data[i];
+        const g = data[i + 1];
+        const b = data[i + 2];
+        const lum = 0.299 * r + 0.587 * g + 0.114 * b;
+        sum += lum;
+      }
+      const avg = sum / (data.length / 4);
 
-    if (leftShoulder && rightShoulder) {
-      const midShoulderX = (leftShoulder.x + rightShoulder.x) / 2;
-      const diffShoulderY = Math.abs(leftShoulder.y - rightShoulder.y);
+      let msg;
+      if (avg < 60) {
+        msg = "Éclairage très faible : risque de fatigue visuelle, ajouter une lumière douce orientée vers le plan de travail.";
+      } else if (avg < 120) {
+        msg = "Éclairage plutôt faible : vérifier que le visage et le clavier sont bien visibles.";
+      } else if (avg > 210) {
+        msg = "Éclairage très fort : attention aux reflets et à l’éblouissement sur l’écran.";
+      } else {
+        msg = "Éclairage globalement correct (à valider avec la personne).";
+      }
+      lightEl.textContent = msg;
+    }
 
-      if (diffShoulderY > 0.05) {
-        msgPoints.push("Épaules visiblement désalignées : possible inclinaison latérale du buste.");
+    // --- Utilitaires pour la posture ---
+    function getPoint(landmarks, index) {
+      return landmarks && landmarks[index] ? landmarks[index] : null;
+    }
+
+    function distance(a, b) {
+      if (!a || !b) return null;
+      const dx = a.x - b.x;
+      const dy = a.y - b.y;
+      return Math.sqrt(dx * dx + dy * dy);
+    }
+
+    function analysePosture(landmarks) {
+      if (!landmarks || landmarks.length === 0) {
+        busteEl.textContent = "Aucune posture détectée. Demander à la personne de se placer face à la caméra.";
+        pointsEl.textContent = "Impossible d’évaluer les appuis et la rotation du tronc sans détection du corps.";
+        return;
       }
 
-      if (nose) {
-        const decalage = Math.abs(nose.x - midShoulderX);
-        if (decalage > 0.08) {
-          msgBuste = "Buste et tête plutôt inclinés sur le côté. Vérifier la hauteur et la position de l’écran.";
+      lastLandmarks = landmarks;
+
+      const nose          = getPoint(landmarks, 0);
+      const leftShoulder  = getPoint(landmarks, 11);
+      const rightShoulder = getPoint(landmarks, 12);
+      const leftHip       = getPoint(landmarks, 23);
+      const rightHip      = getPoint(landmarks, 24);
+
+      let msgBuste = "";
+      let msgPoints = [];
+
+      if (leftShoulder && rightShoulder) {
+        const midShoulderX   = (leftShoulder.x + rightShoulder.x) / 2;
+        const diffShoulderY  = Math.abs(leftShoulder.y - rightShoulder.y);
+
+        if (diffShoulderY > 0.05) {
+          msgPoints.push("Épaules visiblement désalignées : possible inclinaison latérale du buste.");
+        }
+
+        if (nose) {
+          const decalage = Math.abs(nose.x - midShoulderX);
+          if (decalage > 0.08) {
+            msgBuste = "Buste et tête plutôt inclinés sur le côté. Vérifier la hauteur et la position de l’écran.";
+          }
         }
       }
-    }
 
-    if (leftShoulder && rightShoulder && leftHip && rightHip) {
-      const midShoulderY = (leftShoulder.y + rightShoulder.y) / 2;
-      const midHipY      = (leftHip.y + rightHip.y) / 2;
-      const vertical = midHipY - midShoulderY;
+      if (leftShoulder && rightShoulder && leftHip && rightHip) {
+        const midShoulderY = (leftShoulder.y + rightShoulder.y) / 2;
+        const midHipY      = (leftHip.y + rightHip.y) / 2;
+        const vertical     = midHipY - midShoulderY;
 
-      if (vertical < 0.20) {
-        msgBuste = "Buste très proche de la caméra : la personne semble penchée en avant. Proposer un recul de la chaise ou de l’écran.";
+        if (vertical < 0.20) {
+          msgBuste = "Buste très proche de la caméra : la personne semble penchée en avant. Proposer un recul de la chaise ou de l’écran.";
+        } else if (!msgBuste) {
+          msgBuste = "Alignement buste/écran relativement neutre. Confirmer avec la personne si la position reste confortable dans la durée.";
+        }
       } else if (!msgBuste) {
-        msgBuste = "Alignement buste/écran relativement neutre. Confirmer avec la personne si la position reste confortable dans la durée.";
+        msgBuste = "Buste partiellement détecté. Utiliser l’observation humaine pour compléter.";
       }
-    } else if (!msgBuste) {
-      msgBuste = "Buste partiellement détecté. Utiliser l’observation humaine pour compléter.";
-    }
 
-    // Estimation très grossière de la distance : taille du buste à l’image
-    let msgDistance = distanceEl.textContent;
-    if (leftShoulder && rightShoulder && leftHip && rightHip) {
-      const torsoHeight = distance(
-        {x: (leftShoulder.x + rightShoulder.x) / 2, y: (leftShoulder.y + rightShoulder.y) / 2},
-        {x: (leftHip.x + rightHip.x) / 2, y: (leftHip.y + rightHip.y) / 2}
-      );
-      if (torsoHeight) {
-        if (torsoHeight > 0.55) {
-          msgDistance = "La caméra est très proche du buste : l’écran semble très proche du visage. Proposer un léger recul si possible.";
-        } else if (torsoHeight < 0.30) {
-          msgDistance = "La personne apparaît assez loin. Vérifier que les caractères à l’écran restent lisibles sans effort.";
-        } else {
-          msgDistance = "Distance apparente correcte, à confirmer avec la personne (lisibilité, confort visuel).";
+      let msgDistance = distanceEl.textContent;
+      if (leftShoulder && rightShoulder && leftHip && rightHip) {
+        const torsoHeight = distance(
+          {x: (leftShoulder.x + rightShoulder.x) / 2, y: (leftShoulder.y + rightShoulder.y) / 2},
+          {x: (leftHip.x + rightHip.x) / 2, y: (leftHip.y + rightHip.y) / 2}
+        );
+        if (torsoHeight) {
+          if (torsoHeight > 0.55) {
+            msgDistance = "La caméra est très proche du buste : l’écran semble très proche du visage. Proposer un léger recul si possible.";
+          } else if (torsoHeight < 0.30) {
+            msgDistance = "La personne apparaît assez loin. Vérifier que les caractères à l’écran restent lisibles sans effort.";
+          } else {
+            msgDistance = "Distance apparente correcte, à confirmer avec la personne (lisibilité, confort visuel).";
+          }
         }
       }
+
+      if (msgPoints.length === 0) {
+        msgPoints.push("Surveiller la fatigue de la nuque et des épaules sur la durée, même en posture neutre.");
+      }
+
+      busteEl.textContent    = msgBuste;
+      distanceEl.textContent = msgDistance;
+      pointsEl.textContent   = msgPoints.join(" ");
     }
 
-    if (msgPoints.length === 0) {
-      msgPoints.push("Surveiller la fatigue de la nuque et des épaules sur la durée, même en posture neutre.");
+    // --- Callback MediaPipe Pose ---
+    function onResults(results) {
+      if (!video.videoWidth || !video.videoHeight) return;
+
+      canvasPose.width  = video.videoWidth;
+      canvasPose.height = video.videoHeight;
+
+      ctxPose.save();
+      ctxPose.clearRect(0, 0, canvasPose.width, canvasPose.height);
+
+      ctxPose.drawImage(results.image, 0, 0, canvasPose.width, canvasPose.height);
+
+      if (results.poseLandmarks && results.poseLandmarks.length > 0) {
+        drawConnectors(ctxPose, results.poseLandmarks, POSE_CONNECTIONS);
+        drawLandmarks(ctxPose, results.poseLandmarks);
+        analysePosture(results.poseLandmarks);
+      } else {
+        analysePosture(null);
+      }
+
+      ctxPose.restore();
+      analyseLuminosite();
+
+      if (overlay) overlay.innerHTML = "<p>Webcam IA active (démo).</p>";
     }
 
-    busteEl.textContent    = msgBuste;
-    distanceEl.textContent = msgDistance;
-    pointsEl.textContent   = msgPoints.join(" ");
-  }
+    // --- Initialisation de MediaPipe Pose ---
+    const pose = new Pose.Pose({
+      locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`
+    });
 
-  // --- Callback MediaPipe Pose ---
-  function onResults(results) {
-    if (!video.videoWidth || !video.videoHeight) return;
+    pose.setOptions({
+      modelComplexity: 1,
+      smoothLandmarks: true,
+      enableSegmentation: false,
+      minDetectionConfidence: 0.5,
+      minTrackingConfidence: 0.5
+    });
 
-    canvasPose.width  = video.videoWidth;
-    canvasPose.height = video.videoHeight;
+    pose.onResults(onResults);
 
-    ctxPose.save();
-    ctxPose.clearRect(0, 0, canvasPose.width, canvasPose.height);
+    async function startCamera() {
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        setStatus("webcam non supportée par ce navigateur.");
+        return;
+      }
 
-    // On redessine l’image + squelette (démo visuelle)
-    ctxPose.drawImage(
-      results.image,
-      0, 0,
-      canvasPose.width, canvasPose.height
-    );
+      try {
+        camera = new Camera.Camera(video, {
+          onFrame: async () => {
+            await pose.send({ image: video });
+          },
+          width: 640,
+          height: 480
+        });
+        await camera.start();
 
-    if (results.poseLandmarks && results.poseLandmarks.length > 0) {
-      drawConnectors(ctxPose, results.poseLandmarks, POSE_CONNECTIONS);
-      drawLandmarks(ctxPose, results.poseLandmarks);
-      analysePosture(results.poseLandmarks);
-    } else {
-      analysePosture(null);
+        if (btnStop) btnStop.disabled = false;
+        if (btnSnapshot) btnSnapshot.disabled = false;
+
+        setStatus("webcam IA en cours d’analyse.");
+      } catch (err) {
+        console.error(err);
+        setStatus("accès refusé ou impossible.");
+        if (overlay) overlay.innerHTML =
+          "<p>Accès à la webcam refusé ou impossible.</p>";
+      }
     }
 
-    ctxPose.restore();
-    analyseLuminosite();
-    if (overlay) overlay.innerHTML = "<p>Webcam IA active (démo).</p>";
-  }
-
-  // --- Initialisation de MediaPipe Pose ---
-  const pose = new Pose.Pose({
-    locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`
-  });
-
-  pose.setOptions({
-    modelComplexity: 1,
-    smoothLandmarks: true,
-    enableSegmentation: false,
-    minDetectionConfidence: 0.5,
-    minTrackingConfidence: 0.5
-  });
-
-  pose.onResults(onResults);
-
-  async function startCamera() {
-    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-      setStatus("webcam non supportée par ce navigateur.");
-      return;
+    function stopCamera() {
+      if (camera) {
+        camera.stop();
+        camera = null;
+      }
+      video.srcObject = null;
+      ctxPose.clearRect(0, 0, canvasPose.width, canvasPose.height);
+      if (overlay) overlay.innerHTML = "<p>Webcam arrêtée.</p>";
+      if (btnStop) btnStop.disabled = true;
+      if (btnSnapshot) btnSnapshot.disabled = true;
+      setStatus("webcam arrêtée.");
     }
 
-    try {
-      camera = new Camera.Camera(video, {
-        onFrame: async () => {
-          await pose.send({ image: video });
-        },
-        width: 640,
-        height: 480
-      });
-      await camera.start();
-
-      if (btnStop) btnStop.disabled = false;
-      if (btnSnapshot) btnSnapshot.disabled = false;
-
-      setStatus("webcam IA en cours d’analyse.");
-    } catch (err) {
-      console.error(err);
-      setStatus("accès refusé ou impossible.");
-      if (overlay) overlay.innerHTML =
-        "<p>Accès à la webcam refusé ou impossible.</p>";
+    function snapshotAnalyse() {
+      if (!lastLandmarks) {
+        setStatus("aucune posture mémorisée pour l’instant.");
+        return;
+      }
+      analysePosture(lastLandmarks);
+      analyseLuminosite();
+      setStatus("analyse actualisée.");
     }
-  }
 
-  function stopCamera() {
-    if (camera) {
-      camera.stop();
-      camera = null;
-    }
-    video.srcObject = null;
-    ctxPose.clearRect(0, 0, canvasPose.width, canvasPose.height);
-    if (overlay) overlay.innerHTML = "<p>Webcam arrêtée.</p>";
-    if (btnStop) btnStop.disabled = true;
-    if (btnSnapshot) btnSnapshot.disabled = true;
-    setStatus("webcam arrêtée.");
-  }
+    if (btnStart)   btnStart.addEventListener('click', startCamera);
+    if (btnStop)    btnStop.addEventListener('click', stopCamera);
+    if (btnSnapshot) btnSnapshot.addEventListener('click', snapshotAnalyse);
 
-  // “Refaire une analyse” = juste forcer un texte rappel
-  function snapshotAnalyse() {
-    if (!lastLandmarks) {
-      setStatus("aucune posture mémorisée pour l’instant.");
-      return;
-    }
-    analysePosture(lastLandmarks);
-    analyseLuminosite();
-    setStatus("analyse actualisée.");
-  }
+    window.addEventListener('beforeunload', stopCamera);
+  })();
+  </script>
 
-  if (btnStart)   btnStart.addEventListener('click', startCamera);
-  if (btnStop)    btnStop.addEventListener('click', stopCamera);
-  if (btnSnapshot) btnSnapshot.addEventListener('click', snapshotAnalyse);
-
-  window.addEventListener('beforeunload', stopCamera);
-})();
-</script>
-
-<!-- Scripts d’accessibilité Mini-WTD -->
-<script src="assets/js/mwtd-menu.js"></script>
-<script src="assets/js/mwtd-accessibility.js"></script>
-<script src="assets/js/mwtd-theme.js"></script>
-<script src="assets/js/mwtd-tts.js"></script>
-
+  <!-- Scripts d’accessibilité Mini-WTD -->
+  <script src="assets/js/mwtd-menu.js"></script>
+  <script src="assets/js/mwtd-accessibility.js"></script>
+  <script src="assets/js/mwtd-theme.js"></script>
+  <script src="assets/js/mwtd-tts.js"></script>
 </body>
 </html>
 
