@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
 </head>
 
-<body>
+<body class="assistant-page">
 <a href="#main" class="skiplink">Aller directement au contenu</a>
 
 <!-- ===== HEADER ===== -->
@@ -52,7 +52,7 @@
     <ul id="primary-nav">
       <li><a href="index.html">Accueil</a></li>
       <li><a href="presentation.html">Présentation</a></li>
-      <li><a class="active" href="assistant.html">Assistant IA</a></li>
+      <li><a class="active" href="assistant.html" aria-current="page">Assistant IA</a></li>
       <li><a href="evaluation-amenagement.html">Bilan</a></li>
       <li><a href="webcam-analyse.html">Webcam</a></li>
       <li><a href="contact.html">Contact</a></li>
@@ -62,6 +62,7 @@
 
 <!-- ===== CONTENU PRINCIPAL ===== -->
 <main id="main" class="container" role="main" tabindex="-1">
+
   <section class="hero">
     <h2>Assistant IA Mini-WTD</h2>
     <p>
@@ -72,6 +73,7 @@
   </section>
 
   <section class="cards-grid">
+
     <article class="card">
       <h3>Ce que fait l’assistant</h3>
       <ul>
@@ -88,79 +90,81 @@
         <li>Ne pose pas de diagnostic médical.</li>
         <li>Ne remplace pas la médecine du travail ni les partenaires (MDPH, Agefiph…).</li>
         <li>Ne décide pas à la place du manager, des RH ou de la personne concernée.</li>
-        <li>Ne collecte pas de données en ligne en mode offline (clé USB / intranet).</li>
+        <li>Ne collecte pas de données en mode offline (clé USB / intranet).</li>
       </ul>
     </article>
 
     <article class="card">
       <h3>Exemple de dialogue guidé</h3>
-      <div class="mwtd-chat-demo">
-        <div class="mwtd-chat-bubble mwtd-chat-bubble--bot">
-          Bonjour, décrivez brièvement le poste et ce qui pose difficulté aujourd’hui.
-        </div>
-        <div class="mwtd-chat-bubble mwtd-chat-bubble--user">
-          Le salarié se déplace avec une canne, il fatigue vite debout et a du mal à se concentrer
-          en open space bruyant.
-        </div>
-        <div class="mwtd-chat-bubble mwtd-chat-bubble--bot">
-          Merci. Je retiens :
-          <ul>
-            <li>Poste avec déplacements et station debout fréquente,</li>
-            <li>Besoin de limiter la fatigue liée aux trajets,</li>
-            <li>Difficulté de concentration en environnement bruyant.</li>
-          </ul>
-          Pistes possibles :
-          <ul>
-            <li>Réduction des déplacements longs dans la journée,</li>
-            <li>Siège adapté ou appui ischiatique,</li>
-            <li>Poste plus au calme, casque anti-bruit ou espaces de retrait.</li>
-          </ul>
+
+      <div class="mwtd-chat-shell">
+        <div class="mwtd-chat-messages">
+          <div class="mwtd-chat-bubble mwtd-chat-bubble--bot">
+            Bonjour, décrivez brièvement le poste et ce qui pose difficulté aujourd’hui.
+          </div>
+          <div class="mwtd-chat-bubble mwtd-chat-bubble--user">
+            Le salarié se déplace avec une canne, il fatigue vite debout et a du mal à se concentrer
+            en open space bruyant.
+          </div>
+          <div class="mwtd-chat-bubble mwtd-chat-bubble--bot">
+            Merci. Je retiens :
+            <ul>
+              <li>Poste avec déplacements et station debout fréquente,</li>
+              <li>Besoin de limiter la fatigue liée aux trajets,</li>
+              <li>Difficulté de concentration en environnement bruyant.</li>
+            </ul>
+            Pistes possibles :
+            <ul>
+              <li>Réduction des déplacements longs dans la journée,</li>
+              <li>Siège adapté ou appui ischiatique,</li>
+              <li>Poste plus au calme, casque anti-bruit ou espaces de retrait.</li>
+            </ul>
+          </div>
         </div>
       </div>
+
       <p style="margin-top:0.75rem;">
-        Le texte produit peut ensuite être repris dans le bilan et discuté avec la personne,
-        le manager, la médecine du travail, etc.
+        Le texte produit peut être repris dans un bilan et discuté avec la personne,
+        le manager ou la médecine du travail.
       </p>
     </article>
 
     <article class="card">
       <h3>Modes d’utilisation</h3>
       <ul>
-        <li><strong>Mode accompagnement RH / manager :</strong> la personne anime l’entretien et l’IA aide à structurer.</li>
-        <li><strong>Mode auto-description :</strong> le salarié/candidat décrit lui-même sa situation.</li>
-        <li><strong>Mode formation :</strong> simulation de cas pour sensibiliser aux aménagements raisonnables.</li>
+        <li><strong>Accompagnement RH / manager</strong> : l’IA structure l’entretien.</li>
+        <li><strong>Auto-description</strong> : le salarié/candidat décrit sa situation.</li>
+        <li><strong>Formation</strong> : simulations pour sensibiliser à l’inclusion.</li>
       </ul>
     </article>
+
   </section>
 
   <section class="cards-grid">
     <article class="card">
       <h3>Respect de la confidentialité</h3>
       <p>
-        En mode offline (clé USB, intranet fermé), aucun enregistrement centralisé n’est imposé.
-        Les organisations restent responsables de la manière dont elles conservent ou non les bilans.
+        En mode offline, aucun enregistrement externe n’est réalisé.
+        Les organisations restent responsables de la conservation des bilans.
       </p>
       <p>
-        Mini-WTD promeut une approche <strong>sobriété des données</strong> : ne garder que ce qui est utile
-        pour décider et mettre en place un aménagement concret.
+        Mini-WTD applique une logique de <strong>sobriété des données</strong> :
+        ne garder que ce qui est utile à la décision.
       </p>
     </article>
 
     <article class="card">
       <h3>Intégration dans Mini-WTD</h3>
-      <p>
-        L’assistant IA peut être :
-      </p>
+      <p>L’assistant IA peut être :</p>
       <ul>
-        <li>appelé depuis une page “Bilan d’aménagement”,</li>
-        <li>intégré comme chatbot dans un intranet,</li>
-        <li>utilisé ponctuellement sur des cas complexes.</li>
+        <li>appelé depuis la page “Bilan d’aménagement”,</li>
+        <li>intégré en chatbot dans un intranet,</li>
+        <li>utilisé sur les situations complexes.</li>
       </ul>
-      <p>
-        Il reste toujours <strong>un outil d’aide</strong>, jamais un décideur.
-      </p>
+      <p><strong>C’est un outil d’aide</strong>, jamais un décideur.</p>
     </article>
   </section>
+
 </main>
 
 <!-- ===== FOOTER ===== -->
@@ -170,10 +174,10 @@
   </div>
 </footer>
 
-<!-- Scripts -->
 <script src="assets/js/mwtd-menu.js"></script>
 <script src="assets/js/mwtd-accessibility.js"></script>
 <script src="assets/js/mwtd-theme.js"></script>
 <script src="assets/js/mwtd-tts.js"></script>
+
 </body>
 </html>
