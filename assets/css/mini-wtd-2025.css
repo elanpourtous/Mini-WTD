@@ -992,5 +992,60 @@ body.contact-page {
 .high-contrast .contact-page h3 {
   color: #fff !important;
 }
+/* -----------------------------------------------------------
+   Correction Contact — centrage + fond homogène + lisibilité
+   ----------------------------------------------------------- */
+
+body.contact-page {
+  background: #f3f4f6;           /* gris doux */
+  color: #111827;
+  padding-top: 2rem;             /* respiration */
+  padding-bottom: 2rem;
+}
+
+.contact-page .mwtd-panel {
+  max-width: 800px;              /* limite la largeur */
+  margin: 0 auto;                /* centre la carte */
+  background: #ffffff !important;
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
+.contact-page .hero {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+.contact-page .card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.contact-page form fieldset {
+  background: #ffffff;
+  border-radius: 0.75rem;
+  border: 1px solid #e5e7eb;
+  padding: 1.25rem 1rem;
+}
+
+.contact-page input,
+.contact-page textarea,
+.contact-page select {
+  background: #ffffff;
+  color: #111827;
+  border: 1px solid #cbd5e1;
+}
+
+.contact-page input:focus,
+.contact-page textarea:focus,
+.contact-page select:focus {
+  border-color: #0ea5e9;
+  box-shadow: 0 0 0 2px rgba(14,165,233,0.25);
+}
 
 
