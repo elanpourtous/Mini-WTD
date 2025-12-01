@@ -918,5 +918,79 @@ body.contact-page {
   border-radius: 6px;
 }
 
+/* ------------------------------ */
+/* PAGE CONTACT – STYLE SPÉCIAL   */
+/* ------------------------------ */
+
+.contact-page {
+  background: #f7f9fb; /* fond clair lisible */
+  color: #111;
+}
+
+/* Cartes du formulaire */
+.contact-page .mwtd-card {
+  background: #ffffff;
+  border: 1px solid #e3e6ea;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* Sous-titres */
+.contact-page .mwtd-card-subtitle {
+  color: #444 !important;
+}
+
+/* Légendes des fieldset */
+.contact-page fieldset legend {
+  color: #0b4a75; /* bleu lisible */
+  font-weight: 600;
+}
+
+/* Labels */
+.contact-page label {
+  color: #222;
+  font-weight: 600;
+}
+
+/* Hints */
+.contact-page .form-hint {
+  color: #555;
+  font-size: 0.85rem;
+}
+
+/* Inputs & textareas */
+.contact-page input,
+.contact-page select,
+.contact-page textarea {
+  background: #fff;
+  color: #111;
+  border: 1px solid #b9c4cf;
+}
+
+.contact-page input:focus,
+.contact-page select:focus,
+.contact-page textarea:focus {
+  border-color: #0a7cc8;
+  box-shadow: 0 0 0 2px rgba(10,124,200,0.2);
+}
+
+/* Contraste élevé */
+.high-contrast .contact-page {
+  background: #000 !important;
+}
+
+.high-contrast .contact-page .mwtd-card {
+  background: #000 !important;
+  border-color: #fff;
+}
+
+.high-contrast .contact-page label,
+.high-contrast .contact-page legend,
+.high-contrast .contact-page .form-hint,
+.high-contrast .contact-page p,
+.high-contrast .contact-page h3 {
+  color: #fff !important;
+}
 
 
