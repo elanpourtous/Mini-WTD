@@ -254,6 +254,27 @@
           </div>
         </fieldset>
 
+        <!-- Bloc assistant IA -->
+        <fieldset class="mwtd-fieldset">
+          <legend>7. Analyse par l’assistant IA</legend>
+          <div class="form-group">
+            <p class="form-hint">
+              Sélectionnez la langue et cliquez sur « Analyse IA du bilan ». Une synthèse structurée sera produite
+              pour un RH, un manager ou un médecin du travail. Aucune donnée n’est envoyée en ligne.
+            </p>
+            <label for="ia-lang">Langue de l’analyse</label>
+            <select id="ia-lang" name="ia-lang">
+              <option value="fr">Français</option>
+              <option value="mg">Malagasy</option>
+              <option value="en">English</option>
+            </select>
+          </div>
+
+          <button type="button" id="btn-ia" class="btn btn-secondary">
+            🤖 Analyse IA du bilan
+          </button>
+        </fieldset>
+
         <p class="form-hint">
           Mini-WTD ne stocke pas vos données : pensez à enregistrer ce bilan dans vos
           outils internes (SIRH, dossier RH, fichier sécurisé…).
@@ -263,6 +284,15 @@
           Utilisation en démo — aucune donnée n’est envoyée
         </button>
       </form>
+    </section>
+
+    <!-- Résultat de l’analyse IA -->
+    <section class="mwtd-panel" id="ia-result" style="margin-top:1rem; display:none;" aria-live="polite">
+      <h3>Analyse IA – Synthèse du bilan</h3>
+      <p class="form-hint">
+        Ce texte peut être copié-collé dans un compte-rendu à destination d’un RH, d’un manager ou de la médecine du travail.
+      </p>
+      <pre id="ia-content" class="mwtd-ia-output"></pre>
     </section>
   </main>
 
@@ -290,5 +320,6 @@
   <script src="assets/js/mwtd-accessibility.js"></script>
   <script src="assets/js/mwtd-theme.js"></script>
   <script src="assets/js/mwtd-tts.js"></script>
+  <script src="assets/js/mwtd-ia.js"></script>
 </body>
 </html>
