@@ -1,12 +1,68 @@
-.reader-speed-label {
-  display:inline-flex; align-items:center; gap:.25rem;
-  font-size:.95rem; font-weight:600; color:var(--fg);
+/* ================================
+   MINI-WTD · CORRECTIFS RGAA
+   Fichier : assets/css/rgaa-accessible.css
+   ================================ */
+
+/* Contrastes renforcés pour le mode “contraste élevé”
+   (géré par mwtd-accessibility.js via .high-contrast sur body) */
+
+body.high-contrast {
+  background-color: #000000;
+  color: #ffffff;
 }
-.reader-speed-label select {
-  background:var(--card); color:var(--fg);
-  border:1px solid var(--border); border-radius:.4rem;
-  padding:.2rem .4rem;
+
+body.high-contrast .site-header {
+  background-color: #000000;
+  color: #ffffff;
 }
-.reader-speed-label select:focus {
-  outline:3px solid #94c5ff; outline-offset:2px;
+
+body.high-contrast .site-nav {
+  background-color: #000000;
+}
+
+body.high-contrast .site-nav a {
+  color: #ffffff;
+}
+
+body.high-contrast .site-nav a.active,
+body.high-contrast .site-nav a[aria-current="page"] {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+body.high-contrast .mwtd-panel {
+  background-color: #000000;
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+body.high-contrast a {
+  color: #7dd3fc;
+}
+
+/* Mode “espacement augmenté” (classe .wide-spacing) */
+
+body.wide-spacing {
+  line-height: 1.8;
+}
+
+body.wide-spacing p,
+body.wide-spacing li {
+  letter-spacing: 0.01em;
+}
+
+/* Pour la synthèse vocale, rien de spécifique en CSS,
+   mais on peut garantir une bonne lisibilité visuelle
+   des boutons concernés. */
+
+#tts-toggle {
+  font-size: 0.9rem;
+}
+
+/* Ajustements formulaire sur petits écrans */
+
+@media (max-width: 480px) {
+  .mwtd-form {
+    gap: 0.75rem;
+  }
 }

@@ -1,0 +1,36 @@
+/* ================================
+   MINI-WTD · ACCESSIBILITÉ DE BASE
+   Fichier : assets/css/base-a11y.css
+   ================================ */
+
+/* Focus visible pour tous les éléments interactifs */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #0ea5e9;
+  outline-offset: 2px;
+}
+
+/* Champ requis visuellement */
+
+input[required],
+select[required],
+textarea[required] {
+  /* possibilité d’ajouter un style spécifique si souhaité */
+}
+
+/* Aide à la lecture pour les lecteurs d’écran */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
