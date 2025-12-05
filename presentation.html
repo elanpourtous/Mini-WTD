@@ -2,8 +2,10 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <title>Mini-WTD · Présentation</title>
+  <title>Mini-WTD · Présentation et contexte d’usage</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+        content="Mini-WTD — Présentation du module de bilan d’aménagement de poste : objectifs, publics, cas d’usage et positionnement vis-à-vis des RH, managers et médecine du travail.">
 
   <!-- Styles globaux -->
   <link rel="stylesheet" href="assets/css/mini-wtd-2025.css">
@@ -12,101 +14,323 @@
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
 </head>
 
-<body>
+<body class="presentation-page">
+  <a href="#main" class="skiplink">Aller directement au contenu</a>
 
-<a href="#main" class="skiplink">Aller au contenu</a>
-
-<!-- ===== HEADER ===== -->
-<header class="site-header" role="banner">
-  <div class="container site-header-inner">
-    <div class="site-brand">
-      <div class="site-logo">
-        <img src="assets/ima/logo-mini-wtd-256.png" alt="Logo Mini-WTD" loading="lazy">
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" role="banner">
+    <div class="container site-header-inner">
+      <div class="site-brand">
+        <div class="site-logo">
+          <img src="assets/ima/logo-mini-wtd-256.png" alt="Logo Mini-WTD" loading="lazy">
+        </div>
+        <div class="site-brand-text">
+          <h1 class="site-title">Mini-WTD</h1>
+          <p class="site-tagline">Work-Test-Demo · Bilan d’aménagement de poste</p>
+        </div>
       </div>
-      <div class="site-brand-text">
-        <h1 class="site-title">Mini-WTD</h1>
-        <p class="site-tagline">Work-Test-Demo · Accessibilité & IA</p>
+
+      <!-- Barre d’accessibilité -->
+      <div class="a11y-toolbar" aria-label="Réglages d’accessibilité et de lecture">
+        <button class="access-btn" data-action="font-"
+                type="button"
+                aria-label="Réduire la taille du texte"
+                title="A− (Alt + -)">A−</button>
+
+        <button class="access-btn" data-action="font+"
+                type="button"
+                aria-label="Augmenter la taille du texte"
+                title="A+ (Alt + =)">A+</button>
+
+        <button class="access-btn" data-action="contrast"
+                type="button"
+                aria-label="Activer le contraste élevé"
+                title="Contraste élevé (Alt + C)">◐</button>
+
+        <button class="access-btn" data-action="spacing"
+                type="button"
+                aria-label="Augmenter l’espacement du texte"
+                title="Espacement (Alt + S)">↕︎</button>
+
+        <button class="access-btn" data-action="reset"
+                type="button"
+                aria-label="Réinitialiser l’affichage"
+                title="Réinitialiser (Alt + 0)">⟲</button>
+
+        <button id="theme-toggle"
+                class="btn-icon"
+                type="button"
+                aria-pressed="false"
+                aria-label="Basculer le thème clair/sombre"
+                title="Thème clair / sombre">🌓</button>
+
+        <button id="tts-toggle"
+                class="btn-icon"
+                type="button"
+                aria-pressed="false"
+                aria-label="Activer la lecture vocale de la page"
+                title="Lecture vocale">🔊</button>
       </div>
     </div>
 
-    <div class="a11y-toolbar">
-      <button class="access-btn" data-action="font-">A−</button>
-      <button class="access-btn" data-action="font+">A+</button>
-      <button class="access-btn" data-action="contrast">◐</button>
-      <button class="access-btn" data-action="spacing">↕︎</button>
-      <button class="access-btn" data-action="reset">⟲</button>
-      <button id="theme-toggle" class="btn-icon">🌓</button>
-      <button id="tts-toggle" class="btn-icon">🔊</button>
+    <!-- Bouton menu mobile -->
+    <div class="container site-nav-toggle">
+      <button
+        id="menu-toggle"
+        class="btn-icon"
+        type="button"
+        aria-label="Ouvrir ou fermer le menu"
+        aria-expanded="false"
+        aria-controls="primary-nav">
+        <span class="burger" aria-hidden="true"></span>
+        <span class="sr-only">Menu</span>
+      </button>
     </div>
-  </div>
 
-  <div class="container site-nav-toggle">
-    <button id="menu-toggle" class="btn-icon" aria-expanded="false">
-      <span class="burger"></span>
-    </button>
-  </div>
+    <!-- Navigation principale -->
+    <nav class="site-nav" aria-label="Navigation principale">
+      <ul id="primary-nav">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="presentation.html" class="active" aria-current="page">Présentation</a></li>
+        <li><a href="assistant.html">Assistant IA</a></li>
+        <li><a href="evaluation-amenagement.html">Bilan</a></li>
+        <li><a href="webcam-analyse.html">Webcam</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <nav class="site-nav">
-    <ul id="primary-nav">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a class="active" href="presentation.html">Présentation</a></li>
-      <li><a href="assistant.html">Assistant IA</a></li>
-      <li><a href="evaluation-amenagement.html">Bilan</a></li>
-      <li><a href="webcam-analyse.html">Webcam</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
-</header>
+  <!-- ===== CONTENU PRINCIPAL ===== -->
+  <main id="main" class="container" role="main" tabindex="-1">
+    <!-- INTRO -->
+    <section class="hero">
+      <h2>Présentation de Mini-WTD</h2>
+      <p class="mwtd-lead">
+        Mini-WTD est un <strong>module léger de bilan d’aménagement de poste</strong>.
+        Il aide à partir du vécu du salarié pour arriver à un plan d’action concret,
+        compréhensible par un RH, un manager et la médecine du travail.
+      </p>
+      <p>
+        L’outil a été conçu à partir de situations réelles, avec une attention particulière
+        aux <strong>personnes en situation de handicap</strong>, aux parcours fragilisés
+        et aux organisations qui veulent agir concrètement sans se perdre dans la complexité.
+      </p>
+    </section>
 
-<!-- ===== CONTENU ===== -->
-<main id="main" class="container" role="main">
-  <section class="hero">
-    <h2>Présentation du Mini-WTD</h2>
-    <p>
-      Mini-WTD est un module d’évaluation inclusive conçu pour analyser,
-      comprendre et adapter rapidement une situation de travail.
-    </p>
-    <p>
-      Il fonctionne en **clé USB**, **intranet**, **offline** et propose des outils
-      d’aide à la décision : bilans, recommandations, impacts et pistes d’aménagement.
-    </p>
-  </section>
+    <!-- OBJECTIFS -->
+    <section class="mwtd-panel" aria-labelledby="objectifs-title">
+      <header class="mwtd-card-header">
+        <h3 id="objectifs-title" class="mwtd-card-title">Objectifs du module Mini-WTD</h3>
+      </header>
+      <ul class="mwtd-list-check">
+        <li>
+          <strong>Structurer la parole du salarié</strong> :
+          passer d’un ressenti (“j’ai mal”, “je n’y arrive plus”) à une description claire
+          des tâches, contraintes et difficultés.
+        </li>
+        <li>
+          <strong>Outiller les managers et RH</strong> :
+          fournir un support de décision avec impacts, niveau d’urgence, pistes d’aménagement
+          et acteurs à associer.
+        </li>
+        <li>
+          <strong>Sécuriser le maintien en emploi</strong> :
+          préparer des décisions argumentées, documentées, compatibles avec les obligations
+          d’aménagement raisonnable.
+        </li>
+        <li>
+          <strong>Gagner du temps</strong> :
+          proposer une synthèse prête à être intégrée dans un compte-rendu,
+          un SIRH ou un dossier de suivi.
+        </li>
+      </ul>
+    </section>
 
-  <section class="cards-grid">
-    <article class="card">
-      <h3>Un outil pensé pour le terrain</h3>
-      <p>Interface simple, accessible, légère, sans installation lourde.</p>
-    </article>
+    <!-- PUBLICS -->
+    <section class="mwtd-panel" aria-labelledby="publics-title">
+      <header class="mwtd-card-header">
+        <h3 id="publics-title" class="mwtd-card-title">Publics concernés</h3>
+      </header>
+      <div class="mwtd-grid-3">
+        <article class="mwtd-card">
+          <h4>Salariés & candidats</h4>
+          <p>
+            Pour préparer un entretien, un bilan de situation, une visite de pré-reprise
+            ou une demande d’aménagement de poste.
+          </p>
+        </article>
+        <article class="mwtd-card">
+          <h4>Managers & RH</h4>
+          <p>
+            Pour disposer d’un <strong>support structuré</strong> lors d’échanges sensibles,
+            objectiver les impacts et organiser un plan d’action.
+          </p>
+        </article>
+        <article class="mwtd-card">
+          <h4>Référents handicap & partenaires</h4>
+          <p>
+            Pour documenter les situations, argumenter des demandes de financement
+            et suivre l’effet réel des aménagements dans le temps.
+          </p>
+        </article>
+      </div>
+    </section>
 
-    <article class="card">
-      <h3>Assistant IA optionnel</h3>
-      <p>Analyse guidée, suggestions d’aménagement, texte rédigé.</p>
-    </article>
+    <!-- POSITIONNEMENT -->
+    <section class="mwtd-panel" aria-labelledby="positionnement-title">
+      <header class="mwtd-card-header">
+        <h3 id="positionnement-title" class="mwtd-card-title">Ce que Mini-WTD est… et n’est pas</h3>
+      </header>
+      <div class="mwtd-grid-2">
+        <article class="mwtd-card">
+          <h4>Mini-WTD est :</h4>
+          <ul>
+            <li>un <strong>support de bilan d’aménagement</strong> simple et réutilisable ;</li>
+            <li>un outil d’aide à la décision pour <strong>managers & RH</strong> ;</li>
+            <li>un moyen de <strong>mettre en forme le vécu</strong> du salarié ;</li>
+            <li>un appui pour les échanges avec la médecine du travail ;</li>
+            <li>un module compatible avec des démarches handicap, QVCT, maintien en emploi.</li>
+          </ul>
+        </article>
+        <article class="mwtd-card">
+          <h4>Mini-WTD n’est pas :</h4>
+          <ul>
+            <li>un diagnostic médical ;</li>
+            <li>un avis juridique ;</li>
+            <li>un outil de tri entre “bons” et “mauvais” profils ;</li>
+            <li>un système de notation des personnes ;</li>
+            <li>un substitut au dialogue direct entre salarié, manager, RH et médecin du travail.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
 
-    <article class="card">
-      <h3>Bilan structuré</h3>
-      <p>Document clair : description, contraintes, impacts, propositions.</p>
-    </article>
+    <!-- PLACE DE L’ASSISTANT IA -->
+    <section class="mwtd-panel" aria-labelledby="ia-title">
+      <header class="mwtd-card-header">
+        <h3 id="ia-title" class="mwtd-card-title">La place de l’assistant IA Mini-WTD</h3>
+      </header>
+      <p>
+        L’assistant IA Mini-WTD n’est pas là pour décider à la place des acteurs,
+        mais pour <strong>clarifier la situation</strong> et
+        <strong>mettre en forme les informations</strong> déjà recueillies dans la grille.
+      </p>
+      <p>
+        À partir des champs renseignés, il génère une
+        <strong>synthèse structurée</strong> : situation actuelle, contraintes,
+        impacts, pistes d’aménagement, niveau d’urgence, acteurs concernés,
+        plan d’action proposé. Ce texte peut ensuite être relu, complété et adapté.
+      </p>
+      <p>
+        L’assistant IA est également conçu pour respecter une ligne claire :
+        <strong>ne jamais justifier une exclusion</strong>, et rappeler la logique
+        d’<em>aménagement raisonnable</em> : on adapte le poste, pas la personne.
+      </p>
+      <p>
+        Pour en savoir plus sur son fonctionnement et sa “personnalité”,
+        vous pouvez consulter la page <a href="assistant.html">Assistant IA</a>.
+      </p>
+    </section>
 
-    <article class="card">
-      <h3>Compatible RGAA & privacy-by-design</h3>
-      <p>Aucune donnée envoyée en ligne par défaut. Fonctionnement local.</p>
-    </article>
-  </section>
-</main>
+    <!-- LIGNE ÉTHIQUE -->
+    <section class="mwtd-panel" aria-labelledby="ethique-title">
+      <header class="mwtd-card-header">
+        <h3 id="ethique-title" class="mwtd-card-title">Une ligne éthique assumée</h3>
+      </header>
+      <p>
+        Mini-WTD est né d’une conviction simple : <strong>la compétence ne se mesure pas au handicap</strong>.
+        L’objectif n’est pas de “sélectionner les plus valides”, mais de
+        <strong>permettre à chacun de travailler dans des conditions acceptables</strong>,
+        en tenant compte de sa santé et de la réalité du poste.
+      </p>
+      <p>
+        Concrètement, cela signifie :
+      </p>
+      <ul>
+        <li>
+          ne jamais réduire une personne à ses limitations, mais décrire la situation de travail ;
+        </li>
+        <li>
+          rechercher des solutions concrètes avant de conclure à une impossibilité ;
+        </li>
+        <li>
+          documenter les essais d’aménagement plutôt que laisser la situation se dégrader ;
+        </li>
+        <li>
+          rappeler que l’aménagement raisonnable est une <strong>obligation</strong>, pas un bonus.
+        </li>
+      </ul>
+      <p class="mwtd-quote">
+        « Personne n’est “de trop” : c’est le poste qu’on adapte, pas la personne qu’on élimine. »
+      </p>
+    </section>
 
-<!-- ===== FOOTER ===== -->
-<footer class="site-footer" role="contentinfo">
-  <div class="container">
-    <p>© 2025 · Mini-WTD — Module inclusif · Clé USB & Intranet.</p>
-  </div>
-</footer>
+    <!-- UTILISATION EN PRATIQUE -->
+    <section class="mwtd-panel" aria-labelledby="usage-title">
+      <header class="mwtd-card-header">
+        <h3 id="usage-title" class="mwtd-card-title">Usage recommandé dans une organisation</h3>
+      </header>
+      <ol class="mwtd-steps">
+        <li>
+          <h4>1. Identifier une situation de travail à risque</h4>
+          <p>
+            Difficultés récurrentes, arrêts de travail, fatigabilité, signalement du salarié
+            ou du manager, retour de visite médicale…
+          </p>
+        </li>
+        <li>
+          <h4>2. Remplir la grille Mini-WTD</h4>
+          <p>
+            Idéalement lors d’un entretien dédié, avec le salarié, le manager et éventuellement
+            le référent handicap ou le RH.
+          </p>
+        </li>
+        <li>
+          <h4>3. Générer une synthèse via l’assistant IA</h4>
+          <p>
+            Choisir la langue (français, malgache, anglais), vérifier le texte, le compléter si besoin
+            et l’intégrer dans les outils internes.
+          </p>
+        </li>
+        <li>
+          <h4>4. Décider d’un plan d’action</h4>
+          <p>
+            Tester des aménagements sur une période définie, planifier un point d’étape,
+            associer les bons acteurs (médecin du travail, partenaires externes, etc.).
+          </p>
+        </li>
+        <li>
+          <h4>5. Tracer les décisions</h4>
+          <p>
+            Conserver la synthèse dans le SIRH ou les dossiers internes, avec les dates,
+            les actions tentées et les résultats observés.
+          </p>
+        </li>
+      </ol>
+      <p>
+        Pour organiser un test dans votre structure ou adapter Mini-WTD à vos procédures,
+        vous pouvez nous contacter via la page <a href="contact.html">Contact</a>.
+      </p>
+    </section>
+  </main>
 
-<!-- Scripts -->
-<script src="assets/js/mwtd-menu.js"></script>
-<script src="assets/js/mwtd-accessibility.js"></script>
-<script src="assets/js/mwtd-theme.js"></script>
-<script src="assets/js/mwtd-tts.js"></script>
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <p>© 2025 · Mini-WTD — Module de bilan d’aménagement de poste.</p>
+      <p class="site-footer-links">
+        <a href="a-propos.html">À propos</a> ·
+        <a href="accessibilite.html">Accessibilité</a> ·
+        <a href="confidentialite.html">Données &amp; confidentialité</a> ·
+        <a href="mentions-legales.html">Mentions légales</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/mwtd-menu.js"></script>
+  <script src="assets/js/mwtd-accessibility.js"></script>
+  <script src="assets/js/mwtd-theme.js"></script>
+  <script src="assets/js/mwtd-tts.js"></script>
 </body>
 </html>
-

@@ -2,10 +2,10 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <title>Mini-WTD · Contact & informations</title>
+  <title>Mini-WTD · Contact & demandes professionnelles</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description"
-        content="Contact Mini-WTD : informations, retours d’usage, demandes autour de l’inclusion, du handicap et des aménagements de poste.">
+        content="Contactez Mini-WTD : demande de démonstration, usage professionnel, adaptation, partenariat ou information sur l’aménagement de poste.">
 
   <!-- Styles globaux -->
   <link rel="stylesheet" href="assets/css/mini-wtd-2025.css">
@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
 </head>
 
-<body class="bilan-page contact-page">
+<body class="contact-page">
   <a href="#main" class="skiplink">Aller directement au contenu</a>
 
   <!-- ===== HEADER ===== -->
@@ -26,65 +26,57 @@
         </div>
         <div class="site-brand-text">
           <h1 class="site-title">Mini-WTD</h1>
-          <p class="site-tagline">Work-Test-Demo · Contact & informations</p>
+          <p class="site-tagline">Work-Test-Demo · Bilan d’aménagement de poste</p>
         </div>
       </div>
 
+      <!-- Barre d’accessibilité -->
       <div class="a11y-toolbar" aria-label="Réglages d’accessibilité et de lecture">
         <button class="access-btn" data-action="font-"
                 type="button"
-                aria-label="Réduire la taille du texte"
-                title="A− (Alt + -)">A−</button>
+                aria-label="Réduire la taille du texte">A−</button>
 
         <button class="access-btn" data-action="font+"
                 type="button"
-                aria-label="Augmenter la taille du texte"
-                title="A+ (Alt + =)">A+</button>
+                aria-label="Augmenter la taille du texte">A+</button>
 
         <button class="access-btn" data-action="contrast"
                 type="button"
-                aria-label="Activer le contraste élevé"
-                title="Contraste élevé (Alt + C)">◐</button>
+                aria-label="Activer le contraste élevé">◐</button>
 
         <button class="access-btn" data-action="spacing"
                 type="button"
-                aria-label="Augmenter l’espacement du texte"
-                title="Espacement (Alt + S)">↕︎</button>
+                aria-label="Augmenter l’espacement du texte">↕︎</button>
 
         <button class="access-btn" data-action="reset"
                 type="button"
-                aria-label="Réinitialiser l’affichage"
-                title="Réinitialiser (Alt + 0)">⟲</button>
+                aria-label="Réinitialiser l’affichage">⟲</button>
 
         <button id="theme-toggle"
                 class="btn-icon"
                 type="button"
-                aria-pressed="false"
-                aria-label="Basculer le thème clair/sombre"
-                title="Thème clair / sombre">🌓</button>
+                aria-label="Basculer en thème clair / sombre">🌓</button>
 
         <button id="tts-toggle"
                 class="btn-icon"
                 type="button"
-                aria-pressed="false"
-                aria-label="Activer la lecture vocale de la page"
-                title="Lecture vocale">🔊</button>
+                aria-label="Activer la lecture vocale">🔊</button>
       </div>
     </div>
 
+    <!-- Bouton menu mobile -->
     <div class="container site-nav-toggle">
       <button
         id="menu-toggle"
         class="btn-icon"
         type="button"
-        aria-label="Ouvrir ou fermer le menu"
         aria-expanded="false"
         aria-controls="primary-nav">
         <span class="burger" aria-hidden="true"></span>
-        <span class="sr-only">Menu</span>
       </button>
     </div>
 
+    <!-- Navigation principale -->
     <nav class="site-nav" aria-label="Navigation principale">
       <ul id="primary-nav">
         <li><a href="index.html">Accueil</a></li>
@@ -97,239 +89,143 @@
     </nav>
   </header>
 
-  <!-- ===== CONTENU ===== -->
+  <!-- ===== CONTENU PRINCIPAL ===== -->
   <main id="main" class="container" role="main" tabindex="-1">
+
     <section class="hero">
-      <h2>Nous contacter à propos de Mini-WTD</h2>
+      <h2>Contact & demandes professionnelles</h2>
       <p class="mwtd-lead">
-        Cette page sert à formuler une demande autour de Mini-WTD :
-        informations, retours d’usage, pistes de partenariat ou questions sur les aménagements.
-      </p>
-      <p>
-        Vous pouvez utiliser le formulaire ci-dessous comme <strong>brouillon</strong>,
-        puis copier-coller votre message dans votre messagerie habituelle
-        ou dans un document interne.
+        Vous pouvez utiliser ce formulaire pour toute demande liée à Mini-WTD :
+        démonstration, usage dans votre structure, adaptation de l’outil, ou question sur
+        les aménagements de poste.
       </p>
     </section>
 
-    <section class="mwtd-panel" aria-labelledby="contact-title">
+    <!-- FORMULAIRE -->
+    <section class="mwtd-panel" aria-labelledby="form-title">
       <header class="mwtd-card-header">
-        <div>
-          <h3 id="contact-title" class="mwtd-card-title">Formulaire de contact (brouillon)</h3>
-          <p class="mwtd-card-subtitle">
-            Aucun envoi automatique : vos informations restent sur cet appareil tant que la page est ouverte.
-          </p>
-        </div>
+        <h3 id="form-title" class="mwtd-card-title">Formulaire de contact</h3>
+        <p class="mwtd-card-subtitle">Les champs marqués d’un * sont obligatoires.</p>
       </header>
 
-      <div class="mwtd-grid" style="margin-top:1rem;">
-        <!-- Colonne formulaire -->
-        <div class="mwtd-card">
-          <form class="mwtd-form" id="contact-form" novalidate>
-            <!-- Identité -->
-            <fieldset class="mwtd-fieldset">
-              <legend>1. Vos coordonnées</legend>
-
-              <div class="form-group">
-                <label for="contact-nom">Nom et prénom <span aria-hidden="true">*</span></label>
-                <input id="contact-nom"
-                       name="contact-nom"
-                       type="text"
-                       autocomplete="name"
-                       required
-                       aria-required="true">
-                <p class="form-hint">Indiquez la personne à contacter pour ce message.</p>
-              </div>
-
-              <div class="form-group">
-                <label for="contact-organisation">Organisation / structure</label>
-                <input id="contact-organisation"
-                       name="contact-organisation"
-                       type="text"
-                       autocomplete="organization">
-                <p class="form-hint">Entreprise, association, collectivité, ou “individuel”.</p>
-              </div>
-
-              <div class="form-group">
-                <label for="contact-email">Adresse e-mail <span aria-hidden="true">*</span></label>
-                <input id="contact-email"
-                       name="contact-email"
-                       type="email"
-                       autocomplete="email"
-                       required
-                       aria-required="true">
-                <p class="form-hint">Utilisée uniquement pour vous répondre.</p>
-              </div>
-
-              <div class="form-group">
-                <label for="contact-telephone">Téléphone (facultatif)</label>
-                <input id="contact-telephone"
-                       name="contact-telephone"
-                       type="tel"
-                       autocomplete="tel">
-                <p class="form-hint">Utile si vous souhaitez un rappel.</p>
-              </div>
-            </fieldset>
-
-            <!-- Objet de la demande -->
-            <fieldset class="mwtd-fieldset">
-              <legend>2. Objet de votre demande</legend>
-
-              <div class="form-group">
-                <label for="contact-objet">Type de demande</label>
-                <select id="contact-objet" name="contact-objet">
-                  <option value="">Sélectionner…</option>
-                  <option value="information">Informations générales sur Mini-WTD</option>
-                  <option value="test-demo">Demande de test ou démonstration</option>
-                  <option value="amenagement">Question sur un aménagement de poste</option>
-                  <option value="partenariat">Piste de partenariat / projet commun</option>
-                  <option value="autre">Autre demande</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="contact-sujet">Sujet (bref)</label>
-                <input id="contact-sujet"
-                       name="contact-sujet"
-                       type="text"
-                       autocomplete="off">
-              </div>
-            </fieldset>
-
-            <!-- Message -->
-            <fieldset class="mwtd-fieldset">
-              <legend>3. Votre message</legend>
-
-              <div class="form-group">
-                <label for="contact-message">
-                  Décrivez votre situation ou votre demande <span aria-hidden="true">*</span>
-                </label>
-                <textarea id="contact-message"
-                          name="contact-message"
-                          rows="6"
-                          required
-                          aria-required="true"
-                          placeholder="Exemples : contexte de votre organisation, public accompagné, problématique rencontrée, type de test Mini-WTD souhaité…"></textarea>
-                <p class="form-hint">
-                  Évitez de mentionner des données de santé trop précises : restez au niveau
-                  des besoins, contraintes et aménagements envisagés.
-                </p>
-              </div>
-            </fieldset>
-
-            <!-- Consentement -->
-            <fieldset class="mwtd-fieldset">
-              <legend>4. Validation</legend>
-
-              <div class="form-group">
-                <div class="mwtd-row">
-                  <input id="contact-consent"
-                         name="contact-consent"
-                         type="checkbox"
-                         value="ok"
-                         required
-                         aria-required="true">
-                  <label for="contact-consent">
-                    J’ai relu mon message et je suis d’accord pour le transmettre via ma messagerie.
-                  </label>
-                </div>
-                <p class="form-hint">
-                  Mini-WTD ne déclenche pas l’envoi automatique : vous restez libre de copier-coller
-                  ce texte dans un e-mail ou un document interne.
-                </p>
-              </div>
-            </fieldset>
-
-            <p class="form-hint">
-              <strong>Mode démo :</strong> aucune donnée n’est stockée ni envoyée automatiquement
-              par Mini-WTD. Pensez à sauvegarder votre texte si vous fermez la page.
-            </p>
-
-            <button type="submit" class="btn btn-primary">
-              Préparer l’envoi (mode démo — aucune donnée n’est envoyée)
-            </button>
-          </form>
+      <form class="mwtd-form" id="contact-form" novalidate>
+        
+        <div class="form-group">
+          <label for="nom">Nom *</label>
+          <input id="nom" name="nom" type="text" required autocomplete="name">
         </div>
 
-        <!-- Colonne info contact -->
-        <aside class="mwtd-card" aria-label="Informations complémentaires de contact">
-          <h3>Comment utiliser ce formulaire ?</h3>
-          <p>
-            1. Remplissez les champs à votre rythme, en entretien ou en autonomie.<br>
-            2. Cliquez sur le bouton en bas de page pour vérifier que tout est bien complété.<br>
-            3. Copiez-collez ensuite le texte dans :
-          </p>
-          <ul>
-            <li>votre logiciel de messagerie (e-mail),</li>
-            <li>un document interne (bilan, fiche de suivi),</li>
-            <li>ou un outil de ticket interne (si votre organisation en utilise).</li>
-          </ul>
+        <div class="form-group">
+          <label for="email">Adresse e-mail *</label>
+          <input id="email" name="email" type="email" required autocomplete="email">
+        </div>
 
-          <h3 style="margin-top:1.25rem;">Conseils inclusion & sobriété des données</h3>
-          <ul>
-            <li>Formulez les besoins plutôt que les diagnostics médicaux.</li>
-            <li>Notez ce qui aide vraiment à décider d’un aménagement concret.</li>
-            <li>Partagez le message avec la personne concernée avant diffusion interne.</li>
-          </ul>
+        <div class="form-group">
+          <label for="structure">Organisation / entreprise</label>
+          <input id="structure" name="structure" type="text" autocomplete="organization">
+        </div>
 
-          <p class="form-hint">
-            En cas de doute, rapprochez-vous de la médecine du travail,
-            du référent handicap ou de vos partenaires spécialisés.
-          </p>
-        </aside>
-      </div>
+        <div class="form-group">
+          <label for="sujet">Sujet de la demande *</label>
+          <select id="sujet" name="sujet" required>
+            <option value="">Sélectionner…</option>
+            <option value="demo">Demande de démonstration</option>
+            <option value="pro">Usage professionnel de Mini-WTD</option>
+            <option value="adaptation">Adaptation / personnalisation</option>
+            <option value="integration">Intégration technique</option>
+            <option value="info">Informations générales</option>
+            <option value="autre">Autre demande</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message *</label>
+          <textarea id="message" name="message" rows="6" required></textarea>
+        </div>
+
+        <p class="form-hint">
+          Aucune donnée n’est enregistrée automatiquement. Votre message est envoyé via votre client
+          de messagerie (bouton ci-dessous).
+        </p>
+
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+
+      </form>
     </section>
+
+    <!-- INFOS DIRECTES -->
+    <section class="mwtd-panel" aria-labelledby="contact-direct-title">
+      <header class="mwtd-card-header">
+        <h3 id="contact-direct-title" class="mwtd-card-title">Contact direct</h3>
+      </header>
+      <p>
+        Pour les échanges professionnels, vous pouvez également utiliser :
+      </p>
+      <ul>
+        <li><strong>Email :</strong> elanpourtous49@gmail.com</li>
+        <li><strong>Téléphone :</strong> 07 83 33 67 57</li>
+      </ul>
+      <p>
+        Les réponses sont assurées en fonction des disponibilités.
+      </p>
+    </section>
+
+    <!-- EN SAVOIR PLUS -->
+    <section class="mwtd-panel">
+      <header class="mwtd-card-header">
+        <h3 class="mwtd-card-title">Ressources utiles</h3>
+      </header>
+      <ul class="mwtd-list-check">
+        <li><a href="presentation.html">Comprendre Mini-WTD</a></li>
+        <li><a href="assistant.html">Fonctionnement de l’assistant IA</a></li>
+        <li><a href="evaluation-amenagement.html">Démarrer un bilan d’aménagement</a></li>
+        <li><a href="a-propos.html">Manifeste & philosophie</a></li>
+      </ul>
+    </section>
+
   </main>
 
   <!-- ===== FOOTER ===== -->
-  <footer class="site-footer" role="contentinfo">
+  <footer class="site-footer">
     <div class="container">
-      <p>© 2025 · Mini-WTD — Module inclusif · Clé USB & Intranet.</p>
+      <p>© 2025 · Mini-WTD — Module de bilan d’aménagement de poste.</p>
+      <p class="site-footer-links">
+        <a href="a-propos.html">À propos</a> ·
+        <a href="accessibilite.html">Accessibilité</a> ·
+        <a href="confidentialite.html">Données &amp; confidentialité</a> ·
+        <a href="mentions-legales.html">Mentions légales</a>
+      </p>
     </div>
   </footer>
 
   <!-- Scripts -->
   <script>
-    // Mode démo : on empêche tout envoi réel et on donne une indication à l’utilisateur.
-    (function () {
-      const form = document.getElementById('contact-form');
-      if (!form) return;
+    // Formulaire en mode "mailto" sans stockage
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const nom = document.getElementById('nom').value;
+      const email = document.getElementById('email').value;
+      const sujet = document.getElementById('sujet').value;
+      const msg   = document.getElementById('message').value;
 
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
+      const body = encodeURIComponent(
+        "Nom : " + nom + "\n" +
+        "Email : " + email + "\n" +
+        "Sujet : " + sujet + "\n\n" +
+        "Message :\n" + msg
+      );
 
-        // Vérification très simple des champs requis
-        const requiredIds = ['contact-nom', 'contact-email', 'contact-message', 'contact-consent'];
-        let manquants = [];
-
-        requiredIds.forEach(id => {
-          const el = document.getElementById(id);
-          if (!el) return;
-
-          if (el.type === 'checkbox') {
-            if (!el.checked) manquants.push(id);
-          } else if (!el.value.trim()) {
-            manquants.push(id);
-          }
-        });
-
-        if (manquants.length > 0) {
-          alert("Certains champs obligatoires semblent manquants. Vérifiez votre nom, votre e-mail, votre message et la case de validation.");
-          return;
-        }
-
-        alert(
-          "Mode démo : le formulaire n'est pas envoyé automatiquement.\n\n" +
-          "Vous pouvez maintenant copier-coller les informations saisies dans votre messagerie " +
-          "ou vos outils internes."
-        );
-      });
-    })();
+      window.location.href =
+        "mailto:elanpourtous49@gmail.com?subject=Contact Mini-WTD (" +
+        encodeURIComponent(sujet) +
+        ")&body=" + body;
+    });
   </script>
 
   <script src="assets/js/mwtd-menu.js"></script>
   <script src="assets/js/mwtd-accessibility.js"></script>
   <script src="assets/js/mwtd-theme.js"></script>
   <script src="assets/js/mwtd-tts.js"></script>
+
 </body>
 </html>

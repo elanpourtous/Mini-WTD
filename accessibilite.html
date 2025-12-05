@@ -2,144 +2,270 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Mini-WTD · Accessibilité</title>
+  <title>Mini-WTD · Accessibilité du site et du module</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+        content="Déclaration d’accessibilité de Mini-WTD : principes, fonctionnalités d’accessibilité, limites connues et démarche d’amélioration continue.">
 
-  <meta name="description" content="Informations officielles sur l’accessibilité numérique du module Mini-WTD, conforme aux bonnes pratiques RGAA 2025, avec réglages de confort et navigation inclusive.">
-
-  <link rel="icon" href="assets/ima/logo-mini-wtd-256.png" type="image/png">
+  <!-- Styles globaux -->
   <link rel="stylesheet" href="assets/css/mini-wtd-2025.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/base-a11y.css">
   <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
 </head>
 
-<body class="mwtd-shell">
+<body class="accessibilite-page">
   <a href="#main" class="skiplink">Aller directement au contenu</a>
 
-  <!-- Header partagé -->
-  <?php include 'includes/nav.html'; ?>
-
-  <main id="main" class="mwtd-main" role="main" tabindex="-1">
-
-    <!-- ===== HERO ===== -->
-    <section class="mwtd-panel" aria-labelledby="title-access">
-      <p class="mwtd-page-kicker">Information</p>
-      <h1 id="title-access" class="mwtd-page-title">Accessibilité numérique</h1>
-
-      <p class="mwtd-lead">
-        Mini-WTD est conçu pour être utilisé par toutes les personnes, y compris celles
-        ayant des besoins visuels, moteurs, cognitifs ou liés à la fatigue.
-        Cette page détaille les engagements, règles et réglages intégrés dans le module.
-      </p>
-
-      <div class="mwtd-row" style="margin-top:0.75rem;">
-        <button class="mwtd-btn mwtd-btn-ghost" data-action="font+">A+ Agrandir le texte</button>
-        <button class="mwtd-btn mwtd-btn-ghost" data-action="font-">A− Réduire le texte</button>
-        <button class="mwtd-btn mwtd-btn-ghost" data-action="contrast">Contraste renforcé</button>
-        <button class="mwtd-btn mwtd-btn-ghost" data-action="spacing">Espacement augmenté</button>
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" role="banner">
+    <div class="container site-header-inner">
+      <div class="site-brand">
+        <div class="site-logo">
+          <img src="assets/ima/logo-mini-wtd-256.png" alt="Logo Mini-WTD" loading="lazy">
+        </div>
+        <div class="site-brand-text">
+          <h1 class="site-title">Mini-WTD</h1>
+          <p class="site-tagline">Work-Test-Demo · Bilan d’aménagement de poste</p>
+        </div>
       </div>
-    </section>
 
-    <!-- ===== RÉGLAGES ===== -->
-    <section class="mwtd-panel" style="margin-top:1.75rem;">
-      <h2 class="mwtd-card-title">Réglages d’accessibilité disponibles</h2>
+      <!-- Barre d’accessibilité -->
+      <div class="a11y-toolbar" aria-label="Réglages d’accessibilité et de lecture">
+        <button class="access-btn" data-action="font-"
+                type="button"
+                aria-label="Réduire la taille du texte"
+                title="A− (Alt + -)">A−</button>
 
-      <ul class="mwtd-lead">
-        <li><strong>Agrandissement du texte</strong> (A+) jusqu’à +80%.</li>
-        <li><strong>Réduction du texte</strong> lisible pour petits écrans.</li>
-        <li><strong>Contraste renforcé</strong> (mode noir + blanc haute lisibilité).</li>
-        <li><strong>Espacement augmenté</strong> pour réduire la fatigue visuelle.</li>
-        <li><strong>Préférence OS “réduction des animations” respectée</strong>.</li>
-        <li><strong>Navigation clavier complète</strong> (focus visible renforcé).</li>
-        <li><strong>Compatibilité lecteur d’écran</strong> (structure claire H1-H2-H3, aria-labels).</li>
+        <button class="access-btn" data-action="font+"
+                type="button"
+                aria-label="Augmenter la taille du texte"
+                title="A+ (Alt + =)">A+</button>
+
+        <button class="access-btn" data-action="contrast"
+                type="button"
+                aria-label="Activer le contraste élevé"
+                title="Contraste élevé (Alt + C)">◐</button>
+
+        <button class="access-btn" data-action="spacing"
+                type="button"
+                aria-label="Augmenter l’espacement du texte"
+                title="Espacement (Alt + S)">↕</button>
+
+        <button class="access-btn" data-action="reset"
+                type="button"
+                aria-label="Réinitialiser l’affichage"
+                title="Réinitialiser (Alt + 0)">⟲</button>
+
+        <button id="theme-toggle"
+                class="btn-icon"
+                type="button"
+                aria-pressed="false"
+                aria-label="Basculer le thème clair/sombre"
+                title="Thème clair / sombre">🌓</button>
+
+        <button id="tts-toggle"
+                class="btn-icon"
+                type="button"
+                aria-pressed="false"
+                aria-label="Activer la lecture vocale de la page"
+                title="Lecture vocale">🔊</button>
+      </div>
+    </div>
+
+    <!-- Bouton menu mobile -->
+    <div class="container site-nav-toggle">
+      <button
+        id="menu-toggle"
+        class="btn-icon"
+        type="button"
+        aria-label="Ouvrir ou fermer le menu"
+        aria-expanded="false"
+        aria-controls="primary-nav">
+        <span class="burger" aria-hidden="true"></span>
+        <span class="sr-only">Menu</span>
+      </button>
+    </div>
+
+    <!-- Navigation principale -->
+    <nav class="site-nav" aria-label="Navigation principale">
+      <ul id="primary-nav">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="presentation.html">Présentation</a></li>
+        <li><a href="assistant.html">Assistant IA</a></li>
+        <li><a href="evaluation-amenagement.html">Bilan</a></li>
+        <li><a href="webcam-analyse.html">Webcam</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
+    </nav>
+  </header>
 
+  <!-- ===== CONTENU PRINCIPAL ===== -->
+  <main id="main" class="container" role="main" tabindex="-1">
+    <section class="hero">
+      <h2>Accessibilité de Mini-WTD</h2>
       <p class="mwtd-lead">
-        Les réglages sont mémorisés automatiquement dans votre navigateur (localStorage).
+        Mini-WTD a été conçu avec une attention particulière à l’accessibilité numérique,
+        afin que le plus grand nombre puisse l’utiliser, y compris les personnes en situation
+        de handicap.
+      </p>
+      <p>
+        Cette page décrit les principaux choix réalisés, les fonctionnalités d’accessibilité
+        disponibles et les limites actuellement identifiées.
       </p>
     </section>
 
-    <!-- ===== ENGAGEMENT ===== -->
-    <section class="mwtd-panel" style="margin-top:1.75rem;">
-      <h2 class="mwtd-card-title">Engagements du projet Mini-WTD</h2>
-
-      <p class="mwtd-lead">
-        L’accessibilité n’est pas une option dans Mini-WTD : c’est une exigence
-        intégrée dès la conception. Chaque fonctionnalité est pensée pour rester
-        utilisable dans des conditions réelles d’entreprise, y compris en contexte
-        de fatigue, de stress ou d’environnement peu adapté.
+    <!-- PRINCIPES GÉNÉRAUX -->
+    <section class="mwtd-panel" aria-labelledby="principes-title">
+      <header class="mwtd-card-header">
+        <h3 id="principes-title" class="mwtd-card-title">Principes généraux</h3>
+      </header>
+      <p>
+        Mini-WTD s’appuie sur les <strong>recommandations d’accessibilité</strong> du
+        Référentiel Général d’Amélioration de l’Accessibilité (RGAA) et des bonnes pratiques
+        du Web (HTML sémantique, navigation clavier, alternatives textuelles…).
       </p>
+      <p>
+        L’objectif n’est pas d’annoncer une conformité parfaite, mais de
+        <strong>progresser continuellement</strong>, en partant d’un socle solide et en
+        intégrant les retours des utilisateurs.
+      </p>
+    </section>
 
-      <ul class="mwtd-lead">
-        <li>Structure logique des pages (titres, navigation, zones ARIA).</li>
-        <li>Textes en langage clair, sans jargon médical obligatoire.</li>
-        <li>Absence d’éléments clignotants ou agressifs.</li>
-        <li>Compatibilité hors-ligne (clé USB / intranet interne).</li>
-        <li>Interface testée avec des profils variés (vision, cognition, mobilité).</li>
+    <!-- FONCTIONNALITÉS D’ACCESSIBILITÉ -->
+    <section class="mwtd-panel" aria-labelledby="fonctions-title">
+      <header class="mwtd-card-header">
+        <h3 id="fonctions-title" class="mwtd-card-title">Fonctionnalités d’accessibilité intégrées</h3>
+      </header>
+      <ul class="mwtd-list-check">
+        <li>
+          <strong>Navigation au clavier</strong>&nbsp;: les menus, liens et principaux éléments
+          des pages sont accessibles via la touche <kbd>Tab</kbd> et les touches fléchées.
+        </li>
+        <li>
+          <strong>Lien d’évitement</strong>&nbsp;: un lien «&nbsp;Aller directement au contenu&nbsp;»
+          est présent en début de page pour les utilisateurs clavier et lecteurs d’écran.
+        </li>
+        <li>
+          <strong>Structure sémantique</strong>&nbsp;: utilisation de balises
+          <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>,
+          <code>&lt;section&gt;</code>, <code>&lt;footer&gt;</code> et d’une hiérarchie de titres
+          cohérente.
+        </li>
+        <li>
+          <strong>Alternatives textuelles</strong>&nbsp;: les images porteuses d’information
+          (logo, visuels) disposent d’attributs <code>alt</code> descriptifs.
+        </li>
+        <li>
+          <strong>Contraste et lisibilité</strong>&nbsp;: les styles ont été travaillés pour
+          offrir un contraste suffisant dans le thème par défaut, avec une option de
+          <em>contraste élevé</em>.
+        </li>
+        <li>
+          <strong>Réglages d’affichage</strong>&nbsp;: une barre d’accessibilité permet
+          d’augmenter ou réduire la taille du texte, d’accroître l’espacement et de basculer
+          en mode contraste renforcé.
+        </li>
+        <li>
+          <strong>Thème clair / sombre</strong>&nbsp;: un bouton permet de choisir un thème
+          adapté au confort visuel de l’utilisateur.
+        </li>
+        <li>
+          <strong>Lecture vocale</strong>&nbsp;: un bouton de lecture permet d’activer
+          la lecture vocale de certaines pages pour les personnes qui en ont besoin.
+        </li>
       </ul>
     </section>
 
-    <!-- ===== RGAA ===== -->
-    <section class="mwtd-panel" style="margin-top:1.75rem;">
-      <h2 class="mwtd-card-title">Conformité RGAA</h2>
-
-      <p class="mwtd-lead">
-        Mini-WTD s’appuie sur les bonnes pratiques du <strong>RGAA 4.1</strong>
-        (Référentiel Général d’Amélioration de l’Accessibilité) appliquées aux
-        interfaces web et intranet.
+    <!-- LIMITES CONNUES -->
+    <section class="mwtd-panel" aria-labelledby="limites-title">
+      <header class="mwtd-card-header">
+        <h3 id="limites-title" class="mwtd-card-title">Limites connues et points de vigilance</h3>
+      </header>
+      <p>
+        Malgré le soin apporté, certaines limites peuvent subsister&nbsp;:
       </p>
-
-      <ul class="mwtd-lead">
-        <li><strong>Alternatives textuelles</strong> présentes ou déclarées.</li>
-        <li><strong>Couleurs vérifiées</strong> pour un contraste suffisant.</li>
-        <li><strong>Clavier utilisable</strong> sur tous les composants interactifs.</li>
-        <li><strong>Langue indiquée</strong> dans chaque document HTML.</li>
-        <li><strong>Liens explicites</strong> — jamais “cliquez ici”.</li>
-        <li><strong>Structure logique</strong> et respect des niveaux de titres.</li>
-        <li><strong>Aucune information transmise uniquement par la couleur</strong>.</li>
+      <ul>
+        <li>
+          certains éléments interactifs peuvent nécessiter des ajustements fins pour
+          une compatibilité optimale avec tous les lecteurs d’écran ;
+        </li>
+        <li>
+          la fonctionnalité de webcam, si elle est activée, n’est pas indispensable pour
+          l’usage du module et peut présenter des limites d’accessibilité ;
+        </li>
+        <li>
+          les contenus générés par l’assistant IA doivent être relus pour s’assurer qu’ils
+          restent compréhensibles et adaptés aux personnes concernées.
+        </li>
       </ul>
-
-      <p class="mwtd-lead">
-        Une mise en conformité complète peut être réalisée sur demande pour les
-        déploiements institutionnels ou multi-sites.
+      <p>
+        Toute remontée de problème d’accessibilité est la bienvenue et sera étudiée pour
+        améliorer progressivement le module.
       </p>
     </section>
 
-    <!-- ===== CONTACT ===== -->
-    <section class="mwtd-panel" style="margin-top:1.75rem;">
-      <h2 class="mwtd-card-title">Signaler un problème d’accessibilité</h2>
-
-      <p class="mwtd-lead">
-        Malgré le soin apporté à la conception, si vous rencontrez un problème
-        d’accessibilité ou si une fonctionnalité ne vous paraît pas adaptée à
-        votre situation, vous pouvez nous contacter :
+    <!-- CONTACT ACCESSIBILITÉ -->
+    <section class="mwtd-panel" aria-labelledby="contact-title">
+      <header class="mwtd-card-header">
+        <h3 id="contact-title" class="mwtd-card-title">Signaler un problème d’accessibilité</h3>
+      </header>
+      <p>
+        Si vous rencontrez une difficulté pour accéder à un contenu ou utiliser une fonctionnalité
+        de Mini-WTD, vous pouvez le signaler via la page
+        <a href="contact.html">Contact</a>.
       </p>
-
-      <p class="mwtd-lead">
-        📧 <strong>elanpourtous49@gmail.com</strong><br>
-        📱 <strong>07 83 33 67 57</strong>
+      <p>
+        Dans votre message, vous pouvez préciser&nbsp;:
       </p>
-
-      <p class="mwtd-lead">
-        Une réponse vous sera apportée dans les meilleurs délais.
+      <ul>
+        <li>la page ou l’écran concerné ;</li>
+        <li>l’outil utilisé (ordinateur, smartphone, lecteur d’écran, etc.) ;</li>
+        <li>la difficulté rencontrée ;</li>
+        <li>si possible, une capture ou un exemple précis.</li>
+      </ul>
+      <p>
+        Ces retours permettent d’orienter les corrections et d’améliorer l’expérience
+        des personnes en situation de handicap ou de vulnérabilité numérique.
       </p>
     </section>
 
+    <!-- DÉMARCHE D’AMÉLIORATION -->
+    <section class="mwtd-panel" aria-labelledby="demarche-title">
+      <header class="mwtd-card-header">
+        <h3 id="demarche-title" class="mwtd-card-title">Démarche d’amélioration continue</h3>
+      </header>
+      <p>
+        Mini-WTD est un projet vivant. L’accessibilité fait partie de ses fondations mais aussi
+        de sa feuille de route&nbsp;: tests, retours utilisateurs, corrections et évolutions
+        sont intégrés au fil du temps.
+      </p>
+      <p>
+        L’objectif est d’aller vers une <strong>conformité renforcée au RGAA</strong>
+        tout en gardant une interface simple et utilisable par les publics visés
+        (salariés, managers, RH, référents handicap, partenaires).
+      </p>
+    </section>
   </main>
 
-  <!-- Footer -->
-  <footer class="mwtd-main" role="contentinfo" style="padding-top:0;">
-    <div class="mwtd-row-between" style="border-top:1px solid rgba(255,255,255,0.06); padding-top:1rem;">
-      <p class="mwtd-tagline">
-        © <span id="mwtd-year">2025</span> · Mini-WTD — Accessibilité intégrée.
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <p>© 2025 · Mini-WTD — Module de bilan d’aménagement de poste.</p>
+      <p class="site-footer-links">
+        <a href="a-propos.html">À propos</a> ·
+        <a href="accessibilite.html" aria-current="page">Accessibilité</a> ·
+        <a href="confidentialite.html">Données &amp; confidentialité</a> ·
+        <a href="mentions-legales.html">Mentions légales</a>
       </p>
-      <span class="mwtd-chip">RGAA · Conception inclusive</span>
     </div>
   </footer>
 
-  <script src="assets/js/accessibility.js"></script>
-  <script>
-    document.getElementById("mwtd-year").textContent = new Date().getFullYear();
-  </script>
-
+  <!-- Scripts -->
+  <script src="assets/js/mwtd-menu.js"></script>
+  <script src="assets/js/mwtd-accessibility.js"></script>
+  <script src="assets/js/mwtd-theme.js"></script>
+  <script src="assets/js/mwtd-tts.js"></script>
 </body>
 </html>
+

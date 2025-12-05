@@ -2,10 +2,10 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <title>Mini-WTD · Assistant IA inclusif</title>
+  <title>Mini-WTD · Assistant IA d’aménagement de poste</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description"
-        content="Assistant IA Mini-WTD : aide à la description des situations de travail, suggestions d’aménagement et rédaction de bilans.">
+        content="Assistant IA Mini-WTD — transformer un bilan d’aménagement de poste en synthèse structurée pour RH, managers et médecine du travail, en français, malgache ou anglais.">
 
   <!-- Styles globaux -->
   <link rel="stylesheet" href="assets/css/mini-wtd-2025.css">
@@ -15,169 +15,302 @@
 </head>
 
 <body class="assistant-page">
-<a href="#main" class="skiplink">Aller directement au contenu</a>
+  <a href="#main" class="skiplink">Aller directement au contenu</a>
 
-<!-- ===== HEADER ===== -->
-<header class="site-header" role="banner">
-  <div class="container site-header-inner">
-    <div class="site-brand">
-      <div class="site-logo">
-        <img src="assets/ima/logo-mini-wtd-256.png" alt="Logo Mini-WTD" loading="lazy">
-      </div>
-      <div class="site-brand-text">
-        <h1 class="site-title">Mini-WTD</h1>
-        <p class="site-tagline">Work-Test-Demo · Assistant IA inclusif</p>
-      </div>
-    </div>
-
-    <div class="a11y-toolbar" aria-label="Réglages d’accessibilité et lecture">
-      <button class="access-btn" data-action="font-">A−</button>
-      <button class="access-btn" data-action="font+">A+</button>
-      <button class="access-btn" data-action="contrast">◐</button>
-      <button class="access-btn" data-action="spacing">↕︎</button>
-      <button class="access-btn" data-action="reset">⟲</button>
-      <button id="theme-toggle" class="btn-icon" aria-pressed="false">🌓</button>
-      <button id="tts-toggle" class="btn-icon" aria-pressed="false">🔊</button>
-    </div>
-  </div>
-
-  <div class="container site-nav-toggle">
-    <button id="menu-toggle" class="btn-icon" aria-expanded="false" aria-controls="primary-nav">
-      <span class="burger"></span>
-      <span class="sr-only">Ouvrir le menu</span>
-    </button>
-  </div>
-
-  <nav class="site-nav" aria-label="Navigation principale">
-    <ul id="primary-nav">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="presentation.html">Présentation</a></li>
-      <li><a class="active" href="assistant.html" aria-current="page">Assistant IA</a></li>
-      <li><a href="evaluation-amenagement.html">Bilan</a></li>
-      <li><a href="webcam-analyse.html">Webcam</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
-</header>
-
-<!-- ===== CONTENU PRINCIPAL ===== -->
-<main id="main" class="container" role="main" tabindex="-1">
-
-  <section class="hero">
-    <h2>Assistant IA Mini-WTD</h2>
-    <p>
-      L’assistant IA Mini-WTD aide à <strong>décrire une situation de travail</strong>,
-      <strong>identifier les difficultés</strong> et proposer des <strong>pistes d’aménagement</strong>,
-      sans jamais remplacer le jugement humain.
-    </p>
-  </section>
-
-  <section class="cards-grid">
-
-    <article class="card">
-      <h3>Ce que fait l’assistant</h3>
-      <ul>
-        <li>Reformule les éléments donnés par le candidat ou le salarié.</li>
-        <li>Met en avant les contraintes importantes (fatigue, douleur, mobilité, concentration…).</li>
-        <li>Propose des pistes d’aménagement réalistes (organisation, matériel, environnement).</li>
-        <li>Produit un texte structuré utilisable dans un bilan ou un mail.</li>
-      </ul>
-    </article>
-
-    <article class="card">
-      <h3>Ce que l’IA ne fait pas</h3>
-      <ul>
-        <li>Ne pose pas de diagnostic médical.</li>
-        <li>Ne remplace pas la médecine du travail ni les partenaires (MDPH, Agefiph…).</li>
-        <li>Ne décide pas à la place du manager, des RH ou de la personne concernée.</li>
-        <li>Ne collecte pas de données en mode offline (clé USB / intranet).</li>
-      </ul>
-    </article>
-
-    <article class="card">
-      <h3>Exemple de dialogue guidé</h3>
-
-      <div class="mwtd-chat-shell">
-        <div class="mwtd-chat-messages">
-          <div class="mwtd-chat-bubble mwtd-chat-bubble--bot">
-            Bonjour, décrivez brièvement le poste et ce qui pose difficulté aujourd’hui.
-          </div>
-          <div class="mwtd-chat-bubble mwtd-chat-bubble--user">
-            Le salarié se déplace avec une canne, il fatigue vite debout et a du mal à se concentrer
-            en open space bruyant.
-          </div>
-          <div class="mwtd-chat-bubble mwtd-chat-bubble--bot">
-            Merci. Je retiens :
-            <ul>
-              <li>Poste avec déplacements et station debout fréquente,</li>
-              <li>Besoin de limiter la fatigue liée aux trajets,</li>
-              <li>Difficulté de concentration en environnement bruyant.</li>
-            </ul>
-            Pistes possibles :
-            <ul>
-              <li>Réduction des déplacements longs dans la journée,</li>
-              <li>Siège adapté ou appui ischiatique,</li>
-              <li>Poste plus au calme, casque anti-bruit ou espaces de retrait.</li>
-            </ul>
-          </div>
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" role="banner">
+    <div class="container site-header-inner">
+      <div class="site-brand">
+        <div class="site-logo">
+          <img src="assets/ima/logo-mini-wtd-256.png" alt="Logo Mini-WTD" loading="lazy">
+        </div>
+        <div class="site-brand-text">
+          <h1 class="site-title">Mini-WTD</h1>
+          <p class="site-tagline">Work-Test-Demo · Bilan d’aménagement de poste</p>
         </div>
       </div>
 
-      <p style="margin-top:0.75rem;">
-        Le texte produit peut être repris dans un bilan et discuté avec la personne,
-        le manager ou la médecine du travail.
-      </p>
-    </article>
+      <!-- Barre d’accessibilité -->
+      <div class="a11y-toolbar" aria-label="Réglages d’accessibilité et de lecture">
+        <button class="access-btn" data-action="font-"
+                type="button"
+                aria-label="Réduire la taille du texte"
+                title="A− (Alt + -)">A−</button>
 
-    <article class="card">
-      <h3>Modes d’utilisation</h3>
-      <ul>
-        <li><strong>Accompagnement RH / manager</strong> : l’IA structure l’entretien.</li>
-        <li><strong>Auto-description</strong> : le salarié/candidat décrit sa situation.</li>
-        <li><strong>Formation</strong> : simulations pour sensibiliser à l’inclusion.</li>
+        <button class="access-btn" data-action="font+"
+                type="button"
+                aria-label="Augmenter la taille du texte"
+                title="A+ (Alt + =)">A+</button>
+
+        <button class="access-btn" data-action="contrast"
+                type="button"
+                aria-label="Activer le contraste élevé"
+                title="Contraste élevé (Alt + C)">◐</button>
+
+        <button class="access-btn" data-action="spacing"
+                type="button"
+                aria-label="Augmenter l’espacement du texte"
+                title="Espacement (Alt + S)">↕︎</button>
+
+        <button class="access-btn" data-action="reset"
+                type="button"
+                aria-label="Réinitialiser l’affichage"
+                title="Réinitialiser (Alt + 0)">⟲</button>
+
+        <button id="theme-toggle"
+                class="btn-icon"
+                type="button"
+                aria-pressed="false"
+                aria-label="Basculer le thème clair/sombre"
+                title="Thème clair / sombre">🌓</button>
+
+        <button id="tts-toggle"
+                class="btn-icon"
+                type="button"
+                aria-pressed="false"
+                aria-label="Activer la lecture vocale de la page"
+                title="Lecture vocale">🔊</button>
+      </div>
+    </div>
+
+    <!-- Bouton menu mobile -->
+    <div class="container site-nav-toggle">
+      <button
+        id="menu-toggle"
+        class="btn-icon"
+        type="button"
+        aria-label="Ouvrir ou fermer le menu"
+        aria-expanded="false"
+        aria-controls="primary-nav">
+        <span class="burger" aria-hidden="true"></span>
+        <span class="sr-only">Menu</span>
+      </button>
+    </div>
+
+    <!-- Navigation principale -->
+    <nav class="site-nav" aria-label="Navigation principale">
+      <ul id="primary-nav">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="presentation.html">Présentation</a></li>
+        <li><a href="assistant.html" class="active" aria-current="page">Assistant IA</a></li>
+        <li><a href="evaluation-amenagement.html">Bilan</a></li>
+        <li><a href="webcam-analyse.html">Webcam</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
-    </article>
+    </nav>
+  </header>
 
-  </section>
-
-  <section class="cards-grid">
-    <article class="card">
-      <h3>Respect de la confidentialité</h3>
-      <p>
-        En mode offline, aucun enregistrement externe n’est réalisé.
-        Les organisations restent responsables de la conservation des bilans.
+  <!-- ===== CONTENU PRINCIPAL ===== -->
+  <main id="main" class="container" role="main" tabindex="-1">
+    <!-- INTRO -->
+    <section class="hero">
+      <h2>L’assistant IA Mini-WTD</h2>
+      <p class="mwtd-lead">
+        L’assistant IA Mini-WTD a un rôle simple&nbsp;: transformer un bilan d’aménagement
+        en <strong>synthèse claire et actionnable</strong> pour les RH, les managers,
+        les référents handicap et la médecine du travail.
       </p>
       <p>
-        Mini-WTD applique une logique de <strong>sobriété des données</strong> :
-        ne garder que ce qui est utile à la décision.
+        Il ne décide pas à la place des humains. Il met en forme, structure, éclaire les risques
+        et propose un plan d’action, à partir des informations déjà fournies dans la grille de bilan.
       </p>
-    </article>
+    </section>
 
-    <article class="card">
-      <h3>Intégration dans Mini-WTD</h3>
-      <p>L’assistant IA peut être :</p>
-      <ul>
-        <li>appelé depuis la page “Bilan d’aménagement”,</li>
-        <li>intégré en chatbot dans un intranet,</li>
-        <li>utilisé sur les situations complexes.</li>
+    <!-- MISSION -->
+    <section class="mwtd-panel" aria-labelledby="mission-title">
+      <header class="mwtd-card-header">
+        <h3 id="mission-title" class="mwtd-card-title">Sa mission : éclairer, structurer, sécuriser</h3>
+      </header>
+      <div class="mwtd-grid-3">
+        <article class="mwtd-card">
+          <h4>Éclairer</h4>
+          <p>
+            L’assistant IA reformule la situation de travail, les contraintes, les impacts
+            et le niveau d’urgence dans un langage compréhensible par les décideurs.
+          </p>
+        </article>
+        <article class="mwtd-card">
+          <h4>Structurer</h4>
+          <p>
+            Il organise les informations en rubriques claires : situation actuelle, difficultés,
+            impacts, pistes d’aménagement, acteurs à associer, décisions envisagées.
+          </p>
+        </article>
+        <article class="mwtd-card">
+          <h4>Sécuriser</h4>
+          <p>
+            Il aide à formaliser un plan d’action argumenté, en rappelant que l’objectif
+            est l’<strong>aménagement raisonnable</strong>, pas l’exclusion de la personne.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- COMMENT IL FONCTIONNE -->
+    <section class="mwtd-panel" aria-labelledby="fonctionnement-title">
+      <header class="mwtd-card-header">
+        <h3 id="fonctionnement-title" class="mwtd-card-title">Comment fonctionne l’assistant IA&nbsp;?</h3>
+      </header>
+      <ol class="mwtd-steps">
+        <li>
+          <h4>1. Remplir la grille de bilan</h4>
+          <p>
+            Sur la page <a href="evaluation-amenagement.html">Bilan d’aménagement de poste</a>,
+            les champs (contexte, tâches, difficultés, impacts, propositions d’aménagement, acteurs,
+            décisions) sont renseignés lors d’un entretien ou d’un travail préparatoire.
+          </p>
+        </li>
+        <li>
+          <h4>2. Choisir la langue de sortie</h4>
+          <p>
+            Dans la section <em>Analyse par l’assistant IA</em>, on choisit la langue souhaitée :
+            <strong>français, malgache ou anglais</strong>.
+          </p>
+        </li>
+        <li>
+          <h4>3. Générer la synthèse</h4>
+          <p>
+            En cliquant sur le bouton <strong>«&nbsp;Analyse IA du bilan&nbsp;»</strong>,
+            une synthèse structurée est produite : elle reprend les données saisies, les organise
+            et ajoute des éléments de lecture pour un RH ou un médecin du travail.
+          </p>
+        </li>
+        <li>
+          <h4>4. Relire, adapter, décider</h4>
+          <p>
+            Le texte généré n’est pas un verdict. Il est relu, complété et adapté avant d’être
+            intégré dans un compte-rendu, un mail, un dossier interne ou un SIRH.
+          </p>
+        </li>
+      </ol>
+      <p>
+        Techniquement, l’assistant s’appuie sur les champs déjà présents dans le formulaire, sans
+        créer d’informations nouvelles : il <strong>met en forme</strong> ce que la personne
+        et l’organisation ont déjà exprimé.
+      </p>
+    </section>
+
+    <!-- CE QU’IL PRODUIT -->
+    <section class="mwtd-panel" aria-labelledby="production-title">
+      <header class="mwtd-card-header">
+        <h3 id="production-title" class="mwtd-card-title">Ce que l’assistant IA produit concrètement</h3>
+      </header>
+      <p>
+        En fonction des informations saisies, l’assistant IA Mini-WTD génère un texte qui peut inclure&nbsp;:
+      </p>
+      <ul class="mwtd-list-check">
+        <li>un rappel de la <strong>situation actuelle</strong> (poste, service, tâches) ;</li>
+        <li>une description des <strong>difficultés</strong> rencontrées et du ressenti ;</li>
+        <li>les <strong>impacts</strong> sur le travail, la santé, l’équipe, les usagers ;</li>
+        <li>le <strong>niveau d’urgence</strong> perçu ;</li>
+        <li>les <strong>pistes d’aménagement</strong> matériel, organisationnel et numérique ;</li>
+        <li>les <strong>acteurs à associer</strong> (manager, RH, référent handicap, médecine du travail, partenaires) ;</li>
+        <li>un <strong>plan d’action</strong> suggéré (essais, durée, points d’étape) ;</li>
+        <li>un <strong>guide de lecture pour les RH / médecins</strong>.</li>
       </ul>
-      <p><strong>C’est un outil d’aide</strong>, jamais un décideur.</p>
-    </article>
-  </section>
+      <p>
+        Cette synthèse est conçue pour être <strong>directement réutilisable</strong> dans un
+        compte-rendu de réunion, une note interne, un dossier d’aménagement ou un échange formel.
+      </p>
+    </section>
 
-</main>
+    <!-- LIGNE ÉTHIQUE -->
+    <section class="mwtd-panel" aria-labelledby="ethique-title">
+      <header class="mwtd-card-header">
+        <h3 id="ethique-title" class="mwtd-card-title">Une ligne éthique claire : on adapte le poste, pas la personne</h3>
+      </header>
+      <p>
+        L’assistant IA Mini-WTD est configuré pour respecter une ligne forte&nbsp;:
+        il ne sert jamais à justifier l’exclusion d’une personne, ni à la comparer à un profil
+        supposé “plus valide”.
+      </p>
+      <p>
+        Il rappelle que l’objectif est de rechercher des <strong>aménagements raisonnables</strong> :
+        ajustements matériels, organisationnels, numériques ou d’accompagnement, avant toute conclusion
+        sur l’impossibilité de maintien.
+      </p>
+      <p class="mwtd-quote">
+        « On ne compare pas les humains. On adapte le poste, pas la personne. »
+      </p>
+      <p>
+        L’assistant IA met en avant la dignité, la santé et la compétence, plutôt qu’une logique
+        de tri ou de suspicion.
+      </p>
+    </section>
 
-<!-- ===== FOOTER ===== -->
-<footer class="site-footer" role="contentinfo">
-  <div class="container">
-    <p>© 2025 · Mini-WTD — Module inclusif · Clé USB & Intranet.</p>
-  </div>
-</footer>
+    <!-- DONNÉES & CONFIDENTIALITÉ -->
+    <section class="mwtd-panel" aria-labelledby="donnees-title">
+      <header class="mwtd-card-header">
+        <h3 id="donnees-title" class="mwtd-card-title">Données, confidentialité et usage responsable</h3>
+      </header>
+      <p>
+        Mini-WTD est conçu comme un <strong>outil d’appui</strong> qui laisse le contrôle à
+        l’organisation qui l’utilise. Par défaut :
+      </p>
+      <ul>
+        <li>
+          aucun enregistrement automatique n’est effectué par l’outil lui-même&nbsp;: les contenus
+          doivent être copiés-collés vers les outils internes (SIRH, dossiers sécurisés, etc.) ;
+        </li>
+        <li>
+          l’organisation reste responsable du choix des informations saisies et des conditions
+          de conservation des bilans ;
+        </li>
+        <li>
+          l’assistant IA ne remplace pas les avis médicaux ou juridiques, il les prépare
+          et les éclaire.
+        </li>
+      </ul>
+      <p>
+        Une page dédiée <a href="confidentialite.html">Données &amp; confidentialité</a>
+        décrit plus précisément les engagements liés à l’utilisation de Mini-WTD.
+      </p>
+    </section>
 
-<script src="assets/js/mwtd-menu.js"></script>
-<script src="assets/js/mwtd-accessibility.js"></script>
-<script src="assets/js/mwtd-theme.js"></script>
-<script src="assets/js/mwtd-tts.js"></script>
+    <!-- INTÉGRATION TECHNIQUE (OPTIONNEL RH / DSI) -->
+    <section class="mwtd-panel" aria-labelledby="technique-title">
+      <header class="mwtd-card-header">
+        <h3 id="technique-title" class="mwtd-card-title">Intégration technique et extension possible</h3>
+      </header>
+      <p>
+        Dans sa version actuelle, l’assistant IA Mini-WTD fonctionne de manière
+        <strong>autonome côté navigateur</strong>. Il assemble les informations de la grille pour
+        générer une synthèse locale.
+      </p>
+      <p>
+        Pour des organisations souhaitant aller plus loin (par exemple, connexion à un moteur IA
+        d’entreprise ou stockage sécurisé), Mini-WTD peut être étendu via une interface technique,
+        de façon à :
+      </p>
+      <ul>
+        <li>connecter un moteur IA interne ou un service sécurisé dédié ;</li>
+        <li>enregistrer les bilans dans un environnement contrôlé ;</li>
+        <li>adapter les formats de sortie aux modèles de documents existants.</li>
+      </ul>
+      <p>
+        Pour étudier ces options, une prise de contact via la page <a href="contact.html">Contact</a>
+        est recommandée (RH, DSI, référent handicap ou direction).
+      </p>
+    </section>
+  </main>
 
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <p>© 2025 · Mini-WTD — Module de bilan d’aménagement de poste.</p>
+      <p class="site-footer-links">
+        <a href="a-propos.html">À propos</a> ·
+        <a href="accessibilite.html">Accessibilité</a> ·
+        <a href="confidentialite.html">Données &amp; confidentialité</a> ·
+        <a href="mentions-legales.html">Mentions légales</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/mwtd-menu.js"></script>
+  <script src="assets/js/mwtd-accessibility.js"></script>
+  <script src="assets/js/mwtd-theme.js"></script>
+  <script src="assets/js/mwtd-tts.js"></script>
 </body>
 </html>

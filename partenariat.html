@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Mini-WTD · Partenariats & investisseurs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+        content="Formulaire de partenariat Mini-WTD : prise de contact pour investisseurs, fondations, institutions et partenaires souhaitant soutenir le projet.">
+
+  <!-- Styles globaux -->
+  <link rel="stylesheet" href="assets/css/mini-wtd-2025.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/base-a11y.css">
+  <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
+</head>
+
+<body class="partenariat-page">
+  <a href="#main" class="skiplink">Aller directement au contenu</a>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" role="banner">
+    <div class="container site-header-inner">
+      <div class="site-brand">
+        <div class="site-logo">
+          <img src="assets/ima/logo-mini-wtd-256.png" alt="Logo Mini-WTD" loading="lazy">
+        </div>
+        <div class="site-brand-text">
+          <h1 class="site-title">Mini-WTD</h1>
+          <p class="site-tagline">Work-Test-Demo · Bilan d’aménagement de poste</p>
+        </div>
+      </div>
+
+      <!-- Barre d’accessibilité -->
+      <div class="a11y-toolbar" aria-label="Réglages d’accessibilité et de lecture">
+        <button class="access-btn" data-action="font-"
+                type="button"
+                aria-label="Réduire la taille du texte"
+                title="A− (Alt + -)">A−</button>
+
+        <button class="access-btn" data-action="font+"
+                type="button"
+                aria-label="Augmenter la taille du texte"
+                title="A+ (Alt + =)">A+</button>
+
+        <button class="access-btn" data-action="contrast"
+                type="button"
+                aria-label="Activer le contraste élevé"
+                title="Contraste élevé (Alt + C)">◐</button>
+
+        <button class="access-btn" data-action="spacing"
+                type="button"
+                aria-label="Augmenter l’espacement du texte"
+                title="Espacement (Alt + S)">↕︎</button>
+
+        <button class="access-btn" data-action="reset"
+                type="button"
+                aria-label="Réinitialiser l’affichage"
+                title="Réinitialiser (Alt + 0)">⟲</button>
+
+        <button id="theme-toggle"
+                class="btn-icon"
+                type="button"
+                aria-pressed="false"
+                aria-label="Basculer le thème clair/sombre"
+                title="Thème clair / sombre">🌓</button>
+
+        <button id="tts-toggle"
+                class="btn-icon"
+                type="button"
+                aria-pressed="false"
+                aria-label="Activer la lecture vocale de la page"
+                title="Lecture vocale">🔊</button>
+      </div>
+    </div>
+
+    <!-- Bouton menu mobile -->
+    <div class="container site-nav-toggle">
+      <button
+        id="menu-toggle"
+        class="btn-icon"
+        type="button"
+        aria-label="Ouvrir ou fermer le menu"
+        aria-expanded="false"
+        aria-controls="primary-nav">
+        <span class="burger" aria-hidden="true"></span>
+        <span class="sr-only">Menu</span>
+      </button>
+    </div>
+
+    <!-- Navigation principale -->
+    <nav class="site-nav" aria-label="Navigation principale">
+      <ul id="primary-nav">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="presentation.html">Présentation</a></li>
+        <li><a href="assistant.html">Assistant IA</a></li>
+        <li><a href="evaluation-amenagement.html">Bilan</a></li>
+        <li><a href="webcam-analyse.html">Webcam</a></li>
+        <li><a href="prix-innovation.html">Prix & innovation</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="partenariat.html" class="active" aria-current="page">Partenariats</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== CONTENU PRINCIPAL ===== -->
+  <main id="main" class="container" role="main" tabindex="-1">
+
+    <!-- HERO -->
+    <section class="hero">
+      <h2>Partenariats & investisseurs</h2>
+      <p class="mwtd-lead">
+        Mini-WTD est un module léger, pensé pour l’inclusion des personnes en situation de handicap
+        dans l’emploi, en France, à Madagascar et dans d’autres pays.  
+        Cette page permet aux <strong>investisseurs, fondations, institutions et partenaires</strong>
+        de prendre contact directement avec Patrick Billy.
+      </p>
+      <p>
+        Vous pouvez utiliser le formulaire ci-dessous pour proposer un partenariat, un soutien
+        financier, un pilote dans votre organisation ou un projet commun (France / Madagascar / international).
+      </p>
+    </section>
+
+    <!-- FORMULAIRE PARTENARIAT -->
+    <section class="mwtd-panel" aria-labelledby="form-part-title">
+      <header class="mwtd-card-header">
+        <h3 id="form-part-title" class="mwtd-card-title">Formulaire de partenariat</h3>
+        <p class="mwtd-card-subtitle">
+          Les champs marqués d’un * sont obligatoires.  
+          Le message est envoyé via votre client de messagerie : aucune donnée n’est stockée automatiquement par Mini-WTD.
+        </p>
+      </header>
+
+      <form class="mwtd-form" id="form-partenariat" novalidate>
+
+        <!-- Identité / organisation -->
+        <div class="form-group">
+          <label for="part-nom">Nom et prénom *</label>
+          <input id="part-nom" name="part-nom" type="text" required autocomplete="name">
+        </div>
+
+        <div class="form-group">
+          <label for="part-organisation">Organisation / structure *</label>
+          <input id="part-organisation" name="part-organisation" type="text" required autocomplete="organization">
+        </div>
+
+        <div class="form-group">
+          <label for="part-role">Fonction / rôle *</label>
+          <input id="part-role" name="part-role" type="text" required placeholder="Ex. : investisseur, fondation, RH, direction, association…">
+        </div>
+
+        <div class="form-group">
+          <label for="part-email">Adresse e-mail *</label>
+          <input id="part-email" name="part-email" type="email" required autocomplete="email">
+        </div>
+
+        <div class="form-group">
+          <label for="part-pays">Pays / région</label>
+          <input id="part-pays" name="part-pays" type="text" placeholder="Ex. : France, Madagascar, Europe, Afrique de l’Est…">
+        </div>
+
+        <!-- Type de partenaire -->
+        <fieldset class="mwtd-fieldset">
+          <legend>Type de partenaire</legend>
+          <p class="form-hint">
+            Cela permet à Patrick de comprendre rapidement votre profil.
+          </p>
+          <div class="form-group">
+            <select id="part-type" name="part-type">
+              <option value="">Sélectionner…</option>
+              <option value="investisseur">Investisseur (business angel, impact investing, etc.)</option>
+              <option value="fondation">Fondation / organisme philanthropique</option>
+              <option value="institution">Institution publique / internationale</option>
+              <option value="entreprise">Entreprise (pilote, déploiement interne)</option>
+              <option value="association">Association / ONG / collectivité</option>
+              <option value="autre">Autre type de partenaire</option>
+            </select>
+          </div>
+        </fieldset>
+
+        <!-- Intention & budget -->
+        <fieldset class="mwtd-fieldset">
+          <legend>Intention de partenariat</legend>
+
+          <div class="form-group">
+            <label for="part-intention">
+              Votre intention principale *
+            </label>
+            <select id="part-intention" name="part-intention" required>
+              <option value="">Sélectionner…</option>
+              <option value="financement">Financement / investissement</option>
+              <option value="pilote">Pilote Mini-WTD dans notre organisation</option>
+              <option value="co-developpement">Co-développement (technique / pédagogique)</option>
+              <option value="soutien-madagascar">Soutien spécifique Madagascar / Handigasy</option>
+              <option value="autre">Autre forme de partenariat</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="part-budget">
+              Ordre de grandeur du budget ou des moyens mobilisables (facultatif)
+            </label>
+            <input id="part-budget" name="part-budget" type="text"
+                   placeholder="Ex. : 5 000 €, 20 000 €, mécénat de compétences, mise à disposition d’équipe…">
+          </div>
+        </fieldset>
+
+        <!-- Message -->
+        <div class="form-group">
+          <label for="part-message">Votre message à Patrick Billy *</label>
+          <textarea id="part-message" name="part-message" rows="7" required
+                    placeholder="Présentez en quelques lignes votre contexte, vos attentes, vos idées de collaboration…"></textarea>
+        </div>
+
+        <!-- Consentement -->
+        <div class="form-group">
+          <label>
+            <input id="part-consent" name="part-consent" type="checkbox" required>
+            Je comprends que ce formulaire déclenche l’ouverture de mon logiciel de messagerie et
+            que mon message sera envoyé directement à Patrick Billy. *
+          </label>
+          <p class="form-hint">
+            Mini-WTD ne stocke pas automatiquement vos informations. Vous gardez la maîtrise
+            de l’e-mail envoyé et des pièces jointes éventuelles.
+          </p>
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+          Préparer l’e-mail de partenariat
+        </button>
+      </form>
+    </section>
+
+    <!-- CONTACT DIRECT -->
+    <section class="mwtd-panel" aria-labelledby="part-contact-direct">
+      <header class="mwtd-card-header">
+        <h3 id="part-contact-direct" class="mwtd-card-title">Contact direct Patrick Billy</h3>
+      </header>
+      <p>
+        Si vous préférez, vous pouvez aussi contacter directement Patrick&nbsp;:
+      </p>
+      <ul>
+        <li><strong>Email :</strong> elanpourtous49@gmail.com</li>
+        <li><strong>Téléphone :</strong> 07&nbsp;83&nbsp;33&nbsp;67&nbsp;57</li>
+      </ul>
+      <p>
+        Les échanges peuvent se faire en français ou en anglais, avec un focus spécifique
+        possible sur Madagascar et les projets liés à <strong>Handigasy</strong> ou à la diaspora.
+      </p>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <p>© 2025 · Mini-WTD — Module de bilan d’aménagement de poste.</p>
+      <p class="site-footer-links">
+        <a href="a-propos.html">À propos</a> ·
+        <a href="accessibilite.html">Accessibilité</a> ·
+        <a href="confidentialite.html">Données &amp; confidentialité</a> ·
+        <a href="mentions-legales.html">Mentions légales</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/mwtd-menu.js"></script>
+  <script src="assets/js/mwtd-accessibility.js"></script>
+  <script src="assets/js/mwtd-theme.js"></script>
+  <script src="assets/js/mwtd-tts.js"></script>
+
+  <script>
+    // Formulaire de partenariat en mode "mailto"
+    (function () {
+      const form = document.getElementById('form-partenariat');
+      if (!form) return;
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const nom      = document.getElementById('part-nom').value.trim();
+        const orga     = document.getElementById('part-organisation').value.trim();
+        const role     = document.getElementById('part-role').value.trim();
+        const email    = document.getElementById('part-email').value.trim();
+        const pays     = document.getElementById('part-pays').value.trim();
+        const typePart = document.getElementById('part-type').value.trim();
+        const intention= document.getElementById('part-intention').value.trim();
+        const budget   = document.getElementById('part-budget').value.trim();
+        const message  = document.getElementById('part-message').value.trim();
+        const consent  = document.getElementById('part-consent').checked;
+
+        if (!nom || !orga || !role || !email || !intention || !message || !consent) {
+          alert("Merci de remplir tous les champs obligatoires et de cocher la case de consentement.");
+          return;
+        }
+
+        const subject = encodeURIComponent("Demande de partenariat / investissement – Mini-WTD");
+        const body = encodeURIComponent(
+          "Demande de partenariat autour de Mini-WTD\n\n" +
+          "Nom et prénom : " + nom + "\n" +
+          "Organisation : " + orga + "\n" +
+          "Fonction / rôle : " + role + "\n" +
+          "E-mail : " + email + "\n" +
+          (pays ? "Pays / région : " + pays + "\n" : "") +
+          (typePart ? "Type de partenaire : " + typePart + "\n" : "") +
+          "Intention principale : " + intention + "\n" +
+          (budget ? "Budget / moyens estimés : " + budget + "\n" : "") +
+          "\n--- Message détaillé ---\n" +
+          message + "\n\n" +
+          "Message envoyé via le formulaire de partenariat Mini-WTD."
+        );
+
+        window.location.href = "mailto:elanpourtous49@gmail.com"
+          + "?subject=" + subject
+          + "&body=" + body;
+      });
+    })();
+  </script>
+</body>
+</html>
