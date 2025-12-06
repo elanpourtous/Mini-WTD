@@ -31,41 +31,23 @@
       </div>
 
       <div class="a11y-toolbar" aria-label="Réglages d’accessibilité et de lecture">
-        <button class="access-btn" data-action="font-"
-                type="button"
-                aria-label="Réduire la taille du texte"
-                title="A− (Alt + -)">A−</button>
+        <button class="access-btn" data-action="font-" type="button"
+                aria-label="Réduire la taille du texte" title="A− (Alt + -)">A−</button>
+        <button class="access-btn" data-action="font+" type="button"
+                aria-label="Augmenter la taille du texte" title="A+ (Alt + =)">A+</button>
+        <button class="access-btn" data-action="contrast" type="button"
+                aria-label="Activer le contraste élevé" title="Contraste élevé (Alt + C)">◐</button>
+        <button class="access-btn" data-action="spacing" type="button"
+                aria-label="Augmenter l’espacement du texte" title="Espacement (Alt + S)">↕︎</button>
+        <button class="access-btn" data-action="reset" type="button"
+                aria-label="Réinitialiser l’affichage" title="Réinitialiser (Alt + 0)">⟲</button>
 
-        <button class="access-btn" data-action="font+"
-                type="button"
-                aria-label="Augmenter la taille du texte"
-                title="A+ (Alt + =)">A+</button>
-
-        <button class="access-btn" data-action="contrast"
-                type="button"
-                aria-label="Activer le contraste élevé"
-                title="Contraste élevé (Alt + C)">◐</button>
-
-        <button class="access-btn" data-action="spacing"
-                type="button"
-                aria-label="Augmenter l’espacement du texte"
-                title="Espacement (Alt + S)">↕︎</button>
-
-        <button class="access-btn" data-action="reset"
-                type="button"
-                aria-label="Réinitialiser l’affichage"
-                title="Réinitialiser (Alt + 0)">⟲</button>
-
-        <button id="theme-toggle"
-                class="btn-icon"
-                type="button"
+        <button id="theme-toggle" class="btn-icon" type="button"
                 aria-pressed="false"
                 aria-label="Basculer le thème clair/sombre"
                 title="Thème clair / sombre">🌓</button>
 
-        <button id="tts-toggle"
-                class="btn-icon"
-                type="button"
+        <button id="tts-toggle" class="btn-icon" type="button"
                 aria-pressed="false"
                 aria-label="Activer la lecture vocale de la page"
                 title="Lecture vocale">🔊</button>
@@ -115,13 +97,13 @@
       <header class="mwtd-card-header">
         <div>
           <h3 id="form-bilan-title" class="mwtd-card-title">Grille de bilan</h3>
-          <p id="form-bilan-help" class="mwtd-card-subtitle">
+          <p class="mwtd-card-subtitle">
             Aucun enregistrement automatique : ce que vous saisissez reste sur cet appareil.
           </p>
         </div>
       </header>
 
-      <form class="mwtd-form" id="form-bilan" novalidate aria-describedby="form-bilan-help">
+      <form class="mwtd-form" id="form-bilan" novalidate>
         <!-- 1. Identité / contexte -->
         <fieldset class="mwtd-fieldset">
           <legend>1. Contexte</legend>
@@ -240,46 +222,49 @@
           </div>
         </fieldset>
 
-        <!-- 6. Analyse par l’assistant IA -->
+        <!-- 6. Résumé -->
         <fieldset class="mwtd-fieldset">
-          <legend>6. Analyse par l’assistant IA Mini-WTD</legend>
-
-          <div class="form-group">
-            <label for="bilan-ia-lang">
-              Langue de la synthèse à générer
-            </label>
-            <select id="bilan-ia-lang" name="bilan-ia-lang">
-              <option value="fr">Français (RH / médecin du travail)</option>
-              <option value="mg">Malgache (autorités / partenaires Madagascar)</option>
-              <option value="en">Anglais (partenaires internationaux)</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <button type="button"
-                    id="bilan-ia-run"
-                    class="btn btn-secondary">
-              Analyser le bilan avec l’assistant IA
-            </button>
-            <p class="form-hint">
-              Le texte généré ci-dessous est un brouillon : il doit être relu et adapté
-              avant partage (RH, manager, médecine du travail, partenaire externe).
-            </p>
-          </div>
-        </fieldset>
-
-        <!-- 7. Résumé -->
-        <fieldset class="mwtd-fieldset">
-          <legend>7. Résumé du bilan (brouillon)</legend>
+          <legend>6. Résumé du bilan (brouillon)</legend>
           <div class="form-group">
             <label for="bilan-resume">
               Résumé à partager (copier-coller possible vers un document interne)
             </label>
-            <textarea id="bilan-resume" name="bilan-resume" rows="10"></textarea>
+            <textarea id="bilan-resume" name="bilan-resume" rows="6"></textarea>
             <p class="form-hint">
               Vous pouvez y coller un texte généré par l’assistant IA, puis le modifier.
             </p>
           </div>
+        </fieldset>
+
+        <!-- 7. Envoi & export -->
+        <fieldset class="mwtd-fieldset">
+          <legend>7. Envoi & export</legend>
+
+          <div class="form-group">
+            <label for="bilan-email">Adresse e-mail pour recevoir le bilan</label>
+            <input id="bilan-email"
+                   name="bilan-email"
+                   type="email"
+                   autocomplete="email"
+                   placeholder="exemple@entreprise.fr">
+            <p class="form-hint">
+              Le bilan sera envoyé à cette adresse sous forme de texte. Mini-WTD ne conserve pas vos données.
+            </p>
+          </div>
+
+          <div class="form-group bilan-actions">
+            <button type="button" class="btn" id="btn-export-word">
+              Télécharger le bilan en Word
+            </button>
+            <button type="button" class="btn btn-primary" id="btn-send-email">
+              Envoyer le bilan par e-mail
+            </button>
+          </div>
+
+          <p class="form-hint">
+            L’envoi par e-mail utilise un service externe configuré par votre organisation (EmailJS).
+            Les informations sont envoyées uniquement à l’adresse indiquée.
+          </p>
         </fieldset>
 
         <p class="form-hint">
@@ -287,7 +272,7 @@
           outils internes (SIRH, dossier RH, fichier sécurisé…).
         </p>
 
-        <button type="submit" class="btn btn-primary">
+        <button type="submit" class="btn btn-secondary">
           Utilisation en démo — aucune donnée n’est envoyée
         </button>
       </form>
@@ -301,16 +286,171 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
+  <!-- ===== EmailJS (service externe d'envoi d'e-mails) ===== -->
+  <!-- 1) Crée un compte sur https://www.emailjs.com/
+       2) Crée un service + un template
+       3) Remplace EMAILJS_PUBLIC_KEY, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID
+          par tes vraies valeurs. -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+  <!-- ===== Scripts ===== -->
   <script>
-    // On empêche tout envoi réel : c'est une grille d’appui.
     (function () {
+      // --- Empêche l'envoi réel du formulaire (mode démo) ---
       const form = document.getElementById('form-bilan');
-      if (!form) return;
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        alert("Mode démo : le formulaire n'est pas envoyé. Copiez le contenu pour l'utiliser dans vos outils internes.");
-      });
+      if (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          alert(
+            "Mode démo : le formulaire n'est pas envoyé.\n" +
+            "Utilisez les boutons 'Télécharger le bilan en Word' ou 'Envoyer le bilan par e-mail'."
+          );
+        });
+      }
+
+      // --- Initialisation EmailJS (à personnaliser) ---
+      if (window.emailjs) {
+        emailjs.init("EMAILJS_PUBLIC_KEY"); // ⬅️ Remplacer par ta clé publique
+      }
+
+      // --- Récupération des données du formulaire ---
+      function collectBilanData() {
+        return {
+          personne:   document.getElementById('bilan-personne')?.value.trim()   || "",
+          poste:      document.getElementById('bilan-poste')?.value.trim()      || "",
+          service:    document.getElementById('bilan-service')?.value.trim()    || "",
+          taches:     document.getElementById('bilan-taches')?.value.trim()     || "",
+          difficultes:document.getElementById('bilan-difficultes')?.value.trim()|| "",
+          impacts:    document.getElementById('bilan-impacts')?.value.trim()    || "",
+          urgence:    document.getElementById('bilan-urgence')?.value           || "",
+          materiel:   document.getElementById('bilan-materiel')?.value.trim()   || "",
+          organisation: document.getElementById('bilan-organisation')?.value.trim() || "",
+          numerique:  document.getElementById('bilan-numerique')?.value.trim()  || "",
+          acteurs:    document.getElementById('bilan-acteurs')?.value.trim()    || "",
+          decisions:  document.getElementById('bilan-decisions')?.value.trim()  || "",
+          resume:     document.getElementById('bilan-resume')?.value.trim()     || ""
+        };
+      }
+
+      // --- Construction d'un texte simple pour l'e-mail ---
+      function buildPlainTextSummary(data) {
+        function v(x) { return x && x.length ? x : "Non renseigné"; }
+
+        let text = "";
+        text += "Bilan d’aménagement de poste – Mini-WTD\n";
+        text += "=======================================\n\n";
+
+        text += "1. Contexte\n";
+        text += "- Candidat / salarié : " + v(data.personne) + "\n";
+        text += "- Poste de travail / fonction : " + v(data.poste) + "\n";
+        text += "- Service / site : " + v(data.service) + "\n\n";
+
+        text += "2. Description de la situation\n";
+        text += "- Tâches principales :\n" + v(data.taches) + "\n\n";
+        text += "- Difficultés rencontrées :\n" + v(data.difficultes) + "\n\n";
+
+        text += "3. Impacts & urgences\n";
+        text += "- Impacts :\n" + v(data.impacts) + "\n\n";
+        text += "- Niveau d’urgence perçu : " + v(data.urgence) + "\n\n";
+
+        text += "4. Pistes d’aménagement envisagées\n";
+        text += "- Aménagements matériels :\n" + v(data.materiel) + "\n\n";
+        text += "- Aménagements organisationnels / horaires :\n" + v(data.organisation) + "\n\n";
+        text += "- Aménagements numériques / logiciels :\n" + v(data.numerique) + "\n\n";
+
+        text += "5. Acteurs & décisions\n";
+        text += "- Acteurs à associer :\n" + v(data.acteurs) + "\n\n";
+        text += "- Décisions / prochaines étapes :\n" + v(data.decisions) + "\n\n";
+
+        text += "6. Résumé du bilan (brouillon)\n";
+        text += v(data.resume) + "\n";
+
+        return text;
+      }
+
+      // --- HTML pour le fichier Word (doc basé sur HTML) ---
+      function buildHtmlSummary(data) {
+        const txt = buildPlainTextSummary(data)
+          .replace(/\n/g, "<br>");
+
+        return (
+          "<!doctype html>" +
+          "<html><head><meta charset='utf-8'>" +
+          "<title>Bilan d’aménagement – Mini-WTD</title></head>" +
+          "<body>" +
+          "<h1>Bilan d’aménagement de poste – Mini-WTD</h1>" +
+          "<p>" + txt + "</p>" +
+          "</body></html>"
+        );
+      }
+
+      // --- Export en Word (.doc) ---
+      function exportToWord() {
+        const data = collectBilanData();
+        const html = buildHtmlSummary(data);
+        const blob = new Blob(["\ufeff", html], { type: "application/msword" });
+        const url  = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "bilan-amenagement-mini-wtd.doc";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+      }
+
+      // --- Envoi par e-mail via EmailJS ---
+      function sendByEmail() {
+        const emailInput = document.getElementById("bilan-email");
+        const toEmail = emailInput ? emailInput.value.trim() : "";
+
+        if (!toEmail) {
+          alert("Merci de renseigner une adresse e-mail pour recevoir le bilan.");
+          if (emailInput) emailInput.focus();
+          return;
+        }
+
+        if (!window.emailjs) {
+          alert("EmailJS n’est pas disponible. Vérifiez la connexion ou la configuration du script EmailJS.");
+          return;
+        }
+
+        const data = collectBilanData();
+        const message = buildPlainTextSummary(data);
+
+        // ⚠️ Remplacer par tes identifiants EmailJS
+        const SERVICE_ID  = "EMAILJS_SERVICE_ID";
+        const TEMPLATE_ID = "EMAILJS_TEMPLATE_ID";
+
+        const templateParams = {
+          to_email: toEmail,
+          message:  message,
+          sujet:    "Bilan d’aménagement de poste – Mini-WTD"
+        };
+
+        emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams)
+          .then(function () {
+            alert("Le bilan a été envoyé à l’adresse : " + toEmail);
+          })
+          .catch(function (error) {
+            console.error("Erreur EmailJS :", error);
+            alert(
+              "L’envoi de l’e-mail a échoué.\n" +
+              "Vérifiez la configuration EmailJS ou réessayez plus tard."
+            );
+          });
+      }
+
+      // --- Rattachement des boutons ---
+      const btnWord  = document.getElementById("btn-export-word");
+      const btnEmail = document.getElementById("btn-send-email");
+
+      if (btnWord) {
+        btnWord.addEventListener("click", exportToWord);
+      }
+      if (btnEmail) {
+        btnEmail.addEventListener("click", sendByEmail);
+      }
     })();
   </script>
 
@@ -318,6 +458,5 @@
   <script src="assets/js/mwtd-accessibility.js"></script>
   <script src="assets/js/mwtd-theme.js"></script>
   <script src="assets/js/mwtd-tts.js"></script>
-  <script src="assets/js/mwtd-ia.js"></script>
 </body>
 </html>
