@@ -307,10 +307,11 @@
           );
         });
       }
-
-      // --- Initialisation EmailJS (à personnaliser) ---
-      if (window.emailjs) {
-        emailjs.init("EMAILJS_PUBLIC_KEY"); // ⬅️ Remplacer par ta clé publique
+      
+// --- Initialisation EmailJS (à personnaliser) ---
+if (window.emailjs) {
+  emailjs.init("xsjJ22bXyvRFEXe38"); // ⬅️ ta clé publique
+}
       }
 
       // --- Récupération des données du formulaire ---
@@ -419,8 +420,9 @@
         const message = buildPlainTextSummary(data);
 
         // ⚠️ Remplacer par tes identifiants EmailJS
-        const SERVICE_ID  = "EMAILJS_SERVICE_ID";
-        const TEMPLATE_ID = "EMAILJS_TEMPLATE_ID";
+const SERVICE_ID  = "service_miniwtd";   // exemple, prends ton vrai ID
+const TEMPLATE_ID = "template_tr7v61k";  // celui que tu viens de créer
+
 
         const templateParams = {
           to_email: toEmail,
