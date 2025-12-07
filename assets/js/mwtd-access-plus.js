@@ -111,11 +111,11 @@
     const msg =
       "Synthèse Accessibilité++ :\n" +
       "• Sous-titres live\n" +
-      "• Mode cognition pour T21 / IMC\n" +
+      "• Mode cognition (T21 / IMC)\n" +
       "• Mode dyslexie\n" +
-      "• Voix adaptée\n" +
-      "• Demande discrète d'adaptation\n" +
-      "• Aucune donnée stockée\n";
+      "• Mode malentendant\n" +
+      "• Aucune donnée stockée\n" +
+      "• Demande discrète d'adaptation\n";
     alert(msg);
     mwtdVoice.read(msg);
   };
@@ -124,10 +124,10 @@
   window.showEnterpriseInfo = function () {
     alert(
       "Transparence Mini-WTD :\n\n" +
-      "• Aucun stockage local\n" +
       "• Aucune donnée envoyée sans consentement\n" +
-      "• 100% RGAA-friendly\n" +
-      "• Module non-intrusif pour salariés"
+      "• Aucun stockage local caché\n" +
+      "• 100% RGAA cohérent\n" +
+      "• Adapté aux réunions, évaluations et bilans."
     );
   };
 
