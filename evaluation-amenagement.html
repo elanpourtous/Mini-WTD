@@ -287,303 +287,6 @@
   </footer>
 
   <!-- ===== EmailJS (service externe d'envoi d'e-mails) ===== -->
-  <!-- 1) Crée un compte sur https://www.emailjs.com/
-       2) Crée un service + un template
-       3) Remplace EMAILJS_PUBLIC_KEY, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID
-          par tes vraies valeurs. -->
-<!doctype html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8">
-  <title>Mini-WTD · Bilan d’aménagement</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description"
-        content="Mini-WTD — Bilan d’aménagement de poste : description de la situation, contraintes, impacts et pistes d’adaptation.">
-
-  <!-- Styles globaux -->
-  <link rel="stylesheet" href="assets/css/mini-wtd-2025.css">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/base-a11y.css">
-  <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
-</head>
-
-<body class="bilan-page">
-  <a href="#main" class="skiplink">Aller directement au contenu</a>
-
-  <!-- ===== HEADER ===== -->
-  <header class="site-header" role="banner">
-    <div class="container site-header-inner">
-      <div class="site-brand">
-        <div class="site-logo">
-          <img src="assets/ima/logo-mini-wtd-256.png" alt="Logo Mini-WTD" loading="lazy">
-        </div>
-        <div class="site-brand-text">
-          <h1 class="site-title">Mini-WTD</h1>
-          <p class="site-tagline">Work-Test-Demo · Bilan d’aménagement</p>
-        </div>
-      </div>
-
-      <div class="a11y-toolbar" aria-label="Réglages d’accessibilité et de lecture">
-        <button class="access-btn" data-action="font-" type="button"
-                aria-label="Réduire la taille du texte" title="A− (Alt + -)">A−</button>
-        <button class="access-btn" data-action="font+" type="button"
-                aria-label="Augmenter la taille du texte" title="A+ (Alt + =)">A+</button>
-        <button class="access-btn" data-action="contrast" type="button"
-                aria-label="Activer le contraste élevé" title="Contraste élevé (Alt + C)">◐</button>
-        <button class="access-btn" data-action="spacing" type="button"
-                aria-label="Augmenter l’espacement du texte" title="Espacement (Alt + S)">↕︎</button>
-        <button class="access-btn" data-action="reset" type="button"
-                aria-label="Réinitialiser l’affichage" title="Réinitialiser (Alt + 0)">⟲</button>
-
-        <button id="theme-toggle" class="btn-icon" type="button"
-                aria-pressed="false"
-                aria-label="Basculer le thème clair/sombre"
-                title="Thème clair / sombre">🌓</button>
-
-        <button id="tts-toggle" class="btn-icon" type="button"
-                aria-pressed="false"
-                aria-label="Activer la lecture vocale de la page"
-                title="Lecture vocale">🔊</button>
-      </div>
-    </div>
-
-    <div class="container site-nav-toggle">
-      <button
-        id="menu-toggle"
-        class="btn-icon"
-        type="button"
-        aria-label="Ouvrir ou fermer le menu"
-        aria-expanded="false"
-        aria-controls="primary-nav">
-        <span class="burger" aria-hidden="true"></span>
-        <span class="sr-only">Menu</span>
-      </button>
-    </div>
-
-    <nav class="site-nav" aria-label="Navigation principale">
-      <ul id="primary-nav">
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="presentation.html">Présentation</a></li>
-        <li><a href="assistant.html">Assistant IA</a></li>
-        <li><a href="evaluation-amenagement.html" class="active" aria-current="page">Bilan</a></li>
-        <li><a href="webcam-analyse.html">Webcam</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- ===== CONTENU ===== -->
-  <main id="main" class="container" role="main" tabindex="-1">
-    <section class="hero">
-      <h2>Bilan d’aménagement de poste</h2>
-      <p class="mwtd-lead">
-        Cette page sert de support pour construire un <strong>bilan structuré</strong> :
-        situation de travail, contraintes, impacts, pistes d’aménagement et décisions.
-      </p>
-      <p>
-        Vous pouvez l’utiliser comme grille d’entretien, puis copier-coller le résultat
-        dans un document à partager (RH, manager, référent handicap, médecine du travail).
-      </p>
-    </section>
-
-    <section class="mwtd-panel" aria-labelledby="form-bilan-title">
-      <header class="mwtd-card-header">
-        <div>
-          <h3 id="form-bilan-title" class="mwtd-card-title">Grille de bilan</h3>
-          <p class="mwtd-card-subtitle">
-            Aucun enregistrement automatique : ce que vous saisissez reste sur cet appareil.
-          </p>
-        </div>
-      </header>
-
-      <form class="mwtd-form" id="form-bilan" novalidate>
-        <!-- 1. Identité / contexte -->
-        <fieldset class="mwtd-fieldset">
-          <legend>1. Contexte</legend>
-
-          <div class="form-group">
-            <label for="bilan-personne">Candidat / salarié</label>
-            <input id="bilan-personne" name="bilan-personne" type="text" autocomplete="off">
-            <p class="form-hint">Nom ou identifiant interne (facultatif pour tests).</p>
-          </div>
-
-          <div class="form-group">
-            <label for="bilan-poste">Poste de travail / fonction actuelle</label>
-            <input id="bilan-poste" name="bilan-poste" type="text" autocomplete="off">
-          </div>
-
-          <div class="form-group">
-            <label for="bilan-service">Service / site</label>
-            <input id="bilan-service" name="bilan-service" type="text" autocomplete="off">
-          </div>
-        </fieldset>
-
-        <!-- 2. Description de la situation -->
-        <fieldset class="mwtd-fieldset">
-          <legend>2. Description de la situation</legend>
-
-          <div class="form-group">
-            <label for="bilan-taches">Tâches principales du poste</label>
-            <textarea id="bilan-taches" name="bilan-taches" rows="4"></textarea>
-            <p class="form-hint">Exemples : accueil du public, saisie informatique, déplacements sur site…</p>
-          </div>
-
-          <div class="form-group">
-            <label for="bilan-difficultes">
-              Difficultés rencontrées dans la situation actuelle
-            </label>
-            <textarea id="bilan-difficultes" name="bilan-difficultes" rows="4"></textarea>
-            <p class="form-hint">
-              Exemples : fatigue en station debout, difficultés à utiliser un clavier ou un écran,
-              déplacements longs, bruit, lumière…
-            </p>
-          </div>
-        </fieldset>
-
-        <!-- 3. Impacts & urgences -->
-        <fieldset class="mwtd-fieldset">
-          <legend>3. Impacts & urgences</legend>
-
-          <div class="form-group">
-            <label for="bilan-impacts">
-              Impacts sur le travail, la santé, l’équipe, les usagers
-            </label>
-            <textarea id="bilan-impacts" name="bilan-impacts" rows="3"></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="bilan-urgence">Niveau d’urgence perçu</label>
-            <select id="bilan-urgence" name="bilan-urgence">
-              <option value="">Sélectionner…</option>
-              <option value="immédiat">Immédiat : situation critique</option>
-              <option value="prioritaire">Prioritaire : à traiter dans les semaines à venir</option>
-              <option value="a-planifier">À planifier : peut attendre un projet plus large</option>
-            </select>
-          </div>
-        </fieldset>
-
-        <!-- 4. Pistes d’aménagement -->
-        <fieldset class="mwtd-fieldset">
-          <legend>4. Pistes d’aménagement envisagées</legend>
-
-          <div class="form-group">
-            <label for="bilan-materiel">Aménagements matériels</label>
-            <textarea id="bilan-materiel" name="bilan-materiel" rows="3"></textarea>
-            <p class="form-hint">Exemples : siège adapté, repose-pieds, écran plus grand, outils de saisie…</p>
-          </div>
-
-          <div class="form-group">
-            <label for="bilan-organisation">
-              Aménagements organisationnels / horaires
-            </label>
-            <textarea id="bilan-organisation" name="bilan-organisation" rows="3"></textarea>
-            <p class="form-hint">Exemples : télétravail partiel, pauses supplémentaires, adaptation des horaires…</p>
-          </div>
-
-          <div class="form-group">
-            <label for="bilan-numerique">
-              Aménagements numériques / logiciels
-            </label>
-            <textarea id="bilan-numerique" name="bilan-numerique" rows="3"></textarea>
-            <p class="form-hint">Exemples : lecteurs d’écran, zoom, paramétrage, simplification des interfaces…</p>
-          </div>
-        </fieldset>
-
-        <!-- 5. Acteurs concernés / décisions -->
-        <fieldset class="mwtd-fieldset">
-          <legend>5. Acteurs & décisions</legend>
-
-          <div class="form-group">
-            <label for="bilan-acteurs">
-              Acteurs à associer (interne / externe)
-            </label>
-            <textarea id="bilan-acteurs" name="bilan-acteurs" rows="3"></textarea>
-            <p class="form-hint">
-              Exemples : manager, RH, référent handicap, médecine du travail, Agefiph, MDPH…
-            </p>
-          </div>
-
-          <div class="form-group">
-            <label for="bilan-decisions">
-              Décisions / prochaines étapes
-            </label>
-            <textarea id="bilan-decisions" name="bilan-decisions" rows="3"></textarea>
-            <p class="form-hint">
-              Exemples : phase d’essai de 3 mois, achat de matériel, demande de financement,
-              nouvelle rencontre planifiée à une date donnée.
-            </p>
-          </div>
-        </fieldset>
-
-        <!-- 6. Résumé -->
-        <fieldset class="mwtd-fieldset">
-          <legend>6. Résumé du bilan (brouillon)</legend>
-          <div class="form-group">
-            <label for="bilan-resume">
-              Résumé à partager (copier-coller possible vers un document interne)
-            </label>
-            <textarea id="bilan-resume" name="bilan-resume" rows="6"></textarea>
-            <p class="form-hint">
-              Vous pouvez y coller un texte généré par l’assistant IA, puis le modifier.
-            </p>
-          </div>
-        </fieldset>
-
-        <!-- 7. Envoi & export -->
-        <fieldset class="mwtd-fieldset">
-          <legend>7. Envoi & export</legend>
-
-          <div class="form-group">
-            <label for="bilan-email">Adresse e-mail pour recevoir le bilan</label>
-            <input id="bilan-email"
-                   name="bilan-email"
-                   type="email"
-                   autocomplete="email"
-                   placeholder="exemple@entreprise.fr">
-            <p class="form-hint">
-              Le bilan sera envoyé à cette adresse sous forme de texte. Mini-WTD ne conserve pas vos données.
-            </p>
-          </div>
-
-          <div class="form-group bilan-actions">
-            <button type="button" class="btn" id="btn-export-word">
-              Télécharger le bilan en Word
-            </button>
-            <button type="button" class="btn btn-primary" id="btn-send-email">
-              Envoyer le bilan par e-mail
-            </button>
-          </div>
-
-          <p class="form-hint">
-            L’envoi par e-mail utilise un service externe configuré par votre organisation (EmailJS).
-            Les informations sont envoyées uniquement à l’adresse indiquée.
-          </p>
-        </fieldset>
-
-        <p class="form-hint">
-          Mini-WTD ne stocke pas vos données : pensez à enregistrer ce bilan dans vos
-          outils internes (SIRH, dossier RH, fichier sécurisé…).
-        </p>
-
-        <button type="submit" class="btn btn-secondary">
-          Utilisation en démo — aucune donnée n’est envoyée
-        </button>
-      </form>
-    </section>
-  </main>
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="site-footer" role="contentinfo">
-    <div class="container">
-      <p>© 2025 · Mini-WTD — Bilan d’aménagement de poste.</p>
-    </div>
-  </footer>
-
-  <!-- ===== EmailJS (service externe d'envoi d'e-mails) ===== -->
-  <!-- 1) Crée un compte sur https://www.emailjs.com/
-       2) Crée un service + un template
-       3) Remplace EMAILJS_PUBLIC_KEY, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID
-          par tes vraies valeurs. -->
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
   <!-- ===== Scripts ===== -->
@@ -600,29 +303,28 @@
           );
         });
       }
-      
-// --- Initialisation EmailJS (à personnaliser) ---
-if (window.emailjs) {
-  emailjs.init("xsjJ22bXyvRFEXe38"); // ⬅️ ta clé publique
-}
+
+      // --- Initialisation EmailJS ---
+      if (window.emailjs) {
+        emailjs.init("xsjJ22bXyvRFEXe38"); // ta clé publique
       }
 
       // --- Récupération des données du formulaire ---
       function collectBilanData() {
         return {
-          personne:   document.getElementById('bilan-personne')?.value.trim()   || "",
-          poste:      document.getElementById('bilan-poste')?.value.trim()      || "",
-          service:    document.getElementById('bilan-service')?.value.trim()    || "",
-          taches:     document.getElementById('bilan-taches')?.value.trim()     || "",
-          difficultes:document.getElementById('bilan-difficultes')?.value.trim()|| "",
-          impacts:    document.getElementById('bilan-impacts')?.value.trim()    || "",
-          urgence:    document.getElementById('bilan-urgence')?.value           || "",
-          materiel:   document.getElementById('bilan-materiel')?.value.trim()   || "",
-          organisation: document.getElementById('bilan-organisation')?.value.trim() || "",
-          numerique:  document.getElementById('bilan-numerique')?.value.trim()  || "",
-          acteurs:    document.getElementById('bilan-acteurs')?.value.trim()    || "",
-          decisions:  document.getElementById('bilan-decisions')?.value.trim()  || "",
-          resume:     document.getElementById('bilan-resume')?.value.trim()     || ""
+          personne:    document.getElementById('bilan-personne')?.value.trim()        || "",
+          poste:       document.getElementById('bilan-poste')?.value.trim()           || "",
+          service:     document.getElementById('bilan-service')?.value.trim()         || "",
+          taches:      document.getElementById('bilan-taches')?.value.trim()          || "",
+          difficultes: document.getElementById('bilan-difficultes')?.value.trim()     || "",
+          impacts:     document.getElementById('bilan-impacts')?.value.trim()         || "",
+          urgence:     document.getElementById('bilan-urgence')?.value                || "",
+          materiel:    document.getElementById('bilan-materiel')?.value.trim()        || "",
+          organisation:document.getElementById('bilan-organisation')?.value.trim()    || "",
+          numerique:   document.getElementById('bilan-numerique')?.value.trim()       || "",
+          acteurs:     document.getElementById('bilan-acteurs')?.value.trim()         || "",
+          decisions:   document.getElementById('bilan-decisions')?.value.trim()       || "",
+          resume:      document.getElementById('bilan-resume')?.value.trim()          || ""
         };
       }
 
@@ -664,8 +366,7 @@ if (window.emailjs) {
 
       // --- HTML pour le fichier Word (doc basé sur HTML) ---
       function buildHtmlSummary(data) {
-        const txt = buildPlainTextSummary(data)
-          .replace(/\n/g, "<br>");
+        const txt = buildPlainTextSummary(data).replace(/\n/g, "<br>");
 
         return (
           "<!doctype html>" +
@@ -712,10 +413,8 @@ if (window.emailjs) {
         const data = collectBilanData();
         const message = buildPlainTextSummary(data);
 
-        // ⚠️ Remplacer par tes identifiants EmailJS
-const SERVICE_ID  = "service_miniwtd";   // exemple, prends ton vrai ID
-const TEMPLATE_ID = "template_tr7v61k";  // celui que tu viens de créer
-
+        const SERVICE_ID  = "service_miniwtd";
+        const TEMPLATE_ID = "template_tr7v61k";
 
         const templateParams = {
           to_email: toEmail,
