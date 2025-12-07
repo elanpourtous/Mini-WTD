@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Mini-WTD · Accessibilité++</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+        content="Mini-WTD — Accessibilité++ : module avancé pour adapter l’affichage, la lecture et les interactions aux besoins spécifiques des collaborateurs.">
+
+  <!-- Styles globaux Mini-WTD (adapter les chemins si besoin) -->
+  <link rel="stylesheet" href="assets/css/mini-wtd-2025.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/base-a11y.css">
+  <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
+  <link rel="stylesheet" href="assets/css/mwtd-access-plus.css">
+</head>
+
+<body class="access-page">
+  <a href="#main" class="skiplink">Aller directement au contenu</a>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header" role="banner">
+    <div class="container site-header-inner">
+      <div class="site-brand">
+        <div class="site-logo">
+          <img src="assets/ima/logo-mini-wtd-256.png"
+               alt="Logo Mini-WTD"
+               loading="lazy">
+        </div>
+        <div class="site-brand-text">
+          <h1 class="site-title">Mini-WTD</h1>
+          <p class="site-tagline">Work-Test-Demo · Accessibilité++</p>
+        </div>
+      </div>
+
+      <div class="a11y-toolbar" aria-label="Réglages d’accessibilité et de lecture">
+        <button class="access-btn" data-action="font-" type="button"
+                aria-label="Réduire la taille du texte" title="A− (Alt + -)">A−</button>
+        <button class="access-btn" data-action="font+" type="button"
+                aria-label="Augmenter la taille du texte" title="A+ (Alt + =)">A+</button>
+        <button class="access-btn" data-action="contrast" type="button"
+                aria-label="Activer le contraste élevé" title="Contraste élevé (Alt + C)">◐</button>
+        <button class="access-btn" data-action="spacing" type="button"
+                aria-label="Augmenter l’espacement du texte" title="Espacement (Alt + S)">↕︎</button>
+        <button class="access-btn" data-action="reset" type="button"
+                aria-label="Réinitialiser l’affichage" title="Réinitialiser (Alt + 0)">⟲</button>
+
+        <button id="theme-toggle" class="btn-icon" type="button"
+                aria-pressed="false"
+                aria-label="Basculer le thème clair/sombre"
+                title="Thème clair / sombre">🌓</button>
+
+        <button id="tts-toggle" class="btn-icon" type="button"
+                aria-pressed="false"
+                aria-label="Activer la lecture vocale de la page"
+                title="Lecture vocale">🔊</button>
+
+        <!-- Bouton Accessibilité++ -->
+        <button id="btn-a11y-plus"
+                class="btn-icon a11y-plus-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="a11y-plus-panel"
+                title="Options accessibilité avancées">
+          🧩+
+        </button>
+      </div>
+    </div>
+
+    <div class="container site-nav-toggle">
+      <button
+        id="menu-toggle"
+        class="btn-icon"
+        type="button"
+        aria-label="Ouvrir ou fermer le menu"
+        aria-expanded="false"
+        aria-controls="primary-nav">
+        <span class="burger" aria-hidden="true"></span>
+        <span class="sr-only">Menu</span>
+      </button>
+    </div>
+
+    <nav class="site-nav" aria-label="Navigation principale">
+      <ul id="primary-nav">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="presentation.html">Présentation</a></li>
+        <li><a href="assistant.html">Assistant IA</a></li>
+        <li><a href="evaluation-amenagement.html">Bilan d’aménagement</a></li>
+        <li><a href="webcam-analyse.html">Webcam</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="accessibilite-plus.html" class="active" aria-current="page">Accessibilité++</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== CONTENU ===== -->
+  <main id="main" class="container" role="main" tabindex="-1">
+    <section class="hero">
+      <h2>Accessibilité++ – Mini-WTD</h2>
+      <p class="mwtd-lead">
+        Un module avancé pour adapter le numérique aux réalités du handicap, des troubles
+        et des situations de fragilité, sans ajouter de complexité à l’organisation.
+      </p>
+      <p>
+        Accessibilité++ complète Mini-WTD en offrant des réglages ciblés pour les collaborateurs
+        présentant des besoins spécifiques&nbsp;: dyslexie, troubles cognitifs, malentendance,
+        déficience visuelle, limitations motrices, fatigue ou difficultés de concentration.
+      </p>
+      <p>
+        Le module ne stocke aucune donnée par défaut. Les réglages restent sur l’appareil de
+        l’utilisateur. L’objectif est simple&nbsp;: donner de l’autonomie sans exposer la personne.
+      </p>
+    </section>
+
+    <section class="mwtd-panel" aria-labelledby="section-modes">
+      <header class="mwtd-card-header">
+        <div>
+          <h3 id="section-modes" class="mwtd-card-title">Modes visuels et cognitifs</h3>
+          <p class="mwtd-card-subtitle">
+            Adapter l’affichage pour réduire la fatigue et faciliter la compréhension.
+          </p>
+        </div>
+      </header>
+
+      <div class="mwtd-panel-body">
+        <ul>
+          <li><strong>Mode Dyslexie</strong> : police adaptée, espacement renforcé, fond adouci.</li>
+          <li><strong>Mode Cognitif (T21 / IMC / troubles attentionnels)</strong> :
+              taille de texte augmentée, mise en page plus simple.</li>
+          <li><strong>Mode Haut Contraste</strong> : fond sombre, texte clair, liens visibles,
+              utile pour la basse vision et la fatigue visuelle.</li>
+          <li><strong>Mode Lecture Lente</strong> : vitesse de lecture vocale adaptée pour laisser
+              le temps d’intégrer les informations.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="mwtd-panel" aria-labelledby="section-voix">
+      <header class="mwtd-card-header">
+        <div>
+          <h3 id="section-voix" class="mwtd-card-title">Lecture vocale et sous-titres</h3>
+          <p class="mwtd-card-subtitle">
+            Renforcer l’accès à l’information écrite et orale.
+          </p>
+        </div>
+      </header>
+
+      <div class="mwtd-panel-body">
+        <p>
+          Le module Accessibilité++ propose un <strong>profil de voix ajustable</strong> :
+        </p>
+        <ul>
+          <li>standard</li>
+          <li>lent</li>
+          <li>très lent</li>
+          <li>mode cognition (intonation et débit adaptés)</li>
+          <li>mode malentendant (articulation renforcée)</li>
+        </ul>
+        <p>
+          Lorsque le navigateur le permet, des <strong>sous-titres en direct</strong> peuvent être
+          activés lors des réunions, entretiens ou démonstrations. Une barre discrète affiche en bas
+          de l’écran une transcription simplifiée de ce qui est dit.
+        </p>
+      </div>
+    </section>
+
+    <section class="mwtd-panel" aria-labelledby="section-reunion">
+      <header class="mwtd-card-header">
+        <div>
+          <h3 id="section-reunion" class="mwtd-card-title">Mode Réunion professionnelle</h3>
+          <p class="mwtd-card-subtitle">
+            Un réglage unique pour les temps d’échange sensibles.
+          </p>
+        </div>
+      </header>
+
+      <div class="mwtd-panel-body">
+        <p>
+          Le <strong>mode Réunion pro</strong> active en un clic une configuration renforcée&nbsp;:
+        </p>
+        <ul>
+          <li>haut contraste</li>
+          <li>mode cognition</li>
+          <li>lecture vocale lente</li>
+          <li>sous-titres (si disponibles)</li>
+        </ul>
+        <p>
+          Ce mode est particulièrement adapté aux réunions RH, bilans d’aménagement, entretiens de
+          suivi ou temps d’échange impliquant des situations de handicap ou de fragilité.
+        </p>
+      </div>
+    </section>
+
+    <section class="mwtd-panel" aria-labelledby="section-dirigeants">
+      <header class="mwtd-card-header">
+        <div>
+          <h3 id="section-dirigeants" class="mwtd-card-title">Synthèse pour les dirigeants</h3>
+          <p class="mwtd-card-subtitle">
+            Donner une vision claire sans exposer les personnes.
+          </p>
+        </div>
+      </header>
+
+      <div class="mwtd-panel-body">
+        <p>
+          Accessibilité++ intègre une fonction de <strong>synthèse dirigeant</strong> qui présente
+          en quelques lignes&nbsp;:
+        </p>
+        <ul>
+          <li>les types d’adaptations activées (sans diagnostic)</li>
+          <li>l’impact sur la compréhension et la participation</li>
+          <li>les pistes d’amélioration au niveau de l’équipe ou du poste</li>
+        </ul>
+        <p>
+          Cette synthèse ne remplace pas les échanges humains, mais elle aide les responsables à
+          mieux visualiser les enjeux concrets de l’accessibilité numérique dans leur organisation.
+        </p>
+      </div>
+    </section>
+
+    <section class="mwtd-panel" aria-labelledby="section-transparence">
+      <header class="mwtd-card-header">
+        <div>
+          <h3 id="section-transparence" class="mwtd-card-title">Transparence entreprise</h3>
+          <p class="mwtd-card-subtitle">
+            Une approche inclusive, claire et non intrusive.
+          </p>
+        </div>
+      </header>
+
+      <div class="mwtd-panel-body">
+        <p>
+          Le module rappelle les grands principes sans entrer dans un cadre juridique agressif&nbsp;:
+        </p>
+        <ul>
+          <li>aucune donnée n’est stockée par défaut</li>
+          <li>aucune information n’est envoyée sans consentement explicite</li>
+          <li>les réglages sont personnels à l’utilisateur</li>
+          <li>le module s’inscrit dans les bonnes pratiques RGAA / accessibilité numérique</li>
+        </ul>
+        <p>
+          L’objectif est de rassurer les équipes RH, DSI et direction en montrant que l’outil
+          reste léger, compréhensible et maîtrisé.
+        </p>
+      </div>
+    </section>
+
+    <section class="mwtd-panel" aria-labelledby="section-demande">
+      <header class="mwtd-card-header">
+        <div>
+          <h3 id="section-demande" class="mwtd-card-title">
+            Demande discrète d’adaptation
+          </h3>
+          <p class="mwtd-card-subtitle">
+            Un canal confidentiel pour exprimer un besoin, sans se surexposer.
+          </p>
+        </div>
+      </header>
+
+      <div class="mwtd-panel-body">
+        <p>
+          Accessibilité++ propose un <strong>formulaire discret</strong> permettant à un
+          collaborateur de décrire son besoin d’adaptation, avec la possibilité de&nbsp;:
+        </p>
+        <ul>
+          <li>préciser ou non le type de difficulté (malentendance, cognitif, dys, moteur…)</li>
+          <li>décrire le contexte (poste, mission, formation, réunion…)</li>
+          <li>exprimer en quelques phrases ce qui l’aiderait vraiment</li>
+          <li>laisser un e-mail pour être recontacté, ou rester non joignable</li>
+        </ul>
+        <p>
+          Ces demandes sont adressées au <strong>référent accessibilité</strong> désigné par
+          l’organisation. Elles n’apparaissent pas dans les bilans d’aménagement classiques.
+        </p>
+      </div>
+    </section>
+
+    <section class="mwtd-panel" aria-labelledby="section-objectif">
+      <header class="mwtd-card-header">
+        <div>
+          <h3 id="section-objectif" class="mwtd-card-title">Objectif général</h3>
+          <p class="mwtd-card-subtitle">
+            Autonomie pour la personne, simplicité pour l’entreprise.
+          </p>
+        </div>
+      </header>
+
+      <div class="mwtd-panel-body">
+        <p>
+          Accessibilité++ vise à créer un environnement numérique plus accessible, plus lisible et
+          plus respectueux de chacun, sans multiplier les outils et sans complexifier les procédures
+          internes. Mini-WTD reste un outil léger, portable, et compréhensible pour tous.
+        </p>
+        <p>
+          L’enjeu n’est pas de remplacer les acteurs du handicap, mais de leur fournir un levier
+          supplémentaire pour rendre les situations de travail plus soutenables, plus justes, et plus
+          inclusives au quotidien.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== MODULE ACCESSIBILITÉ++ (panneau + sous-titres) ===== -->
+  <div id="a11y-plus-panel" aria-label="Options accessibilité avancées">
+    <h2>Accessibilité ++</h2>
+    <p>Réglages ciblés pour adapter la page selon votre profil.</p>
+
+    <div class="a11y-plus-group">
+      <label for="a11y-voice-profile"><strong>Profil de voix</strong></label>
+      <select id="a11y-voice-profile">
+        <option value="normal">Standard</option>
+        <option value="lent">Lent</option>
+        <option value="tres-lent">Très lent</option>
+        <option value="cognitif">Cognition (T21 / IMC)</option>
+        <option value="malentendant">Malentendant</option>
+      </select>
+    </div>
+
+    <div class="a11y-plus-group">
+      <label><input type="checkbox" id="a11y-mode-dys"> Mode dyslexie</label>
+      <label><input type="checkbox" id="a11y-mode-cog"> Mode cognition</label>
+      <label><input type="checkbox" id="a11y-mode-contrast"> Haut contraste</label>
+      <label><input type="checkbox" id="a11y-mode-subtitles"> Sous-titres en direct</label>
+    </div>
+
+    <div class="a11y-plus-group">
+      <button class="btn btn-secondary" type="button" onclick="enableMeetingMode()">🎤 Mode réunion pro</button>
+      <button class="btn btn-primary" type="button" onclick="demoChoc()">⚡ Démo choc</button>
+    </div>
+
+    <div class="a11y-plus-group">
+      <button class="btn btn-secondary" type="button" onclick="generateManagerSummary()">📄 Synthèse dirigeant</button>
+      <button class="btn btn-secondary" type="button" onclick="showEnterpriseInfo()">ℹ️ Transparence entreprise</button>
+    </div>
+
+    <div class="a11y-request-box">
+      <button id="a11y-request-toggle" class="a11y-request-link" type="button">
+        Demande discrète d’adaptation
+      </button>
+
+      <form id="a11y-request-form" class="a11y-request-form">
+        <label for="a11y-request-type">Type de difficulté (optionnel)</label>
+        <select id="a11y-request-type">
+          <option value="">Ne pas préciser</option>
+          <option value="malentente">Malentente</option>
+          <option value="non-voyant">Non-voyant</option>
+          <option value="cognitif">T21 / IMC / cognitif</option>
+          <option value="dys">Troubles Dys</option>
+          <option value="moteur">Moteur / parole</option>
+        </select>
+
+        <label for="a11y-request-context">Contexte</label>
+        <textarea id="a11y-request-context" rows="2"
+                  placeholder="Ex : accueil, saisie informatique, réunion en visio…"></textarea>
+
+        <label for="a11y-request-need">Ce qui vous aiderait vraiment</label>
+        <textarea id="a11y-request-need" rows="3"
+                  placeholder="Ex : lecture plus lente, sous-titres systématiques, support simplifié…"></textarea>
+
+        <label for="a11y-request-email">E-mail si vous acceptez d’être recontacté (facultatif)</label>
+        <input id="a11y-request-email" type="email" placeholder="exemple@entreprise.fr">
+
+        <button id="a11y-request-submit" class="btn btn-secondary" type="submit">
+          Envoyer au référent accessibilité
+        </button>
+
+        <p class="a11y-plus-note">
+          Cette demande va au référent accessibilité désigné par votre organisation.
+          Elle n’apparaît pas dans les bilans d’évaluation classiques.
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Sous-titres en direct -->
+  <div id="mwtd-subtitles" aria-live="polite"></div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <p>© 2025 · Mini-WTD — Module Accessibilité++.</p>
+    </div>
+  </footer>
+
+  <!-- EmailJS si tu l’utilises déjà -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+  <!-- Scripts globaux Mini-WTD -->
+  <script src="assets/js/mwtd-access-plus.js"></script>
+  <script src="assets/js/mwtd-menu.js"></script>
+  <script src="assets/js/mwtd-accessibility.js"></script>
+  <script src="assets/js/mwtd-theme.js"></script>
+  <script src="assets/js/mwtd-tts.js"></script>
+</body>
+</html>
