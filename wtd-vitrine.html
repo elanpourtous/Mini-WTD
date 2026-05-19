@@ -2,77 +2,528 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <title>WTD – Work Test Demo · Simulation de poste (aperçu)</title>
+  <title>WTD · Vitrine et démonstration entreprise</title>
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Aperçu WTD – Work Test Demo : simulation de poste, observation et aménagement. Version vitrine intégrée dans Mini-WTD.">
-  <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
+  <meta
+    name="description"
+    content="WTD – Work Test Demo : vitrine de démonstration pour tester un poste réel, identifier les moyens nécessaires en entreprise et produire une fiche d’explication."
+  >
+
+  <!-- Styles globaux -->
+  <link rel="stylesheet" href="assets/css/mini-wtd-2025.css">
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/base-a11y.css">
+  <link rel="stylesheet" href="assets/css/rgaa-accessible.css">
 </head>
 
-<body>
-  <a class="skiplink" href="#main">Aller au contenu</a>
+<body class="wtd-vitrine-page">
+  <a href="#main" class="skiplink">Aller directement au contenu</a>
 
-  <?php include 'includes/nav.html'; ?>
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="container site-header-inner">
+      <div class="site-brand">
+        <div class="site-logo">
+          <img
+            src="assets/ima/logo-mini-wtd-256.png"
+            alt="Logo Mini-WTD"
+            width="64"
+            height="64"
+            loading="lazy"
+          >
+        </div>
 
-  <main id="main" class="container" tabindex="-1" style="margin-top:1rem">
+        <div class="site-brand-text">
+          <h1 class="site-title">Mini-WTD</h1>
+          <p class="site-tagline">Work-Test-Demo · Bilan d’aménagement de poste</p>
+        </div>
+      </div>
 
-    <section class="card wtd-banner-card" aria-labelledby="wtd-banner-title">
-      <h1 id="wtd-banner-title" class="wtd-banner-title">
-        WTD – Work Test Demo · Simulation de poste
-      </h1>
-      <p class="wtd-banner-subtitle">
-        Tester le poste. Observer la réalité. Adapter pour de vrai.
+      <!-- Barre d’accessibilité -->
+      <div class="a11y-toolbar" aria-label="Réglages d’accessibilité et de lecture">
+        <button
+          class="access-btn"
+          data-action="font-"
+          type="button"
+          aria-label="Réduire la taille du texte"
+          title="A− (Alt + -)"
+        >A−</button>
+
+        <button
+          class="access-btn"
+          data-action="font+"
+          type="button"
+          aria-label="Augmenter la taille du texte"
+          title="A+ (Alt + =)"
+        >A+</button>
+
+        <button
+          class="access-btn"
+          data-action="contrast"
+          type="button"
+          aria-label="Activer le contraste élevé"
+          title="Contraste élevé (Alt + C)"
+        >◐</button>
+
+        <button
+          class="access-btn"
+          data-action="spacing"
+          type="button"
+          aria-label="Augmenter l’espacement du texte"
+          title="Espacement (Alt + S)"
+        >↕︎</button>
+
+        <button
+          class="access-btn"
+          data-action="reset"
+          type="button"
+          aria-label="Réinitialiser l’affichage"
+          title="Réinitialiser (Alt + 0)"
+        >⟲</button>
+
+        <button
+          id="theme-toggle"
+          class="btn-icon"
+          type="button"
+          aria-pressed="false"
+          aria-label="Basculer le thème clair ou sombre"
+          title="Thème clair / sombre"
+        >🌓</button>
+
+        <button
+          id="tts-toggle"
+          class="btn-icon"
+          type="button"
+          aria-pressed="false"
+          aria-label="Activer la lecture vocale de la page"
+          title="Lecture vocale"
+        >🔊</button>
+      </div>
+    </div>
+
+    <!-- Bouton menu mobile -->
+    <div class="container site-nav-toggle">
+      <button
+        id="menu-toggle"
+        class="btn-icon"
+        type="button"
+        aria-label="Ouvrir ou fermer le menu"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+      >
+        <span class="burger" aria-hidden="true"></span>
+        <span class="sr-only">Menu</span>
+      </button>
+    </div>
+
+    <!-- Navigation principale -->
+    <nav class="site-nav" aria-label="Navigation principale">
+      <div class="container">
+        <ul id="primary-nav">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="presentation.html">Présentation</a></li>
+          <li><a href="assistant.html">Assistant IA</a></li>
+          <li><a href="evaluation-amenagement.html">Bilan</a></li>
+          <li><a href="webcam-analyse.html">Webcam</a></li>
+          <li><a href="wtd-vitrine.html" class="active" aria-current="page">WTD</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===== CONTENU PRINCIPAL ===== -->
+  <main id="main" class="container page-main" tabindex="-1">
+
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="wtd-hero-title">
+      <h2 id="wtd-hero-title">
+        WTD : vitrine, démonstration et test réel en entreprise
+      </h2>
+
+      <p class="mwtd-lead">
+        <strong>WTD – Work Test Demo</strong> est une démarche de démonstration
+        pour tester un poste réel, observer les contraintes de travail et identifier
+        les moyens nécessaires à un aménagement concret.
       </p>
-      <div class="wtd-banner-image-wrapper">
-        <img src="assets/ima/banner-wtd-simulation-1200x400.png"
-             alt="Bannière WTD – Simulation de poste, inclusion et aménagement"
-             class="wtd-banner-image">
+
+      <p>
+        L’objectif n’est pas de tester la personne, mais de tester le poste :
+        gestes, outils, rythme, fatigue, déplacements, environnement, charge mentale,
+        bruit, lumière et organisation.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#fiche-explication">
+          Voir la fiche d’explication
+        </a>
+
+        <a class="btn btn-secondary" href="contact.html">
+          Demander une démonstration
+        </a>
       </div>
     </section>
 
-    <section class="card">
-      <h2>🎯 À quoi sert WTD ?</h2>
+    <!-- PRINCIPE -->
+    <section class="mwtd-panel" aria-labelledby="principe-title">
+      <header class="mwtd-card-header">
+        <h3 id="principe-title" class="mwtd-card-title">
+          Le principe de la vitrine WTD
+        </h3>
+      </header>
+
       <p>
-        <strong>WTD – Work Test Demo</strong> permet de simuler un poste réel,
-        d’observer la manière dont une personne occupe ce poste, et de décider
-        ce qu’il faut adapter : gestes, fatigue, déplacements, concentration,
-        environnement, lumière, bruit…
+        La vitrine WTD présente une méthode simple : observer une situation de
+        travail, repérer les obstacles, tester des adaptations et produire une
+        base de bilan compréhensible par les acteurs concernés.
       </p>
+
       <p>
-        L’objectif n’est pas de “tester la personne” mais de se demander :
-        <strong>qu’est-ce qu’on peut adapter immédiatement, et quand mobiliser MDPH / Agefiph / Cap Emploi&nbsp;?</strong>
+        Elle peut être utilisée devant une entreprise, un centre de réadaptation,
+        un service RH, un référent handicap, un organisme de formation ou un
+        partenaire du maintien en emploi.
+      </p>
+
+      <p class="mwtd-quote">
+        « On ne cherche pas ce qui ne va pas chez la personne. On cherche ce qui
+        doit être adapté dans le poste. »
       </p>
     </section>
 
-    <section class="card">
-      <h2>🔍 Ce que permet la version complète</h2>
+    <!-- MOYENS ENTREPRISE -->
+    <section class="mwtd-panel" aria-labelledby="moyens-title">
+      <header class="mwtd-card-header">
+        <h3 id="moyens-title" class="mwtd-card-title">
+          Les moyens souhaités pour une entreprise
+        </h3>
+      </header>
+
+      <p>
+        Pour expérimenter Mini-WTD / WTD dans une entreprise, il ne faut pas une
+        usine à gaz. Il faut surtout un cadre sérieux, un poste réel à observer,
+        des interlocuteurs disponibles et une volonté d’améliorer concrètement
+        une situation de travail.
+      </p>
+
+      <div class="mwtd-grid-3">
+        <article class="mwtd-card">
+          <h4>1. Un terrain de test</h4>
+          <ul>
+            <li>une entreprise ou un service volontaire ;</li>
+            <li>un poste de travail réel ou simulé ;</li>
+            <li>une situation concrète à analyser ;</li>
+            <li>un accord clair des personnes concernées.</li>
+          </ul>
+        </article>
+
+        <article class="mwtd-card">
+          <h4>2. Des acteurs identifiés</h4>
+          <ul>
+            <li>le salarié ou la personne concernée ;</li>
+            <li>un manager de proximité ;</li>
+            <li>un représentant RH ;</li>
+            <li>un référent handicap si possible ;</li>
+            <li>la médecine du travail ou un partenaire externe si nécessaire.</li>
+          </ul>
+        </article>
+
+        <article class="mwtd-card">
+          <h4>3. Des moyens simples</h4>
+          <ul>
+            <li>un ordinateur ou une tablette ;</li>
+            <li>un accès au site Mini-WTD ;</li>
+            <li>un espace calme pour échanger ;</li>
+            <li>une fiche de poste ou une description des tâches ;</li>
+            <li>un temps d’observation ou de simulation.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- DEMONSTRATION -->
+    <section class="mwtd-panel" aria-labelledby="demonstration-title">
+      <header class="mwtd-card-header">
+        <h3 id="demonstration-title" class="mwtd-card-title">
+          Démonstration proposée
+        </h3>
+      </header>
+
+      <p>
+        La démonstration peut être organisée en format court pour présenter l’outil,
+        ou en format terrain pour tester une vraie situation de travail.
+      </p>
+
+      <ol class="mwtd-steps">
+        <li>
+          <h4>1. Présentation de l’outil</h4>
+          <p>
+            Explication de Mini-WTD, de la démarche WTD et du principe :
+            observer le poste, formaliser les contraintes et préparer des pistes
+            d’aménagement.
+          </p>
+        </li>
+
+        <li>
+          <h4>2. Choix d’une situation de travail</h4>
+          <p>
+            L’entreprise choisit un poste ou une situation concrète :
+            fatigue, gestes répétitifs, bruit, déplacement, outil numérique,
+            rythme de travail, problème d’organisation ou besoin d’adaptation.
+          </p>
+        </li>
+
+        <li>
+          <h4>3. Observation ou simulation</h4>
+          <p>
+            La situation est observée ou simulée. On repère les tâches, les
+            obstacles, les impacts et les adaptations possibles sans jugement
+            sur la personne.
+          </p>
+        </li>
+
+        <li>
+          <h4>4. Remplissage de la grille Mini-WTD</h4>
+          <p>
+            Les informations sont structurées dans la grille :
+            contexte, difficultés, impacts, acteurs à associer, pistes
+            d’aménagement et niveau d’urgence.
+          </p>
+        </li>
+
+        <li>
+          <h4>5. Production d’une fiche de synthèse</h4>
+          <p>
+            Une fiche d’explication est produite pour faciliter l’échange entre
+            le salarié, le manager, les RH, le référent handicap et les partenaires
+            du maintien en emploi.
+          </p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- TEST REEL -->
+    <section class="mwtd-panel" aria-labelledby="test-reel-title">
+      <header class="mwtd-card-header">
+        <h3 id="test-reel-title" class="mwtd-card-title">
+          Tester en situation réelle
+        </h3>
+      </header>
+
+      <p>
+        Le test réel permet de sortir des impressions générales. On ne reste pas
+        dans le “ça va être compliqué”. On regarde concrètement ce qui se passe
+        au poste.
+      </p>
+
+      <div class="mwtd-grid-3">
+        <article class="mwtd-card">
+          <h4>Ce qu’on observe</h4>
+          <ul>
+            <li>les gestes demandés ;</li>
+            <li>les déplacements ;</li>
+            <li>la posture ;</li>
+            <li>le rythme ;</li>
+            <li>les interruptions ;</li>
+            <li>le bruit et la lumière ;</li>
+            <li>la charge cognitive ;</li>
+            <li>les outils utilisés.</li>
+          </ul>
+        </article>
+
+        <article class="mwtd-card">
+          <h4>Ce qu’on teste</h4>
+          <ul>
+            <li>un changement d’organisation ;</li>
+            <li>une adaptation du matériel ;</li>
+            <li>une modification du rythme ;</li>
+            <li>une aide humaine ponctuelle ;</li>
+            <li>un outil numérique ;</li>
+            <li>un aménagement de l’espace ;</li>
+            <li>une réduction des contraintes évitables.</li>
+          </ul>
+        </article>
+
+        <article class="mwtd-card">
+          <h4>Ce qu’on produit</h4>
+          <ul>
+            <li>une description claire du poste ;</li>
+            <li>une liste des difficultés observées ;</li>
+            <li>des pistes d’aménagement ;</li>
+            <li>les acteurs à mobiliser ;</li>
+            <li>un plan d’action simple ;</li>
+            <li>une fiche explicative partageable.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- FICHE EXPLICATION -->
+    <section id="fiche-explication" class="mwtd-panel" aria-labelledby="fiche-title">
+      <header class="mwtd-card-header">
+        <h3 id="fiche-title" class="mwtd-card-title">
+          Fiche d’explication pour l’entreprise
+        </h3>
+      </header>
+
+      <p>
+        Cette fiche peut servir de support lors d’une présentation à une entreprise,
+        un CRPH, un service RH, un référent handicap ou un partenaire du maintien
+        en emploi.
+      </p>
+
+      <article class="mwtd-card">
+        <h4>Nom de la démarche</h4>
+        <p>
+          <strong>WTD – Work Test Demo</strong> : démonstration et test de poste
+          pour identifier les besoins d’aménagement.
+        </p>
+      </article>
+
+      <article class="mwtd-card">
+        <h4>Objectif</h4>
+        <p>
+          Comprendre une situation de travail réelle, repérer les freins et proposer
+          des adaptations concrètes, sans médicaliser inutilement la situation et
+          sans réduire la personne à ses difficultés.
+        </p>
+      </article>
+
+      <article class="mwtd-card">
+        <h4>Public concerné</h4>
+        <ul>
+          <li>salarié ou candidat concerné par un besoin d’adaptation ;</li>
+          <li>manager ;</li>
+          <li>ressources humaines ;</li>
+          <li>référent handicap ;</li>
+          <li>médecine du travail ;</li>
+          <li>Cap Emploi, Agefiph, MDPH ou partenaires selon les situations.</li>
+        </ul>
+      </article>
+
+      <article class="mwtd-card">
+        <h4>Déroulement proposé</h4>
+        <ol>
+          <li>Présentation rapide de la situation de travail.</li>
+          <li>Observation ou simulation du poste.</li>
+          <li>Identification des contraintes.</li>
+          <li>Recherche des adaptations possibles.</li>
+          <li>Formalisation d’une fiche de synthèse.</li>
+          <li>Définition des suites à donner.</li>
+        </ol>
+      </article>
+
+      <article class="mwtd-card">
+        <h4>Durée indicative</h4>
+        <ul>
+          <li>démonstration courte : 30 à 45 minutes ;</li>
+          <li>atelier de test : 1 à 2 heures ;</li>
+          <li>test terrain : une demi-journée ;</li>
+          <li>accompagnement complet : selon le nombre de situations étudiées.</li>
+        </ul>
+      </article>
+
+      <article class="mwtd-card">
+        <h4>Ce que l’entreprise gagne</h4>
+        <ul>
+          <li>une meilleure compréhension de la situation réelle ;</li>
+          <li>un support de dialogue entre salarié, manager et RH ;</li>
+          <li>des pistes d’aménagement plus concrètes ;</li>
+          <li>une traçabilité des décisions ;</li>
+          <li>une meilleure préparation des demandes externes si nécessaire ;</li>
+          <li>une démarche plus humaine, plus claire et plus rapide.</li>
+        </ul>
+      </article>
+
+      <article class="mwtd-card">
+        <h4>Cadre de confidentialité</h4>
+        <p>
+          La démarche ne vise pas à collecter des informations médicales détaillées.
+          Les données doivent rester centrées sur le poste, les tâches, les impacts
+          observables et les adaptations possibles.
+        </p>
+
+        <ul>
+          <li>pas de diagnostic médical dans l’outil ;</li>
+          <li>pas de jugement sur la personne ;</li>
+          <li>pas de diffusion non maîtrisée ;</li>
+          <li>conservation des documents sous responsabilité de l’entreprise utilisatrice.</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- BESOIN RECHERCHE -->
+    <section class="mwtd-panel" aria-labelledby="besoin-title">
+      <header class="mwtd-card-header">
+        <h3 id="besoin-title" class="mwtd-card-title">
+          Besoin recherché pour lancer une expérimentation
+        </h3>
+      </header>
+
+      <p>
+        Pour passer du prototype à une expérimentation concrète, Mini-WTD / WTD
+        recherche une structure partenaire capable d’ouvrir un terrain de test :
+        entreprise, centre de réadaptation, structure médico-sociale, service RH,
+        organisme de formation ou acteur du maintien en emploi.
+      </p>
+
+      <p>
+        Le besoin principal n’est pas d’abord matériel. Le besoin réel est un cadre
+        de test sérieux : des situations de travail, des interlocuteurs disponibles,
+        un retour professionnel et la possibilité d’améliorer l’outil à partir du
+        terrain.
+      </p>
+
       <ul>
-        <li>Simulation de poste construite sur le vrai travail.</li>
-        <li>Assistant d’observation structuré.</li>
-        <li>Identification des aménagements raisonnables possibles en interne.</li>
-        <li>Pistes concrètes : matériel, organisation, rythme, environnement.</li>
-        <li>Compte-rendu WTD partageable avec RH, référent handicap et partenaires.</li>
+        <li>tester l’outil sur des cas réels ou anonymisés ;</li>
+        <li>recueillir les retours des professionnels ;</li>
+        <li>adapter les formulaires et les synthèses aux usages terrain ;</li>
+        <li>valider l’intérêt pour les RH, référents handicap et partenaires ;</li>
+        <li>préparer une version plus robuste pour les entreprises.</li>
       </ul>
-      <p class="wtd-note">
-        Ici, vous voyez uniquement la <strong>vitrine</strong>.
-        La version complète est proposée en intervention ou en mode entreprise.
-      </p>
     </section>
 
-    <footer class="card">
-      <h2>📞 Contacter WTD – Work Test Demo</h2>
-      <p>
-        Patrick Billy – Concepteur WTD & Mini-WTD<br>
-        ✉️ <a href="mailto:elanpourtous49@gmail.com">elanpourtous49@gmail.com</a><br>
-        📱 07&nbsp;83&nbsp;33&nbsp;67&nbsp;57
-      </p>
-    </footer>
+    <!-- CONTACT -->
+    <section class="mwtd-panel" aria-labelledby="contact-wtd-title">
+      <header class="mwtd-card-header">
+        <h3 id="contact-wtd-title" class="mwtd-card-title">
+          Demander une démonstration WTD
+        </h3>
+      </header>
 
+      <p>
+        Pour présenter WTD, organiser une démonstration ou proposer un terrain de
+        test, vous pouvez utiliser la page Contact.
+      </p>
+
+      <p>
+        <a class="btn btn-primary" href="contact.html">
+          Contacter Patrick Billy
+        </a>
+      </p>
+    </section>
   </main>
 
-  <?php include 'includes/chatbot-mini-wtd.html'; ?>
-  <script src="assets/js/chatbot.js"></script>
-  <script src="assets/js/camera.js"></script>
-  <script src="assets/js/observer.js"></script>
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>
+        © 2025 · Mini-WTD — Module de bilan d’aménagement de poste.
+      </p>
+
+      <p class="site-footer-links">
+        <a href="a-propos.html">À propos</a> ·
+        <a href="accessibilite.html">Accessibilité</a> ·
+        <a href="confidentialite.html">Données &amp; confidentialité</a> ·
+        <a href="mentions-legales.html">Mentions légales</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/mwtd-menu.js" defer></script>
+  <script src="assets/js/mwtd-accessibility.js" defer></script>
+  <script src="assets/js/mwtd-theme.js" defer></script>
+  <script src="assets/js/mwtd-tts.js" defer></script>
 </body>
 </html>
