@@ -47,7 +47,7 @@
           data-action="font-"
           type="button"
           aria-label="Réduire la taille du texte"
-          title="A− — Alt + -"
+          title="A− (Alt + -)"
         >A−</button>
 
         <button
@@ -55,7 +55,7 @@
           data-action="font+"
           type="button"
           aria-label="Augmenter la taille du texte"
-          title="A+ — Alt + ="
+          title="A+ (Alt + =)"
         >A+</button>
 
         <button
@@ -63,7 +63,7 @@
           data-action="contrast"
           type="button"
           aria-label="Activer le contraste élevé"
-          title="Contraste élevé — Alt + C"
+          title="Contraste élevé (Alt + C)"
         >◐</button>
 
         <button
@@ -71,7 +71,7 @@
           data-action="spacing"
           type="button"
           aria-label="Augmenter l’espacement du texte"
-          title="Espacement — Alt + S"
+          title="Espacement (Alt + S)"
         >↕︎</button>
 
         <button
@@ -79,7 +79,7 @@
           data-action="reset"
           type="button"
           aria-label="Réinitialiser l’affichage"
-          title="Réinitialiser — Alt + 0"
+          title="Réinitialiser (Alt + 0)"
         >⟲</button>
 
         <button
@@ -123,9 +123,11 @@
       <div class="container">
         <ul class="site-nav-list">
           <li><a href="index.html">Accueil</a></li>
-          <li><a href="demo.html">Démonstration</a></li>
+          <li><a href="presentation.html">Présentation</a></li>
+          <li><a href="assistant-ia.html">Assistant IA</a></li>
           <li><a href="bilan.html">Bilan</a></li>
-          <li><a href="confidentialite.html" aria-current="page">Données & confidentialité</a></li>
+          <li><a href="webcam.html">Webcam</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
     </nav>
@@ -135,79 +137,132 @@
   <main id="main" class="page-main" tabindex="-1">
     <section class="hero-section">
       <div class="container">
-        <p class="eyebrow">Données & confidentialité</p>
+        <h2>Données & confidentialité</h2>
 
-        <h2>Mini-WTD ne stocke pas automatiquement les bilans</h2>
-
-        <p class="lead">
-          Cette page explique comment Mini-WTD traite les informations saisies,
-          quelles données peuvent être manipulées pendant l’utilisation, et quelles
-          précautions doivent être prises par l’organisation utilisatrice.
+        <p>
+          Cette page précise le fonctionnement de Mini-WTD concernant les données
+          saisies, les exports, les responsabilités de l’organisation utilisatrice
+          et les bonnes pratiques de confidentialité.
         </p>
       </div>
     </section>
 
     <section class="content-section">
       <div class="container">
-        <h2>Principe général</h2>
 
-        <p>
-          Mini-WTD est conçu comme un outil d’aide au bilan d’aménagement de poste.
-          Les informations saisies servent à produire une synthèse exploitable par
-          les professionnels concernés.
-        </p>
+        <article class="card">
+          <h2>Principe général</h2>
 
-        <p>
-          Par défaut, l’application ne doit pas enregistrer automatiquement les bilans
-          sur un serveur externe. Les données restent sous la responsabilité de la
-          personne ou de l’organisation qui utilise l’outil.
-        </p>
-
-        <h2>Données pouvant être saisies</h2>
-
-        <ul>
-          <li>éléments liés au poste de travail ;</li>
-          <li>contraintes fonctionnelles observées ;</li>
-          <li>besoins d’adaptation ou de compensation ;</li>
-          <li>propositions d’aménagement ;</li>
-          <li>commentaires libres ajoutés par l’utilisateur.</li>
-        </ul>
-
-        <h2>Responsabilité de l’organisation utilisatrice</h2>
-
-        <p>
-          L’organisation utilisatrice doit s’assurer que les données saisies sont
-          pertinentes, limitées au strict nécessaire et traitées conformément aux
-          règles applicables en matière de confidentialité, de secret professionnel
-          et de protection des données personnelles.
-        </p>
-
-        <h2>Bonnes pratiques</h2>
-
-        <ul>
-          <li>ne pas saisir d’informations médicales inutiles ;</li>
-          <li>éviter les commentaires subjectifs ou discriminants ;</li>
-          <li>anonymiser les bilans lorsque c’est possible ;</li>
-          <li>stocker les exports dans un espace sécurisé ;</li>
-          <li>limiter l’accès aux personnes réellement concernées.</li>
-        </ul>
-
-        <h2>Exports et impressions</h2>
-
-        <p>
-          Si un bilan est exporté, imprimé ou partagé, la responsabilité de sa
-          conservation et de sa diffusion revient à l’utilisateur ou à son
-          organisation.
-        </p>
-
-        <div class="notice">
-          <h3>Point d’attention</h3>
           <p>
-            Un outil sobre n’exonère pas d’une pratique rigoureuse. Même sans stockage
-            automatique, un export PDF, une capture d’écran ou un fichier téléchargé
-            peut contenir des informations sensibles.
+            Mini-WTD est un module de démonstration pédagogique dédié au bilan
+            d’aménagement de poste. Il aide à structurer les échanges entre les
+            acteurs concernés : salarié, manager, ressources humaines, référent
+            handicap, médecin du travail et partenaires.
           </p>
-        </div>
+
+          <p>
+            L’outil ne doit pas être utilisé comme un dossier médical, ni comme un
+            espace de conservation exhaustive d’informations sensibles.
+          </p>
+        </article>
+
+        <article class="card">
+          <h2>Absence de stockage automatique</h2>
+
+          <p>
+            Par défaut, Mini-WTD ne stocke pas automatiquement les bilans saisis
+            sur un serveur externe. Les informations renseignées sont utilisées
+            pour produire une synthèse ou un support de travail.
+          </p>
+
+          <p>
+            Dès qu’un bilan est exporté, imprimé, copié ou transmis, sa conservation
+            relève de la responsabilité de l’utilisateur ou de l’organisation
+            utilisatrice.
+          </p>
+        </article>
+
+        <article class="card">
+          <h2>Données pouvant être traitées</h2>
+
+          <p>
+            Selon l’usage, Mini-WTD peut contenir des informations relatives :
+          </p>
+
+          <ul>
+            <li>au poste de travail ;</li>
+            <li>aux tâches réalisées ;</li>
+            <li>aux contraintes observées ;</li>
+            <li>aux besoins d’aménagement ;</li>
+            <li>aux solutions techniques, organisationnelles ou humaines envisagées ;</li>
+            <li>aux commentaires ajoutés par l’utilisateur.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2>Données sensibles</h2>
+
+          <p>
+            Les utilisateurs doivent éviter de saisir des informations médicales
+            détaillées ou inutiles. Le bilan doit rester centré sur les conséquences
+            fonctionnelles observables et sur les adaptations du poste.
+          </p>
+
+          <p>
+            Autrement dit : on décrit ce qui gêne l’activité de travail, pas toute
+            la vie médicale de la personne. Le fichier HTML n’est pas un cabinet
+            médical miniature.
+          </p>
+        </article>
+
+        <article class="card">
+          <h2>Responsabilité de l’organisation utilisatrice</h2>
+
+          <p>
+            L’organisation qui utilise Mini-WTD doit s’assurer que les données
+            collectées sont pertinentes, proportionnées et accessibles uniquement
+            aux personnes habilitées.
+          </p>
+
+          <p>
+            Elle doit également définir ses propres règles de conservation,
+            d’archivage, de suppression et de partage des bilans produits.
+          </p>
+        </article>
+
+        <article class="card">
+          <h2>Bonnes pratiques recommandées</h2>
+
+          <ul>
+            <li>limiter les informations au strict nécessaire ;</li>
+            <li>éviter les formulations subjectives ou discriminantes ;</li>
+            <li>anonymiser les documents lorsque c’est possible ;</li>
+            <li>stocker les exports dans un espace sécurisé ;</li>
+            <li>ne pas partager les bilans par des canaux non sécurisés ;</li>
+            <li>supprimer les fichiers devenus inutiles.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h2>Exports, impressions et captures</h2>
+
+          <p>
+            Les exports PDF, impressions, captures d’écran ou copies de texte
+            peuvent contenir des informations confidentielles. Ils doivent être
+            manipulés avec la même prudence qu’un document professionnel sensible.
+          </p>
+        </article>
+
+        <article class="card">
+          <h2>Contact</h2>
+
+          <p>
+            Pour toute question concernant l’utilisation de Mini-WTD ou une demande
+            professionnelle liée au module, vous pouvez utiliser la page
+            <a href="contact.html">Contact</a>.
+          </p>
+        </article>
+
       </div>
     </section>
   </main>
@@ -218,10 +273,16 @@
       <p>
         © Mini-WTD · Work-Test-Demo · Bilan d’aménagement de poste
       </p>
+
+      <p>
+        <a href="mentions-legales.html">Mentions légales</a>
+        ·
+        <a href="confidentialite.html" aria-current="page">Données & confidentialité</a>
+      </p>
     </div>
   </footer>
 
-  <!-- Scripts éventuels -->
+  <!-- Scripts -->
   <script src="assets/js/main.js" defer></script>
 </body>
 </html>
